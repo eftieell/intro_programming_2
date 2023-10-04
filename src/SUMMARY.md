@@ -1,10 +1,10 @@
 # Summary
 
-# Basics
-- [Python, VSCode, and `dudraw` Installation](installation.md)
-- [First Program](hello.md)
-- [`dudraw` Overview](dudraw_quickstart.md)
-- [Introduction to functions](functions.md)
+- [Chapter 1](ch1.md)
+  - [Python, VSCode, and `dudraw` Installation](installation.md)
+  - [First Program](hello.md)
+  - [`dudraw` Overview](dudraw_quickstart.md).
+  - [Introduction to functions](functions.md)
 
 # Variables
 - [Variables, Assignment, Types and Arithmetic](variables_assignment_types_arithmetic.md)
