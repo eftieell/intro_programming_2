@@ -7,4 +7,4 @@ serve:
 	mdbook serve
 
 publish:
-	rsync -ravP docs/* intropython@linux.cs.du.edu:~/public_html/intro-to-programming
+	rsync -ravP docs/* intropython@linux.cs.du.edu:~/public_html/intro-to-programming-2
