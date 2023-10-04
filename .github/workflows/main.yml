@@ -43,6 +43,6 @@ jobs:
 
       # Deploy the built documentation to the remote server using rsync
       - name: Deploy Documentation to Remote Server
-        run: rsync -ravP --rsh "ssh -o StrictHostKeyChecking=no -v -i $(pwd)/deploy_key" docs/* intropython@linux.cs.du.edu:~/public_html/intro-to-programming_2
+        run: rsync -ravP --rsh "ssh -o StrictHostKeyChecking=no -v -i $(pwd)/deploy_key" docs/* intropython@linux.cs.du.edu:~/public_html/intro-to-programming-2
         env:
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
