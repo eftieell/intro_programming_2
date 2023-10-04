@@ -1,9 +1,9 @@
 [book]
-authors = ["Andrew Hannum", "Faan Tone Liu", "Mohammed Albow", "Jeffrey Edgington"]
+authors = ["Faan Tone Liu"]
 language = "en"
 multilingual = false
 src = "src"
-title = "Introduction to Programming"
+title = "Introduction to Programming 2"
 
 [build]
 build-dir = "docs"
