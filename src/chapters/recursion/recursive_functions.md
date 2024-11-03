@@ -1,6 +1,6 @@
-## Recursion
+## Recursive Functions
 
-Solving a problem often involves breaking that problem down into smaller and hopefully easier to solve problems. 
+Solving a problem often involves breaking that problem down into smaller and hopefully more easily solved problems. 
 
 When writing a program to solve a problem this often involves writing functions to solve smaller subproblems.
 
@@ -58,31 +58,3 @@ The first case in the example above is known as a base case. It is a simple exam
 The second case in the example above is known as a recursive case. It shows how to divide the current problem into one or more smaller problems.
 
 Eventually the overall problem will be divided into problems which contain base cases. The solution to those base cases can then be returned back to previous calls of the helper function which ultimately creates the overall final result.
-
-LIST EXAMPLE
-
-Consider a program to calculate the total cost of eating at a restaurant. One part of this program might be a function which takes a list of numbers as a parameter and produces the sum of those numbers. One version of this function might be:
-
-```python
-def sum_of_items( prices_of_items : list[float] ) -> float:
-    # find the sum of the numbers in item_list
-    total = 0
-    for index in range( len( prices_of_items )) :
-        total += prices_of_items[index]
-    return total
-```
-
-This function uses iteration to access each value in the list and add it to the total.
-
-Another solution is to view this process in a different way:
-- The sum of empty list of numbers is 0
-- The sum of any other list is the first number plus the sum of any numbers after the first number
-
-```python
-def sum_of_items( prices_of_items : list[float] ) -> float:
-    # find the sum of the numbers in item_list
-    total = 0
-    for index in range( len( prices_of_items )) :
-        total += prices_of_items[index]
-    return total
-```
