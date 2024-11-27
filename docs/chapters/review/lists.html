@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Keyword arguments - Introduction to Programming 2</title>
+        <title>Review of python lists - Introduction to Programming 2</title>
 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Chapter 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/lists.html">Review of python lists</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Chapter 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take parameters</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html" class="active">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_parameters.html">Default values for parameters</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Chapter 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/lists.html" class="active">Review of python lists</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Chapter 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take parameters</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_parameters.html">Default values for parameters</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -167,58 +167,121 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="keyword-arguments"><a class="header" href="#keyword-arguments">Keyword arguments</a></h1>
-<p>In the header of a function definition, you name the parameters. These names are local variable names, meaning that the variables are only accessible within the function definition itself. In the line that <em>invokes</em> (or <em>calls</em>) the function, values (called <em>arguments</em>) are passed to fill in as the values of the parameters. These argument must be passed in the correct order. Consider this example:</p>
-<pre><code class="language-python">def attribute(author: str, title: str)-&gt;None:
-    print(f&quot;{author} wrote the book {title}.&quot;)
+                        <h1 id="review-of-python-lists"><a class="header" href="#review-of-python-lists">Review of python lists</a></h1>
+<p>A python list is a built-in data structure that holds an ordered collection of values. 
+Python lists are mutable (the contents can be modified after creation), and can store any data type (including lists, making a nested list).</p>
+<h2 id="creating-new-lists"><a class="header" href="#creating-new-lists">Creating new lists</a></h2>
+<p>There are several ways to create new lists:</p>
+<ul>
+<li>List literals: write the comma-separated contents within square brackets, storing in a variable:</li>
+</ul>
+<pre><code class="language-python"># contents of lists can be any type
+greek_letters = ['alpha', 'beta', 'gamma', 'delta']
+some_primes = [385351, 217739, 854123, 769733, 898091]
+# lists can be nested
+scores = [[94, 78, 56], [67, 82, 91]]
+</code></pre>
+<ul>
+<li>Create an empty list, then append elements within a loop:</li>
+</ul>
+<pre><code class="language-python">ten_odds = []
+for i in range(10):
+    ten_odds.append(2*i+1)
 
-def main():
-    attribute(&quot;Richard Wright&quot;, &quot;Native Son&quot;)
-    # Oops, here's a bug, the arguments are in the wrong order!
-    attribute(&quot;Harry Potter&quot;, &quot;J.K. Rowling&quot;)
+# get input from user, appending each entry into list:
+friends = []
+num_friends = int(input(&quot;How many friends? &quot;))
+for i in range(num_friends):
+    friend_name = input(&quot;Enter a name: &quot;)
+    friends.append(friend_name)
+print(friends)
+</code></pre>
+<ul>
+<li>Use python's built-in <code>list()</code> function (called a 'constructor').
+Pass any existing iterable (list, range object, tuple, string, dictionary) as the parameter,
+and a new list will be created using its data.</li>
+</ul>
+<pre><code class="language-python">greek_letters = ['alpha', 'beta', 'gamma', 'delta']
+# create a new list, a copy of an existing list
+copy_letters = list(greek_letters)
+# changing the copied list does not affect the original
+copy_letters.append('epsilon')
+print(copy_letters)  # alpha through epsilon
+print(greek_letters) # still just alpha through delta
 
-# Run the program:
-if __name__ == '__main__':
-    main()
+# create a list of the individual characters in a string
+letters = list('haleakala')
+# create a list from the elements in a range object
+values = list(range(1, 10))
+
+# create a dictionary literal:
+numbers = {1: 'one', 2: 'two', 3: 'three'}
+# create a list of the keys from an existing dictionary:
+nums = list(numbers.keys())
+# create a list of the values from an existing dictionary:
+num_names = list(numbers.values())
+# create a list of the (key, value) tuple pairs from an existing dictionary:
+num_items = list(numbers.items())
 </code></pre>
-<p>Output:</p>
-<pre><code>Richard Wright wrote the book Native Son.
-Harry Potter wrote the book J.K. Rowling.
+<h2 id="accessing-elements-in-a-list"><a class="header" href="#accessing-elements-in-a-list">Accessing elements in a list</a></h2>
+<p>You can access (view or change) each element in a list using its index value 
+(the number of its location in the list) within square brackets. For example, <code>list_name[n]</code>.</p>
+<p>Elements in a list are indexed starting at 0, so <code>list_name[0]</code> gives the value of the first element of the list,
+and <code>list_name[n]</code> gives the value of the n+1st element in the list.</p>
+<p>You can find out the number of elements in a python list with <code>len(list_name)</code>. 
+So the value of the last element of a list is <code>list_name[len(list_name)-1]</code>. 
+Alternately, in python, you can use an index of -1 for the last element of a list, so <code>list_name[-1]</code> is the value of the last element.
+(Note that using an index value of -1 is not part of Java or C++, and will result in an index out of bounds error)</p>
+<pre><code class="language-python">languages = [&quot;C++&quot;, &quot;python&quot;, &quot;Java&quot;, &quot;Perl&quot;, &quot;JavaScript&quot;, &quot;R&quot;, &quot;Go&quot;, &quot;Rust&quot;, &quot;Haskell&quot;, &quot;Perl&quot;]
+
+# Access the first element in a list with an index value of 0
+print(f&quot;I can program in {languages[0]}&quot;)
+
+# Access the last element in a list with an index value of len(languages)-1 or -1:
+print(f&quot;I can program in {languages[len(languages)-1]}&quot;)
+print(f&quot;I can program in {languages[-1]}&quot;)
+
+# Lists are mutable, so you can modify the value of an element in the list using its index:
+languages[0] = &quot;C#&quot;
 </code></pre>
-<p>In <code>main()</code>, the line </p>
-<pre><code>attribute(&quot;Richard Wright&quot;, &quot;Native Son&quot;)
+<h2 id="removing-elements-from-a-list"><a class="header" href="#removing-elements-from-a-list">Removing elements from a list</a></h2>
+<p>There are multiple ways to remove an element from a list in python. Here are two ways:</p>
+<ul>
+<li>Use the <code>remove()</code> list method. The parameter you pass is the <em>value</em> you want to remove. 
+So the method traverses through the list until it reaches the <em>first</em> instance of the value. That value is then removed from the list.
+Details: this method does not return a value. If the value you want to return is not found in the list, python throws a <code>ValueError</code>.</li>
+</ul>
+<pre><code class="language-python"># Remove the first instance of &quot;Perl&quot; from the list
+languages.remove(&quot;Perl&quot;)
 </code></pre>
-<p>invokes the <code>attribute()</code> function, with <code>&quot;Richard Wright&quot;</code> as the <code>author</code> and <code>&quot;Native Son&quot;</code> as the title. Notice, however, that the arguments are mistakenly in the wrong order on the next line:</p>
-<pre><code>attribute(&quot;Harry Potter&quot;, &quot;J.K. Rowling&quot;)
+<ul>
+<li>Use the <code>pop()</code> list method. The parameter you pass is the <em>index</em> you want to remove.
+Details: this method returns the value of the element it removed. If the index you pass it is invalid, python throws an <code>IndexError</code>.</li>
+</ul>
+<pre><code class="language-python"># Remove the index 1 element (2nd element) from the list
+removed = languages.pop(1)
+print(removed)
 </code></pre>
-<p><code>&quot;Harry Potter&quot;</code> should have been the second argument (the title), and <code>&quot;J.K. Rowling&quot;</code> should have been the first argument (the author). Keyword arguments are intended to avoid bugs created by this type of mistake, and to simultaneously make code more readable.</p>
-<p>To use a keyword argument, we give the name of the parameter along with the argument. For example:</p>
-<pre><code class="language-python">attribute(author = &quot;Richard Wright&quot;, title = &quot;Native Son&quot;)
-</code></pre>
-<p>The parameter names should exactly match the names given in the definition of the function itself. VSCode will tell you the name of the parameters so you don't have to refer back to the function definition to remember the names and order of the parameters. To access this feature, type Command-Shift-Space on a Mac, or Control-Shift-Space on Windows. This image shows what the parameter-hinting looks like in VSCode:</p>
-<p><img src="parameter_hinting.png" alt="Image" /></p>
-<p>When you use keyword arguments, your code is often easier to understand, because the names of the variables makes the meaning of each argument clear.
-If you use keyword arguments and you put the arguments in the wrong order, the values of the arguments are assigned by the variable names, not the order. However, we strongly advise that even when using keywords, you keep the discipline of maintaining the order of the variales in the function definition. Using the features of your IDE makes this easy.</p>
-<pre><code class="language-python"># Use keyword arguments to clarify and to reduce bugs:
-attribute(author = &quot;Margaret Wise Brown&quot;, title = &quot;Goodnight Moon&quot;)
-# Here we use keyword arguments with the arguments out of order
-# This is poor programming practice, but notice that it still works:
-attribute(title = &quot;Harry Potter&quot;, author = &quot;J.K. Rowling&quot;)
-</code></pre>
-<p>Output:</p>
-<pre><code>Margaret Wise Brown wrote the book Goodnight Moon.
-J.K. Rowling wrote the book Harry Potter.
+<h2 id="traversing-lists"><a class="header" href="#traversing-lists">Traversing lists</a></h2>
+<p>In python, you can traverse lists using an index, or you can traverse directly through the values of the list:</p>
+<pre><code class="language-python"># index-based traversal through list:
+for i in range(len(languages)):
+    print(f&quot;I can program in {languages[i]}&quot;)
+
+# content-based traversal through list:
+for language in languages:
+    print(f&quot;I can program in {language}&quot;)
 </code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../chapters/functions/function_return_values.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../chapters/review/review_chapter.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../chapters/functions/functions_default_parameters.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../chapters/functions/functions_chapter.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -228,11 +291,11 @@ J.K. Rowling wrote the book Harry Potter.
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../chapters/functions/function_return_values.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../chapters/review/review_chapter.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../chapters/functions/functions_default_parameters.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../chapters/functions/functions_chapter.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
