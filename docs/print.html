@@ -178,7 +178,7 @@ Python lists are mutable (the contents can be modified after creation), and can 
 <h2 id="creating-new-lists"><a class="header" href="#creating-new-lists">Creating new lists</a></h2>
 <p>There are several ways to create new lists:</p>
 <ul>
-<li>List literals: write the comma-separated contents within square brackets, storing in a variable:</li>
+<li>List literals: write the comma-separated contents within square brackets, storing the list in a variable:</li>
 </ul>
 <pre><code class="language-python"># contents of lists can be any type
 greek_letters = ['alpha', 'beta', 'gamma', 'delta']
@@ -253,7 +253,7 @@ languages[0] = &quot;C#&quot;
 <p>There are multiple ways to remove an element from a list in python. Here are two ways:</p>
 <ul>
 <li>Use the <code>remove()</code> list method. The parameter you pass is the <em>value</em> you want to remove. 
-So the method traverses through the list until it reaches the <em>first</em> instance of the value. That value is then removed from the list.
+So the <code>remove()</code> method traverses through the list until it reaches the <em>first</em> instance of the value. That value is then removed from the list.
 Details: this method does not return a value. If the value you want to return is not found in the list, python throws a <code>ValueError</code>.</li>
 </ul>
 <pre><code class="language-python"># Remove the first instance of &quot;Perl&quot; from the list
@@ -261,22 +261,43 @@ languages.remove(&quot;Perl&quot;)
 </code></pre>
 <ul>
 <li>Use the <code>pop()</code> list method. The parameter you pass is the <em>index</em> you want to remove.
-Details: this method returns the value of the element it removed. If the index you pass it is invalid, python throws an <code>IndexError</code>.</li>
+Details: this method returns the value of the element it removed. If the index you pass as a parameter is invalid, python throws an <code>IndexError</code>.</li>
 </ul>
 <pre><code class="language-python"># Remove the index 1 element (2nd element) from the list
 removed = languages.pop(1)
 print(removed)
 </code></pre>
 <h2 id="traversing-lists"><a class="header" href="#traversing-lists">Traversing lists</a></h2>
-<p>In python, you can traverse lists using an index, or you can traverse directly through the values of the list:</p>
+<p>you can traverse lists three different ways:</p>
+<ul>
+<li>you can use an index (index-based traversal), or </li>
+<li>you can traverse directly through the values of the list (content-based traversal), or</li>
+<li>you can traverse using <code>enumerate()</code>, which tracks both index and content.</li>
+</ul>
+<h3 id="example-showing-three-techniques-for-traversing-a-list"><a class="header" href="#example-showing-three-techniques-for-traversing-a-list">Example showing three techniques for traversing a list:</a></h3>
 <pre><code class="language-python"># index-based traversal through list:
+# Here, i iterates over all indexes in the list (0 through len(languages)-1)
 for i in range(len(languages)):
     print(f&quot;I can program in {languages[i]}&quot;)
 
 # content-based traversal through list:
+# Here, language iterates over all values stored in the list
 for language in languages:
     print(f&quot;I can program in {language}&quot;)
+
+# traversal through list using enumerate()
+# (allows you to track index and value simultaneously)
+# Here, one variable (i) holds the index and another (language) holds the value
+for i, language in enumerate(languages):
+    # Separate the phrases with commas
+    if i != len(languages) - 1:
+        print(f&quot;I love {language}&quot;, end = ', ')
+    # when you get to the last language, end sentence with an exclamation point
+    else:
+        print(f&quot;I love {language}!&quot;)
 </code></pre>
+<p>Note that above in the use of <code>enumerate()</code>, we access the value with the variable <code>language</code>.
+But instead, since the index is available, we could have used <code>languages[i]</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
 <p>In this first chapter, we will review functions in python. This will include a review of ideas learned in a previous quarter, and some new ideas as well. Several of the sections are duplicates from the textbook from the previous quarter <a href="https://cs.du.edu/~intropython/intro-to-programming">COMP 1351 Intro to Programming textbook</a></p>
 <ul>
