@@ -96,12 +96,17 @@ languages.remove("Perl")
 ```
 
 - Use the `pop()` list method. The parameter you pass is the *index* you want to remove.
-Details: this method returns the value of the element it removed. If the index you pass as a parameter is invalid, python throws an `IndexError`.
+Details: the `pop()` method returns the value of the element it removed. If the index you pass as a parameter is invalid, python throws an `IndexError`.
 
 ```python
 # Remove the index 1 element (2nd element) from the list
 removed = languages.pop(1)
 print(removed)
+```
+- Use the `del` keyword to remove an element at a specific index. Details: the value stored at that index is not returned. If the index is invalid, python throws an `IndexError`.
+```python
+# Remove the index 0 element (first element) from the list
+del languages[0]
 ```
 
 ## Traversing lists
@@ -137,6 +142,17 @@ for i, language in enumerate(languages):
 
 Note that above in the use of `enumerate()`, we access the value with the variable `language`.
 But instead, since the index is available, we could have used `languages[i]`.
+
+## The `in` keyword
+You can use the `in` keyword to determine if a value exists anywhere in the list. It returns a True/False result.
+```python
+if "Java" in languages:
+    print("Java is in the list")
+```
+
+## List methods
+
+There is a long list of methods you can use to help you manipulate lists. Please see [Official python documentation on lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)
 
 
 
