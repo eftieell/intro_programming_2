@@ -256,11 +256,17 @@ languages.remove(&quot;Perl&quot;)
 </code></pre>
 <ul>
 <li>Use the <code>pop()</code> list method. The parameter you pass is the <em>index</em> you want to remove.
-Details: this method returns the value of the element it removed. If the index you pass as a parameter is invalid, python throws an <code>IndexError</code>.</li>
+Details: the <code>pop()</code> method returns the value of the element it removed. If the index you pass as a parameter is invalid, python throws an <code>IndexError</code>.</li>
 </ul>
 <pre><code class="language-python"># Remove the index 1 element (2nd element) from the list
 removed = languages.pop(1)
 print(removed)
+</code></pre>
+<ul>
+<li>Use the <code>del</code> keyword to remove an element at a specific index. Details: the value stored at that index is not returned. If the index is invalid, python throws an <code>IndexError</code>.</li>
+</ul>
+<pre><code class="language-python"># Remove the index 0 element (first element) from the list
+del languages[0]
 </code></pre>
 <h2 id="traversing-lists"><a class="header" href="#traversing-lists">Traversing lists</a></h2>
 <p>you can traverse lists three different ways:</p>
@@ -293,6 +299,13 @@ for i, language in enumerate(languages):
 </code></pre>
 <p>Note that above in the use of <code>enumerate()</code>, we access the value with the variable <code>language</code>.
 But instead, since the index is available, we could have used <code>languages[i]</code>.</p>
+<h2 id="the-in-keyword"><a class="header" href="#the-in-keyword">The <code>in</code> keyword</a></h2>
+<p>You can use the <code>in</code> keyword to determine if a value exists anywhere in the list. It returns a True/False result.</p>
+<pre><code class="language-python">if &quot;Java&quot; in languages:
+    print(&quot;Java is in the list&quot;)
+</code></pre>
+<h2 id="list-methods"><a class="header" href="#list-methods">List methods</a></h2>
+<p>There is a long list of methods you can use to help you manipulate lists. Please see <a href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">Official python documentation on lists</a></p>
 
                     </main>
 
