@@ -1,0 +1,346 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>List comprehension - Introduction to Programming 2</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../css/pyscript.css">
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Chapter 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/review/list_comprehension.html" class="active">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/review/dictionary.html">Python dictionaries</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Chapter 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take parameters</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_parameters.html">Default values for parameters</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Introduction to Programming 2</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="list-comprehension"><a class="header" href="#list-comprehension">List Comprehension</a></h1>
+<p>List comprehension is a convenient strategy built into python for creating lists by manipulating existing 
+lists, range objects, or other iterable objects. (Note that list comprehension is not part of Java or C++,
+but you will see it again in other functional programming languages)</p>
+<p>The idea of list comprehension is to include the definition of a loop within the one line that creates the list.</p>
+<h3 id="example-1"><a class="header" href="#example-1">Example 1</a></h3>
+<p>Here is some code that creates a list of the first ten positive odd integers:</p>
+<pre><code class="language-python">ten_odds = []
+for i in range(10):
+    ten_odds.append(2*i+1)
+</code></pre>
+<p>Notice that the expression <code>2*i+1</code> gives the values to append to the list,
+while the code <code>for i in range(10)</code> gives the values to use for the variable <code>i</code>. In list comprehension, 
+both of these are embedded into the one-line definition of the list. The line below creates
+the identical list:</p>
+<pre><code class="language-python">ten_odds = [2*i+1 for i in range(10)]
+</code></pre>
+<h2 id="generate-new-lists-using-any-iterable-object"><a class="header" href="#generate-new-lists-using-any-iterable-object">Generate new lists using any iterable object</a></h2>
+<p>The examples below demonstrate that you can use list comprehension to create new lists, by traversing any iterable object.</p>
+<h3 id="example-2"><a class="header" href="#example-2">Example 2</a></h3>
+<p>Consider this list:</p>
+<pre><code class="language-python">digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+</code></pre>
+<p>It can be defined more robustly using list comprehension:</p>
+<pre><code class="language-python">digits = [str(i) for i in range(10)]
+</code></pre>
+<p>With practice, you'll use list-comprehension creatively in a wide variety of applications.</p>
+<h3 id="example-3"><a class="header" href="#example-3">Example 3</a></h3>
+<p>You can create lists using list comprehension by looping over <em>any</em> iterable object. Here we iterate over an existing list:</p>
+<pre><code class="language-python">primes = [2, 3, 5, 7, 11, 13, 17, 19, 23]
+primes_squared = [prime*prime for prime in primes]
+</code></pre>
+<p>For reference, here is the code that accomplishes the same task using a loop:</p>
+<pre><code class="language-python">primes = [2, 3, 5, 7, 11, 13, 17, 19, 23]
+primes_squared = []
+for prime in primes:
+    primes_squared.append(prime*prime)
+</code></pre>
+<h3 id="example-4"><a class="header" href="#example-4">Example 4</a></h3>
+<p>You can break a string into a list of its individual characters:</p>
+<pre><code class="language-python">letters = [character for character in 'Hello, World']
+# letters = ['H', 'e', 'l', 'l', 'o', ',', ' ', 'W', 'o', 'r', 'l', 'd']
+</code></pre>
+<h3 id="example-5"><a class="header" href="#example-5">Example 5</a></h3>
+<p>You can create a list from an existing dictionary's keys, or values:</p>
+<pre><code class="language-python">us_state_to_abbrev = {
+    &quot;Alabama&quot;: &quot;AL&quot;,
+    &quot;Alaska&quot;: &quot;AK&quot;,
+    &quot;Arizona&quot;: &quot;AZ&quot;,
+    # etc...
+}
+# state_names is a list of all of the state names (a list of the keys extracted from us_state_to_abbrev dictionary)
+state_names = [state_name for state_name in us_state_to_abbrev.keys()]
+# abbreviations is a list of all of the state abbreviations (a list of the values extracted from us_state_to_abbrev dictionary)
+abbreviations = [abbrev for abbrev in us_state_to_abbrev.values()]
+</code></pre>
+<h2 id="list-comprehension-and-conditionals"><a class="header" href="#list-comprehension-and-conditionals">List Comprehension and conditionals</a></h2>
+<p>We've seen list comprehension of the form</p>
+<p><strong>new_list = [<em>value</em> for <em>variable</em> in <em>iterable</em>]</strong></p>
+<p>Now we'll add a conditional (an if-clause) to restrict some values from being included into the list:</p>
+<p><strong>new_list = [<em>value</em> for <em>variable</em> in <em>iterable</em> if <em>conditional_expression</em>]</strong></p>
+<h3 id="example-6"><a class="header" href="#example-6">Example 6</a></h3>
+<p>Yet another strategy for producing a list of the first ten odd numbers:</p>
+<pre><code class="language-python">ten_odds = [i for i in range(20) if i%2==1]
+</code></pre>
+<h3 id="example-7"><a class="header" href="#example-7">Example 7</a></h3>
+<p>Extract all of the upper-case letters from an existing string:</p>
+<pre><code class="language-python">letters = [character for character in 'Hello, World' if character.isupper()]
+# letters = ['H', 'W']
+</code></pre>
+<h3 id="example-8"><a class="header" href="#example-8">Example 8</a></h3>
+<p>A more involved example, extracting from the state-to-abbreviations dictionary all state abbreviations that start with a vowel.</p>
+<pre><code class="language-python">us_state_to_abbrev = {
+    &quot;Alabama&quot;: &quot;AL&quot;,
+    &quot;Alaska&quot;: &quot;AK&quot;,
+    &quot;Arizona&quot;: &quot;AZ&quot;,
+    # etc...
+}
+vowel_abbrev = [abbrev for abbrev in us_state_to_abbrev.values() if abbrev[0].lower() in &quot;aeiou&quot;]
+# vowel_abbrev = ['AL', 'AK', 'AZ', 'AR', 'ID', 'IL', 'IN', 'IA', 'OH', 'OK', 'OR', 'UT']
+</code></pre>
+<h2 id="nested-loops-in-list-comprehension"><a class="header" href="#nested-loops-in-list-comprehension">Nested loops in list comprehension</a></h2>
+<p>The iteration within a list comprehension can be a nested loop:</p>
+<pre><code class="language-python">digits = ['1', '2', '3']
+letters = ['a', 'b', 'c']
+new_list1 = [digit + letter for digit in digits for letter in letters]
+# new_list1 = ['1a', '1b', '1c', '2a', '2b', '2c', '3a', '3b', '3c']
+</code></pre>
+<p>Note that the nested loop above does <em>not</em> create a nested list - it is still a 1D list, constructed with a nested loop.</p>
+<p>As always with nested loops, it matters which loop is on the outside. 
+In the above example, the first for statement (<code>for digit in digits</code>) is the outside loop,
+while the second for statement (<code>for letter in letters</code>) is the inside loop.
+This means that we start with the first element in the outside loop (<code>digit = '1'</code>), and entirely complete
+the inside loop (<code>for letter in letters</code>) before proceeding to the next element in the outside loop (<code>digit = '2'</code>).
+After completing the inside loop (<code>for letter in letters</code>) entirely with <code>digit = '2'</code>, we then move to the next element
+of the outer loop (<code>digit = '3'</code>).
+This explains the order that the elements are appended to the list (all of the 1s, then all of the 2s then all of the 3s): <code>new_list1 = ['1a', '1b', '1c', '2a', '2b', '2c', '3a', '3b', '3c']</code>.</p>
+<p>Notice what happens when we switch the order of the two for-loops. </p>
+<pre><code class="language-python">digits = ['1', '2', '3']
+letters = ['a', 'b', 'c']
+new_list2 = [digit + letter for letter in letters for digit in digits]
+# new_list2 = ['1a', '2a', '3a', '1b', '2b', '3b', '1c', '2c', '3c']
+</code></pre>
+<p>The outer for-loop is now <code>for letter in letters</code> and the
+inner for-loop is now <code>for digit in digits</code>. This means that elements using <code>letter = 'a'</code> are all appended before moving on to
+all elements using <code>letter = 'b'</code>, and finally all elements using <code>letter = c</code>. 
+The list therefore starts with all the 'a's, then all the 'b's, then all the 'c's: <code>new_list2 = ['1a', '2a', '3a', '1b', '2b', '3b', '1c', '2c', '3c']</code></p>
+<h2 id="creating-nested-lists-with-a-2d-list-comprehension"><a class="header" href="#creating-nested-lists-with-a-2d-list-comprehension">Creating nested lists with a 2D list comprehension</a></h2>
+<p>You can also use list comprehension to create nested lists. At first the syntax seems similar to list comprehension with nested loops,
+but notice the all-important extra set of list brackets (<code>[]</code>):</p>
+<pre><code class="language-python">digits = ['1', '2', '3']
+letters = ['a', 'b', 'c']
+nested_list = [[digit + letter for letter in letters] for digit in digits]
+# nested_list = [['1a', '1b', '1c'], ['2a', '2b', '2c'], ['3a', '3b', '3c']]
+</code></pre>
+<p>Here we have a list comprehension with the loop <code>for digit in digits</code>. For each of those digits, an entire list is created,
+resulting in a list of lists. Each internal list is itself created with a list comprehension (<code>[str(digit) + letter for letter in letters]</code>)
+So we have a nested list-comprehension (not a list comprehension with nested loops). The makes the result a nested list. 
+(`nested_list = [['1a', '1b', '1c'], ['2a', '2b', '2c'], ['3a', '3b', '3c']]').</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../chapters/review/lists.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../chapters/review/dictionary.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../chapters/review/lists.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../chapters/review/dictionary.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../js/disable_keyboard.js"></script>
+
+
+    </div>
+    </body>
+</html>

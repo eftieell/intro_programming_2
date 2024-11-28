@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="chapters/review/review_chapter.html">Chapter 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapters/review/lists.html">Review of python lists</a></li></ol></li><li class="chapter-item expanded "><a href="chapters/functions/functions_chapter.html">Chapter 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="chapters/functions/function_parameters.html">Functions that take parameters</a></li><li class="chapter-item expanded "><a href="chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="chapters/functions/functions_default_parameters.html">Default values for parameters</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="chapters/review/review_chapter.html">Chapter 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapters/review/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="chapters/review/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="chapters/review/dictionary.html">Python dictionaries</a></li></ol></li><li class="chapter-item expanded "><a href="chapters/functions/functions_chapter.html">Chapter 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="chapters/functions/function_parameters.html">Functions that take parameters</a></li><li class="chapter-item expanded "><a href="chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="chapters/functions/functions_default_parameters.html">Default values for parameters</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -311,6 +311,248 @@ But instead, since the index is available, we could have used <code>languages[i]
 </code></pre>
 <h2 id="list-methods"><a class="header" href="#list-methods">List methods</a></h2>
 <p>There is a long list of methods you can use to help you manipulate lists. Please see <a href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">Official python documentation on lists</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="list-comprehension"><a class="header" href="#list-comprehension">List Comprehension</a></h1>
+<p>List comprehension is a convenient strategy built into python for creating lists by manipulating existing 
+lists, range objects, or other iterable objects. (Note that list comprehension is not part of Java or C++,
+but you will see it again in other functional programming languages)</p>
+<p>The idea of list comprehension is to include the definition of a loop within the one line that creates the list.</p>
+<h3 id="example-1"><a class="header" href="#example-1">Example 1</a></h3>
+<p>Here is some code that creates a list of the first ten positive odd integers:</p>
+<pre><code class="language-python">ten_odds = []
+for i in range(10):
+    ten_odds.append(2*i+1)
+</code></pre>
+<p>Notice that the expression <code>2*i+1</code> gives the values to append to the list,
+while the code <code>for i in range(10)</code> gives the values to use for the variable <code>i</code>. In list comprehension, 
+both of these are embedded into the one-line definition of the list. The line below creates
+the identical list:</p>
+<pre><code class="language-python">ten_odds = [2*i+1 for i in range(10)]
+</code></pre>
+<h2 id="generate-new-lists-using-any-iterable-object"><a class="header" href="#generate-new-lists-using-any-iterable-object">Generate new lists using any iterable object</a></h2>
+<p>The examples below demonstrate that you can use list comprehension to create new lists, by traversing any iterable object.</p>
+<h3 id="example-2"><a class="header" href="#example-2">Example 2</a></h3>
+<p>Consider this list:</p>
+<pre><code class="language-python">digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+</code></pre>
+<p>It can be defined more robustly using list comprehension:</p>
+<pre><code class="language-python">digits = [str(i) for i in range(10)]
+</code></pre>
+<p>With practice, you'll use list-comprehension creatively in a wide variety of applications.</p>
+<h3 id="example-3"><a class="header" href="#example-3">Example 3</a></h3>
+<p>You can create lists using list comprehension by looping over <em>any</em> iterable object. Here we iterate over an existing list:</p>
+<pre><code class="language-python">primes = [2, 3, 5, 7, 11, 13, 17, 19, 23]
+primes_squared = [prime*prime for prime in primes]
+</code></pre>
+<p>For reference, here is the code that accomplishes the same task using a loop:</p>
+<pre><code class="language-python">primes = [2, 3, 5, 7, 11, 13, 17, 19, 23]
+primes_squared = []
+for prime in primes:
+    primes_squared.append(prime*prime)
+</code></pre>
+<h3 id="example-4"><a class="header" href="#example-4">Example 4</a></h3>
+<p>You can break a string into a list of its individual characters:</p>
+<pre><code class="language-python">letters = [character for character in 'Hello, World']
+# letters = ['H', 'e', 'l', 'l', 'o', ',', ' ', 'W', 'o', 'r', 'l', 'd']
+</code></pre>
+<h3 id="example-5"><a class="header" href="#example-5">Example 5</a></h3>
+<p>You can create a list from an existing dictionary's keys, or values:</p>
+<pre><code class="language-python">us_state_to_abbrev = {
+    &quot;Alabama&quot;: &quot;AL&quot;,
+    &quot;Alaska&quot;: &quot;AK&quot;,
+    &quot;Arizona&quot;: &quot;AZ&quot;,
+    # etc...
+}
+# state_names is a list of all of the state names (a list of the keys extracted from us_state_to_abbrev dictionary)
+state_names = [state_name for state_name in us_state_to_abbrev.keys()]
+# abbreviations is a list of all of the state abbreviations (a list of the values extracted from us_state_to_abbrev dictionary)
+abbreviations = [abbrev for abbrev in us_state_to_abbrev.values()]
+</code></pre>
+<h2 id="list-comprehension-and-conditionals"><a class="header" href="#list-comprehension-and-conditionals">List Comprehension and conditionals</a></h2>
+<p>We've seen list comprehension of the form</p>
+<p><strong>new_list = [<em>value</em> for <em>variable</em> in <em>iterable</em>]</strong></p>
+<p>Now we'll add a conditional (an if-clause) to restrict some values from being included into the list:</p>
+<p><strong>new_list = [<em>value</em> for <em>variable</em> in <em>iterable</em> if <em>conditional_expression</em>]</strong></p>
+<h3 id="example-6"><a class="header" href="#example-6">Example 6</a></h3>
+<p>Yet another strategy for producing a list of the first ten odd numbers:</p>
+<pre><code class="language-python">ten_odds = [i for i in range(20) if i%2==1]
+</code></pre>
+<h3 id="example-7"><a class="header" href="#example-7">Example 7</a></h3>
+<p>Extract all of the upper-case letters from an existing string:</p>
+<pre><code class="language-python">letters = [character for character in 'Hello, World' if character.isupper()]
+# letters = ['H', 'W']
+</code></pre>
+<h3 id="example-8"><a class="header" href="#example-8">Example 8</a></h3>
+<p>A more involved example, extracting from the state-to-abbreviations dictionary all state abbreviations that start with a vowel.</p>
+<pre><code class="language-python">us_state_to_abbrev = {
+    &quot;Alabama&quot;: &quot;AL&quot;,
+    &quot;Alaska&quot;: &quot;AK&quot;,
+    &quot;Arizona&quot;: &quot;AZ&quot;,
+    # etc...
+}
+vowel_abbrev = [abbrev for abbrev in us_state_to_abbrev.values() if abbrev[0].lower() in &quot;aeiou&quot;]
+# vowel_abbrev = ['AL', 'AK', 'AZ', 'AR', 'ID', 'IL', 'IN', 'IA', 'OH', 'OK', 'OR', 'UT']
+</code></pre>
+<h2 id="nested-loops-in-list-comprehension"><a class="header" href="#nested-loops-in-list-comprehension">Nested loops in list comprehension</a></h2>
+<p>The iteration within a list comprehension can be a nested loop:</p>
+<pre><code class="language-python">digits = ['1', '2', '3']
+letters = ['a', 'b', 'c']
+new_list1 = [digit + letter for digit in digits for letter in letters]
+# new_list1 = ['1a', '1b', '1c', '2a', '2b', '2c', '3a', '3b', '3c']
+</code></pre>
+<p>Note that the nested loop above does <em>not</em> create a nested list - it is still a 1D list, constructed with a nested loop.</p>
+<p>As always with nested loops, it matters which loop is on the outside. 
+In the above example, the first for statement (<code>for digit in digits</code>) is the outside loop,
+while the second for statement (<code>for letter in letters</code>) is the inside loop.
+This means that we start with the first element in the outside loop (<code>digit = '1'</code>), and entirely complete
+the inside loop (<code>for letter in letters</code>) before proceeding to the next element in the outside loop (<code>digit = '2'</code>).
+After completing the inside loop (<code>for letter in letters</code>) entirely with <code>digit = '2'</code>, we then move to the next element
+of the outer loop (<code>digit = '3'</code>).
+This explains the order that the elements are appended to the list (all of the 1s, then all of the 2s then all of the 3s): <code>new_list1 = ['1a', '1b', '1c', '2a', '2b', '2c', '3a', '3b', '3c']</code>.</p>
+<p>Notice what happens when we switch the order of the two for-loops. </p>
+<pre><code class="language-python">digits = ['1', '2', '3']
+letters = ['a', 'b', 'c']
+new_list2 = [digit + letter for letter in letters for digit in digits]
+# new_list2 = ['1a', '2a', '3a', '1b', '2b', '3b', '1c', '2c', '3c']
+</code></pre>
+<p>The outer for-loop is now <code>for letter in letters</code> and the
+inner for-loop is now <code>for digit in digits</code>. This means that elements using <code>letter = 'a'</code> are all appended before moving on to
+all elements using <code>letter = 'b'</code>, and finally all elements using <code>letter = c</code>. 
+The list therefore starts with all the 'a's, then all the 'b's, then all the 'c's: <code>new_list2 = ['1a', '2a', '3a', '1b', '2b', '3b', '1c', '2c', '3c']</code></p>
+<h2 id="creating-nested-lists-with-a-2d-list-comprehension"><a class="header" href="#creating-nested-lists-with-a-2d-list-comprehension">Creating nested lists with a 2D list comprehension</a></h2>
+<p>You can also use list comprehension to create nested lists. At first the syntax seems similar to list comprehension with nested loops,
+but notice the all-important extra set of list brackets (<code>[]</code>):</p>
+<pre><code class="language-python">digits = ['1', '2', '3']
+letters = ['a', 'b', 'c']
+nested_list = [[digit + letter for letter in letters] for digit in digits]
+# nested_list = [['1a', '1b', '1c'], ['2a', '2b', '2c'], ['3a', '3b', '3c']]
+</code></pre>
+<p>Here we have a list comprehension with the loop <code>for digit in digits</code>. For each of those digits, an entire list is created,
+resulting in a list of lists. Each internal list is itself created with a list comprehension (<code>[str(digit) + letter for letter in letters]</code>)
+So we have a nested list-comprehension (not a list comprehension with nested loops). The makes the result a nested list. 
+(`nested_list = [['1a', '1b', '1c'], ['2a', '2b', '2c'], ['3a', '3b', '3c']]').</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="review-of-python-dictionaries"><a class="header" href="#review-of-python-dictionaries">Review of python dictionaries</a></h1>
+<p>A python dictionary is a built-in data structure that holds (key, value) pairs (the key/value pairs are called <em>items</em>).
+The purpose of a dictionary is to store these pairs so it is very efficient to look up the value given the key.
+Python dictionaries are mutable (the contents may be modified after creation). 
+The keys must be of an immutable type, while the values can may be any data type 
+(including dictionaries and lists, making for a nested data structure).</p>
+<h2 id="creating-new-dictionaries"><a class="header" href="#creating-new-dictionaries">Creating new dictionaries</a></h2>
+<p>There are several ways to create new dictionaries:</p>
+<ul>
+<li>Dictionary literals: Each key and value is separated with a colon, while the key:value pairs are separated by commas.
+Then the comma-separated pairs are placed within a pair of curly braces:</li>
+</ul>
+<pre><code class="language-python"># dictionary literal for looking up state capitals:
+state_capitals = {
+    &quot;Alabama&quot;: &quot;Montgomery&quot;,
+    &quot;Alaska&quot;: &quot;Juneau&quot;,
+    &quot;Arizona&quot;: &quot;Phoenix&quot;,
+    &quot;Arkansas&quot;: &quot;Little Rock&quot;,
+    &quot;California&quot;: &quot;Sacramento&quot;,
+    &quot;Colorado&quot;: &quot;Denver&quot;,
+    # etc...
+}
+</code></pre>
+<ul>
+<li>Create an empty dictionary, then append elements within a loop (this strategy is especially useful
+for building a dictionary from data stored in a file):</li>
+</ul>
+<pre><code class="language-python">student_ids = {}
+name = &quot;&quot;
+while name != &quot;.&quot;:
+    name = input(&quot;Student name? (Enter . to finish) &quot;)
+    if name != &quot;.&quot;:
+        id = input(&quot;Student id? &quot;)
+        student_ids[name] = id
+</code></pre>
+<ul>
+<li>Create a dictionary using the <code>dict()</code> function. This constructor allows you to pass the information in a variety of forms.</li>
+</ul>
+<pre><code class="language-python"># Create a copy of an existing dictionary:
+copy_state_capitals = dict(state_capitals)
+
+# Create a dictionary from a list of tuples (each tuple is a key/value pair)
+numbers_to_words = dict([(1, 'one'), (2, 'two'), (3, 'three')])
+
+# Create a list of tuples by zipping together two separate lists,
+# the first is the list of keys, the second is the matched list of values.
+# Then create a dictionary from that zipped list of tuples
+numbers_to_words = dict(zip([1, 2, 3], ['one', 'two', 'three']))
+</code></pre>
+<p>The number of items (i.e., the number of key/value pairs), is given by <code>len(dictionary_name)</code>.</p>
+<h2 id="looking-up-values-in-the-dictionary-using-square-brackets-or-the-get-method"><a class="header" href="#looking-up-values-in-the-dictionary-using-square-brackets-or-the-get-method">Looking up values in the dictionary using square brackets or the <code>get()</code> method</a></h2>
+<p>Given a key, you can look up the associated value in a dictionary using square brackets. 
+The keys act much like the index in a list, but they do not have to be integers!
+Put the key within square brackets (<code>dictionary_name[key]</code>). This expression gives the value associated with that key.</p>
+<pre><code class="language-python"># Using the state_capitals dictionary defined above, this line outputs &quot;Juneau&quot;
+print(state_capitals[&quot;Alaska&quot;])
+
+# Using the numbers_to_words dictionary created above:
+# find out the user's age, then output it in words
+age = int(input(&quot;How old are you? &quot;))
+print(f&quot;You are {numbers_to_words[age]} years old!&quot;)
+</code></pre>
+<p>Sample output:</p>
+<pre><code>How old are you? 3
+You are three years old!
+</code></pre>
+<p>Alternately, you can look up the value associated with a key using the <code>get()</code> method. Pass the key as a parameter.</p>
+<pre><code class="language-python">age = int(input(&quot;How old are you? &quot;))
+print(f&quot;You are {numbers_to_words.get(age)} years old!&quot;)
+# output is identical to the code above
+</code></pre>
+<h2 id="what-if-the-key-youre-trying-to-access-isnt-in-the-dictionary"><a class="header" href="#what-if-the-key-youre-trying-to-access-isnt-in-the-dictionary">What if the key you're trying to access isn't in the dictionary?</a></h2>
+<p>If you try to access a non-existent key in a dictionary, python crashes with a <code>KeyError</code>. 
+You can address this issue in multiple ways:</p>
+<ul>
+<li>Use the python dictionary <code>get()</code> method. If the key is not found, it will not crash - instead it returns <code>None</code></li>
+</ul>
+<pre><code class="language-python">state = input(&quot;What state's capital do you want to know? &quot;)
+print(f&quot;The capital of {state} is {state_capitals.get(state)}.&quot;)
+</code></pre>
+<p>Sample output:</p>
+<pre><code>What state's capital do you want to know? Minneshota
+The capital of Minneshota is None.
+</code></pre>
+<ul>
+<li>Use the <code>in</code> keyword to confirm the key is in the dictionary before accessing it:</li>
+</ul>
+<pre><code class="language-python">state = input(&quot;What state's capital do you want to know? &quot;)
+if state in state_capitals:
+    print(f&quot;The capital of {state} is {state_capitals[state]}.&quot;)
+else:
+    print(f&quot;{state} is not a valid state.&quot;)
+</code></pre>
+<p>Sample output:</p>
+<pre><code>What state's capital do you want to know? Minneshota
+Minneshota is not a valid state.
+</code></pre>
+<ul>
+<li>Use a try/except block to catch the <code>KeyError</code> (covered in a later section).</li>
+</ul>
+<h2 id="modifying-elements-in-a-dictionary-using-square-brackets-or-the-update-method"><a class="header" href="#modifying-elements-in-a-dictionary-using-square-brackets-or-the-update-method">Modifying elements in a dictionary using square brackets or the <code>update()</code> method</a></h2>
+<p>By putting <code>dictionary_name[key]</code> on the left side of an assignment statement, 
+you can change the value associated with that key (if the key is already in the dictionary), 
+or create a new item with the given key/value (if the key is not already in the dictionary).</p>
+<pre><code class="language-python"># The key 3 is already in the dictionary, so the next line changes its value
+numbers_to_words[3] = 'trois'
+
+# The next line adds a new item into the dictionary, with key 4 and value `four`
+numbers_to_words[4] = 'four'
+</code></pre>
+<p>Alternately, you can use the <code>update()</code> method, particularly if multiple new key/value pairs are to be added at once:</p>
+<pre><code class="language-python"># adds two new key value pairs (5, 'five') and (6, 'six') to the numbers_to_words dictionary
+numbers_to_words.update({5: 'five', 6: 'six'})
+</code></pre>
+<h2 id="removing-items-from-a-dictionary-using-the-pop-method-or-the-del-keyword"><a class="header" href="#removing-items-from-a-dictionary-using-the-pop-method-or-the-del-keyword">Removing items from a dictionary using the <code>pop()</code> method or the <code>del</code> keyword</a></h2>
+<p>Use the <code>pop()</code> method (pass the key as the parameter) to remove a key/value pair from the dictionary. 
+Detail: <code>pop()</code> returns the value associated with the deleted key. If the key is not in the dictionary, this call will raise a <code>KeyError</code>.</p>
+<pre><code class="language-python"># removes the item (&quot;Alaska&quot;, &quot;Juneau&quot;) from the state_capitals dictionary
+state_capitals.pop(&quot;Alaska&quot;)
+</code></pre>
+<p>Alternately, you can delete an item from a dictionary using the <code>del</code> keyword. A <code>KeyError</code> is raised if the key is not in the dictionary.</p>
+<pre><code class="language-python">del state_capitals[&quot;Alaska&quot;]
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
 <p>In this first chapter, we will review functions in python. This will include a review of ideas learned in a previous quarter, and some new ideas as well. Several of the sections are duplicates from the textbook from the previous quarter <a href="https://cs.du.edu/~intropython/intro-to-programming">COMP 1351 Intro to Programming textbook</a></p>
 <ul>
