@@ -6,3 +6,8 @@ py-repl .output {
     font-family: monospace;
     background: aliceblue;
 }
+
+img[src*='#center'] { 
+    display: block;
+    margin: auto;
+}
