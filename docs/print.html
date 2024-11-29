@@ -630,9 +630,9 @@ state_capitals.pop(&quot;Alaska&quot;)
 <p>Recall that a function definition is a collection of code statements grouped together that perform a specific task.</p>
 <p>Every function has a name that can be used to <em>call</em> the function. We also use the terms <em>invoke</em>, or <em>execute</em> to mean <em>run the lines of code that appear within the function definition</em>.</p>
 <p>You can think of the function definition as a recipe for how to perform a task. When the function is invoked, then the task is actually performed.</p>
-<p>Recall also that functions may take input values (called parameters) that modify or control how the function runs.</p>
+<p>Recall also that functions may take input values (called arguments or parameters) that modify or control how the function runs.</p>
 <h2 id="why-use-functions"><a class="header" href="#why-use-functions">Why use functions?</a></h2>
-<p>There are two main reasons that functions are useful in programming:</p>
+<p>There are three main reasons that functions are useful in programming:</p>
 <ul>
 <li>
 <p>Reusability</p>
@@ -653,18 +653,18 @@ One solution is to copy/paste the code to reuse it. One downside of that strateg
 <p>For example, the print function, as in</p>
 <pre><code class="language-python">print(&quot;Hello!&quot;)
 </code></pre>
-<p>takes a parameter (the input to the function is <code>&quot;Hello&quot;</code>), but it does not return a value.</p>
-<p>But the <code>input()</code> function does return a value. The return type is <code>str</code>.  When the function is <em>invoked</em>, when it is done executing it returns a value. You may do whatever is useful with that return value. In the example below the value returned by the <code>input()</code> function is stored in the variable <code>name</code>:</p>
+<p>takes an argument (the input to the function is <code>&quot;Hello&quot;</code>), but it does not return a value.</p>
+<p>But the <code>input()</code> function does return a value. The return type is <code>str</code>.  When the function is <em>invoked</em>, it returns a value after it is done executing. You may do whatever is useful with that return value. In the example below the value returned by the <code>input()</code> function is stored in the variable <code>name</code>:</p>
 <pre><code class="language-python">name = input(&quot;Enter your name&quot;)
 </code></pre>
-<p>Another example is the <code>random()</code> function, which returns a <code>float</code>. We may choose to store the value that is returned in a variable. Or we may choose to pass that return value as a parameter to another function:</p>
+<p>Another example is the <code>random()</code> function, which returns a <code>float</code>. We may choose to store the value that is returned in a variable. Or we may choose to pass that return value as an argument to another function:</p>
 <pre><code class="language-python"># Store the return value in a variable:
 x_position = random()
 # Pass the return value to the print function:
 print(random())
 </code></pre>
 <h2 id="user-defined-functions-that-return-values"><a class="header" href="#user-defined-functions-that-return-values">User-defined functions that return values</a></h2>
-<p>When you define a function, you only need to do so once. Once defined, however, a function may be invoked many times. You can think of a function as an opaque box that performs work with optional inputs and an optional output.</p>
+<p>When you define a function, you only need to do so once. Once defined, however, a function may be invoked (used) many times. You can think of a function as an opaque box that performs work with optional inputs and an optional output.</p>
 <p>The syntax is:</p>
 <pre><code class="language-python">def function_name(optional parameters) -&gt; return type:
     # Indented code block
@@ -705,7 +705,7 @@ def first_digit_even(number: int) -&gt; bool:
     # Now we have a one-digit number. See if that digit is even
     return number%2 == 0
 </code></pre>
-<p>The <code>while</code>-loop repeatedly divides by 10 using integer division (shifting the number to the right), until only one digit remains. That digit is the first digit of the original number. Then on the last line, the expression <code>number%2==0</code> evaluates to <code>True</code>  if that first digit is even, and <code>False</code> if that first digit is odd. The <code>True</code> or <code>False</code> value gets returned.</p>
+<p>The <code>while</code>-loop repeatedly divides by 10 using integer division (shifting the number to the right), until only one digit remains. That digit is the first digit (left-most digit) of the original number. Then on the last line, the expression <code>number%2==0</code> evaluates to <code>True</code>  if that first digit is even, and <code>False</code> if that first digit is odd. The <code>True</code> or <code>False</code> value gets returned.</p>
 <p>Here's an example of a code snippet that uses the function:</p>
 <pre><code class="language-python">user_num = int(input(&quot;Enter an integer: &quot;))
 if first_digit_even(user_num):
@@ -737,7 +737,7 @@ A prime number is an integer bigger than <code>1</code> that is divisible only b
         else:
             tester += 1
 
-    # We only reach this line if no return False above every occurred.
+    # We only reach this line if no return False above ever occurred.
     # This means that the number has no factors and thus it is prime
     return True
     
