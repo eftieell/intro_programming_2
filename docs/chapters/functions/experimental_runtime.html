@@ -1,0 +1,381 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Measuring runtime for functions - Introduction to Programming 2</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../css/pyscript.css">
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Chapter 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/review/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/review/dictionary.html">Python dictionaries</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Chapter 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html" class="active">Measuring runtime for functions</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Introduction to Programming 2</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="timing-how-long-it-takes-for-functions-to-execute"><a class="header" href="#timing-how-long-it-takes-for-functions-to-execute">Timing how long it takes for functions to execute</a></h1>
+<p>As we write more complicated code, it becomes increasingly important to make it execute quickly. 
+We will start by measuring the runtime experimentally. 
+Knowing how long it takes for our code to run will guide is in determining how critical it is to redesign our code to make it run more efficiently.</p>
+<h2 id="strategy-for-experimentally-timing-how-long-it-takes-for-a-function-to-run"><a class="header" href="#strategy-for-experimentally-timing-how-long-it-takes-for-a-function-to-run">Strategy for experimentally timing how long it takes for a function to run</a></h2>
+<p>The overall strategy is simple: </p>
+<ul>
+<li>Record the start time</li>
+<li>Execute the function we are timing</li>
+<li>Record the finish time</li>
+<li>Calculate the elapsed time by subtracting the start time from the finish time</li>
+</ul>
+<h2 id="finding-out-what-time-it-is"><a class="header" href="#finding-out-what-time-it-is">Finding out what time it is</a></h2>
+<p>The function <code>time.time()</code> in the python <code>time</code> module returns the current time</p>
+<pre><code class="language-python">import time
+
+def main():
+    start_time = time.time()  
+    print(start_time)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<p>Sample output:</p>
+<pre><code>1732765128.7487528
+</code></pre>
+<p>The current time is in seconds since a fixed starting moment, which in python is set to midnight on January 1, 1970!
+The actual value of the time won't be important to us, since we are not interested in what time it is. Rather, we care
+about the amount of time that elapses while a function is executing.</p>
+<h2 id="timing-the-running-of-a-function-that-takes-more-than-a-second"><a class="header" href="#timing-the-running-of-a-function-that-takes-more-than-a-second">Timing the running of a function that takes more than a second</a></h2>
+<p>Here's an example of code that times how long it takes for the function <code>do_something()</code> to execute. The contents and purpose of the function here are not what is important here - instead we are focusing on how long it takes to execute.</p>
+<pre><code class="language-python">import time
+
+def do_something(n: int):
+    # How long does this take to run?
+    count = 0
+    for i in range(n):
+        count += 1
+
+def main():
+    # Record the start time
+    start_time = time.time()
+    # Execute the function
+    do_something(100000000)
+    # Record the finish time
+    finish_time = time.time()
+    elapsed_time = finish_time - start_time
+    print(f&quot;runtime for do_something(100000000): {elapsed_time:.2f} seconds&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<p>Sample output:</p>
+<pre><code>runtime for do_something(100000000): 2.37 seconds
+</code></pre>
+<p>Conclusion: it takes 2.37 seconds for do_something() to execute, when the parameter is 100000000.</p>
+<h2 id="timing-a-function-for-a-variety-of-values-of-n"><a class="header" href="#timing-a-function-for-a-variety-of-values-of-n">Timing a function for a variety of values of <code>n</code></a></h2>
+<p>If a function takes a parameter that represents the size of the problem (number of elements in a list, or number of repeats of a loop),
+then we are very interested in how the execution time grows as the size of the problem grows. 
+The pattern of this change is called the <em>order of growth</em> or <em>time complexity</em> of the algorithm.</p>
+<ul>
+<li>
+<p>$\displaystyle O(n)$ If doubling the size of <code>n</code> results in a doubling of the execution time for the algorithm, then we call the algorithm <em>Big-O of n</em> or <em>linear</em>. We write this $O(n)$.</p>
+</li>
+<li>
+<p>If doubling the size of <code>n</code> results in a quadrupling of the execution time, then we call the algorithm &quot;Big-O of n squared&quot; or &quot;quadratic&quot;. We write this $O(n^2)$.</p>
+</li>
+<li>
+<p>If doubling the size of <code>n</code> results in a factor of 8 increase of the execution time, then we call the algorithm &quot;Big-O of n-cubed&quot; or &quot;cubic&quot;. We write this $O(n^3)$.</p>
+</li>
+</ul>
+<p>The code below is a modification of the original timing code, but with an extra loop that modifies the size of <code>n</code>.
+Carefully compare the two versions, enough so you could make the modification yourself.</p>
+<pre><code class="language-python">import time
+
+def do_something(n: int):
+    # How long does this take to run?
+    count = 0
+    for i in range(n):
+        count += 1
+
+def main():
+    # time the execution of the function for 
+    # n = 100 million to 600 million
+    for n in range(100000000, 600000001, 100000000):
+        # Record the start time
+        start_time = time.time()
+        # Execute the function
+        do_something(n)
+        # Record the finish time
+        finish_time = time.time()
+        elapsed_time = finish_time - start_time
+        print(f&quot;runtime for do_something({n}): {elapsed_time:.2f} seconds&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<p>Sample output:</p>
+<pre><code>runtime for do_something(100000000): 3.13 seconds
+runtime for do_something(200000000): 6.18 seconds
+runtime for do_something(300000000): 9.24 seconds
+runtime for do_something(400000000): 12.41 seconds
+runtime for do_something(500000000): 15.50 seconds
+runtime for do_something(600000000): 18.69 seconds
+</code></pre>
+<p>We can see by a rough look at the data above that the algorithm shows linear, or $O(n)$, behavior. Look at the time behavior when <code>n</code> is doubled or tripled:</p>
+<p>When the size of <code>n</code> is doubled from 100 million to 200 million, the time approximately doubles ($6.18 sec/3.13 sec \approx 1.97$).</p>
+<p>When the size of <code>n</code> is tripled from 100 million to 300 million, the time approximately triples ($9.24/3.13 \approx 2.95$).</p>
+<p>When the size of <code>n</code> is doubled from 300 million to 600 million, the time approximately doubles ($18.69/9.24 \approx 2.02$).</p>
+<p>When the size of <code>n</code> is tripled from 200 million to 600 million, the time approximately triples ($18.69/6.18 \approx 3.02$).</p>
+<p>We can also see linear behavior by graphing the data, which appears to be a line:
+<img src="runtime_graph_linear.png#center"  width="50%" height="50%" alt = "graph of runtime as a function of n"></p>
+<h2 id="another-example-of-timing-a-function-for-a-variety-of-values-of-n"><a class="header" href="#another-example-of-timing-a-function-for-a-variety-of-values-of-n">Another example of timing a function for a variety of values of <code>n</code></a></h2>
+<p>Here's another example. The new function is <code>do_something_else()</code>. 
+Since it runs much slower, the experimental values of <code>n</code> are chosen to be smaller (ranging from 10000 to 60000):</p>
+<pre><code class="language-python">import time
+
+def do_something_else(n: int):
+    # How long does this take to run?
+    count = 0
+    for i in range(n):
+        for j in range(n):
+            count += 1
+
+def main():
+    # time the execution of the function for 
+    # n = 10000 to 60000
+    for n in range(10000, 60001, 10000):
+        # Record the start time
+        start_time = time.time()
+        # Execute the function
+        do_something_else(n)
+        # Record the finish time
+        finish_time = time.time()
+        elapsed_time = finish_time - start_time
+        print(f&quot;runtime for do_something_else({n}): {elapsed_time:.2f} seconds&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<p>Sample output:</p>
+<pre><code>runtime for do_something_else(10000): 3.09 seconds
+runtime for do_something_else(20000): 12.37 seconds
+runtime for do_something_else(30000): 28.08 seconds
+runtime for do_something_else(40000): 50.97 seconds
+runtime for do_something_else(50000): 80.41 seconds
+runtime for do_something_else(60000): 116.78 seconds
+</code></pre>
+<p>This time, a rough look at the data above indicates that the algorithm shows quadratic, or $O(n^2)$, behavior. Look at the time behavior when <code>n</code> is doubled or tripled:</p>
+<p>When the size of <code>n</code> is doubled from 10000 to 20000, the time increases by approximately a factor of 4 ($12.37/3.09 \approx 4.003$).</p>
+<p>When the size of <code>n</code> is tripled from 10000 to 30000, the time increases by approximately a factor of 9 ($28.08/3.09 \approx 9.09$).</p>
+<p>When the size of <code>n</code> is doubled from 30000 to 60000, the time increases by approximately a factor of 4 ($116.78/28.08 \approx 4.16$).</p>
+<p>When the size of <code>n</code> is tripled from 20000 to 60000, the time increases by approximately a factor of 9 ($116.78/12.37 \approx 9.44$)</p>
+<p>Graphing the data hints at a parabolic (quadratic) shape. Caution though: while this graph convinces us that
+the time complexity is not linear, graphs that are concave up might represent quadratic, cubic, or other growth rates.
+<img src="runtime_graph_quadratic.png"  width="50%" height="50%" alt = "second graph of runtime as a function of n"></p>
+<h2 id="timing-the-running-of-a-function-that-takes-less-than-1-second"><a class="header" href="#timing-the-running-of-a-function-that-takes-less-than-1-second">Timing the running of a function that takes less than 1 second</a></h2>
+<p>If a function takes less than 1 second to execute, then the technique above is often not accurate.
+Instead, we must execute the function multiple times (so the total elapsed time is more than 1 second), 
+then divide by the number of times the function was called, to get the average execution time. You will learn this technique next quarter.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../chapters/functions/functions_default_arguments.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../chapters/functions/functions_default_arguments.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../js/disable_keyboard.js"></script>
+
+
+    </div>
+    </body>
+</html>
