@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Default values for parameters - Introduction to Programming 2</title>
+        <title>Default values for arguments - Introduction to Programming 2</title>
 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Chapter 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/review/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/review/dictionary.html">Python dictionaries</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Chapter 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take parameters</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_parameters.html" class="active">Default values for parameters</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Chapter 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/review/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/review/dictionary.html">Python dictionaries</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Chapter 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html" class="active">Default values for arguments</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -167,7 +167,78 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="default-values-for-parameters"><a class="header" href="#default-values-for-parameters">Default values for parameters</a></h1>
+                        <h1 id="default-argument-values"><a class="header" href="#default-argument-values">Default argument values</a></h1>
+<h2 id="youve-already-seen-optional-arguments-to-functions"><a class="header" href="#youve-already-seen-optional-arguments-to-functions">You've already seen optional arguments to functions</a></h2>
+<p>You may have noticed that some functions can be called with different numbers of arguments (values passed to the function). 
+For example, you can call <code>dudraw.clear()</code> with either no arguments or one argument:</p>
+<pre><code class="language-python">dudraw.clear(dudraw.GREEN)  # clears the canvas, all pixels are now GREEN
+dudraw.clear()              # this time no argument is passed - so the default is to clear with dudraw.WHITE
+</code></pre>
+<p>Here's another example. You may pass an argument to <code>print()</code> to specify what the end character is.</p>
+<pre><code class="language-python"># The code below puts &quot;Hello&quot; and &quot;World&quot; on two different lines, since the default end character is a newline (&quot;\n&quot;):
+print(&quot;Hello,&quot;)
+print(&quot;World&quot;)
+</code></pre>
+<p>Output:</p>
+<pre><code>Hello,
+World!
+</code></pre>
+<pre><code class="language-python"># Alternately, we can pass an optional extra argument to print().
+# The first print() statement below ends with a space rather than the default newline.
+# So the two strings are output separated by a space, not a newline.
+print(&quot;Hello,&quot;, end = &quot; &quot;)
+print(&quot;World!&quot;)
+</code></pre>
+<p>Output:</p>
+<pre><code>Hello, World!
+</code></pre>
+<h2 id="how-does-this-work"><a class="header" href="#how-does-this-work">How does this work?</a></h2>
+<p>Behind the scenes, <code>dudraw.clear()</code> specifies a default value for the argument (namely <code>dudraw.WHITE</code>). By doing so, it allows the client code (your code) to omit that argument. If you include the argument, then you specify the background color. But if you omit that argument, then the function uses the default value <code>dudraw.WHITE</code> as the color. The default value is specified in the definition of the function.</p>
+<p>Similarly, you may include or omit an additional argument to <code>print()</code> to specify the end character. (for example, <code>end = &quot; &quot;</code>). If you call <code>print()</code> without the <code>end</code> parameter, then <code>print()</code> automatically uses the default end value <code>&quot;\n&quot;</code>.</p>
+<h2 id="defining-your-own-functions-with-default-argument-values"><a class="header" href="#defining-your-own-functions-with-default-argument-values">Defining your own functions with default argument values</a></h2>
+<p>If you want to create functions that can be called with or without one of the arguments, specify <code>parameter_name = default_value</code> in the function header. If you specify a default value, then it becomes optional to pass that argument when the function is called.</p>
+<pre><code class="language-python"># the greet() function outputs &quot;Hello, {name}!&quot;.
+# The default value for name is &quot;World&quot;.
+# So if no name is passed as a parameter, then
+# the function outputs &quot;Hello, World!&quot;
+def greet(name = &quot;World&quot;):
+    print(&quot;Hello, &quot; + name + &quot;!&quot;)
+
+def main():
+    greet(&quot;Sami&quot;)    # outputs &quot;Hello, Sami!&quot;
+    greet(&quot;Phyllis&quot;) # outputs &quot;Hello, Phyllis!&quot;
+    greet()          # outputs &quot;Hello, World!&quot;
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<p>If there are two or more parameters, then mandatory arguments must come first. So always put
+parameters with default values at the end of the parameter list. Here's another example (taken from python documentation <a href="https://docs.python.org/3/tutorial/controlflow.html#default-argument-values">https://docs.python.org/3/tutorial/controlflow.html#default-argument-values</a>).</p>
+<pre><code class="language-python"># There are three parameters. The second two parameters have default values.
+def ask_ok(prompt, retries=4, reminder='Please try again!'):
+    while True:
+        reply = input(prompt)
+        if reply in {'y', 'ye', 'yes'}:
+            return True
+        if reply in {'n', 'no', 'nop', 'nope'}:
+            return False
+        retries = retries - 1
+        if retries &lt; 0:
+            raise ValueError('invalid user response')
+        print(reminder)
+</code></pre>
+<p>The above function can be called multiple ways:</p>
+<ul>
+<li>
+<p>giving only the mandatory argument: <code>ask_ok('Do you really want to quit?')</code></p>
+</li>
+<li>
+<p>giving one of the optional arguments: <code>ask_ok('OK to overwrite the file?', 2)</code></p>
+</li>
+<li>
+<p>or even giving all arguments: <code>ask_ok('OK to overwrite the file?', 2, 'Come on, only yes or no!')</code></p>
+</li>
+</ul>
 
                     </main>
 
