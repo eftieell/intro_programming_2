@@ -1,25 +1,25 @@
-## Functions that take parameters
+## Functions that take arguments
 
-You're already familiar with calling functions that take input values (*parameters*). For example:
+You're already familiar with calls to functions that take input values (*arguments*, or *parameters*). For example:
 
 ```python
-# The `print()` function accepts a parameter - the string to output to the console
+# The `print()` function accepts an argument - the string to output to the console
 print("Hello!")
 
-# The dudraw ellipse function takes four parameters
+# The dudraw ellipse function takes four arguments
 # x-location of center, y-location of center, half-width, and half-height
-dudraw.line(0, 0, 1, 0.5)
+dudraw.ellipse(0, 0, 1, 0.5)
 ```
-Notice that when you call (i.e., *use*) a function that has parameters, you put those values within the parentheses of the function call. These values are also called *arguments*. You must pass the correct number of arguments (i.e., the number of values the defined function is expecting), and they must be passed in the correct order.
+Notice that when you call (i.e., *use*) a function that has parameters, you put those values within the parentheses of the function call. These actual values are called *arguments*. You must pass the correct number of arguments (i.e., the number of values that the defined function is expecting), and they must be passed in the correct order.
 
-We will now learn how to create user-defined functions that accept parameters. Just like variables, the parameters each have a name (that name can be accessed only within the function definition). Here is the template:
+We will now learn how to create user-defined functions that accept arguments. When defining the function, we give a name to refer to each value that will be passed by the caller. These named values are called *parameters*, and within the function definition you can treat them just like variables. The parameter name can be used only within the function definition. Here is the template:
 
 ```python
 def function_name(parameter1_name: parameter1_type, parameter2_name: parameter2_type,...) -> None:
     # Code defining the function
 ```
 
-Example 1: In the program below, the simple function `greet_user()` outputs `"Hello, world!"` to the console multiple times. The parameter to the function determines how many times the line is output. The parameter gives a way of passing information (the number of greetings to output) from the line that calls the function to the function itself.
+Example 1: In the program below, the simple function `greet_user()` outputs `"Hello, world!"` to the console multiple times. The argument to the function determines how many times the line is output. The argument gives a way of passing information (the number of greetings to output) from the line that calls the function to within the function itself.
 
 <table>
 <tr><td>Code</td><td>Output</td></tr>
