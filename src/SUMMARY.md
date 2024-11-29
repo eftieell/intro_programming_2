@@ -8,7 +8,7 @@
     - [User-defined functions](chapters/functions/functions.md)
     - [Functions that take arguments](chapters/functions/function_parameters.md)
     - [Functions that return a value](chapters/functions/function_return_values.md)
-    - [Keyword arguments](chapters/functions/function_keyword_arguments.md)
     - [Default values for arguments](chapters/functions/functions_default_arguments.md)
+    - [Keyword arguments](chapters/functions/function_keyword_arguments.md)
     - [Measuring runtime for functions](chapters/functions/experimental_runtime.md)
 
