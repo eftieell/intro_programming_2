@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Python lists - Introduction to Programming 2</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../css/pyscript.css">
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Chapter 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html" class="active">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested.html">Traversing nested data structures</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Chapter 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Introduction to Programming 2</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="review-of-python-lists"><a class="header" href="#review-of-python-lists">Review of python lists</a></h1>
+<p>A python list is a built-in data structure that holds an ordered collection of values. 
+Python lists are mutable (the contents can be modified after creation), and can store any data type (including lists, making a nested list).</p>
+<h2 id="creating-new-lists"><a class="header" href="#creating-new-lists">Creating new lists</a></h2>
+<p>There are several ways to create new lists:</p>
+<ul>
+<li>List literals: write the comma-separated contents within square brackets, storing the list in a variable:</li>
+</ul>
+<pre><code class="language-python"># contents of lists can be any type
+greek_letters = ['alpha', 'beta', 'gamma', 'delta']
+some_primes = [385351, 217739, 854123, 769733, 898091]
+# lists can be nested
+scores = [[94, 78, 56], [67, 82, 91]]
+</code></pre>
+<ul>
+<li>Create an empty list, then append elements within a loop:</li>
+</ul>
+<pre><code class="language-python">ten_odds = []
+for i in range(10):
+    ten_odds.append(2*i+1)
+
+# get input from user, appending each entry into list:
+friends = []
+num_friends = int(input(&quot;How many friends? &quot;))
+for i in range(num_friends):
+    friend_name = input(&quot;Enter a name: &quot;)
+    friends.append(friend_name)
+print(friends)
+</code></pre>
+<ul>
+<li>Use python's built-in <code>list()</code> function (called a 'constructor').
+Pass any existing iterable (list, range object, tuple, string, dictionary) as the parameter,
+and a new list will be created using its data.</li>
+</ul>
+<pre><code class="language-python">greek_letters = ['alpha', 'beta', 'gamma', 'delta']
+# create a new list, a copy of an existing list
+copy_letters = list(greek_letters)
+# changing the copied list does not affect the original
+copy_letters.append('epsilon')
+print(copy_letters)  # alpha through epsilon
+print(greek_letters) # still just alpha through delta
+
+# create a list of the individual characters in a string
+letters = list('haleakala')
+# create a list from the elements in a range object
+values = list(range(1, 10))
+
+# create a dictionary literal:
+numbers = {1: 'one', 2: 'two', 3: 'three'}
+# create a list of the keys from an existing dictionary:
+nums = list(numbers.keys())
+# create a list of the values from an existing dictionary:
+num_names = list(numbers.values())
+# create a list of the (key, value) tuple pairs from an existing dictionary:
+num_items = list(numbers.items())
+</code></pre>
+<h2 id="accessing-elements-in-a-list"><a class="header" href="#accessing-elements-in-a-list">Accessing elements in a list</a></h2>
+<p>You can access (view or change) each element in a list using its index value 
+(the number of its location in the list) within square brackets. For example, <code>list_name[n]</code>.</p>
+<p>Elements in a list are indexed starting at 0, so <code>list_name[0]</code> gives the value of the first element of the list,
+and <code>list_name[n]</code> gives the value of the n+1st element in the list.</p>
+<p>You can find out the number of elements in a python list with <code>len(list_name)</code>. 
+So the value of the last element of a list is <code>list_name[len(list_name)-1]</code>. 
+Alternately, in python, you can use an index of -1 for the last element of a list, so <code>list_name[-1]</code> is the value of the last element.
+(Note that using an index value of -1 is not part of Java or C++, and will result in an index out of bounds error)</p>
+<pre><code class="language-python">languages = [&quot;C++&quot;, &quot;python&quot;, &quot;Java&quot;, &quot;Perl&quot;, &quot;JavaScript&quot;, &quot;R&quot;, &quot;Go&quot;, &quot;Rust&quot;, &quot;Haskell&quot;, &quot;Perl&quot;]
+
+# Access the first element in a list with an index value of 0
+print(f&quot;I can program in {languages[0]}&quot;)
+
+# Access the last element in a list with an index value of len(languages)-1 or -1:
+print(f&quot;I can program in {languages[len(languages)-1]}&quot;)
+print(f&quot;I can program in {languages[-1]}&quot;)
+
+# Lists are mutable, so you can modify the value of an element in the list using its index:
+languages[0] = &quot;C#&quot;
+</code></pre>
+<h2 id="removing-elements-from-a-list"><a class="header" href="#removing-elements-from-a-list">Removing elements from a list</a></h2>
+<p>There are multiple ways to remove an element from a list in python. Here are two ways:</p>
+<ul>
+<li>Use the <code>remove()</code> list method. The parameter you pass is the <em>value</em> you want to remove. 
+So the <code>remove()</code> method traverses through the list until it reaches the <em>first</em> instance of the value. That value is then removed from the list.
+Details: this method does not return a value. If the value you want to return is not found in the list, python throws a <code>ValueError</code>.</li>
+</ul>
+<pre><code class="language-python"># Remove the first instance of &quot;Perl&quot; from the list
+languages.remove(&quot;Perl&quot;)
+</code></pre>
+<ul>
+<li>Use the <code>pop()</code> list method. The parameter you pass is the <em>index</em> you want to remove.
+Details: the <code>pop()</code> method returns the value of the element it removed. If the index you pass as a parameter is invalid, python throws an <code>IndexError</code>.</li>
+</ul>
+<pre><code class="language-python"># Remove the index 1 element (2nd element) from the list
+removed = languages.pop(1)
+print(removed)
+</code></pre>
+<ul>
+<li>Use the <code>del</code> keyword to remove an element at a specific index. Details: the value stored at that index is not returned. If the index is invalid, python throws an <code>IndexError</code>.</li>
+</ul>
+<pre><code class="language-python"># Remove the index 0 element (first element) from the list
+del languages[0]
+</code></pre>
+<h2 id="traversing-lists"><a class="header" href="#traversing-lists">Traversing lists</a></h2>
+<p>you can traverse lists three different ways:</p>
+<ul>
+<li>you can use an index (index-based traversal), or </li>
+<li>you can traverse directly through the values of the list (content-based traversal), or</li>
+<li>you can traverse using <code>enumerate()</code>, which tracks both index and content.</li>
+</ul>
+<h3 id="example-showing-three-techniques-for-traversing-a-list"><a class="header" href="#example-showing-three-techniques-for-traversing-a-list">Example showing three techniques for traversing a list:</a></h3>
+<pre><code class="language-python"># index-based traversal through list:
+# Here, i iterates over all indexes in the list (0 through len(languages)-1)
+for i in range(len(languages)):
+    print(f&quot;I can program in {languages[i]}&quot;)
+
+# content-based traversal through list:
+# Here, language iterates over all values stored in the list
+for language in languages:
+    print(f&quot;I can program in {language}&quot;)
+
+# traversal through list using enumerate()
+# (allows you to track index and value simultaneously)
+# Here, one variable (i) holds the index and another (language) holds the value
+for i, language in enumerate(languages):
+    # Separate the phrases with commas
+    if i != len(languages) - 1:
+        print(f&quot;I love {language}&quot;, end = ', ')
+    # when you get to the last language, end sentence with an exclamation point
+    else:
+        print(f&quot;I love {language}!&quot;)
+</code></pre>
+<p>Note that above in the use of <code>enumerate()</code>, we access the value with the variable <code>language</code>.
+But instead, since the index is available, we could have used <code>languages[i]</code>.</p>
+<h2 id="the-in-keyword"><a class="header" href="#the-in-keyword">The <code>in</code> keyword</a></h2>
+<p>You can use the <code>in</code> keyword to determine if a value exists anywhere in the list. It returns a True/False result.</p>
+<pre><code class="language-python">if &quot;Java&quot; in languages:
+    print(&quot;Java is in the list&quot;)
+</code></pre>
+<h2 id="list-methods"><a class="header" href="#list-methods">List methods</a></h2>
+<p>There is a long list of methods you can use to help you manipulate lists. Please see <a href="https://docs.python.org/3/tutorial/datastructures.html#more-on-lists">Official python documentation on lists</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../chapters/review/review_chapter.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../chapters/lists_and_dicts/dictionary.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../chapters/review/review_chapter.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../chapters/lists_and_dicts/dictionary.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../js/disable_keyboard.js"></script>
+
+
+    </div>
+    </body>
+</html>
