@@ -37,7 +37,7 @@ attribute(author = "Richard Wright", title = "Native Son")
 ```
 The parameter names should exactly match the names given in the definition of the function itself. VSCode will tell you the name of the parameters so you don't have to refer back to the function definition to remember the names and order of the parameters. To access this feature, type Command-Shift-Space on a Mac, or Control-Shift-Space on Windows. This image shows what the parameter-hinting looks like in VSCode:
 
-![Image](parameter_hinting.png)
+<img src="parameter_hinting.png"  width="50%" height="50%" alt = "When you invoke a function, VSCode tells you the parameter names">
 
 When you use keyword arguments, your code is often easier to understand, because the names of the variables makes the meaning of each argument clear.
 If you use keyword arguments and you put the arguments in the wrong order, the values of the arguments are assigned by the variable names, not the order. However, we strongly advise that even when using keywords, you keep the discipline of maintaining the order of the variales in the function definition. Using the features of your IDE makes this easy.
