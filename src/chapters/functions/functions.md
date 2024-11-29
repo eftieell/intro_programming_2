@@ -15,12 +15,12 @@ def function_name() -> None:
 
 Key points:
 - The keyword `def` signals the beginning of a function definition.
-- The empty pair of parentheses `()` indicates that this function does not take any parameters. Function parameters are explained in a later section.
+- The empty pair of parentheses `()` indicates that this function does not take any arguments (input values to the function). Function arguments are explained in a later section.
 - The `-> None` indicates that the function does not return any values. Function return values are explained in a later section.
 - Defining functions is not completely new to you - you have defined the function `main()` in every program you have written.
 - When you define a function, note that the code in the function is **not executed**. The code within the function is executed only when you *call* the function.
 - Think of the function definition as a recipe, telling python exactly what to do when another part of the program calls the function.
-- To *call* a function (i.e., to *run its code*): at the point where you want it to run, write the name of the funtion, with parentheses.
+- To *call* a function (i.e., to *run its code*): at the point where you want it to run, write the name of the function, with parentheses.
 
 Example:
 
