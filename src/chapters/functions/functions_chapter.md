@@ -3,7 +3,7 @@ In this first chapter, we will review functions in python. This will include a r
 
 - The purpose of functions
 - How to define and call functions
-- Functions that take parameters (input to the function)
-- Functions that return values
+- Functions that take arguments (input to the function)
+- Functions that return values (output from the function)
 - Keyword arguments
-- Default parameter values
+- Default argument values
