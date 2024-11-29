@@ -44,7 +44,7 @@ If you want to create functions that can be called with or without one of the ar
 # The default value for name is "World".
 # So if no name is passed as a parameter, then
 # the function outputs "Hello, World!"
-def greet(name = "World"):
+def greet(name: str = "World"):
     print("Hello, " + name + "!")
 
 def main():
