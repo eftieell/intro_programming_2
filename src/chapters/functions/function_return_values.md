@@ -6,11 +6,11 @@ Every function has a name that can be used to *call* the function. We also use t
 
 You can think of the function definition as a recipe for how to perform a task. When the function is invoked, then the task is actually performed.
 
-Recall also that functions may take input values (called parameters) that modify or control how the function runs.
+Recall also that functions may take input values (called arguments or parameters) that modify or control how the function runs.
 
 ## Why use functions?
 
-There are two main reasons that functions are useful in programming:
+There are three main reasons that functions are useful in programming:
 
 - Reusability
 
@@ -34,15 +34,15 @@ For example, the print function, as in
 ```python
 print("Hello!")
 ```
-takes a parameter (the input to the function is `"Hello"`), but it does not return a value.
+takes an argument (the input to the function is `"Hello"`), but it does not return a value.
 
-But the `input()` function does return a value. The return type is `str`.  When the function is *invoked*, when it is done executing it returns a value. You may do whatever is useful with that return value. In the example below the value returned by the `input()` function is stored in the variable `name`:
+But the `input()` function does return a value. The return type is `str`.  When the function is *invoked*, it returns a value after it is done executing. You may do whatever is useful with that return value. In the example below the value returned by the `input()` function is stored in the variable `name`:
 
 ```python
 name = input("Enter your name")
 ```
 
-Another example is the `random()` function, which returns a `float`. We may choose to store the value that is returned in a variable. Or we may choose to pass that return value as a parameter to another function:
+Another example is the `random()` function, which returns a `float`. We may choose to store the value that is returned in a variable. Or we may choose to pass that return value as an argument to another function:
 
 ```python
 # Store the return value in a variable:
@@ -53,7 +53,7 @@ print(random())
 
 ## User-defined functions that return values
 
-When you define a function, you only need to do so once. Once defined, however, a function may be invoked many times. You can think of a function as an opaque box that performs work with optional inputs and an optional output.
+When you define a function, you only need to do so once. Once defined, however, a function may be invoked (used) many times. You can think of a function as an opaque box that performs work with optional inputs and an optional output.
 
 The syntax is:
 
@@ -111,7 +111,7 @@ def first_digit_even(number: int) -> bool:
     return number%2 == 0
 ```
 
-The `while`-loop repeatedly divides by 10 using integer division (shifting the number to the right), until only one digit remains. That digit is the first digit of the original number. Then on the last line, the expression `number%2==0` evaluates to `True`  if that first digit is even, and `False` if that first digit is odd. The `True` or `False` value gets returned.
+The `while`-loop repeatedly divides by 10 using integer division (shifting the number to the right), until only one digit remains. That digit is the first digit (left-most digit) of the original number. Then on the last line, the expression `number%2==0` evaluates to `True`  if that first digit is even, and `False` if that first digit is odd. The `True` or `False` value gets returned.
 
 Here's an example of a code snippet that uses the function:
 
@@ -150,7 +150,7 @@ def is_prime(number: int) -> bool:
         else:
             tester += 1
 
-    # We only reach this line if no return False above every occurred.
+    # We only reach this line if no return False above ever occurred.
     # This means that the number has no factors and thus it is prime
     return True
     
