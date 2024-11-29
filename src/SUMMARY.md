@@ -7,7 +7,7 @@
     - [Nested lists (2D lists)](chapters/lists_and_dicts/2DLists.md)
     - [Nested data structures](chapters/lists_and_dicts/nested_data_structures.md)
     - [Traversing nested lists](chapters/lists_and_dicts/traversing_nested_lists.md)
-    - [Nested list computations(chapters/lists_and_dicts/nested_list_computation.md)
+    - [Nested list computations](chapters/lists_and_dicts/nested_list_computation.md)
     - [Traversing other nested structures](chapters/lists_and_dicts/traversing_other_nested.md)
 - [Functions](chapters/functions/functions_chapter.md)
     - [User-defined functions](chapters/functions/functions.md)
