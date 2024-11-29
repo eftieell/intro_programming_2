@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Functions that take arguments - Introduction to Programming 2</title>
+        <title>Nested lists (2D lists) - Introduction to Programming 2</title>
 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Chapter 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested.html">Traversing nested lists and data structures</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Chapter 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html" class="active">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Chapter 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html" class="active">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested.html">Traversing nested lists and data structures</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Chapter 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -167,17 +167,99 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="functions-that-take-arguments"><a class="header" href="#functions-that-take-arguments">Functions that take arguments</a></h1>
+                        <h1 id="nested-lists-also-called-2d-lists"><a class="header" href="#nested-lists-also-called-2d-lists">Nested lists (also called 2D lists)</a></h1>
+<p>You've already learned about nested lists. The material below is a copy of the content found here: </p>
+<ul>
+<li><a href="https://cs.du.edu/~intropython/intro-to-programming/2Dlists.html">https://cs.du.edu/~intropython/intro-to-programming/2Dlists.html</a></li>
+<li><a href="https://cs.du.edu/~intropython/intro-to-programming/2Dlist_applications.html">https://cs.du.edu/~intropython/intro-to-programming/2Dlist_applications.html</a></li>
+<li><a href="https://cs.du.edu/~intropython/intro-to-programming/2Dlist_define.html">https://cs.du.edu/~intropython/intro-to-programming/2Dlist_define.html</a></li>
+</ul>
+<h2 id="two-dimensional-lists"><a class="header" href="#two-dimensional-lists">Two-dimensional lists</a></h2>
+<p>Think of a list as a linear storage of multiple values.</p>
+<figure>
+<img src="list_1D.png" alt="Visual model of a 1D list" class="center", width="500">
+</figure>
+<p>In python you can also have two-dimensional (2D) lists. A 2D list is a matrix or grid of values.</p>
+<figure>
+<img src="list_2D.png" alt="Visual model of a 2D list" class="center", width="500">
+</figure>
+<h2 id="why-do-we-need-2d-lists"><a class="header" href="#why-do-we-need-2d-lists">Why do we need 2D lists?</a></h2>
+<p>There are many uses for 2D lists in programming. For example, many games require storage of information in two dimensions.
+Writing a computer program in python to implement any of the following games would likely use a 2D list:</p>
+<figure>
+<img src="games_2D.png" alt="Images of 2-dimensional games" class="center", width="500">
+</figure>
+<p>Another example is the storage of digital images, which can be stored as 2D lists. If you zoom in closely on a digital image, you will see that the image is composed of small squares of color called pixels (the word comes from “<em>pic</em>ture <em>el</em>ements”).
+So the image can be stored as a 2D grid of colors. In python this is a 2D list, or a list of lists.</p>
+<figure>
+<img src="pixels.png" alt="Visual demonstrating how images are composed of pixels" class="center", width="500">
+</figure>
+<p>Third, sometimes information is best organized in a grid. In these cases, the data would be stored in a 2D list. For example, here's a table that stores the temperature recorded by several different sensors at several times of day:</p>
+<figure>
+<img src="temperatures.png" alt="Table of temperatures for several sensors at several times" class="center", width="500">
+</figure>
+<p>And here's a table showing the average heating bill for several different apartments during each quarter of the year:</p>
+<figure>
+<img src="heating_bill.png" alt="Table of heating bills" class="center", width="500">
+</figure>
+<p>Next we will look at how 2D lists are stored in python as lists of lists.</p>
+<h2 id="defining-2d-lists-in-python"><a class="header" href="#defining-2d-lists-in-python">Defining 2D lists in python</a></h2>
+<p>One way to create a 2D list in python is to use a 2D <em>list literal</em>. You've already learned how to create a 1D list literal, and the syntax here is similar. However, instead of a simple list, here we have a list of lists, or nested list.</p>
+<p>The python code below creates a list of lists that stores the contents of the heating bill table shown above:</p>
+<pre><code class="language-python">heating_bill = [
+    [112, 32, 10, 96],
+    [60, 15, 0, 70],
+    [196, 65, 15, 180]
+</code></pre>
+<p>Notice that <code>heating_bill</code> is a list with 3 items. Each item is itself a list. </p>
+<ul>
+<li>The first element <code>heating_bill[0]</code> is itself a list: <code>[112, 32, 10, 96]</code>.</li>
+<li>The second element<code> heating_bill[1]</code> is itself a list: <code>[60, 15, 0, 70]</code>.</li>
+<li>The third element heating_bill[2] is itself a list: <code>[196, 65, 15, 180]</code>.</li>
+</ul>
+<h2 id="how-to-access-individual-elements-in-a-2d-list"><a class="header" href="#how-to-access-individual-elements-in-a-2d-list">How to access individual elements in a 2D list</a></h2>
+<figure>
+<img src="2D_indices.png" alt="Accessing 2D lists using indices" class="center", width="500">
+</figure>
+<p>Rather than focusing on 2D lists as a list of lists, another perspective is to think of it as a rectangular grid, each position having a row position and a column position. So to indicate a specific element, you give two index values. The first index gives the row and the second index gives the column.</p>
+<p>For example:</p>
+<ul>
+<li><code>heating_bill[0][0]</code> refers to row index <code>0</code>, column index <code>0</code>, whose value is <code>112</code>.</li>
+<li><code>heating_bill[2][3]</code> refers to row index <code>2</code>, column index <code>3</code>, whose value is <code>180</code>.</li>
+<li><code>heating_bill[1][2]</code> refers to row index <code>1</code>, column index <code>2</code>, whose value is <code>0</code>.</li>
+</ul>
+<h2 id="creating-2d-lists-using-for-loops"><a class="header" href="#creating-2d-lists-using-for-loops">Creating 2D lists using <code>for</code>-loops</a></h2>
+<p>Consider the following <code>4x3</code> 2D list, with all values initialized to <code>0</code>:</p>
+<pre><code class="language-python">temperature = [
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+]
+</code></pre>
+<p>This 2D list could be created more flexibly with the following code:</p>
+<pre><code class="language-python"># Create an empty list
+temperature = []
+# Four rows:
+for row in range(4):
+    # Create an empty sub-list
+    new_row = [] 
+    # Fill the row with three 0's   
+    for column in range(3):
+        new_row.append(0)
+    # Put the newly-created row into the outer list:
+    temperature.append(new_row)
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../chapters/functions/functions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../chapters/lists_and_dicts/list_comprehension.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../chapters/functions/function_return_values.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../chapters/lists_and_dicts/nested_data_structures.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -187,11 +269,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../chapters/functions/functions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../chapters/lists_and_dicts/list_comprehension.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../chapters/functions/function_return_values.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../chapters/lists_and_dicts/nested_data_structures.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
