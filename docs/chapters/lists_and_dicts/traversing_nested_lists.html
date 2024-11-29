@@ -167,7 +167,128 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="traversing-nested-lists"><a class="header" href="#traversing-nested-lists">Traversing nested lists</a></h1>
+                        <h1 id="traversing-nested-lists-2d-lists"><a class="header" href="#traversing-nested-lists-2d-lists">Traversing nested lists (2D lists)</a></h1>
+<h2 id="background"><a class="header" href="#background">Background</a></h2>
+<p>We generally use nested for-loops to traverse nested lists. You might want to begin by reviewing nested for-loops:
+<a href="https://cs.du.edu/~intropython/intro-to-programming/nested_for_loops.html">https://cs.du.edu/~intropython/intro-to-programming/nested_for_loops.html</a></p>
+<p>Also recall that we learned three ways to traverse 1D lists:</p>
+<ul>
+<li>using an index-based loop</li>
+<li>using a content-based loop</li>
+<li>using the <code>enumerate()</code> function</li>
+</ul>
+<p>Example of index-based iteration:</p>
+<pre><code class="language-python"># traversing 1D lists, three different ways
+cities = [&quot;Denver&quot;, &quot;Colorado Springs&quot;, &quot;Pueblo&quot;]
+
+# example of a content-based iteration:
+for city in cities:
+    print(f&quot;I love {city}&quot;)
+</code></pre>
+<p>Output:</p>
+<pre><code>I love Denver
+I love Colorado Springs
+I love Pueblo
+</code></pre>
+<p>Example of content-based iteration:</p>
+<pre><code class="language-python"># Example of an index-based iteration:
+# Notice that we use the length of the list to tell us when to stop the loop
+# Also notice that knowing the index allows us to know when we are on the last one.
+# This gives us a way to put the output all on one line by treating the last one differently.
+for i in range(len(cities)):
+    if i == len(cities) - 1:
+        print(f&quot;I love {cities[i]}!&quot;)
+    else:
+        print(f&quot;I love {cities[i]}&quot;, end = &quot;, &quot;)
+</code></pre>
+<p>Output:</p>
+<pre><code>I love Denver, I love Colorado Springs, I love Pueblo!
+</code></pre>
+<p>Example of using <code>enumerate()</code> to track index and value simultaneously:</p>
+<pre><code class="language-python"># example traversing a list using the enumerate() function,
+# in which you keep track of index and content at the same time
+for i, city in enumerate(cities):
+    if i == len(cities) - 1:
+        print(f&quot;I love {city}!&quot;)
+    else:
+        print(f&quot;I love {city}&quot;, end = ', ')
+</code></pre>
+<p>Output:</p>
+<pre><code>I love Denver, I love Colorado Springs, I love Pueblo!
+</code></pre>
+<h2 id="loops-for-traversing-2d-lists"><a class="header" href="#loops-for-traversing-2d-lists">Loops for traversing 2D lists</a></h2>
+<p>Much like with 1D lists, you can traverse 2D lists three ways, </p>
+<ul>
+<li>using an index-based nested loop</li>
+<li>using a content-based nested loop</li>
+<li>using the <code>enumerate()</code> function (access index and content simultaneously)</li>
+</ul>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<p>Let's traverse the 2D list defined below. Each inner list contains three city names from a given state. Then the outer list is a list of lists of cities from three different states.</p>
+<pre><code class="language-python">more_cities = [
+    [&quot;Denver&quot;, &quot;Colorado Springs&quot;, &quot;Pueblo&quot;],
+    [&quot;Los Angeles&quot;, &quot;San Diego&quot;, &quot;Fresno&quot;],
+    [&quot;Chicago&quot;, &quot;Springfield&quot;, &quot;Champaign&quot;],
+    [&quot;Boston&quot;, &quot;Worcester&quot;, &quot;Springfield&quot;],
+]
+</code></pre>
+<h3 id="content-based-traversal-of-a-2d-list"><a class="header" href="#content-based-traversal-of-a-2d-list">Content-based traversal of a 2D list:</a></h3>
+<pre><code class="language-python">for row in more_cities:
+    for city in row:
+        print(f&quot;I love {city}&quot;)
+</code></pre>
+<p>Output:</p>
+<pre><code>I love Denver
+I love Colorado Springs
+I love Pueblo
+I love Los Angeles
+I love San Diego
+I love Fresno
+I love Chicago
+I love Springfield
+I love Champaign
+I love Boston
+I love Worcester
+I love Springfield
+</code></pre>
+<p>Notice that each iteration through the outer loop processes one row of the main list (in other words, <code>row</code> is one of the inner lists).
+So here the variable <code>row</code> is itself a list! That's why in the inner loop we can execute another for loop, traversing through
+the list <code>row</code>. In the inner loop, for each iteration through the loop, city is an entry in the list for that state. 
+Giving clear names to the variables is part of documenting your code well.</p>
+<h3 id="index-based-traversal-of-a-2d-list"><a class="header" href="#index-based-traversal-of-a-2d-list">Index-based traversal of a 2D list:</a></h3>
+<pre><code class="language-python">for row_index in range(len(more_cities)):
+    for col_index in range(len(more_cities[row_index])):
+        if col_index == len(row)-1:
+            print(f'I love {more_cities[row_index][col_index]}!')
+        else:
+            print(f'I love {more_cities[row_index][col_index]},', end = &quot; &quot;)
+</code></pre>
+<p>Output:</p>
+<pre><code>I love Denver, I love Colorado Springs, I love Pueblo!
+I love Los Angeles, I love San Diego, I love Fresno!
+I love Chicago, I love Springfield, I love Champaign!
+I love Boston, I love Worcester, I love Springfield!
+</code></pre>
+<p>This time the outer loop traverses over each index of rows, meaning <code>row_index</code> varies through 0, 1, 2, 3. When <code>row_index == 0</code>, we will look at the cities in Colorado, when <code>row_index == 1</code>, we will look at the cities in California, when <code>row_index==2</code>, we will look at the cities in Illinois, and when <code>row_index == 3</code>, we will look at the cities in Massachusetts. For each value of <code>row_index</code>, our inner loop has <code>col_index</code> taking the values 0, 1 and 2 (one value of <code>col_index</code> for each city in that state).
+Then inside the two loops, <code>more_cities[row_index][col_index]</code> accesses the city name for the relevant row index and column index.</p>
+<p>Important note on number of rows and number of columns: <code>len(more_cities)</code> gives the number rows. Since <code>more_cities</code> is a list of lists, its length is the number of lists (which is the number of rows, or 4). Notice that <code>more_cities[row_index]</code> is itself a list (because it is one of the rows). So <code>len(more_cities[row_index])</code> gives the number of columns in that row, or 3.</p>
+<p>By knowing the index values (rather than just the content stored at each location), we can determine when we are on the last one
+(either the last row or the last column). This gives us a way to put all of the cities for each state on one line.</p>
+<h3 id="using-enumerate-to-traverse-a-2d-list-keeping-track-of-index-and-content-simultaneously"><a class="header" href="#using-enumerate-to-traverse-a-2d-list-keeping-track-of-index-and-content-simultaneously">Using enumerate to traverse a 2D list, keeping track of index and content simultaneously</a></h3>
+<pre><code class="language-python">for row_index, row in enumerate(more_cities):
+    for col_index, city in enumerate(row):
+        if col_index == len(row)-1:
+            print(f'I love {city}!')
+        else:
+            print(f'I love {city},', end = &quot; &quot;)
+</code></pre>
+<p>Output:</p>
+<pre><code>I love Denver, I love Colorado Springs, I love Pueblo!
+I love Los Angeles, I love San Diego, I love Fresno!
+I love Chicago, I love Springfield, I love Champaign!
+I love Boston, I love Worcester, I love Springfield!
+</code></pre>
+<p>Some programmers prefer this method most, since it allows us to know the index value ('row_index' and 'col_index'), but also to have easier access to the value stored there (just <code>city</code> instead of <code>more_cities[row_index][col_index]</code>).</p>
 
                     </main>
 
