@@ -10,4 +10,5 @@
     - [Functions that return a value](chapters/functions/function_return_values.md)
     - [Keyword arguments](chapters/functions/function_keyword_arguments.md)
     - [Default values for arguments](chapters/functions/functions_default_arguments.md)
+    - [Measuring runtime for functions](chapters/functions/experimental_runtime.md)
 
