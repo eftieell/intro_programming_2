@@ -8,7 +8,6 @@
     - [Nested data structures](chapters/lists_and_dicts/nested_data_structures.md)
     - [Traversing nested lists](chapters/lists_and_dicts/traversing_nested_lists.md)
     - [Nested list computations](chapters/lists_and_dicts/nested_list_computation.md)
-    - [Traversing other nested structures](chapters/lists_and_dicts/traversing_other_nested.md)
 - [Functions](chapters/functions/functions_chapter.md)
     - [User-defined functions](chapters/functions/functions.md)
     - [Functions that take arguments](chapters/functions/function_parameters.md)
