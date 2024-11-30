@@ -168,6 +168,181 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="nested-data-structures"><a class="header" href="#nested-data-structures">Nested data structures</a></h1>
+<p>Data structures can be nested in a variety of ways. We've seen examples of nested lists (lists of lists).
+But you can also create lists of dictionaries, dictionaries whose values are lists, or dictionaries whose values are dictionaries.
+This section gives you some examples of these structures, and how to traverse them in useful ways.</p>
+<h2 id="example-of-a-list-of-dictionaries"><a class="header" href="#example-of-a-list-of-dictionaries">Example of a list of dictionaries</a></h2>
+<p>Here's an example of a list, each element of which is a dictionary. Try to understand what the meaning and use of this list is.</p>
+<pre><code class="language-python">payroll  = [
+    {&quot;first_name&quot;: &quot;Logan&quot;, &quot;last_name&quot;: &quot;Aster&quot;, &quot;wage&quot;: 15.70, &quot;hours&quot;: 37},
+    {&quot;first_name&quot;: &quot;Apurva&quot;, &quot;last_name&quot;: &quot;Lennie&quot;, &quot;wage&quot;: 24.00, &quot;hours&quot;: 15},
+    {&quot;first_name&quot;: &quot;Noel&quot;, &quot;last_name&quot;: &quot;Kingsley&quot;, &quot;wage&quot;: 22.50, &quot;hours&quot;: 25},
+]
+</code></pre>
+<p>This list is used by a payroll department. Each element of the list is a dictionary that contains the pay data for a single employee.</p>
+<p>Try the following exercises (there are multiple ways to solve each question!)</p>
+<ol>
+<li>Output the wage of the second person in the list (index 1)</li>
+<li>Create a list of last names</li>
+<li>Output the total pay for a person whose last name is &quot;Kingsley&quot;</li>
+<li>Find the total dollar amount to be paid to all employees</li>
+</ol>
+<p>Solutions:</p>
+<ol>
+<li>Output the wage of the second person in the list (index 1)</li>
+</ol>
+<pre><code class="language-python">print(payroll[1]['wage'])
+</code></pre>
+<ol start="2">
+<li>Create a list of last names</li>
+</ol>
+<pre><code class="language-python">   last_names = []
+   for i in range(len(payroll)):
+       last_names.append(payroll[i]['last_name'])
+</code></pre>
+<p>or</p>
+<pre><code class="language-python">    last_names = [payroll[i]['last_name'] for i in range(len(payroll))]
+</code></pre>
+<p>or</p>
+<pre><code class="language-python">    last_names = [employee['last_name'] for employee in payroll]
+</code></pre>
+<ol start="3">
+<li>Output the total pay for a person whose last name is &quot;Kingsley&quot;</li>
+</ol>
+<pre><code class="language-python">   for employee in payroll:
+       if employee['last_name'] == 'Kingsley':
+           print(f&quot;{employee['wage']*employee['hours']:.2f}&quot;)
+</code></pre>
+<ol start="4">
+<li>Find the total dollar amount to be paid to all employees</li>
+</ol>
+<pre><code class="language-python">   total = 0
+   for i in range(len(payroll)):
+       total += payroll[i]['wage']*payroll[i]['hours']
+   print(f&quot;{total:.2f}&quot;)
+</code></pre>
+<h2 id="example-of-a-dictionary-with-lists-as-values"><a class="header" href="#example-of-a-dictionary-with-lists-as-values">Example of a dictionary with lists as values</a></h2>
+<p>Suppose we have a table of quiz scores for students in a course.</p>
+<div class="table-wrapper"><table><thead><tr><th>Student</th><th>Quiz 1</th><th>Quiz 2</th><th>Quiz 3</th><th>Quiz 4</th></tr></thead><tbody>
+<tr><td>Alice</td><td>78</td><td>83</td><td>62</td><td>91</td></tr>
+<tr><td>Bob</td><td>93</td><td>69</td><td>88</td><td>72</td></tr>
+<tr><td>Charlie</td><td>75</td><td>82</td><td>78</td><td>83</td></tr>
+</tbody></table>
+</div>
+<p>One way to store this data is to use a dictionary where the key is the name of the student, and the value is a list of their scores.</p>
+<pre><code class="language-python">scores = {
+    'Alice': [78, 83, 62, 91],
+    'Bob':[93, 69, 88, 72],
+    'Charlie': [75, 82, 78, 83],
+}
+</code></pre>
+<p>Exercises:</p>
+<ol>
+<li>What type is the expression <code>scores['Alice']</code></li>
+</ol>
+<p>Answer: It is a list!</p>
+<ol start="2">
+<li>What is output by <code>print(scores['Alice'])</code>?</li>
+</ol>
+<p>Answer: <code>[78, 83, 62, 91]</code></p>
+<ol start="3">
+<li>What is output by <code>print(scores['Alice'][1])</code>?</li>
+</ol>
+<p>Answer: <code>83</code></p>
+<ol start="4">
+<li>What expression will tell you how many scores Bob has?</li>
+</ol>
+<p>Answer: <code>len(scores['Bob'])</code></p>
+<ol start="5">
+<li>What expression will give Charlie's last score?</li>
+</ol>
+<p>Answer: <code>scores['Charlie'][-1]</code> or <code>scores['Charlie'][len(scores['Charlie'])-1]</code></p>
+<ol start="6">
+<li>How do you find the average of Bob's scores?</li>
+</ol>
+<p>Answer:</p>
+<pre><code class="language-python">total = 0
+for score in scores['Charlie']:
+    total += score
+average = total/len(scores['Charlie'])
+</code></pre>
+<p>or
+<code>average = sum(scores['Charlie'])/len(scores['Charlie'])</code></p>
+<h2 id="example-of-a-dictionary-of-dictionaries"><a class="header" href="#example-of-a-dictionary-of-dictionaries">Example of a dictionary of dictionaries</a></h2>
+<p>Here is a dictionary, where each key is a state abbreviation. The value for each state is a dictionary with (city name/population) as (key,value) pairs.</p>
+<pre><code class="language-python">populations = {
+    &quot;CO&quot;: {&quot;Denver&quot;: 2897000, &quot;Colorado Springs&quot;: 488664, &quot;Pueblo&quot;: 111424},
+    &quot;IL&quot;: {&quot;Chicago&quot;: 8901000, &quot;Springfield&quot;: 205519, &quot;Champaign&quot;: 88343},
+    &quot;CA&quot;: {&quot;Los Angeles&quot;: 12488000, &quot;San Diego&quot;: 3295000, &quot;Fresno&quot;: 795000},
+    &quot;MA&quot;: {&quot;Boston&quot;: 653833, &quot;Worcester&quot;: 207621, &quot;Springfield&quot;: 153672 }
+}
+</code></pre>
+<p>The keys for the <code>populations</code> dictionary are &quot;CO&quot;, &quot;IL&quot;, &quot;CA&quot;, and &quot;MA&quot;. The expression <code>populations[&quot;CA&quot;]</code> evaluates to an
+entire dictionary, which can itself be indexed with its keys &quot;Los Angeles&quot;, &quot;San Diego&quot;, and &quot;Fresno&quot;. Thus the expression
+<code>populations[&quot;CA&quot;][&quot;Los Angeles&quot;]</code> evaluates to 12488000. Since the dictionary is nested, we need two index values to access the lowest level of data.</p>
+<p>Try the following exercises (there are multiple ways to solve each question!)</p>
+<ol>
+<li>Ask the user for a state abbreviation and city name, and output the population</li>
+<li>Output all of the state abbreviations on one line</li>
+<li>Output all 12 of the city names on one line</li>
+<li>Find the total population of the listed Colorado cities</li>
+<li>Find the total population of all 12 cities</li>
+<li>Flatten the structure into a single dictionary where the keys of the form &quot;Denver, CO&quot;, and the values are the corresponding population</li>
+</ol>
+<p>Solutions:</p>
+<ol>
+<li>Ask the user for a state abbreviation and city name, and output the population:</li>
+</ol>
+<pre><code class="language-python">state = input(&quot;Enter the state abbreviation: &quot;)
+city = input (&quot;Enter the city name: &quot;)
+# Note that this code is flawed, since it does not error checking. The program
+# will crash if the user enters an invalid state or an invalid city.
+print(f&quot;The population of {city}, {state} is {populations[state][city]}&quot;)
+</code></pre>
+<ol start="2">
+<li>Output all of the state abbreviations on one line</li>
+</ol>
+<pre><code class="language-python"># Recall that iterating through a dictionary means iterating through the keys.
+# So state iterates over the values &quot;CO&quot;, &quot;IL&quot;, &quot;CA&quot;, &quot;MA&quot;  
+for state in populations:
+    print(state, end = &quot; &quot;)
+print()
+</code></pre>
+<ol start="3">
+<li>Output all 12 of the city names on one line</li>
+</ol>
+<pre><code class="language-python">for state in populations:
+    for city in populations[state]:
+        print(city, end= &quot; &quot;)
+print()
+</code></pre>
+<ol start="4">
+<li>Find the total population of the listed Colorado cities</li>
+</ol>
+<pre><code class="language-python">total = 0
+for city in populations[&quot;CO&quot;]:
+    total += populations[&quot;CO&quot;][city]
+print(total)
+</code></pre>
+<ol start="5">
+<li>Find the total population of all 12 cities</li>
+</ol>
+<pre><code class="language-python">total = 0
+for state in populations:
+    for city in populations[state]:
+        total += populations[state][city]
+print(total)
+</code></pre>
+<ol start="6">
+<li>Flatten the structure into a single dictionary where the keys of the form &quot;Denver, CO&quot;, and the values are the corresponding population</li>
+</ol>
+<pre><code class="language-python">flat_populations = {}
+for state in populations:
+    for city in populations[state]:
+        flat_populations[city + &quot;, &quot; + state] = populations[state][city]
+</code></pre>
+<p>Note that it would not have worked to create one dictionary with just the city names and corresponding populations. Keys must be unique - but there are two cities with the same name! So adding the second &quot;Springfield&quot; to the dictionary would have overwritten the first &quot;Springfield&quot;. Cities within states though, are required to have distinct names (you can't have two towns named Springfield within the same state), so we didn't run into this issue with our original structure. This is why the question asked you to produce a new key, that included the name of the city together with the state abbreviation.</p>
+<p>One subtle point in the above code is the creation of that new key. The expression <code>city + &quot;, &quot; + state</code> is a string concatenation, building the name in the form &quot;city, state&quot;.</p>
 
                     </main>
 
