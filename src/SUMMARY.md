@@ -16,6 +16,6 @@
     - [Keyword arguments](chapters/functions/function_keyword_arguments.md)
     - [Measuring runtime for functions](chapters/functions/experimental_runtime.md)
 - [Classes](chapters/classes/classes_chapter.md)
-    - [Classes, and creating objects](classes_and_objects.md)
-    - [Implementing classes](implementing_classes.md)
+    - [Classes, and creating objects](chapters/classes/classes_and_objects.md)
+    - [Implementing classes](chapters/classes/implementing_classes.md)
 
