@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Classes, and creating objects - Introduction to Programming 2</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../css/pyscript.css">
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes/classes_chapter.html">Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes/classes_and_objects.html" class="active">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/implementing_classes.html">Implementing classes</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Introduction to Programming 2</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="classes-and-creating-objects"><a class="header" href="#classes-and-creating-objects">Classes and Creating Objects</a></h1>
+<h2 id="motivation"><a class="header" href="#motivation">Motivation</a></h2>
+<p>In python, a variable of type int, float, char, etc. can be used to store and reprsent one value.
+But often one needs multiple values to represent one concept, or one object. For example:</p>
+<ul>
+<li>a point in two-dimensional space is represented by two variables (x, y),</li>
+<li>A rectangle has a center point, a width and a height,</li>
+<li>a college registrar stores many pieces of information about each student (name, address, year in school, gpa, etc.)</li>
+<li>a bouncing circle in an animation has an x-position, a y-position, a size, an x-velocity, a y-velocity, and a color</li>
+</ul>
+<p>We see the advantage of bundling the multiple variables that represent an object in the above examples. The x and y values for a point should be stored together, as should the multiple pieces of information about a college student's record, or information for a bouncing circle in an animation.</p>
+<p>All high-level programming languages give you a way to package multiple variables into one object. In object-oriented languages (including python), the idea goes further. You can uses classes to package <strong>data</strong> together with the <strong>code</strong> that manages and manipulates that data.</p>
+<p>Example: Suppose we want to write python code to store data for a rectangle, together with code to manage and manipulate that data. We would do this by implementing a class called <code>Rectangle</code>, and could specify it to store the variables <code>center_x</code>, <code>center_y</code>, <code>width</code>, and <code>height</code>. Variables that are part of a class are called <em>instance variables</em>. We would also specify it to have built-in functions to manage the rectangle, such as a function that would compute the area of the rectangle, or a function that would draw the rectangle. Functions that are part of a class are called <em>methods</em>.</p>
+<p>The diagram below (a modified version of a UML diagram) shows the name of the class, the instance variables and their types, and the methods (with the parameter types and return value types):</p>
+<table>
+    <tr>
+        <td>Rectangle</td>
+    </tr>
+    <tr>
+      <td>Instance variables and their types:<br>
+    <code>center_x:float</code><br>
+    <code>center_y:float</code><br>
+    <code>width:float</code>code><br>
+    <code>height:float</code>code></td>
+      ```
+    </tr>
+    <tr>
+      <td>methods (along with their parameters and return types):<br>
+    <code>__init__(center_x:float, center_y:float, width:float, height:float)  # constructor (initialization method)</code><br>
+    <code>draw(None)->None                   # display the rectangle</code>  <br>
+    <code>area(None)->float                  # compute and return the rectangle area</code><br>
+    </tr> 
+</table>
+<p>Once the <code>Rectangle</code> class has been implemented (either by ourselves or by someone else), just knowing the above interface allows us to use the class, even without knowing details about how it is implemented. This illustrates the concept of <em>abstraction</em>. The complexity of the implementation is hidden from the user of the Rectangle class.</p>
+<h2 id="objects"><a class="header" href="#objects">Objects</a></h2>
+<p>In the above example, once the <code>Rectangle</code> class has been implemented, other programmers can use that class, trusting that it was implemented correctly, without bothering themselves with how it was implemented. Any programmer wanting to store information about a rectangle and potentially compute its area or display it, would create one <code>Rectangle</code> object for each rectangle they want to represent. Each <code>Rectangle</code> object is treated like a single variable. That single variable is made up of multiple components, namely a <code>center_x</code>, <code>center_y</code>, <code>width</code> and <code>height</code>, as well as some methods (functions) for manipulating that rectangle.</p>
+<p>Think of the Rectangle class as a &quot;cookie cutter&quot; that we can use to create multiple &quot;cookies&quot; (rectangles).</p>
+<h2 id="how-to-create-objects---example"><a class="header" href="#how-to-create-objects---example">How to create objects - example</a></h2>
+<p>To create a new rectangle object, we state the name of the class, and pass the required initialization parameters. This calls the constructor (or initialization method).</p>
+<pre><code>rectangle1 = Rectangle(2, 3, 0.1, 0.2) # create a rectangle with center (2, 3), width 0.1, height 0.2
+rectangle2 = Rectangle(4, 6, 0.15, 0.3) # create a rectangle with center (4, 6), width 0.15, height 0.3
+</code></pre>
+<p>The first line of code above creates (or <em>instantiates</em>) a new <code>Rectangle</code> object. This object has variable name <code>rectangle1</code>, and is a bundle of four instance variables (<code>center_x</code>, <code>center_y</code>, <code>width</code> and <code>height</code>). Note that the single line of code automatically creates 4 separate variables that are bundled together. The second line of code instantiates a second new <code>Rectangle</code> object. Again, a single line of code creates a bundle of 4 variables.</p>
+<h2 id="using-or-invoking-methods"><a class="header" href="#using-or-invoking-methods">Using (or invoking) methods</a></h2>
+<p>Once we have created an object, we can invoke the methods associated with it using the expression <code>object_name.method_name()</code>.
+For example, the code below outputs the area of the object <code>rectangle1</code> that we instantiated above:</p>
+<pre><code>print(rectangle1.area())
+</code></pre>
+<p>The next line of code displays <code>rectangle2</code> that we instantiated above:</p>
+<pre><code>rectangle2.draw()
+</code></pre>
+<h2 id="accessing-the-data-elements-in-an-object"><a class="header" href="#accessing-the-data-elements-in-an-object">Accessing the data elements in an object</a></h2>
+<p>The data for an object is stored in its instance variables. You can access these values with the expression <code>object_name.instance_variable_name</code>. The following  lines of code output the values stored in the rectangles we created above:</p>
+<pre><code>print(f&quot;Center point of rectangle1: ({rectangle1.center_x}, {rectangle1.center_y})&quot;)
+print(f&quot;width and height of rectangle2: width = {rectangle2.width}, height = {rectangle2.height}&quot;)
+</code></pre>
+<p>Note about object-oriented programming: in good object-oriented programming practice, users of a class should never modify the contents of the instance variables directly - rather the contents should be modified in the code internal to the class. Often this is done through <em>setter</em> methods (also called <em>mutators</em>).
+In fact, in true object-oriented languages (such as C++ or Java), code that uses a class may not even <em>see</em> the contents of the instance variables directly - they must access them using <em>getter</em> methods (also called <em>accessors</em>).</p>
+<h2 id="more-about-abstraction"><a class="header" href="#more-about-abstraction">More about abstraction</a></h2>
+<p>Notice that in the examples above, we wrote code that uses a class (the <code>Rectangle</code> class ) just by knowing the interface of the class (described in the UML diagram shown above). We did so above without ever having seen the code that implements the class. Doing so relies on us confidently using the code written either by someone else or ourselves at a different time. By abstracting the data and functionality of the class, we're able to implement, debug and test the two parts of the code (i.e., implement the class, and then use the class) completely separately. Breaking the code into  separate units means we can implement very large programs by writing just parts of it at a time.</p>
+<h2 id="strings-are-objects"><a class="header" href="#strings-are-objects">Strings are objects</a></h2>
+<p>We've actually used classes before this. When you create a string in python, it is an object of the <code>str</code> class. For example:</p>
+<pre><code>name = &quot;Bessie Mae &quot;
+print(name.count('e'))           # outputs the number of e's in name
+lower_case_name = name.lower()   # name.lower() returns a new string object, with all letters now lower-case
+first_name = name.split()[0]
+</code></pre>
+<p>In the code above, we are invoking three different methods from the <code>str</code> class (<code>count()</code>, <code>lower()</code>, and <code>split()</code>). Notice that <code>name.lower()</code> fits the pattern <code>object_name.method_name()</code>.
+You can find the official python documentation listing all available methods in the <code>str</code> class here: <a href="https://docs.python.org/3/library/stdtypes.html#string-methods">https://docs.python.org/3/library/stdtypes.html#string-methods</a></p>
+<h2 id="summary-of-why-we-use-classes-and-objects"><a class="header" href="#summary-of-why-we-use-classes-and-objects">Summary of why we use classes and objects</a></h2>
+<p>Programming with classes and objects:</p>
+<ul>
+<li>helps you to better organize complex code.</li>
+<li>makes it easier to create reusable code.</li>
+<li>results in code that is more maintainable.</li>
+<li>enables you to break down large programs into subtasks that different people can implement.</li>
+<li>creates encapsulation (compartmentalizes data so that one part of a program cannot corrupt data managed by another part of the program).</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../chapters/classes/classes_chapter.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../chapters/classes/implementing_classes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../chapters/classes/classes_chapter.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../chapters/classes/implementing_classes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../js/disable_keyboard.js"></script>
+
+
+    </div>
+    </body>
+</html>
