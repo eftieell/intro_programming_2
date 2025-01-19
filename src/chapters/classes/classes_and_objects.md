@@ -29,7 +29,7 @@ The diagram below (a modified version of a UML diagram) shows the name of the cl
     </tr>
     <tr>
       <td>methods (along with their parameters and return types):<br>
-    <code>Rectangle(center_x:float, center_y:float, width:float, height:float)  # constructor (initialization method)</code><br>
+    <code>__init__(center_x:float, center_y:float, width:float, height:float)  # constructor (initialization method)</code><br>
     <code>draw(None)->None                   # display the rectangle</code>  <br>
     <code>area(None)->float                  # compute and return the rectangle area</code><br>
     </tr> 
