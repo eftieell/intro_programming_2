@@ -15,4 +15,7 @@
     - [Default values for arguments](chapters/functions/functions_default_arguments.md)
     - [Keyword arguments](chapters/functions/function_keyword_arguments.md)
     - [Measuring runtime for functions](chapters/functions/experimental_runtime.md)
+- [Classes](chapters/classes/classes_chapter.md)
+    - [Classes, and creating objects](classes_and_objects.md)
+    - [Implementing classes](implementing_classes.md)
 
