@@ -18,4 +18,5 @@
 - [Classes](chapters/classes/classes_chapter.md)
     - [Classes, and creating objects](chapters/classes/classes_and_objects.md)
     - [Implementing classes](chapters/classes/implementing_classes.md)
+    - [Lists of objects](chapters/classes/lists_of_objects.md)
 
