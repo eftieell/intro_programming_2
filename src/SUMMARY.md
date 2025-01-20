@@ -18,5 +18,6 @@
 - [Classes](chapters/classes/classes_chapter.md)
     - [Classes, and creating objects](chapters/classes/classes_and_objects.md)
     - [Implementing classes](chapters/classes/implementing_classes.md)
+    - [Output of objects to the terminal](chapters/classes/print_object.md)
     - [Lists of objects](chapters/classes/lists_of_objects.md)
 
