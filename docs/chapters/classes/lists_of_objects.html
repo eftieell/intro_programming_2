@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Nested lists (2D lists) - Introduction to Programming 2</title>
+        <title>Lists of objects - Introduction to Programming 2</title>
 
 
         <!-- Custom HTML head -->
@@ -84,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html" class="active">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes/classes_chapter.html">Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/implementing_classes.html">Implementing classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/lists_of_objects.html">Lists of objects</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes/classes_chapter.html">Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/implementing_classes.html">Implementing classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/lists_of_objects.html" class="active">Lists of objects</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -167,101 +167,104 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="nested-lists-also-called-2d-lists"><a class="header" href="#nested-lists-also-called-2d-lists">Nested lists (also called 2D lists)</a></h1>
-<p>You've already learned about nested lists. The material below is a copy of the content found here: </p>
-<ul>
-<li><a href="https://cs.du.edu/~intropython/intro-to-programming/2Dlists.html">https://cs.du.edu/~intropython/intro-to-programming/2Dlists.html</a></li>
-<li><a href="https://cs.du.edu/~intropython/intro-to-programming/2Dlist_applications.html">https://cs.du.edu/~intropython/intro-to-programming/2Dlist_applications.html</a></li>
-<li><a href="https://cs.du.edu/~intropython/intro-to-programming/2Dlist_define.html">https://cs.du.edu/~intropython/intro-to-programming/2Dlist_define.html</a></li>
-</ul>
-<h2 id="two-dimensional-lists"><a class="header" href="#two-dimensional-lists">Two-dimensional lists</a></h2>
-<p>Think of a list as a linear storage of multiple values.</p>
-<figure>
-<img src="list_1D.png" alt="Visual model of a 1D list" class="center", width="500">
-</figure>
-<p>In python you can also have two-dimensional (2D) lists. A 2D list is a matrix or grid of values.</p>
-<figure>
-<img src="list_2D.png" alt="Visual model of a 2D list" class="center", width="500">
-</figure>
-<h2 id="why-do-we-need-2d-lists"><a class="header" href="#why-do-we-need-2d-lists">Why do we need 2D lists?</a></h2>
-<p>There are many uses for 2D lists in programming. For example, many games require storage of information in two dimensions.
-Writing a computer program in python to implement any of the following games would likely use a 2D list:</p>
-<figure>
-<img src="games_2D.png" alt="Images of 2-dimensional games" class="center", width="500">
-</figure>
-<p>Another example is the storage of digital images, which can be stored as 2D lists. If you zoom in closely on a digital image, you will see that the image is composed of small squares of color called pixels (the word comes from “<em>pic</em>ture <em>el</em>ements”).
-So the image can be stored as a 2D grid of colors. In python this is a 2D list, or a list of lists.</p>
-<figure>
-<img src="pixels.png" alt="Visual demonstrating how images are composed of pixels" class="center", width="500">
-</figure>
-<p>Third, sometimes information is best organized in a grid. In these cases, the data would be stored in a 2D list. For example, here's a table that stores the temperature recorded by several different sensors at several times of day:</p>
-<figure>
-<img src="temperatures.png" alt="Table of temperatures for several sensors at several times" class="center", width="500">
-</figure>
-<p>And here's a table showing the average heating bill for several different apartments during each quarter of the year:</p>
-<figure>
-<img src="heating_bill.png" alt="Table of heating bills" class="center", width="500">
-</figure>
-<p>Next we will look at how 2D lists are stored in python as lists of lists.</p>
-<h2 id="defining-2d-lists-in-python"><a class="header" href="#defining-2d-lists-in-python">Defining 2D lists in python</a></h2>
-<p>One way to create a 2D list in python is to use a 2D <em>list literal</em>. You've already learned how to create a 1D list literal, and the syntax here is similar. However, instead of a simple list, here we have a list of lists, or nested list.</p>
-<p>The python code below creates a list of lists that stores the contents of the heating bill table shown above:</p>
-<pre><code class="language-python">heating_bill = [
-    [112, 32, 10, 96],
-    [60, 15, 0, 70],
-    [196, 65, 15, 180]
+                        <h1 id="lists-of-objects"><a class="header" href="#lists-of-objects">Lists of objects</a></h1>
+<p>If we have many objects, we can store them in a list. This use of classes highlights their power.</p>
+<h2 id="example"><a class="header" href="#example">Example</a></h2>
+<p>Let's use the class <code>Rectangle</code> that we implemented in the previous section. For reference, here is the code:</p>
+<pre><code># implementation of the Rectangle class:
+class Rectangle:
+
+    # Constructor (initializer)
+    def __init__(self, center_x:float = 0, center_y:float = 0, width:float = 1, height:float = 1):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.width = width
+        self.height = height
+
+    # Display to dudraw canvas
+    def draw(self)-&gt;None:
+        dudraw.filled_rectangle(self.center_x, self.center_y, self.width/2, self.height/2)
+
+    # Compute and return area
+    def area(self)-&gt;float:
+        return self.width*self.height
+    
+    def __str__(self)-&gt;str:
+        return f&quot;center: ({self.center_x}, {self.center_y}), width: {self.width}, height: {self.height}&quot;
 </code></pre>
-<p>Notice that <code>heating_bill</code> is a list with 3 items. Each item is itself a list. </p>
-<ul>
-<li>The first element <code>heating_bill[0]</code> is itself a list: <code>[112, 32, 10, 96]</code>.</li>
-<li>The second element<code> heating_bill[1]</code> is itself a list: <code>[60, 15, 0, 70]</code>.</li>
-<li>The third element heating_bill[2] is itself a list: <code>[196, 65, 15, 180]</code>.</li>
-</ul>
-<h2 id="how-to-access-individual-elements-in-a-2d-list"><a class="header" href="#how-to-access-individual-elements-in-a-2d-list">How to access individual elements in a 2D list</a></h2>
-<figure>
-<img src="2D_indices.png" alt="Accessing 2D lists using indices" class="center", width="500">
-</figure>
-<p>Rather than focusing on 2D lists as a list of lists, another perspective is to think of it as a rectangular grid, each position having a row position and a column position. So to indicate a specific element, you give two index values. The first index gives the row and the second index gives the column.</p>
-<p>For example:</p>
-<ul>
-<li><code>heating_bill[0][0]</code> refers to row index <code>0</code>, column index <code>0</code>, whose value is <code>112</code>.</li>
-<li><code>heating_bill[2][3]</code> refers to row index <code>2</code>, column index <code>3</code>, whose value is <code>180</code>.</li>
-<li><code>heating_bill[1][2]</code> refers to row index <code>1</code>, column index <code>2</code>, whose value is <code>0</code>.</li>
-</ul>
-<h2 id="creating-2d-lists-using-for-loops"><a class="header" href="#creating-2d-lists-using-for-loops">Creating 2D lists using <code>for</code>-loops</a></h2>
-<p>Consider the following <code>4x3</code> 2D list, with all values initialized to <code>0</code>:</p>
-<pre><code class="language-python">temperature = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0]
-]
+<h2 id="instantiating-creating-a-list-of-objects"><a class="header" href="#instantiating-creating-a-list-of-objects">Instantiating (creating) a list of objects</a></h2>
+<p>We will now create 100 <code>Rectangle</code> objects with random centers, each with width and height of 0.02, and store them in a list. 
+Please note how short and simple this code is! Create an empty list to store the rectangles. 
+Then within a for loop, instantiate (create) a new <code>Rectangle</code> object, 
+passing random values for the center, and 0.02 for the width and height. 
+Then append that new rectangle to the list of rectangles.</p>
+<pre><code># The following short segment of code creates 100 rectangle objects, with random centers and fixed width and height
+rectangles = []
+for i in range(100):
+    new_rectangle = Rectangle(random.random(), random.random(), 0.02, 0.02)
+    rectangles.append(new_rectangle)
 </code></pre>
-<p>This 2D list could be created more flexibly with the following code:</p>
-<pre><code class="language-python"># Create an empty list
-temperature = []
-# Four rows:
-for row in range(4):
-    # Create an empty sub-list
-    new_row = [] 
-    # Fill the row with three 0's   
-    for column in range(3):
-        new_row.append(0)
-    # Put the newly-created row into the outer list:
-    temperature.append(new_row)
+<h2 id="traversing-iterating-over-the-list-of-objects"><a class="header" href="#traversing-iterating-over-the-list-of-objects">Traversing (iterating over) the list of objects</a></h2>
+<p>Now that all 100 of our rectangles are stored in one list, we can iterate over that list, doing whatever we want with
+each rectangle. For example, the following code displays all 100 rectangles to a dudraw canvas:</p>
+<pre><code># This content-based loop iterates over each rectangle, displaying it by calling its draw() method
+for rectangle in rectangles:
+    rectangle.draw()
+dudraw.show(10000) # display for 10 seconds
 </code></pre>
+<p>Note that the above loop could alternately have been implemented with an index-based loop:</p>
+<pre><code>for i in range(len(rectangles)):
+    rectangles[i].draw()
+dudraw.show(10000)
+</code></pre>
+<p>As another example, here's a loop that calculates the total area of all of the rectangles:</p>
+<pre><code class="language-total_area = 0">for rectangle in rectangles:
+    total_area += rectangle.area()
+print(total_area)
+</code></pre>
+<p>Exercise for you: convert the above code to an index-based loop.</p>
+<p>And a third example of iterating over a list of objects, here is a loop that outputs to the terminal the data stored in the <code>rectangle</code> list. 
+On the second line, python automatically calls the <code>__str__</code> method we implemented in the <code>Rectangle</code> class.</p>
+<pre><code>for i in range(len(rectangles)):
+    print(rectangles[i])
+</code></pre>
+<p>Exercise for you: convert the above code to a content-based loop.</p>
+<h2 id="a-quirk-of-python-when-printing-lists-of-objects"><a class="header" href="#a-quirk-of-python-when-printing-lists-of-objects">A quirk of python when printing lists of objects</a></h2>
+<p>It would be very natural for you to think that the following line would output the contents of each rectangle in the list <code>rectangles</code>:</p>
+<pre><code>print(rectangles)
+</code></pre>
+<p>Since we have implemented <code>__str__</code>, it seems like <code>__str__</code> should be called for every element in the list we are outputting.
+However, in python if we print our list of objects, the memory addresses of the objects get printed:</p>
+<pre><code>[&lt;__main__.Rectangle object at 0x1024dcf10&gt;, &lt;__main__.Rectangle object at 0x10263df30&gt;, &lt;__main__.Rectangle object at 0x1032797e0&gt;,
+&lt;__main__.Rectangle object at 0x104919900&gt;, &lt;__main__.Rectangle object at 0x104919960&gt;, &lt;__main__.Rectangle object at 0x1049199c0&gt;,
+...
+</code></pre>
+<p>There is a way around this. When outputting a list of objects, python automatically calls the <code>__repr__</code> method, not the <code>__str__</code> method.
+Let's implement the <code>__repr__</code> method in our <code>Rectangle</code> class (having it just call our existing <code>__str__</code> method).
+Add this method to our <code>Rectangle</code> class:</p>
+<pre><code>    def __repr__(self)-&gt;str:
+        return self.__str__()
+</code></pre>
+<p>Now when we execute the line:</p>
+<pre><code>print(rectangles)
+</code></pre>
+<p>we get our desired output:</p>
+<pre><code>[center: (0.8229662378956932, 0.564174022001409), width: 0.02, height: 0.02, center: (0.16580614832245955, 0.17398244134557717), width: 0.02, height: 0.02,
+center: (0.6660610136763881, 0.9802962789008293), width: 0.02, height: 0.02, center: (0.5937968938322629, 0.655517849943249), width: 0.02, height: 0.02,
+...
+</code></pre>
+<p>In this course, we will always implement a <code>__repr__</code> method in every class we write.</p>
+<p>Note: in python, there is another official purpose for <code>__repr__</code> methods, 
+so in future work you might be required to have <code>__repr__</code> produce strings with a different format than <code>__str__</code>.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../chapters/lists_and_dicts/list_comprehension.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../chapters/classes/implementing_classes.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../chapters/lists_and_dicts/nested_data_structures.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -269,13 +272,10 @@ for row in range(4):
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../chapters/lists_and_dicts/list_comprehension.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../chapters/classes/implementing_classes.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../chapters/lists_and_dicts/nested_data_structures.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>

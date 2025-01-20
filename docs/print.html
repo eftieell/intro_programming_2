@@ -85,7 +85,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="chapters/review/review_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="chapters/functions/function_parameters.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li></ol></li><li class="chapter-item expanded "><a href="chapters/classes/classes_chapter.html">Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapters/classes/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="chapters/classes/implementing_classes.html">Implementing classes</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="chapters/review/review_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="chapters/functions/function_parameters.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li></ol></li><li class="chapter-item expanded "><a href="chapters/classes/classes_chapter.html">Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="chapters/classes/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="chapters/classes/implementing_classes.html">Implementing classes</a></li><li class="chapter-item expanded "><a href="chapters/classes/lists_of_objects.html">Lists of objects</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -1755,6 +1755,95 @@ print(rectangle1.area())
 rectangle2.draw()
 dudraw.show(10000)
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="lists-of-objects"><a class="header" href="#lists-of-objects">Lists of objects</a></h1>
+<p>If we have many objects, we can store them in a list. This use of classes highlights their power.</p>
+<h2 id="example-1"><a class="header" href="#example-1">Example</a></h2>
+<p>Let's use the class <code>Rectangle</code> that we implemented in the previous section. For reference, here is the code:</p>
+<pre><code># implementation of the Rectangle class:
+class Rectangle:
+
+    # Constructor (initializer)
+    def __init__(self, center_x:float = 0, center_y:float = 0, width:float = 1, height:float = 1):
+        self.center_x = center_x
+        self.center_y = center_y
+        self.width = width
+        self.height = height
+
+    # Display to dudraw canvas
+    def draw(self)-&gt;None:
+        dudraw.filled_rectangle(self.center_x, self.center_y, self.width/2, self.height/2)
+
+    # Compute and return area
+    def area(self)-&gt;float:
+        return self.width*self.height
+    
+    def __str__(self)-&gt;str:
+        return f&quot;center: ({self.center_x}, {self.center_y}), width: {self.width}, height: {self.height}&quot;
+</code></pre>
+<h2 id="instantiating-creating-a-list-of-objects"><a class="header" href="#instantiating-creating-a-list-of-objects">Instantiating (creating) a list of objects</a></h2>
+<p>We will now create 100 <code>Rectangle</code> objects with random centers, each with width and height of 0.02, and store them in a list. 
+Please note how short and simple this code is! Create an empty list to store the rectangles. 
+Then within a for loop, instantiate (create) a new <code>Rectangle</code> object, 
+passing random values for the center, and 0.02 for the width and height. 
+Then append that new rectangle to the list of rectangles.</p>
+<pre><code># The following short segment of code creates 100 rectangle objects, with random centers and fixed width and height
+rectangles = []
+for i in range(100):
+    new_rectangle = Rectangle(random.random(), random.random(), 0.02, 0.02)
+    rectangles.append(new_rectangle)
+</code></pre>
+<h2 id="traversing-iterating-over-the-list-of-objects"><a class="header" href="#traversing-iterating-over-the-list-of-objects">Traversing (iterating over) the list of objects</a></h2>
+<p>Now that all 100 of our rectangles are stored in one list, we can iterate over that list, doing whatever we want with
+each rectangle. For example, the following code displays all 100 rectangles to a dudraw canvas:</p>
+<pre><code># This content-based loop iterates over each rectangle, displaying it by calling its draw() method
+for rectangle in rectangles:
+    rectangle.draw()
+dudraw.show(10000) # display for 10 seconds
+</code></pre>
+<p>Note that the above loop could alternately have been implemented with an index-based loop:</p>
+<pre><code>for i in range(len(rectangles)):
+    rectangles[i].draw()
+dudraw.show(10000)
+</code></pre>
+<p>As another example, here's a loop that calculates the total area of all of the rectangles:</p>
+<pre><code class="language-total_area = 0">for rectangle in rectangles:
+    total_area += rectangle.area()
+print(total_area)
+</code></pre>
+<p>Exercise for you: convert the above code to an index-based loop.</p>
+<p>And a third example of iterating over a list of objects, here is a loop that outputs to the terminal the data stored in the <code>rectangle</code> list. 
+On the second line, python automatically calls the <code>__str__</code> method we implemented in the <code>Rectangle</code> class.</p>
+<pre><code>for i in range(len(rectangles)):
+    print(rectangles[i])
+</code></pre>
+<p>Exercise for you: convert the above code to a content-based loop.</p>
+<h2 id="a-quirk-of-python-when-printing-lists-of-objects"><a class="header" href="#a-quirk-of-python-when-printing-lists-of-objects">A quirk of python when printing lists of objects</a></h2>
+<p>It would be very natural for you to think that the following line would output the contents of each rectangle in the list <code>rectangles</code>:</p>
+<pre><code>print(rectangles)
+</code></pre>
+<p>Since we have implemented <code>__str__</code>, it seems like <code>__str__</code> should be called for every element in the list we are outputting.
+However, in python if we print our list of objects, the memory addresses of the objects get printed:</p>
+<pre><code>[&lt;__main__.Rectangle object at 0x1024dcf10&gt;, &lt;__main__.Rectangle object at 0x10263df30&gt;, &lt;__main__.Rectangle object at 0x1032797e0&gt;,
+&lt;__main__.Rectangle object at 0x104919900&gt;, &lt;__main__.Rectangle object at 0x104919960&gt;, &lt;__main__.Rectangle object at 0x1049199c0&gt;,
+...
+</code></pre>
+<p>There is a way around this. When outputting a list of objects, python automatically calls the <code>__repr__</code> method, not the <code>__str__</code> method.
+Let's implement the <code>__repr__</code> method in our <code>Rectangle</code> class (having it just call our existing <code>__str__</code> method).
+Add this method to our <code>Rectangle</code> class:</p>
+<pre><code>    def __repr__(self)-&gt;str:
+        return self.__str__()
+</code></pre>
+<p>Now when we execute the line:</p>
+<pre><code>print(rectangles)
+</code></pre>
+<p>we get our desired output:</p>
+<pre><code>[center: (0.8229662378956932, 0.564174022001409), width: 0.02, height: 0.02, center: (0.16580614832245955, 0.17398244134557717), width: 0.02, height: 0.02,
+center: (0.6660610136763881, 0.9802962789008293), width: 0.02, height: 0.02, center: (0.5937968938322629, 0.655517849943249), width: 0.02, height: 0.02,
+...
+</code></pre>
+<p>In this course, we will always implement a <code>__repr__</code> method in every class we write.</p>
+<p>Note: in python, there is another official purpose for <code>__repr__</code> methods, 
+so in future work you might be required to have <code>__repr__</code> produce strings with a different format than <code>__str__</code>.</p>
 
                     </main>
 
