@@ -3,7 +3,7 @@ authors = ["Faan Tone Liu"]
 language = "en"
 multilingual = false
 src = "src"
-title = "Introduction to Programming 2"
+title = "Introduction to Programming 2 - DRAFT"
 
 [build]
 build-dir = "docs"
