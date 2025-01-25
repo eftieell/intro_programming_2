@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Call stack memory diagrams - Introduction to Programming 2 - DRAFT</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../css/pyscript.css">
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/call_stack.html" class="active">Call stack memory diagrams</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes/classes_chapter.html">Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/implementing_classes.html">Implementing classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/print_object.html">Output of objects to the terminal</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/lists_of_objects.html">Lists of objects</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Introduction to Programming 2 - DRAFT</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="drawing-memory-diagrams-to-represent-the-call-stack"><a class="header" href="#drawing-memory-diagrams-to-represent-the-call-stack">Drawing memory diagrams to represent the call stack</a></h1>
+<p>Consider a python program that has function calls. Here is a simplest example:</p>
+<pre><code>def my_function(val: int):
+    print(f&quot;In my_function line 2, val is {val}&quot;)
+    val = val + 10
+    print(f&quot;In my_function line 4, val is {val}&quot;)
+    return val
+
+def main():
+    value = 23
+    print(&quot;In main, line 9&quot;)
+    another = my_function(value)
+    print(f&quot;In main, line 11, value: {value}, another_value: {another}&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<p>Below is an image of the same program, with line numbers that we will refer to while tracing the function.
+<img src="simple_call_stack.png" alt="code with functions main and my_function" width="500"/></p>
+<p>Please stop reading for a moment to trace the code by hand, giving the output. Run the code to double-check.</p>
+<p>Notice that when the code runs line 10, it must evaluate the right-hand side by calling <code>my_function(value)</code> before it can
+store the return value in the variable <code>another</code>. When the function <code>my_function(value)</code> is called, running of the function <code>main()</code> is paused until <code>my_function</code> completes running and returns. At that point program control returns to line 10 and
+picks back up where it left off.
+When we trace code by hand, we naturally remember exactly where we paused, and even the values of the local variables. This allows us seamlessly resume running line 10 after <code>my_function</code> completes executing and returns. However, unlike humans, computers have no natural or automatic process for remembering. Thus, when a function is called, all information about the current values of local variables and the line currently being executed must be stored. They are stored in the call stack.</p>
+<p>The call stack consists of individual frames. When a function begins execution, a frame is added to the top of the call stack (we call it &quot;pushed&quot; onto the stack). Each frame stores the current line number being executed, as well as the values of every local variable. When a new
+function is invoked, a new frame is created and added to the top of the call stack.</p>
+<p>Here is a memory diagram showing the state of the call stack when the program is executing line 7:</p>
+<img src="call_stack_line_7.png" alt="call stack memory diagram line 7" width="200"/>
+<p>The next line creates a variable called <code>value</code>, and stores the value <code>23</code> there. Here is the call stack memory diagram when the program is executing line 9. Notice that a new local variable has been added to the frame for the function <code>main</code>:</p>
+<img src="call_stack_line_9.png" alt="call stack memory diagram line 9" width="200"/>
+<p>On line 10, the program calls the function <code>my_function()</code>. This means that the funtion <code>main()</code> pauses its execution. A new frame for this call to <code>my_function</code> is created and added to the top of the call stack. The top frame on the call stack always shows the information for the function that is currently executing. Here is the call stack memory diagram when the program has invoked <code>my_function()</code> and is executing line 2. Notice that <code>val</code> is passed as a parameter, so it behaves like a local variable. Its value is initialized with the value that was passed (23 in this case). The variable exists only as long as the function is still executing. Thus we draw it in the frame associated with <code>my_function()</code>:</p>
+<img src="call_stack_line_2.png" alt="call stack memory diagram line 2" width="200"/>
+<p>On line 3, the value stored in <code>val</code> is changed. Notice that only the local variable is modified. Since <code>my_function()</code> only has access to the local variables stored in its own frame, the variables owned by <code>main()</code> cannot be modified by this function. Here is the call stack memory diagram when the program is executing line 4:</p>
+<img src="call_stack_line_4.png" alt="call stack memory diagram line 4" width="200"/>
+<p>On line 5 of the program, <code>my_function()</code> has completed execution and will return program control to the calling function (<code>main()</code> in this case). Python knows which frame to return to and which line to resume by looking at the <em>next frame down on the stack</em>. So the return value is passed back to the function call in the frame below, the frame for <code>my_function()</code> is destroyed (we call it getting &quot;popped&quot; from the stack), and main resumes its process on the line stored in the frame.</p>
+<table>
+<tr>
+    <td><img src="call_stack_line_5a.png" alt="call stack memory diagram line 5a" width="200"/></td>
+    <td><img src="call_stack_line_5b.png" alt="call stack memory diagram line 5b" width="200"/></td>
+    <td><img src="call_stack_line_5c.png" alt="call stack memory diagram line 5c" width="200"/></td>
+</tr>
+<tr> 
+    <td>The return value is computed</td>
+    <td>The return value is passed back to the calling function (next frame down the stack)</td>
+    <td>`my_function()` is complete, so its frame is deleted (popped) from the stack</td></tr>
+</table>
+<p>Back on line 10, the return value is assigned to the variable <code>another</code>. Here is the call stack memory diagram when line 10 of the program is done executing:</p>
+<p><img src="call_stack_line_10.png" alt="call stack memory diagram line 10" width="200"/></td></p>
+<h1 id="tools-for-visualizing"><a class="header" href="#tools-for-visualizing">Tools for visualizing</a></h1>
+<ul>
+<li>The debugger in VSCode can be used to see the call stack (see the bottom window of the debug pane). It doesn't show the entire frame for each function call, but lists the calls.</li>
+<li>Python tutor (https://pythontutor.com/visualize.html#mode=edit) is a valuable online tool for stepping through code. It shows the call stack, including all local variables.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../chapters/functions/experimental_runtime.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../chapters/classes/classes_chapter.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../chapters/functions/experimental_runtime.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../chapters/classes/classes_chapter.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../js/disable_keyboard.js"></script>
+
+
+    </div>
+    </body>
+</html>
