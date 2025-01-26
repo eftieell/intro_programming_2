@@ -216,11 +216,36 @@ function is invoked, a new frame is created and added to the top of the call sta
 </table>
 <p>Back on line 10, the return value is assigned to the variable <code>another</code>. Here is the call stack memory diagram when line 10 of the program is done executing:</p>
 <p><img src="call_stack_line_10.png" alt="call stack memory diagram line 10" width="200"/></td></p>
+<p>More details of how the memory diagrams above were built are shown in this video:
+<video src="https://cs.du.edu/~ftl/1352/videos/call_stack_simplest_case.mp4" width="320" height="180" controls></video></p>
+<h1 id="another-example"><a class="header" href="#another-example">Another example</a></h1>
+<p>The video below demonstrates tracing through the following code, and maintaining the call stack memory diagram through each step.</p>
+<pre><code>def fourth(number: int)-&gt;int:
+    partial_result = cube(number)
+    return partial_result*number
+
+def cube(number: int)-&gt;int:
+    partial_result = square(number)
+    return partial_result*number
+
+def square(number: int)-&gt;int:
+    return number*number
+
+def main():
+    value = int(input(&quot;What integer do you want? &quot;))
+    print(f'The fourth power of {value} is {fourth(value)}')
+
+if __name__ == '__main__':
+    main()
+</code></pre>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/call_stack_second_demo.mov" width="320" height="180" controls></video></p>
 <h1 id="tools-for-visualizing"><a class="header" href="#tools-for-visualizing">Tools for visualizing</a></h1>
 <ul>
 <li>The debugger in VSCode can be used to see the call stack (see the bottom window of the debug pane). It doesn't show the entire frame for each function call, but lists the calls.</li>
 <li>Python tutor (https://pythontutor.com/visualize.html#mode=edit) is a valuable online tool for stepping through code. It shows the call stack, including all local variables.</li>
 </ul>
+<p>This video demonstrates using both of these tools for tracing, debugging, and seeing the contents of the call stack:</p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/tools_demo.mov" width="320" height="180" controls></video></p>
 
                     </main>
 
