@@ -66,11 +66,42 @@ Back on line 10, the return value is assigned to the variable `another`. Here is
 
 <img src="call_stack_line_10.png" alt="call stack memory diagram line 10" width="200"/></td>
 
+More details of how the memory diagrams above were built are shown in this video:
+<video src="https://cs.du.edu/~ftl/1352/videos/call_stack_simplest_case.mp4" width="320" height="180" controls></video>
+
+# Another example
+
+The video below demonstrates tracing through the following code, and maintaining the call stack memory diagram through each step.
+```
+def fourth(number: int)->int:
+    partial_result = cube(number)
+    return partial_result*number
+
+def cube(number: int)->int:
+    partial_result = square(number)
+    return partial_result*number
+
+def square(number: int)->int:
+    return number*number
+
+def main():
+    value = int(input("What integer do you want? "))
+    print(f'The fourth power of {value} is {fourth(value)}')
+
+if __name__ == '__main__':
+    main()
+```
+
+<video src="https://cs.du.edu/~ftl/1352/videos/call_stack_second_demo.mov" width="320" height="180" controls></video>
+
 # Tools for visualizing
 
 * The debugger in VSCode can be used to see the call stack (see the bottom window of the debug pane). It doesn't show the entire frame for each function call, but lists the calls.
 * Python tutor (https://pythontutor.com/visualize.html#mode=edit) is a valuable online tool for stepping through code. It shows the call stack, including all local variables.
 
+This video demonstrates using both of these tools for tracing, debugging, and seeing the contents of the call stack:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/tools_demo.mov" width="320" height="180" controls></video>
 
 
 
