@@ -81,6 +81,12 @@ if __name__ == "__main__":
     main()
 ```
 
+
+Here's a video demonstrating the above code running:
+
+https://github.com/user-attachments/assets/a540b4c6-e952-4814-bfbc-bac4b4b0f837
+
+
 To animate more complex objects, create a function that displays the object at position given by parameters. (or, once you have learned to use classes, perhaps you will implement a method of a class to draw the object). Here's an example. Notice that very little of the `main()` function changed!
 
 ```python
@@ -152,6 +158,11 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+Here's a video demonstrating the code above running:
+
+https://github.com/user-attachments/assets/9ff759bf-cddf-48fc-a6a8-1f6540f618ec
+
 
 
 
