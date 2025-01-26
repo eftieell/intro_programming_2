@@ -67,7 +67,7 @@ Back on line 10, the return value is assigned to the variable `another`. Here is
 <img src="call_stack_line_10.png" alt="call stack memory diagram line 10" width="200"/></td>
 
 More details of how the memory diagrams above were built are shown in this video:
-<video src="https://cs.du.edu/~ftl/1352/videos/call_stack_simplest_case.mp4" width="320" height="180" controls></video>
+<video src="https://cs.du.edu/~ftl/1352/videos/call_stack_simplest_case.mp4" width="480" height="270" controls></video>
 
 # Another example
 
@@ -92,7 +92,7 @@ if __name__ == '__main__':
     main()
 ```
 
-<video src="https://cs.du.edu/~ftl/1352/videos/call_stack_second_demo.mov" width="320" height="180" controls></video>
+<video src="https://cs.du.edu/~ftl/1352/videos/call_stack_second_demo.mp4" width="480" height="270" controls></video>
 
 # Tools for visualizing
 
@@ -101,7 +101,7 @@ if __name__ == '__main__':
 
 This video demonstrates using both of these tools for tracing, debugging, and seeing the contents of the call stack:
 
-<video src="https://cs.du.edu/~ftl/1352/videos/tools_demo.mov" width="320" height="180" controls></video>
+<video src="https://cs.du.edu/~ftl/1352/videos/tools_demo.mp4" width="480" height="270" controls></video>
 
 
 
