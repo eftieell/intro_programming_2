@@ -1,0 +1,374 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Review of animation with dudraw - Introduction to Programming 2 - DRAFT</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../css/pyscript.css">
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/dudraw_animation.html" class="active">Review of animation with dudraw</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/call_stack.html">Call stack memory diagrams</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes/classes_chapter.html">Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/implementing_classes.html">Implementing classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/print_object.html">Output of objects to the terminal</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/lists_of_objects.html">Lists of objects</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Introduction to Programming 2 - DRAFT</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="review-of-producing-animations-using-the-dudraw-graphics-package"><a class="header" href="#review-of-producing-animations-using-the-dudraw-graphics-package">Review of producing animations using the dudraw graphics package</a></h1>
+<p>Basic information about creating drawings using <code>dudraw</code> can be found here: <a href="https://cs.du.edu/~intropython/intro-to-programming/dudraw_quickstart.html">dudraw basics</a>. This section assumes you can create basic drawings, and contains a review of how to animate drawings using the <code>dudraw</code> package.</p>
+<p>Here is the basic outline of a <code>dudraw</code> animation program:</p>
+<pre><code class="language-python">import dudraw
+
+def main():
+    # set up the dudraw canvas
+
+    # initialize the attributes of object you are animating (position, size, etc.)
+
+    # main animation loop (infinite loop, later we will give a way for users to quit)
+    while True:
+        # clear background
+
+        # redraw the next frame
+
+        # display the frame and pause
+
+        # Prepare for next frame by advancing the attributes of the animated object(s)
+        #  (move position, change size, etc.)
+
+        # Check for user input (key presses or mouse presses)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+
+</code></pre>
+<p>Check for key presses by using <code>dudraw.next_key()</code>, which returns a single character if a key was pressed, and returns an empty string (<code>''</code>) if no key has been pressed since the most recent query.</p>
+<p>Check for mouse clicks using <code>dudraw.mouse_clicked()</code>. Sometimes you may need to recognize if the mouse is currently pressed and not yet released (so you can process dragging of the mouse). Then use <code>dudraw.mouse_is_pressed()</code>. Occasionally you may also need the supporting functions <code>dudraw.mouse_dragged()</code> and <code>dudraw.mouse_released()</code>.</p>
+<p>Here's a simplest example of an animation:</p>
+<pre><code class="language-python">import dudraw
+
+# Animates a circle moving to the upper right.
+# Quits when user types 'q'. When mouse is clicked,
+# the circle's position sets to the clicked position.
+def main():
+    # set up the dudraw canvas
+    dudraw.set_canvas_size(400, 400)
+    # no call to dudraw.set_x_scale() or dudraw.set_y_scale()
+    # means we are accepting the default of x in [0, 1] and y in [0, 1]
+
+    # initialize the position of the circle
+    x = 0.1
+    y = 0.5
+
+    # 
+    key = ''
+    # main animation loop (infinite loop, later we will give a way for users to quit)
+    while key.lower() != 'q':
+        # clear background
+        dudraw.clear(dudraw.LIGHT_GRAY)
+
+        # redraw the next frame. The circle has a radius of 10 pixels.
+        dudraw.filled_circle(x, y, 0.025)
+
+        # display the frame and pause (20 milliseconds = 50 frames per second)
+        dudraw.show(20)
+
+        # Prepare for the  next frame by moving circle, one pixel
+        x += .0025
+        y += .0025
+        # Save keypress to check for 'q' next time through the loop
+        key = dudraw.next_key()
+        # if the mouse has been clicked, reset the x, y position to
+        # the clicked location
+        if dudraw.mouse_clicked():
+            x = dudraw.mouse_x()
+            y = dudraw.mouse_y()        
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<p>Here's a video demonstrating the above code running:</p>
+<p>https://github.com/user-attachments/assets/a540b4c6-e952-4814-bfbc-bac4b4b0f837</p>
+<p>To animate more complex objects, create a function that displays the object at position given by parameters. (or, once you have learned to use classes, perhaps you will implement a method of a class to draw the object). Here's an example. Notice that very little of the <code>main()</code> function changed!</p>
+<pre><code class="language-python">import dudraw
+import random
+
+def draw_rocket(x: float, y: float)-&gt;None:
+    # rectangle, main body of rocket:
+    dudraw.set_pen_color(dudraw.WHITE)
+    dudraw.filled_rectangle(x, y, 0.03, .125)
+    dudraw.set_pen_color(dudraw.BLACK)
+    dudraw.rectangle(x, y, 0.03, 0.125)
+    # cone at top of rocket (drawn as a rectangle)
+    dudraw.set_pen_color(dudraw.WHITE)
+    dudraw.filled_triangle(x-0.03,y+0.125, x+0.03, y+0.125, x, y+0.2)
+    dudraw.set_pen_color(dudraw.BLACK)
+    dudraw.triangle(x-0.03,y+0.125, x+0.03, y+0.125, x, y+0.2)
+    dudraw.set_font_size(8)
+    dudraw.text(x, y, &quot;NASA&quot;)
+    # draw a bunch of circles, to look like smoke:
+    print(int(y*80))
+    for _ in range(int(y*80)):
+        y_offset = random.uniform(max(0,y-0.25), y-0.125)
+        x_offset = random.uniform((y_offset-y)*0.2, (y-y_offset)*0.2)
+        size = random.uniform(0.0125, 0.025)
+        red = random.randint(50, 255)
+        green = random.randint(0,red//2)
+        dudraw.set_pen_color_rgb(red, green, 0)
+        dudraw.filled_circle(x+x_offset, y_offset,size)
+        dudraw.set_pen_color(dudraw.BLACK)
+        dudraw.circle(x+x_offset,y_offset,size )
+
+# animate a rocket taking off:
+def main():
+    # set up the dudraw canvas
+    dudraw.set_canvas_size(400, 400)
+
+    # no call to dudraw.set_x_scale() or dudraw.set_y_scale()
+    # means we are accepting the default of x in [0, 1] and y in [0, 1]
+
+    # initialize the position of the rocket
+    x = 0.5
+    y = 0.125
+
+    # 
+    key = ''
+    # main animation loop (infinite loop, later we will give a way for users to quit)
+    while key.lower() != 'q':
+        # clear background
+        dudraw.clear(dudraw.LIGHT_GRAY)
+
+        # redraw the next frame. The circle has a radius of 10 pixels.
+        draw_rocket(x, y)
+
+        # display the frame and pause (20 milliseconds = 50 frames per second)
+        dudraw.show(20)
+
+        # Prepare for the  next frame by moving rocket, upwards one pixel
+        y += .0025
+        # Save keypress to check for 'q' next time through the loop
+        key = dudraw.next_key()
+        # if the mouse has been clicked, reset the x, y position to
+        # the clicked location
+        if dudraw.mouse_clicked():
+            x = dudraw.mouse_x()
+            y = dudraw.mouse_y()        
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre>
+<p>Here's a video demonstrating the code above running:</p>
+<p>https://github.com/user-attachments/assets/9ff759bf-cddf-48fc-a6a8-1f6540f618ec</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../chapters/intro.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../../chapters/review/review_chapter.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../chapters/intro.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../../chapters/review/review_chapter.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../js/disable_keyboard.js"></script>
+
+
+    </div>
+    </body>
+</html>
