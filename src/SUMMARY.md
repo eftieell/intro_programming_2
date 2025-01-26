@@ -1,5 +1,6 @@
 # Summary
 - [Introduction](chapters/intro.md)
+    - [Review of animation with dudraw](chapters/review/dudraw_animation.md)
 - [Lists and Dictionaries](chapters/review/review_chapter.md)
     - [Python lists](chapters/lists_and_dicts/lists.md)
     - [Python dictionaries](chapters/lists_and_dicts/dictionary.md)
