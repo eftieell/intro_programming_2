@@ -2,7 +2,7 @@
 
 The template for the simplest class looks like this:
 
-```
+```python
 class NameOfClass:
 
     # Every class has an __init__ method, called a constructor, or initializer.
@@ -15,7 +15,7 @@ class NameOfClass:
         pass
 ```
 
-Recall from the previous section the interface of the `Rectangle` class:
+In python, classes are named using CamelCase (class name is capitalized, no spaces, each new word starts with a capital letter). Recall from the previous section the interface of the `Rectangle` class:
 
 <table>
     <tr>
@@ -25,9 +25,8 @@ Recall from the previous section the interface of the `Rectangle` class:
       <td>Instance variables and their types:<br>
     <code>center_x:float</code><br>
     <code>center_y:float</code><br>
-    <code>width:float</code>code><br>
-    <code>height:float</code>code></td>
-      ```
+    <code>width:float</code><br>
+    <code>height:float</code></td>
     </tr>
     <tr>
       <td>methods (along with their parameters and return types):<br>
@@ -37,9 +36,9 @@ Recall from the previous section the interface of the `Rectangle` class:
     </tr> 
 </table>
 
-The code below gives an implementation of the `Rectangle class`. Explanations of each component are given in the comments of the code. The code below also shows simple usage of the `Rectangle` class. A few `Rectangle` objects are instantiated, and their methods are invoked.
+The code below gives an implementation of the `Rectangle` class. Explanations of each component are given in the comments of the code, so read this code carefully to understand details of how to implement classes. In the main code block, a few `Rectangle` objects are instantiated, and their methods are invoked.
 
-```
+```python
 # implementation of the Rectangle class:
 class Rectangle:
 

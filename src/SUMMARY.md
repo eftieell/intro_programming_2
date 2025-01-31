@@ -22,4 +22,5 @@
     - [Implementing classes](chapters/classes/implementing_classes.md)
     - [Output of objects to the terminal](chapters/classes/print_object.md)
     - [Lists of objects](chapters/classes/lists_of_objects.md)
+    - [Class variables](chapters/classes/class_variables.md)
 

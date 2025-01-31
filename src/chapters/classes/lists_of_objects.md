@@ -4,7 +4,7 @@ If we have many objects, we can store them in a list. This use of classes highli
 
 ## Example
 Let's use the class `Rectangle` that we implemented in the previous section. For reference, here is the code:
-```
+```python
 # implementation of the Rectangle class:
 class Rectangle:
 
@@ -34,7 +34,7 @@ Then within a for loop, instantiate (create) a new `Rectangle` object,
 passing random values for the center, and 0.02 for the width and height. 
 Then append that new rectangle to the list of rectangles.
 
-```
+```python
 # The following short segment of code creates 100 rectangle objects, with random centers and fixed width and height
 rectangles = []
 for i in range(100):
@@ -45,7 +45,7 @@ for i in range(100):
 ## Traversing (iterating over) the list of objects
 Now that all 100 of our rectangles are stored in one list, we can iterate over that list, doing whatever we want with
 each rectangle. For example, the following code displays all 100 rectangles to a dudraw canvas:
-```
+```python
 # This content-based loop iterates over each rectangle, displaying it by calling its draw() method
 for rectangle in rectangles:
     rectangle.draw()
@@ -53,14 +53,15 @@ dudraw.show(10000) # display for 10 seconds
 ```
 
 Note that the above loop could alternately have been implemented with an index-based loop:
-```
+```python
 for i in range(len(rectangles)):
     rectangles[i].draw()
 dudraw.show(10000)
 ```
 
 As another example, here's a loop that calculates the total area of all of the rectangles:
-```total_area = 0
+```python
+total_area = 0
 for rectangle in rectangles:
     total_area += rectangle.area()
 print(total_area)
@@ -69,7 +70,7 @@ Exercise for you: convert the above code to an index-based loop.
 
 And a third example of iterating over a list of objects, here is a loop that outputs to the terminal the data stored in the `rectangle` list. 
 On the second line, python automatically calls the `__str__` method we implemented in the `Rectangle` class.
-```
+```python
 for i in range(len(rectangles)):
     print(rectangles[i])
 ```
@@ -77,7 +78,7 @@ Exercise for you: convert the above code to a content-based loop.
 
 ## A quirk of python when printing lists of objects
 It would be very natural for you to think that the following line would output the contents of each rectangle in the list `rectangles`:
-```
+```python
 print(rectangles)
 ```
 Since we have implemented `__str__`, it seems like `__str__` should be called for every element in the list we are outputting.
@@ -90,12 +91,12 @@ However, in python if we print our list of objects, the memory addresses of the 
 There is a way around this. When outputting a list of objects, python automatically calls the `__repr__` method, not the `__str__` method.
 Let's implement the `__repr__` method in our `Rectangle` class (having it just call our existing `__str__` method).
 Add this method to our `Rectangle` class:
-```
+```python
     def __repr__(self)->str:
         return self.__str__()
 ```
 Now when we execute the line:
-```
+```python
 print(rectangles)
 ```
 we get our desired output:

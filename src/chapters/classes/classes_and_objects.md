@@ -44,7 +44,7 @@ Think of the Rectangle class as a "cookie cutter" that we can use to create mult
 
 ## How to create objects - example
 To create a new rectangle object, we state the name of the class, and pass the required initialization parameters. This calls the constructor (or initialization method).
-```
+```python
 rectangle1 = Rectangle(2, 3, 0.1, 0.2) # create a rectangle with center (2, 3), width 0.1, height 0.2
 rectangle2 = Rectangle(4, 6, 0.15, 0.3) # create a rectangle with center (4, 6), width 0.15, height 0.3
 ```
@@ -53,16 +53,16 @@ The first line of code above creates (or *instantiates*) a new <code>Rectangle</
 ## Using (or invoking) methods
 Once we have created an object, we can invoke the methods associated with it using the expression <code>object_name.method_name()</code>.
 For example, the code below outputs the area of the object <code>rectangle1</code> that we instantiated above:
-```
+```python
 print(rectangle1.area())
 ```
 The next line of code displays <code>rectangle2</code> that we instantiated above:
-```
+```python
 rectangle2.draw()
 ```
 ## Accessing the data elements in an object
 The data for an object is stored in its instance variables. You can access these values with the expression <code>object_name.instance_variable_name</code>. The following  lines of code output the values stored in the rectangles we created above:
-```
+```python
 print(f"Center point of rectangle1: ({rectangle1.center_x}, {rectangle1.center_y})")
 print(f"width and height of rectangle2: width = {rectangle2.width}, height = {rectangle2.height}")
 ```
@@ -76,7 +76,7 @@ Notice that in the examples above, we wrote code that uses a class (the <code>Re
 ## Strings are objects
 
 We've actually used classes before this. When you create a string in python, it is an object of the <code>str</code> class. For example:
-```
+```python
 name = "Bessie Mae "
 print(name.count('e'))           # outputs the number of e's in name
 lower_case_name = name.lower()   # name.lower() returns a new string object, with all letters now lower-case
