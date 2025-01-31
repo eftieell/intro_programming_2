@@ -1,0 +1,403 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Class variables - Introduction to Programming 2 - DRAFT</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../css/pyscript.css">
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/dudraw_animation.html">Review of animation with dudraw</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/review/review_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_parameters.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/call_stack.html">Call stack memory diagrams</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes/classes_chapter.html">Classes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/implementing_classes.html">Implementing classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/print_object.html">Output of objects to the terminal</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/lists_of_objects.html">Lists of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes/class_variables.html" class="active">Class variables</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Introduction to Programming 2 - DRAFT</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="class-variables"><a class="header" href="#class-variables">Class variables</a></h1>
+<h2 id="how-to-create-and-use-class-variables"><a class="header" href="#how-to-create-and-use-class-variables">How to create and use class variables</a></h2>
+<p>Recall that each object of a class has its own copy of each <em>instance variable</em>. On the other hand, there is a way to create variables that are shared by every object of the class - these are called <em>class variables</em>.</p>
+<p>Key differences between instance variables and class variables:</p>
+<ul>
+<li>Each object has its own copy of every instance variable. But there is only one value stored for a class variable, shared by all objects.</li>
+<li>Instance variables are most commonly created within the <code>__init__</code> method of a class. On the other hand, class variables are created within the class, but <em>outside</em> of any method.</li>
+<li>If an object makes changes to a class variable, that change is seen by every object (since the variable is shared).</li>
+<li>To access an instance variable, we say <code>object_name.instance_variable_name</code>. But to access a class variable, we say <code>ClassName.class_variable_name</code>.</li>
+</ul>
+<h3 id="use-case-1---defining-constants-that-are-shared-program-wide"><a class="header" href="#use-case-1---defining-constants-that-are-shared-program-wide">Use case 1 - defining constants that are shared program-wide</a></h3>
+<p>Here's an example:</p>
+<pre><code class="language-python">class Star:
+
+    # speed of light in miles per second
+    # (this is a class variable)
+    speed_of_light = 186000
+
+    def __init__(self, name, mass, age, distance):
+        self.name = name
+        # store the mass, unit is number of times the mass of our sun
+        self.mass = mass
+        # store the age, unit is billions of years
+        self.age = age
+        # store the distance from earth, in light-years
+        self.distance = distance
+
+    def __str__(self)-&gt;str:
+        return f&quot;{self.name}, mass: {self.mass} times Sol, age: {self.age}x10^9 years, distance: {self.distance} l.y.&quot;
+
+    def distance_in_miles(self)-&gt;float:
+        # miles = light years * seconds per year * speed of light in miles/hour
+        return self.distance * (60 * 60 * 24 * 365) * Star.speed_of_light
+
+# main code block follows:
+# Note the use of named parameters in the next two lines that instantiate Star objects
+alphaA = Star(name = &quot;Alpha Centauri A&quot;, mass = 1.1, age = 5.3, distance = 4.37)
+sirius = Star(name = &quot;Sirius - the Dog Star&quot;, mass = 2.0, age = 0.2, distance = 8.6)
+# Note that the next two lines automatially call the __str__() method for Star
+print(alphaA)
+print(sirius)
+# Demonstration of calling the distance_in_miles() method (which internally uses the Star.speed_of_light class variable)
+print(f&quot;distance of {alphaA.name} from earth: {int(alphaA.distance_in_miles())} miles&quot;)
+print(f&quot;distance of {sirius.name} from earth: {int(sirius.distance_in_miles())} miles&quot;)
+# Demonstration that clients of the Star class can access class variables
+print(f&quot;The speed of light is {Star.speed_of_light} miles per second.&quot;)
+</code></pre>
+<p>output:</p>
+<pre><code>Alpha Centauri A, mass: 1.1 times Sol, age: 5.3x10^9 years, distance: 4.37 l.y.
+Sirius - the Dog Star, mass: 2.0 times Sol, age: 0.2x10^9 years, distance: 8.6 l.y.
+distance of Alpha Centauri A from earth: 25633091520000 miles
+distance of Sirius - the Dog Star from earth: 50444985600000 miles
+The speed of light is 186000 miles per second.
+</code></pre>
+<p>What to notice in the above example:</p>
+<ul>
+<li>The variable <code>speed_of_light</code> is defined <em>within</em> the class <code>Star</code>, but outside of any method definition. This is how we know it is a class variable.</li>
+<li>Since <code>speed_of_light</code> is a class variable, it is shared by all objects of the class. We use a class variable in this case to define a single constant that all objects of the class can access. (There are other uses of class variables - see below.)</li>
+<li>Since class variables are conventionally accessed with <code>ClassName.class_variable_name</code>, all objects can access the class variable in this example with the expression <code>Star.speed_of_light</code>. </li>
+<li>Look closely at the <code>distance_in_miles()</code> method of the <code>Star</code> class. This is where you see the use of the class variable <code>Star.speed_of_light</code>.</li>
+<li>Notice that client code (the main code block) can also access class variables with <code>ClassName.class_variable_name</code>, as seen in the last line of the code, where <code>Star.speed_of_light</code> is output. Although viewing the values stored in a class variable from outside the class is legitimate, it is bad programming practice to modify class variables from outside the class, even though python allows it. Other object-oriented programming languages (C++, Java) have mechanisms for disallowing it.</li>
+<li>Technical note: in python it is also possible to access class variables using the object name (i.e., <code>object_name.class_variable_name</code> rather than <code>ClassName.class_variable_name</code>. For example, in the above code, you can use the expression <code>self.speed_of_light</code> within the class definition, or <code>alphaA.speed_of_light</code> within the client code. However, this practice is strongly discouraged, since if you attempt to mutate (modify) the class variable with this notation, a new instance variable is created with that name rather than modifying the class variable. This causes unexpected side-effects. Thus, it is widely accepted as good python programming practice to always use the notation <code>ClassName.class_variable_name</code>.</li>
+</ul>
+<h2 id="other-applications-of-class-variables"><a class="header" href="#other-applications-of-class-variables">Other applications of class variables</a></h2>
+<h3 id="use-case-2---counting-the-number-of-objects-that-have-been-instantiated"><a class="header" href="#use-case-2---counting-the-number-of-objects-that-have-been-instantiated">Use case 2 - counting the number of objects that have been instantiated</a></h3>
+<p>Because class variables are shared, we can use them to track events that occur class-wide. For example, we can use a class variable to count how many objects of a class have been instantiated. For example:</p>
+<pre><code class="language-python">class Widget:
+
+    # The class variable Widget.count will keep track of how many Widget objects
+    # have been instantiated
+    count = 0
+
+    def __init__(self, number):
+        # create and initialize whatever instance variables are needed:
+        self.number = number
+        # This __init__ method gets called each time a Widget is instantiated, so by
+        # updating the shared variable Widget.count, we can keep track of how many times
+        # this __init__ method has been called, and thus how many Widget objects there are.
+        Widget.count = Widget.count + 1
+
+# main code block:
+# instantiate three Widget objects. Each time, the __init__ method is
+# called, so Widget.count gets incremented
+widget1 = Widget(17)
+widget2 = Widget(23)
+widget3 = Widget(47)
+# The next line outputs 3, since Widget's __init__ method got called 3 times
+print(Widget.count)
+</code></pre>
+<p>In the above code, the class variable <code>Widget.count</code> keeps track of the number of times a <code>Widget</code> object was instantiated. Since instantiation always calls the <code>__init__</code> method, within that method we increment the class variable <code>Widget.count</code> to track the total number of <code>Widget</code> objects.</p>
+<h3 id="use-case-3---counting-the-total-number-of-times-that-methods-within-a-class-have-been-invoked-called"><a class="header" href="#use-case-3---counting-the-total-number-of-times-that-methods-within-a-class-have-been-invoked-called">Use case 3 - counting the total number of times that methods within a class have been invoked (called)</a></h3>
+<p>This time we will create another class variable to keep track of the total number of times any method within our class was invoked (called). We can keep track by having every method within the <code>Widget</code> class increment that shared class variable. The following code implements this idea.</p>
+<pre><code class="language-python">class Widget:
+
+    # The class variable Widget.count will keep track of how many Widget objects
+    # have been instantiated
+    count = 0
+    # The class variable Widget.method_calls will keep track of the total number of
+    # times any method in Widget has been invoked
+    method_calls = 0
+
+    def __init__(self, number):
+        # create and initialize whatever instance variables are needed:
+        self.number = number
+        # This __init__ method gets called each time a Widget is instantiated, so by
+        # updating the shared variable Widget.count, we can keep track of how many times
+        # this __init__ method has been called, and thus how many Widget objects there are.
+        Widget.count = Widget.count + 1
+        # Count this call towards total method calls
+        Widget.method_calls += 1
+
+    def __str__(self)-&gt;str:
+        # Count this towards total method calls:
+        Widget.method_calls += 1
+        # return the string representation
+        return f&quot;Widget value: {self.number}&quot;
+
+    def grow(self, increase):
+        # This method modifies the value of the instance variable
+        self.number += increase
+        # Count this towards total method calls:
+        Widget.method_calls += 1
+
+# main code block:
+# instantiate two Widget objects.
+widget1 = Widget(17)
+widget2 = Widget(23)
+# change the values stored in the widgets
+widget1.grow(100)
+widget1.grow(200)
+widget2.grow(1000)
+# output the contents of each of the two Widgets (automatically calls __str__):
+print(widget1)
+print(widget2)
+# output the values of the class variables:
+print(f&quot;Number of Widgets: {Widget.count}&quot;)
+print(f&quot;Number of Widget method calls: {Widget.method_calls}&quot;)
+</code></pre>
+<p>output:</p>
+<pre><code>Widget value: 317
+Widget value: 1023
+Number of Widgets: 2
+Number of Widget method calls: 7
+</code></pre>
+<p>Carefully trace the code above to verify how the (shared) class variable <code>Widget.method_calls</code> tracks the
+method calls, and confirm for yourself that there were 7 method calls in the main code block.</p>
+<h3 id="use-case-4"><a class="header" href="#use-case-4">Use case 4</a></h3>
+<p>Often it is important to give people or objects unique identification numbers. Examples of this in real life are Social Security numbers (no two individuals can share the same number) or student id numbers (every student at DU has a different 87-number). In python, one way to give every object of a class a unique id is to maintain a class variable that keeps track of the next available id to assign to each subsequent object. When an object is instantiated, in the <code>__init__</code> method, an instance variable is created to store that object's id and the next available id is stored there (the next available id being the value of the class variable). Next, still within the <code>__init__</code> method, the value of that class variable is incremented so that when the subsequent object is instantitated, its id will not collide with this or any previous object. In the example below, a class is used to represent financial transations. Each financial transaction is given its own unique transaction identification number.</p>
+<pre><code class="language-python">class FinancialTransaction:
+
+    # The class variable FinancialTransaction.next_unique_id keeps
+    # track of next available id, which will be assigned to each new
+    # FinancialTransaction object. The first id assigned is 20000
+    next_unique_id = 20000
+
+    def __init__(self, source, destination, amount):
+        # routing number and account number of source of funds
+        self.source = source
+        # routing number and account number for deposit
+        self.destination = destination
+        # dollar amount of the transaction
+        self.amount = amount
+        # set the id number of this transaction to the next available number
+        self.id = FinancialTransaction.next_unique_id
+        # Update the next available id (since we just used up the current one)
+        FinancialTransaction.next_unique_id += 1
+    
+    def __str__(self)-&gt;str:
+        return f&quot;id: {self.id}, source: {self.source}, destination: {self.destination}, amount: {self.amount}&quot;
+
+# main code block:
+# create two transaction objects
+transaction1 = FinancialTransaction(2345678900123, 1234567800987, 1223.47)
+transaction2 = FinancialTransaction(1234567800987, 9876543200987, 2319.24)
+print(transaction1)
+print(transaction2)
+</code></pre>
+<p>output:</p>
+<pre><code>id: 20000, source: 2345678900123, destination: 1234567800987, amount: 1223.47
+id: 20001, source: 1234567800987, destination: 9876543200987, amount: 2319.24
+</code></pre>
+<p>Notice above that each id assigned is unique to that particular <code>FinancialTransaction</code> object. This technique guarantees no collisions of transaction id numbers.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../chapters/classes/lists_of_objects.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../chapters/classes/lists_of_objects.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../js/disable_keyboard.js"></script>
+
+
+    </div>
+    </body>
+</html>
