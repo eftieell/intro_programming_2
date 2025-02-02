@@ -150,7 +150,7 @@ nested_list = [[digit + letter for letter in letters] for digit in digits]
 Here we have a list comprehension with the loop `for digit in digits`. For each of those digits, an entire list is created,
 resulting in a list of lists. Each internal list is itself created with a list comprehension (`[str(digit) + letter for letter in letters]`)
 So we have a nested list-comprehension (not a list comprehension with nested loops). The makes the result a nested list. 
-(`nested_list = [['1a', '1b', '1c'], ['2a', '2b', '2c'], ['3a', '3b', '3c']]').
+(`nested_list = [['1a', '1b', '1c'], ['2a', '2b', '2c'], ['3a', '3b', '3c']]`).
 
 
 
