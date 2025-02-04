@@ -1,7 +1,7 @@
 # Summary
 - [Introduction](chapters/intro.md)
     - [Review of animation with dudraw](chapters/review/dudraw_animation.md)
-- [Lists and Dictionaries](chapters/review/review_chapter.md)
+- [Lists and Dictionaries](chapters/lists_and_dicts/lists_and_dicts_chapter.md)
     - [Python lists](chapters/lists_and_dicts/lists.md)
     - [Python dictionaries](chapters/lists_and_dicts/dictionary.md)
     - [List comprehension](chapters/lists_and_dicts/list_comprehension.md)
@@ -24,4 +24,6 @@
     - [Lists of objects](chapters/classes/lists_of_objects.md)
     - [Class variables](chapters/classes/class_variables.md)
     - [Dunder methods](chapters/classes/dunder_methods.md)
+    - [Variables store references to objects](chapters/classes/variables_are_references.md)
+    - [Identity versus equality](chapters/classes/identity_vs_equality.md)
 

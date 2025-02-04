@@ -1,9 +1,9 @@
 # Review of python dictionaries
 
-A python dictionary is a built-in data structure that holds (key, value) pairs (the key/value pairs are called *items*).
-The purpose of a dictionary is to store these pairs so it is very efficient to look up the value given the key.
+A python dictionary is a built-in data structure that holds (key, value) pairs. The key/value pairs are called *items*.
+The purpose of a dictionary is to store these pairs in a way that makes it very efficient to look up the value given the key.
 Python dictionaries are mutable (the contents may be modified after creation). 
-The keys must be of an immutable type, while the values can may be any data type 
+The keys themselves must be of an immutable type, but the values may be any data type 
 (including dictionaries and lists, making for a nested data structure).
 
 ## Creating new dictionaries
@@ -35,7 +35,7 @@ while name != ".":
     name = input("Student name? (Enter . to finish) ")
     if name != ".":
         id = input("Student id? ")
-        student_ids[name] = id
+        student_ids[name] = id # this makes name:id be a key:value pair in the dictionary
 ```
 
 - Create a dictionary using the `dict()` function. This constructor allows you to pass the information in a variety of forms.
@@ -83,7 +83,7 @@ print(f"You are {numbers_to_words.get(age)} years old!")
 
 ## What if the key you're trying to access isn't in the dictionary?
 
-If you try to access a non-existent key in a dictionary, python crashes with a `KeyError`. 
+If you try to access a non-existent key in a dictionary with `dictionary_name[key]`, python crashes with a `KeyError`. 
 You can address this issue in multiple ways:
 - Use the python dictionary `get()` method. If the key is not found, it will not crash - instead it returns `None`
 ```python

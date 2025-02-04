@@ -2,7 +2,7 @@
 
 List comprehension is a convenient strategy built into python for creating lists by manipulating existing 
 lists, range objects, or other iterable objects. (Note that list comprehension is not part of Java or C++,
-but you will see it again in other functional programming languages)
+but you will see it again in other functional programming languages.)
 
 The idea of list comprehension is to include the definition of a loop within the one line that creates the list.
 
@@ -31,7 +31,7 @@ Consider this list:
 ```python
 digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 ```
-It can be defined more robustly using list comprehension:
+That sam list can be defined more robustly using list comprehension:
 
 ```python
 digits = [str(i) for i in range(10)]
@@ -44,7 +44,7 @@ You can create lists using list comprehension by looping over *any* iterable obj
 primes = [2, 3, 5, 7, 11, 13, 17, 19, 23]
 primes_squared = [prime*prime for prime in primes]
 ```
-For reference, here is the code that accomplishes the same task using a loop:
+For reference, here is the code that accomplishes the same task using a for-loop:
 ```python
 primes = [2, 3, 5, 7, 11, 13, 17, 19, 23]
 primes_squared = []
@@ -78,7 +78,7 @@ We've seen list comprehension of the form
 
 **new_list = [*value* for *variable* in *iterable*]**
 
-Now we'll add a conditional (an if-clause) to restrict some values from being included into the list:
+Now we'll add a conditional (an if-clause) to restrict some of the values from being included in the list:
 
 **new_list = [*value* for *variable* in *iterable* if *conditional_expression*]**
 
@@ -148,7 +148,7 @@ nested_list = [[digit + letter for letter in letters] for digit in digits]
 # nested_list = [['1a', '1b', '1c'], ['2a', '2b', '2c'], ['3a', '3b', '3c']]
 ```
 Here we have a list comprehension with the loop `for digit in digits`. For each of those digits, an entire list is created,
-resulting in a list of lists. Each internal list is itself created with a list comprehension (`[str(digit) + letter for letter in letters]`)
+resulting in a list of lists. Each internal list is itself created with a list comprehension (`[digit + letter for letter in letters]`)
 So we have a nested list-comprehension (not a list comprehension with nested loops). The makes the result a nested list. 
 (`nested_list = [['1a', '1b', '1c'], ['2a', '2b', '2c'], ['3a', '3b', '3c']]`).
 

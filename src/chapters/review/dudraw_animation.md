@@ -1,8 +1,9 @@
 # Review of producing animations using the dudraw graphics package
 
-Basic information about creating drawings using `dudraw` can be found here: [dudraw basics](https://cs.du.edu/~intropython/intro-to-programming/dudraw_quickstart.html). This section assumes you can create basic drawings, and contains a review of how to animate drawings using the `dudraw` package.
+The present section reviews how to animate drawings using the `dudraw` package, assuming you already know how to create simple drawings using `dudraw`.
+Basic information about creating static drawings using `dudraw` can be found in a section of the COMP 1351 text here: [dudraw basics](https://cs.du.edu/~intropython/intro-to-programming/dudraw_quickstart.html).
 
-Here is the basic outline of a `dudraw` animation program:
+Here is the typical outline of a `dudraw` animation program:
 
 ```python
 import dudraw
@@ -47,12 +48,12 @@ def main():
     dudraw.set_canvas_size(400, 400)
     # no call to dudraw.set_x_scale() or dudraw.set_y_scale()
     # means we are accepting the default of x in [0, 1] and y in [0, 1]
+    # Since the canvas is 400x400 pixels, this means one pixel is 0.0025 units wide
 
     # initialize the position of the circle
     x = 0.1
     y = 0.5
 
-    # 
     key = ''
     # main animation loop (infinite loop, later we will give a way for users to quit)
     while key.lower() != 'q':
@@ -88,12 +89,14 @@ Here's a video demonstrating the above code running:
 
 
 
-To animate more complex objects, create a function that displays the object at position given by parameters. (or, once you have learned to use classes, perhaps you will implement a method of a class to draw the object). Here's an example. Notice that very little of the `main()` function changed!
+To animate more complex objects, create a function that displays the object at the position given by parameters. (or, once you have learned to use classes, perhaps you will implement a method of a class to draw the object). Here's an example. Notice that very little of the `main()` function changed compared to the previous program, other than ignoring mouse clicks.
 
 ```python
 import dudraw
 import random
 
+# Simple drawing of a rocket with center at (x, y)
+# The many details of this function are not the important part of this example.
 def draw_rocket(x: float, y: float)->None:
     # rectangle, main body of rocket:
     dudraw.set_pen_color(dudraw.WHITE)
@@ -132,14 +135,13 @@ def main():
     x = 0.5
     y = 0.125
 
-    # 
     key = ''
     # main animation loop (infinite loop, later we will give a way for users to quit)
     while key.lower() != 'q':
         # clear background
         dudraw.clear(dudraw.LIGHT_GRAY)
 
-        # redraw the next frame. The circle has a radius of 10 pixels.
+        # redraw the next frame.
         draw_rocket(x, y)
 
         # display the frame and pause (20 milliseconds = 50 frames per second)
@@ -148,12 +150,7 @@ def main():
         # Prepare for the  next frame by moving rocket, upwards one pixel
         y += .0025
         # Save keypress to check for 'q' next time through the loop
-        key = dudraw.next_key()
-        # if the mouse has been clicked, reset the x, y position to
-        # the clicked location
-        if dudraw.mouse_clicked():
-            x = dudraw.mouse_x()
-            y = dudraw.mouse_y()        
+        key = dudraw.next_key()      
 
 
 if __name__ == "__main__":

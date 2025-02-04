@@ -1,10 +1,10 @@
 # Review of python lists
 
 A python list is a built-in data structure that holds an ordered collection of values. 
-Python lists are mutable (the contents can be modified after creation), and can store any data type (including lists, making a nested list).
+Python lists are mutable (the contents can be modified after creation), and can store any data type. If the individual elements of a list are each themselves a list, the result is a *nested list* (or *2D list*).
 ## Creating new lists
 
-There are several ways to create new lists:
+There are several ways to create new lists in python:
 
 - List literals: write the comma-separated contents within square brackets, storing the list in a variable:
   
@@ -37,25 +37,25 @@ and a new list will be created using its data.
 ```python
 greek_letters = ['alpha', 'beta', 'gamma', 'delta']
 # create a new list, a copy of an existing list
-copy_letters = list(greek_letters)
+copy_of_greek_letters = list(greek_letters)
 # changing the copied list does not affect the original
-copy_letters.append('epsilon')
-print(copy_letters)  # alpha through epsilon
+copy_of_greek_letters.append('epsilon')
+print(copy_of_greek_letters)  # alpha through epsilon
 print(greek_letters) # still just alpha through delta
 
 # create a list of the individual characters in a string
-letters = list('haleakala')
+letters = list('haleakala') # letters is now ['h', 'a', 'l', 'e', 'a', 'k', 'a', 'l', 'a']
 # create a list from the elements in a range object
-values = list(range(1, 10))
+values = list(range(1, 10)) # values is now [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 # create a dictionary literal:
 numbers = {1: 'one', 2: 'two', 3: 'three'}
 # create a list of the keys from an existing dictionary:
-nums = list(numbers.keys())
+nums = list(numbers.keys())         # nums is [1, 2, 3]
 # create a list of the values from an existing dictionary:
-num_names = list(numbers.values())
+num_names = list(numbers.values())  # num_names is ['one', 'two', 'three']
 # create a list of the (key, value) tuple pairs from an existing dictionary:
-num_items = list(numbers.items())
+num_items = list(numbers.items())   #num_items is [(1, 'one'), (2, 'two'), (3, 'three')]
 ```
 
 ## Accessing elements in a list
@@ -74,13 +74,16 @@ Alternately, in python, you can use an index of -1 for the last element of a lis
 languages = ["C++", "python", "Java", "Perl", "JavaScript", "R", "Go", "Rust", "Haskell", "Perl"]
 
 # Access the first element in a list with an index value of 0
+# Outputs "I can program in C++""
 print(f"I can program in {languages[0]}")
 
 # Access the last element in a list with an index value of len(languages)-1 or -1:
+# Both of the next lines output "I can program in Perl"
 print(f"I can program in {languages[len(languages)-1]}")
 print(f"I can program in {languages[-1]}")
 
 # Lists are mutable, so you can modify the value of an element in the list using its index:
+# This changes the first language in the list from "C++" to "C#"
 languages[0] = "C#"
 ```
 
@@ -101,16 +104,16 @@ Details: the `pop()` method returns the value of the element it removed. If the 
 ```python
 # Remove the index 1 element (2nd element) from the list
 removed = languages.pop(1)
-print(removed)
+print(removed)   # the output is "python", and "python" is no longer in the list
 ```
-- Use the `del` keyword to remove an element at a specific index. Details: the value stored at that index is not returned. If the index is invalid, python throws an `IndexError`.
+- Similar to `pop()`, you can use the `del` keyword to remove an element at a specific index. Details: the value stored at that index is not returned. If the index is invalid, python throws an `IndexError`.
 ```python
 # Remove the index 0 element (first element) from the list
 del languages[0]
 ```
 
 ## Traversing lists
-you can traverse lists three different ways:
+You can traverse lists three different ways:
 - you can use an index (index-based traversal), or 
 - you can traverse directly through the values of the list (content-based traversal), or
 - you can traverse using `enumerate()`, which tracks both index and content.
@@ -152,7 +155,7 @@ if "Java" in languages:
 
 ## List methods
 
-There is a long list of methods you can use to help you manipulate lists. Please see [Official python documentation on lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)
+There is a long list of methods you can use to help you manipulate lists. Please see [Official python documentation on lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) for detailed information.
 
 
 
