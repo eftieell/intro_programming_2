@@ -1,6 +1,6 @@
 # The difference between "identity" and "equality" of objects
 
-In the previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html)" target="_blank">variables are references</a>), we noted that variables don't store objects themselves, but rather store references to objects. We can use the python `id()` function to find the memory address where the objects are stored.
+In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html)" target="_blank">variables are references</a>), we noted that variables don't store objects themselves, but rather store references to objects. We can use the python `id()` function to find the memory address where the objects are stored.
 
 Consider the following code:
 ```python

@@ -33,11 +33,11 @@ print(payroll[1]['wage'])
    for i in range(len(payroll)):
        last_names.append(payroll[i]['last_name'])
 ```
-or
+or (using list comprehension)
 ```python
     last_names = [payroll[i]['last_name'] for i in range(len(payroll))]
 ```
-or
+or (also using list comprehension)
 ```python
     last_names = [employee['last_name'] for employee in payroll]
 ```
@@ -136,7 +136,7 @@ Solutions:
 ```python
 state = input("Enter the state abbreviation: ")
 city = input ("Enter the city name: ")
-# Note that this code is flawed, since it does not error checking. The program
+# Note that this code is flawed, since it does not do error checking. The program
 # will crash if the user enters an invalid state or an invalid city.
 print(f"The population of {city}, {state} is {populations[state][city]}")
 ```

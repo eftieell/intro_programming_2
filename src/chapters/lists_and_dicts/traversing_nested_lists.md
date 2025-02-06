@@ -6,11 +6,11 @@ We generally use nested for-loops to traverse nested lists. You might want to be
 [https://cs.du.edu/~intropython/intro-to-programming/nested_for_loops.html](https://cs.du.edu/~intropython/intro-to-programming/nested_for_loops.html)
 
 Also recall that we learned three ways to traverse 1D lists:
-- using an index-based loop
 - using a content-based loop
+- using an index-based loop
 - using the `enumerate()` function
 
-Example of index-based iteration:
+Example of content-based iteration:
 ```python
 # traversing 1D lists, three different ways
 cities = ["Denver", "Colorado Springs", "Pueblo"]
@@ -26,13 +26,12 @@ I love Colorado Springs
 I love Pueblo
 ```
 
-Example of content-based iteration:
-
+Example of index-based iteration:
 ```python
 # Example of an index-based iteration:
 # Notice that we use the length of the list to tell us when to stop the loop
 # Also notice that knowing the index allows us to know when we are on the last one.
-# This gives us a way to put the output all on one line by treating the last one differently.
+# This gives us a way to put the output all on one line by treating the last city differently.
 for i in range(len(cities)):
     if i == len(cities) - 1:
         print(f"I love {cities[i]}!")
@@ -62,12 +61,12 @@ I love Denver, I love Colorado Springs, I love Pueblo!
 
 ## Loops for traversing 2D lists
 Much like with 1D lists, you can traverse 2D lists three ways, 
-- using an index-based nested loop
 - using a content-based nested loop
+- using an index-based nested loop
 - using the `enumerate()` function (access index and content simultaneously)
 
 ## Example
-Let's traverse the 2D list defined below. Each inner list contains three city names from a given state. Then the outer list is a list of lists of cities from three different states.
+Let's traverse the 2D list defined below. Each inner list contains three city names from a given state. Then the outer list is a list of lists of cities from four different states.
 ```python
 more_cities = [
     ["Denver", "Colorado Springs", "Pueblo"],

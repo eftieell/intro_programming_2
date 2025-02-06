@@ -30,7 +30,7 @@ scores = [
 ```
 
 ### Compute a quantity for the entire 2D list
-We want to compute a quantity using all 12 elements in the 3x4 matrix. This requires us to traverse through every element
+Sometimes we want to compute a quantity using all 12 elements in the 3x4 matrix. This requires us to traverse through every element
 in the 2D list. We've seen previously multiple ways to do this (index-based traversal, content-based traversal, or using `enumerate()`).
 We review the process with the code below, which finds the maximum value of all 12 scores in the 2D list, using index-based loops.
 Notice that in this code block, the outer loop iterates over each row index, while the inner loop iterates over each column index.
@@ -72,15 +72,15 @@ print(maximum) # outputs 93
 ```
 
 ### Compute a quantity for a single row
-Since we calculate a quantity for only one specific row, we do not need a nested loop.
-Instead, the row index never changes, but we allow the column index to traverse all possible columns.
-This means that the `column_index` will vary from 0 to `len(scores)-1` 
+If we want to calculate a quantity just for a single row, we do not need a nested loop.
+Since the row index never changes, we allow the column index to traverse all possible columns with a single for loop.
+This means that the `column_index` will vary from 0 to `len(scores[row_index])-1` 
 (the number of columns is `len(scores[row_index])`).
 The code below calculates the average of Student 3's scores.
 ```python
 # Average score for student 3. The row_index of 2 doesn't change.
 # The column_index varies from 0 to 3. Add up all four scores, then
-# divide by the number of columns.
+# divide by the number of columns (the number of scores).
 total = 0
 for column_index in range(0, len(scores[2])):
     total += scores[2][column_index]
@@ -89,14 +89,14 @@ print(average) # outputs 79.5
 ```
 
 ### Compute a quantity for a single column
-Now we want calculate a quantity for only one specific column. Again, no need for a nested loop.
+If we now want calculate a quantity for only one specific column, there is similarly no need for a nested loop.
 Instead, the column index never changes, but the row index traverses over all possible rows.
 This means that the `row_index` will vary from 0 to `len[scores]-1` (the number of rows is `len[scores])`.
 The code below calculates the average of all students on Quiz 4.
 ```python
 # Average score of all students on Quiz 4. The column_index of 3 doesn't change.
 # The row_index varies from 0 to 2. Add up all 3 scores, then divide
-# by the number of rows.
+# by the number of rows (the number of students)
 total = 0
 for row_index in range(0, len(scores)):
     total += scores[row_index][3]
@@ -124,15 +124,15 @@ for row_index in range(0, len(scores)):
     print(average) # This line is executed 3 times, outputting 78.5, then 80.5, then 79.5
 ```
 Since the quantity is being calculated separately for each row, 
-notice that the initialization of variables must happen *inside* the outer loop, but outside the inner loop.
+notice that the initialization of variables must happen *inside* the outer loop, but *outside* the inner loop.
 So the initialization `total=0` is indented, executing as the first line inside the outer loop. That total is reset to 0 for each
-student. Notice also that we want to print the result separately for each student. Thus the print statement is indented two levels.
+student. Notice also that we want to print the result separately for each student. Thus the print statement is indented one level.
 The output is executed once for each student, at the end of the computation for that student.
 
 ### Compute a quantity for every column individually
 Say we want to calculate a quantity for every column separately. This computation requires us to visit every value in the matrix,
 so we must use a nested for-loop. But since we are doing a column-wise computation, the outer loop must vary over each column.
-A matrix must be rectangular (not jagged) for this to work. Allow the col_index to vary over every column in the outside loop. 
+A matrix must be rectangular (not jagged) for this to work. In the outside loop, allow the col_index to vary over every column. 
 Then within that loop, compute the quantity you want by looking at the values for each row within that column. This means the inner
 loop will vary over every possible row.
 ```python
@@ -141,10 +141,11 @@ loop will vary over every possible row.
 # each quiz score for that student. Each time we find a score smaller
 # than we've seen yet for that quiz, update the minimum
 for column_index in range(0, len(scores[0])):
+    # initialize minimum to the first row in this column
     minimum = scores[0][column_index]
     for row_index in range(0, len(scores)):
         if scores[row_index][column_index] < minimum:   
-            minimum =  scores[row_index][column_index]  
+            minimum = scores[row_index][column_index]  
     print(minimum) # This line executes 4 times, outputting 75, then 69, then 62, then 72
 ```
 Because we are doing a separate computation for each column, notice that the initialization of `minimum` happens just inside the outer

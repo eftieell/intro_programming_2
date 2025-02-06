@@ -60,6 +60,7 @@ heating_bill = [
     [112, 32, 10, 96],
     [60, 15, 0, 70],
     [196, 65, 15, 180]
+]
 ```
 Notice that `heating_bill` is a list with 3 items. Each item is itself a list. 
 - The first element `heating_bill[0]` is itself a list: `[112, 32, 10, 96]`.
@@ -73,7 +74,7 @@ Notice that `heating_bill` is a list with 3 items. Each item is itself a list.
 </figure>
 
 
-Rather than focusing on 2D lists as a list of lists, another perspective is to think of it as a rectangular grid, each position having a row position and a column position. So to indicate a specific element, you give two index values. The first index gives the row and the second index gives the column.
+Rather than focusing on a 2D list as a list of lists, another perspective is to think of it as a rectangular grid, each position having a row position and a column position. So to indicate a specific element, you give two index values. The first index gives the row and the second index gives the column.
 
 For example:
 

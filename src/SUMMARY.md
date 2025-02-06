@@ -22,8 +22,10 @@
     - [Implementing classes](chapters/classes/implementing_classes.md)
     - [Output of objects to the terminal](chapters/classes/print_object.md)
     - [Lists of objects](chapters/classes/lists_of_objects.md)
+    - [More complex classes](chapters/classes/complicated_classes.py)
     - [Class variables](chapters/classes/class_variables.md)
-    - [Dunder methods](chapters/classes/dunder_methods.md)
     - [Variables store references to objects](chapters/classes/variables_are_references.md)
+    - [Dunder methods](chapters/classes/dunder_methods.md)
     - [Identity versus equality](chapters/classes/identity_vs_equality.md)
+    - [Memory Diagrams of objects](chapters/classes/memory_diagrams.md)
 
