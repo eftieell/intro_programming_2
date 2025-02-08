@@ -234,10 +234,10 @@ The pattern of this change is called the <em>order of growth</em> or <em>time co
 <p>If doubling the size of <code>n</code> results in a doubling of the execution time for the algorithm, then we call the algorithm <em>Big-O of n</em> or <em>linear</em>. We write this \(O(n)\).</p>
 </li>
 <li>
-<p>If doubling the size of <code>n</code> results in a quadrupling of the execution time, then we call the algorithm &quot;Big-O of n squared&quot; or &quot;quadratic&quot;. We write this $O(n^2)$.</p>
+<p>If doubling the size of <code>n</code> results in a quadrupling of the execution time, then we call the algorithm &quot;Big-O of n squared&quot; or &quot;quadratic&quot;. We write this \(O(n^2)\).</p>
 </li>
 <li>
-<p>If doubling the size of <code>n</code> results in a factor of 8 increase of the execution time, then we call the algorithm &quot;Big-O of n-cubed&quot; or &quot;cubic&quot;. We write this $O(n^3)$.</p>
+<p>If doubling the size of <code>n</code> results in a factor of 8 increase of the execution time, then we call the algorithm &quot;Big-O of n-cubed&quot; or &quot;cubic&quot;. We write this \(O(n^3)\).</p>
 </li>
 </ul>
 <p>The code below is a modification of the original timing code, but with an extra loop that modifies the size of <code>n</code>.
@@ -274,11 +274,11 @@ runtime for do_something(400000000): 12.41 seconds
 runtime for do_something(500000000): 15.50 seconds
 runtime for do_something(600000000): 18.69 seconds
 </code></pre>
-<p>We can see by a rough look at the data above that the algorithm shows linear, or $O(n)$, behavior. Look at the time behavior when <code>n</code> is doubled or tripled:</p>
-<p>When the size of <code>n</code> is doubled from 100 million to 200 million, the time approximately doubles ($6.18 sec/3.13 sec \approx 1.97$).</p>
-<p>When the size of <code>n</code> is tripled from 100 million to 300 million, the time approximately triples ($9.24/3.13 \approx 2.95$).</p>
-<p>When the size of <code>n</code> is doubled from 300 million to 600 million, the time approximately doubles ($18.69/9.24 \approx 2.02$).</p>
-<p>When the size of <code>n</code> is tripled from 200 million to 600 million, the time approximately triples ($18.69/6.18 \approx 3.02$).</p>
+<p>We can see by a rough look at the data above that the algorithm shows linear, or \(O(n)\), behavior. Look at the time behavior when <code>n</code> is doubled or tripled:</p>
+<p>When the size of <code>n</code> is doubled from 100 million to 200 million, the time approximately doubles (\(.18 sec/3.13 sec \approx 1.97\)).</p>
+<p>When the size of <code>n</code> is tripled from 100 million to 300 million, the time approximately triples (\(9.24/3.13 \approx 2.95\)).</p>
+<p>When the size of <code>n</code> is doubled from 300 million to 600 million, the time approximately doubles (\(18.69/9.24 \approx 2.02\)).</p>
+<p>When the size of <code>n</code> is tripled from 200 million to 600 million, the time approximately triples (\(18.69/6.18 \approx 3.02\)).</p>
 <p>We can also see linear behavior by graphing the data, which appears to be a line:
 <img src="runtime_graph_linear.png#center"  width="50%" height="50%" alt = "graph of runtime as a function of n"></p>
 <h2 id="another-example-of-timing-a-function-for-a-variety-of-values-of-n"><a class="header" href="#another-example-of-timing-a-function-for-a-variety-of-values-of-n">Another example of timing a function for a variety of values of <code>n</code></a></h2>
@@ -317,18 +317,18 @@ runtime for do_something_else(40000): 50.97 seconds
 runtime for do_something_else(50000): 80.41 seconds
 runtime for do_something_else(60000): 116.78 seconds
 </code></pre>
-<p>This time, a rough look at the data above indicates that the algorithm shows quadratic, or $O(n^2)$, behavior. Look at the time behavior when <code>n</code> is doubled or tripled:</p>
-<p>When the size of <code>n</code> is doubled from 10000 to 20000, the time increases by approximately a factor of 4 ($12.37/3.09 \approx 4.003$).</p>
-<p>When the size of <code>n</code> is tripled from 10000 to 30000, the time increases by approximately a factor of 9 ($28.08/3.09 \approx 9.09$).</p>
-<p>When the size of <code>n</code> is doubled from 30000 to 60000, the time increases by approximately a factor of 4 ($116.78/28.08 \approx 4.16$).</p>
-<p>When the size of <code>n</code> is tripled from 20000 to 60000, the time increases by approximately a factor of 9 ($116.78/12.37 \approx 9.44$)</p>
+<p>This time, a rough look at the data above indicates that the algorithm shows quadratic, or \(O(n^2)\), behavior. Look at the time behavior when <code>n</code> is doubled or tripled:</p>
+<p>When the size of <code>n</code> is doubled from 10000 to 20000, the time increases by approximately a factor of 4 \(12.37/3.09 \approx 4.003\)).</p>
+<p>When the size of <code>n</code> is tripled from 10000 to 30000, the time increases by approximately a factor of 9 (\(28.08/3.09 \approx 9.09\)).</p>
+<p>When the size of <code>n</code> is doubled from 30000 to 60000, the time increases by approximately a factor of 4 (\(116.78/28.08 \approx 4.16\)).</p>
+<p>When the size of <code>n</code> is tripled from 20000 to 60000, the time increases by approximately a factor of 9 (\(116.78/12.37 \approx 9.44\))</p>
 <p>Graphing the data hints at a parabolic (quadratic) shape. Caution though: while this graph convinces us that
-the time complexity is not linear, graphs that are concave up might represent quadratic, cubic, or other growth rates.
+the time complexity is not linear, graphs that are concave up might represent quadratic, cubic, exponential, or other growth rates.
 <img src="runtime_graph_quadratic.png"  width="50%" height="50%" alt = "second graph of runtime as a function of n"></p>
 <h2 id="timing-the-running-of-a-function-that-takes-less-than-1-second"><a class="header" href="#timing-the-running-of-a-function-that-takes-less-than-1-second">Timing the running of a function that takes less than 1 second</a></h2>
 <p>If a function takes less than 1 second to execute, then the technique above is often not accurate.
 Instead, we must execute the function multiple times (so the total elapsed time is more than 1 second), 
-then divide by the number of times the function was called, to get the average execution time. You will learn this technique next quarter.</p>
+then divide by the number of times the function was called, to get the average execution time. You will learn this technique in a future course.</p>
 
                     </main>
 

@@ -1746,10 +1746,10 @@ The pattern of this change is called the <em>order of growth</em> or <em>time co
 <p>If doubling the size of <code>n</code> results in a doubling of the execution time for the algorithm, then we call the algorithm <em>Big-O of n</em> or <em>linear</em>. We write this \(O(n)\).</p>
 </li>
 <li>
-<p>If doubling the size of <code>n</code> results in a quadrupling of the execution time, then we call the algorithm &quot;Big-O of n squared&quot; or &quot;quadratic&quot;. We write this $O(n^2)$.</p>
+<p>If doubling the size of <code>n</code> results in a quadrupling of the execution time, then we call the algorithm &quot;Big-O of n squared&quot; or &quot;quadratic&quot;. We write this \(O(n^2)\).</p>
 </li>
 <li>
-<p>If doubling the size of <code>n</code> results in a factor of 8 increase of the execution time, then we call the algorithm &quot;Big-O of n-cubed&quot; or &quot;cubic&quot;. We write this $O(n^3)$.</p>
+<p>If doubling the size of <code>n</code> results in a factor of 8 increase of the execution time, then we call the algorithm &quot;Big-O of n-cubed&quot; or &quot;cubic&quot;. We write this \(O(n^3)\).</p>
 </li>
 </ul>
 <p>The code below is a modification of the original timing code, but with an extra loop that modifies the size of <code>n</code>.
@@ -1786,11 +1786,11 @@ runtime for do_something(400000000): 12.41 seconds
 runtime for do_something(500000000): 15.50 seconds
 runtime for do_something(600000000): 18.69 seconds
 </code></pre>
-<p>We can see by a rough look at the data above that the algorithm shows linear, or $O(n)$, behavior. Look at the time behavior when <code>n</code> is doubled or tripled:</p>
-<p>When the size of <code>n</code> is doubled from 100 million to 200 million, the time approximately doubles ($6.18 sec/3.13 sec \approx 1.97$).</p>
-<p>When the size of <code>n</code> is tripled from 100 million to 300 million, the time approximately triples ($9.24/3.13 \approx 2.95$).</p>
-<p>When the size of <code>n</code> is doubled from 300 million to 600 million, the time approximately doubles ($18.69/9.24 \approx 2.02$).</p>
-<p>When the size of <code>n</code> is tripled from 200 million to 600 million, the time approximately triples ($18.69/6.18 \approx 3.02$).</p>
+<p>We can see by a rough look at the data above that the algorithm shows linear, or \(O(n)\), behavior. Look at the time behavior when <code>n</code> is doubled or tripled:</p>
+<p>When the size of <code>n</code> is doubled from 100 million to 200 million, the time approximately doubles (\(.18 sec/3.13 sec \approx 1.97\)).</p>
+<p>When the size of <code>n</code> is tripled from 100 million to 300 million, the time approximately triples (\(9.24/3.13 \approx 2.95\)).</p>
+<p>When the size of <code>n</code> is doubled from 300 million to 600 million, the time approximately doubles (\(18.69/9.24 \approx 2.02\)).</p>
+<p>When the size of <code>n</code> is tripled from 200 million to 600 million, the time approximately triples (\(18.69/6.18 \approx 3.02\)).</p>
 <p>We can also see linear behavior by graphing the data, which appears to be a line:
 <img src="chapters/functions/runtime_graph_linear.png#center"  width="50%" height="50%" alt = "graph of runtime as a function of n"></p>
 <h2 id="another-example-of-timing-a-function-for-a-variety-of-values-of-n"><a class="header" href="#another-example-of-timing-a-function-for-a-variety-of-values-of-n">Another example of timing a function for a variety of values of <code>n</code></a></h2>
@@ -1829,18 +1829,18 @@ runtime for do_something_else(40000): 50.97 seconds
 runtime for do_something_else(50000): 80.41 seconds
 runtime for do_something_else(60000): 116.78 seconds
 </code></pre>
-<p>This time, a rough look at the data above indicates that the algorithm shows quadratic, or $O(n^2)$, behavior. Look at the time behavior when <code>n</code> is doubled or tripled:</p>
-<p>When the size of <code>n</code> is doubled from 10000 to 20000, the time increases by approximately a factor of 4 ($12.37/3.09 \approx 4.003$).</p>
-<p>When the size of <code>n</code> is tripled from 10000 to 30000, the time increases by approximately a factor of 9 ($28.08/3.09 \approx 9.09$).</p>
-<p>When the size of <code>n</code> is doubled from 30000 to 60000, the time increases by approximately a factor of 4 ($116.78/28.08 \approx 4.16$).</p>
-<p>When the size of <code>n</code> is tripled from 20000 to 60000, the time increases by approximately a factor of 9 ($116.78/12.37 \approx 9.44$)</p>
+<p>This time, a rough look at the data above indicates that the algorithm shows quadratic, or \(O(n^2)\), behavior. Look at the time behavior when <code>n</code> is doubled or tripled:</p>
+<p>When the size of <code>n</code> is doubled from 10000 to 20000, the time increases by approximately a factor of 4 \(12.37/3.09 \approx 4.003\)).</p>
+<p>When the size of <code>n</code> is tripled from 10000 to 30000, the time increases by approximately a factor of 9 (\(28.08/3.09 \approx 9.09\)).</p>
+<p>When the size of <code>n</code> is doubled from 30000 to 60000, the time increases by approximately a factor of 4 (\(116.78/28.08 \approx 4.16\)).</p>
+<p>When the size of <code>n</code> is tripled from 20000 to 60000, the time increases by approximately a factor of 9 (\(116.78/12.37 \approx 9.44\))</p>
 <p>Graphing the data hints at a parabolic (quadratic) shape. Caution though: while this graph convinces us that
-the time complexity is not linear, graphs that are concave up might represent quadratic, cubic, or other growth rates.
+the time complexity is not linear, graphs that are concave up might represent quadratic, cubic, exponential, or other growth rates.
 <img src="chapters/functions/runtime_graph_quadratic.png"  width="50%" height="50%" alt = "second graph of runtime as a function of n"></p>
 <h2 id="timing-the-running-of-a-function-that-takes-less-than-1-second"><a class="header" href="#timing-the-running-of-a-function-that-takes-less-than-1-second">Timing the running of a function that takes less than 1 second</a></h2>
 <p>If a function takes less than 1 second to execute, then the technique above is often not accurate.
 Instead, we must execute the function multiple times (so the total elapsed time is more than 1 second), 
-then divide by the number of times the function was called, to get the average execution time. You will learn this technique next quarter.</p>
+then divide by the number of times the function was called, to get the average execution time. You will learn this technique in a future course.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="drawing-memory-diagrams-to-represent-the-call-stack"><a class="header" href="#drawing-memory-diagrams-to-represent-the-call-stack">Drawing memory diagrams to represent the call stack</a></h1>
 <p>Consider a python program that has function calls. Here is a simplest example:</p>
 <pre><code>def my_function(val: int):
@@ -1865,33 +1865,34 @@ if __name__ == &quot;__main__&quot;:
 <p>Notice that when the code runs line 10, it must evaluate the right-hand side by calling <code>my_function(value)</code> before it can
 store the return value in the variable <code>another</code>. When the function <code>my_function(value)</code> is called, running of the function <code>main()</code> is paused until <code>my_function</code> completes running and returns. At that point program control returns to line 10 and
 picks back up where it left off.
-When we trace code by hand, we naturally remember exactly where we paused, and even the values of the local variables. This allows us seamlessly resume running line 10 after <code>my_function</code> completes executing and returns. However, unlike humans, computers have no natural or automatic process for remembering. Thus, when a function is called, all information about the current values of local variables and the line currently being executed must be stored. They are stored in the call stack.</p>
-<p>The call stack consists of individual frames. When a function begins execution, a frame is added to the top of the call stack (we call it &quot;pushed&quot; onto the stack). Each frame stores the current line number being executed, as well as the values of every local variable. When a new
+When we trace code by hand, we naturally remember exactly where we paused, and even the values of the local variables. This allows us seamlessly resume running line 10 after <code>my_function</code> completes executing and returns. However, unlike humans, computers have no natural or automatic process for remembering. Thus, when a function is called, all information about the current values of local variables and the line currently being executed must be stored. This information is all stored in the <em>call stack</em>.</p>
+<p>The call stack consists of individual frames. When a function begins execution, a frame is added to the top of the call stack (we say it is &quot;pushed&quot; onto the stack). Each frame stores the current line number being executed, as well as the values of every local variable. When a new
 function is invoked, a new frame is created and added to the top of the call stack.</p>
 <p>Here is a memory diagram showing the state of the call stack when the program is executing line 7:</p>
 <img src="chapters/functions/call_stack_line_7.png" alt="call stack memory diagram line 7" width="200"/>
-<p>The next line creates a variable called <code>value</code>, and stores the value <code>23</code> there. Here is the call stack memory diagram when the program is executing line 9. Notice that a new local variable has been added to the frame for the function <code>main</code>:</p>
+<p>The next line creates a variable called <code>value</code>, and stores <code>23</code> there. On line 9, output is sent to the terminal. Here is the call stack memory diagram when the program is executing line 9. Notice that a new local variable to represent <code>value</code> has been added to the frame for the function <code>main</code>:</p>
 <img src="chapters/functions/call_stack_line_9.png" alt="call stack memory diagram line 9" width="200"/>
-<p>On line 10, the program calls the function <code>my_function()</code>. This means that the funtion <code>main()</code> pauses its execution. A new frame for this call to <code>my_function</code> is created and added to the top of the call stack. The top frame on the call stack always shows the information for the function that is currently executing. Here is the call stack memory diagram when the program has invoked <code>my_function()</code> and is executing line 2. Notice that <code>val</code> is passed as a parameter, so it behaves like a local variable. Its value is initialized with the value that was passed (23 in this case). The variable exists only as long as the function is still executing. Thus we draw it in the frame associated with <code>my_function()</code>:</p>
+<p>On line 10, the program calls the function <code>my_function()</code>. This means that the funtion <code>main()</code> pauses its execution. A new frame for this call to <code>my_function</code> is created and added to the top of the call stack. The top frame on the call stack always shows the information for the function that is currently executing. Here is the call stack memory diagram when the program has invoked <code>my_function()</code> and is executing line 2. Notice that <code>val</code> is passed as a parameter, so it behaves like a local variable. Its value is initialized with the value that was passed (23 in this case). The variable <code>val</code> exists only as long as <code>my_function()</code> is still executing. Thus we draw it in the frame associated with <code>my_function()</code>:</p>
 <img src="chapters/functions/call_stack_line_2.png" alt="call stack memory diagram line 2" width="200"/>
 <p>On line 3, the value stored in <code>val</code> is changed. Notice that only the local variable is modified. Since <code>my_function()</code> only has access to the local variables stored in its own frame, the variables owned by <code>main()</code> cannot be modified by this function. Here is the call stack memory diagram when the program is executing line 4:</p>
 <img src="chapters/functions/call_stack_line_4.png" alt="call stack memory diagram line 4" width="200"/>
-<p>On line 5 of the program, <code>my_function()</code> has completed execution and will return program control to the calling function (<code>main()</code> in this case). Python knows which frame to return to and which line to resume by looking at the <em>next frame down on the stack</em>. So the return value is passed back to the function call in the frame below, the frame for <code>my_function()</code> is destroyed (we call it getting &quot;popped&quot; from the stack), and main resumes its process on the line stored in the frame.</p>
-<table>
+<p>On line 5 of the program, <code>my_function()</code> has completed execution and will return program control to the calling function (<code>main()</code> in this case). Python knows which frame to return to and which line to resume by looking at the <em>next frame down on the stack</em>. So the return value is passed back to the function call in the frame below, the frame for <code>my_function()</code> is destroyed (we call it getting &quot;popped&quot; from the stack), and <code>main()</code> resumes its process on the line stored in its frame.</p>
+<table style = "table-layout: fixed" width="600px">
 <tr>
-    <td><img src="chapters/functions/call_stack_line_5a.png" alt="call stack memory diagram line 5a" width="200"/></td>
-    <td><img src="chapters/functions/call_stack_line_5b.png" alt="call stack memory diagram line 5b" width="200"/></td>
-    <td><img src="chapters/functions/call_stack_line_5c.png" alt="call stack memory diagram line 5c" width="200"/></td>
+    <td><img src="chapters/functions/call_stack_line_5a.png" alt="call stack memory diagram line 5a" min-width="200px" max-width="200px"/></td>
+    <td><img src="chapters/functions/call_stack_line_5b.png" alt="call stack memory diagram line 5b" min-width="200px" max-width="200px"/></td>
+    <td><img src="chapters/functions/call_stack_line_5c.png" alt="call stack memory diagram line 5c" min-width="200px" max-width="200px"/></td>
 </tr>
 <tr> 
     <td>The return value is computed</td>
     <td>The return value is passed back to the calling function (next frame down the stack)</td>
-    <td>`my_function()` is complete, so its frame is deleted (popped) from the stack</td></tr>
+    <td><code>my_function()</code> is complete, so its frame is deleted (popped) from the stack</td></tr>
 </table>
 <p>Back on line 10, the return value is assigned to the variable <code>another</code>. Here is the call stack memory diagram when line 10 of the program is done executing:</p>
 <p><img src="chapters/functions/call_stack_line_10.png" alt="call stack memory diagram line 10" width="200"/></td></p>
-<p>More details of how the memory diagrams above were built are shown in this video:
-<video src="https://cs.du.edu/~ftl/1352/videos/call_stack_simplest_case.mp4" width="480" height="270" controls></video></p>
+<p>On line 11, the line number in the memory diagram is updated, output is sent to the terminal, and there are no other changes to the call stack memory diagram.</p>
+<p>More details of how the memory diagrams above were built are shown in this video:</p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/call_stack_simplest_case.mp4" width="480" height="270" controls></video></p>
 <h1 id="another-example"><a class="header" href="#another-example">Another example</a></h1>
 <p>The video below demonstrates tracing through the following code, and maintaining the call stack memory diagram through each step.</p>
 <pre><code>def fourth(number: int)-&gt;int:
