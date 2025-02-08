@@ -280,7 +280,7 @@ runtime for do_something(600000000): 18.69 seconds
 <p>When the size of <code>n</code> is doubled from 300 million to 600 million, the time approximately doubles (\(18.69/9.24 \approx 2.02\)).</p>
 <p>When the size of <code>n</code> is tripled from 200 million to 600 million, the time approximately triples (\(18.69/6.18 \approx 3.02\)).</p>
 <p>We can also see linear behavior by graphing the data, which appears to be a line:</p>
-<img src="runtime_graph_linear.png#center"  width="75%" height="75%" alt = "graph of runtime as a function of n">
+<img src="runtime_graph_linear.png#center"  width="75%" height="75%" alt = "graph of runtime as a function of n" class="center">
 <h2 id="another-example-of-timing-a-function-for-a-variety-of-values-of-n"><a class="header" href="#another-example-of-timing-a-function-for-a-variety-of-values-of-n">Another example of timing a function for a variety of values of <code>n</code></a></h2>
 <p>Here's another example. The new function is <code>do_something_else()</code>. 
 Since it runs much slower, the experimental values of <code>n</code> are chosen to be smaller (ranging from 10000 to 60000):</p>
@@ -324,7 +324,7 @@ runtime for do_something_else(60000): 116.78 seconds
 <p>When the size of <code>n</code> is tripled from 20000 to 60000, the time increases by approximately a factor of 9 (\(116.78/12.37 \approx 9.44\))</p>
 <p>Graphing the data hints at a parabolic (quadratic) shape. Caution though: while this graph convinces us that
 the time complexity is not linear, graphs that are concave up might represent quadratic, cubic, exponential, or other growth rates.</p>
-<img src="runtime_graph_quadratic.png"  width="75%" height="75%" alt = "second graph of runtime as a function of n">
+<img src="runtime_graph_quadratic.png"  width="75%" height="75%" alt = "second graph of runtime as a function of n" class="center">
 <h2 id="timing-the-running-of-a-function-that-takes-less-than-1-second"><a class="header" href="#timing-the-running-of-a-function-that-takes-less-than-1-second">Timing the running of a function that takes less than 1 second</a></h2>
 <p>If a function takes less than 1 second to execute, then the technique above is often not accurate.
 Instead, we must execute the function multiple times (so the total elapsed time is more than 1 second), 
