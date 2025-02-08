@@ -1,6 +1,6 @@
 # Drawing memory diagram of complicated objects
 
-In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html)" target="_blank">variables are references</a>), we learned that variables store references to objects (i.e., the memory address where the object is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:
+In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html" target="_blank">variables are references</a>), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:
 
 ## A simple example
 Consider the following code:
@@ -68,7 +68,7 @@ Answer:
 p3: (5, 19)
 Vertices: (10, 1) (7, 1) (5, 19)
 ```
-Since `p1` refers to the same object as `t1.vertex`, when `p1` is changed, so is `t1.vertex3`. Similarly, since `t1.vertex3` refers to the same object as `p3`, when `t1.vertex3` is changed, so is `p1`. Here is the final memory diagram showing the changes:
+Since `p1` refers to the same object as `t1.vertex1`, when `p1` is changed, so is `t1.vertex1`. Similarly, since `t1.vertex3` refers to the same object as `p3`, when `t1.vertex3` is changed, so is `p3`. Here is the final memory diagram showing the changes:
 
 <img src="memory_diagram_8.png" alt="Memory diagram of a triangle object, which has three vertices that are each Point objects, after modifications" width = 550>
 

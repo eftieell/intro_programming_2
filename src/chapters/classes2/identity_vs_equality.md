@@ -1,6 +1,7 @@
-# The difference between "identity" and "equality" of objects
+# The difference between "identity" (`is`) and "equality" (`==`) of objects
 
-In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html)" target="_blank">variables are references</a>), we noted that variables don't store objects themselves, but rather store references to objects. We can use the python `id()` function to find the memory address where the objects are stored.
+## Identity
+In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html" target="_blank">variables are references</a>), we noted that variables don't store objects themselves, but rather store references to objects. Recall also that we can use the python `id()` function to find the memory address where the objects are stored.
 
 Consider the following code:
 ```python
@@ -10,9 +11,6 @@ class Point:
         # initialize the values of the point (x, y)
         self.x = x
         self.y = y
-    
-    def __add__(self, other: Point)->Point:
-        return Point(self.x+other.x, self.y+other.y)
 
     def __eq__(self, other: Point)->bool:
         return self.x==other.x and self.y==other.y
@@ -36,6 +34,8 @@ print(point1 is point2) # outputs False, because point1 and point2 have differen
 print(point2 is point3) # outputs True, because point2 and point3 have the same ids (they refer to the same object)
 print(point1 is point3) # outputs False, because point1 and point3 have different ids (they refer to different objects)
 ```
+
+## Equality
 
 If rather than comparing identities, we want to determine if the contents of the objects are the same, recall that we learned to use `==`, which automatically calls the `__eq__()` method:
 ```python
