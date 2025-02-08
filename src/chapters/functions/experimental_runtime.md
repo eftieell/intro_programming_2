@@ -69,9 +69,9 @@ The pattern of this change is called the *order of growth* or *time complexity* 
 
 - If doubling the size of `n` results in a doubling of the execution time for the algorithm, then we call the algorithm *Big-O of n* or *linear*. We write this \\(O(n)\\).
   
-- If doubling the size of `n` results in a quadrupling of the execution time, then we call the algorithm "Big-O of n squared" or "quadratic". We write this $O(n^2)$.
+- If doubling the size of `n` results in a quadrupling of the execution time, then we call the algorithm "Big-O of n squared" or "quadratic". We write this \\(O(n^2)\\).
 
-- If doubling the size of `n` results in a factor of 8 increase of the execution time, then we call the algorithm "Big-O of n-cubed" or "cubic". We write this $O(n^3)$.
+- If doubling the size of `n` results in a factor of 8 increase of the execution time, then we call the algorithm "Big-O of n-cubed" or "cubic". We write this \\(O(n^3)\\).
 
 The code below is a modification of the original timing code, but with an extra loop that modifies the size of `n`.
 Carefully compare the two versions, enough so you could make the modification yourself.
@@ -109,15 +109,15 @@ runtime for do_something(400000000): 12.41 seconds
 runtime for do_something(500000000): 15.50 seconds
 runtime for do_something(600000000): 18.69 seconds
 ```
-We can see by a rough look at the data above that the algorithm shows linear, or $O(n)$, behavior. Look at the time behavior when `n` is doubled or tripled:
+We can see by a rough look at the data above that the algorithm shows linear, or \\(O(n)\\), behavior. Look at the time behavior when `n` is doubled or tripled:
 
-When the size of `n` is doubled from 100 million to 200 million, the time approximately doubles ($6.18 sec/3.13 sec \approx 1.97$).
+When the size of `n` is doubled from 100 million to 200 million, the time approximately doubles (\\(.18 sec/3.13 sec \approx 1.97\\)).
 
-When the size of `n` is tripled from 100 million to 300 million, the time approximately triples ($9.24/3.13 \approx 2.95$).
+When the size of `n` is tripled from 100 million to 300 million, the time approximately triples (\\(9.24/3.13 \approx 2.95\\)).
 
-When the size of `n` is doubled from 300 million to 600 million, the time approximately doubles ($18.69/9.24 \approx 2.02$).
+When the size of `n` is doubled from 300 million to 600 million, the time approximately doubles (\\(18.69/9.24 \approx 2.02\\)).
 
-When the size of `n` is tripled from 200 million to 600 million, the time approximately triples ($18.69/6.18 \approx 3.02$).
+When the size of `n` is tripled from 200 million to 600 million, the time approximately triples (\\(18.69/6.18 \approx 3.02\\)).
 
 We can also see linear behavior by graphing the data, which appears to be a line:
 <img src="runtime_graph_linear.png#center"  width="50%" height="50%" alt = "graph of runtime as a function of n">
@@ -160,21 +160,21 @@ runtime for do_something_else(40000): 50.97 seconds
 runtime for do_something_else(50000): 80.41 seconds
 runtime for do_something_else(60000): 116.78 seconds
 ```
-This time, a rough look at the data above indicates that the algorithm shows quadratic, or $O(n^2)$, behavior. Look at the time behavior when `n` is doubled or tripled:
+This time, a rough look at the data above indicates that the algorithm shows quadratic, or \\(O(n^2)\\), behavior. Look at the time behavior when `n` is doubled or tripled:
 
-When the size of `n` is doubled from 10000 to 20000, the time increases by approximately a factor of 4 ($12.37/3.09 \approx 4.003$).
+When the size of `n` is doubled from 10000 to 20000, the time increases by approximately a factor of 4 \\(12.37/3.09 \approx 4.003\\)).
 
-When the size of `n` is tripled from 10000 to 30000, the time increases by approximately a factor of 9 ($28.08/3.09 \approx 9.09$).
+When the size of `n` is tripled from 10000 to 30000, the time increases by approximately a factor of 9 (\\(28.08/3.09 \approx 9.09\\)).
 
-When the size of `n` is doubled from 30000 to 60000, the time increases by approximately a factor of 4 ($116.78/28.08 \approx 4.16$).
+When the size of `n` is doubled from 30000 to 60000, the time increases by approximately a factor of 4 (\\(116.78/28.08 \approx 4.16\\)).
 
-When the size of `n` is tripled from 20000 to 60000, the time increases by approximately a factor of 9 ($116.78/12.37 \approx 9.44$)
+When the size of `n` is tripled from 20000 to 60000, the time increases by approximately a factor of 9 (\\(116.78/12.37 \approx 9.44\\))
 
 Graphing the data hints at a parabolic (quadratic) shape. Caution though: while this graph convinces us that
-the time complexity is not linear, graphs that are concave up might represent quadratic, cubic, or other growth rates.
+the time complexity is not linear, graphs that are concave up might represent quadratic, cubic, exponential, or other growth rates.
 <img src="runtime_graph_quadratic.png"  width="50%" height="50%" alt = "second graph of runtime as a function of n">
 
 ## Timing the running of a function that takes less than 1 second
 If a function takes less than 1 second to execute, then the technique above is often not accurate.
 Instead, we must execute the function multiple times (so the total elapsed time is more than 1 second), 
-then divide by the number of times the function was called, to get the average execution time. You will learn this technique next quarter.
+then divide by the number of times the function was called, to get the average execution time. You will learn this technique in a future course.
