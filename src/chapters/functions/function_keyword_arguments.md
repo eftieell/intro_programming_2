@@ -1,6 +1,6 @@
 # Keyword arguments
 
-In the header of a function definition, you name the parameters. These names are local variable names, meaning that the variables are only accessible within the function definition itself. In the line that *invokes* (or *calls*) the function, values (called *arguments*) are passed to fill in as the values of the parameters. These argument must be passed in the correct order. Consider this example:
+In the header of a function definition, you name the parameters. These names are local variable names, meaning that the variables are only accessible within the function definition itself. In the line that *invokes* (or *calls*) the function, values (called *arguments*) are passed to fill in as the values of the parameters. These arguments must be passed in the correct order. Consider this example:
 
 ```python
 def attribute(author: str, title: str)->None:
@@ -40,13 +40,13 @@ The parameter names should exactly match the names given in the definition of th
 <img src="parameter_hinting.png"  width="50%" height="50%" alt = "When you invoke a function, VSCode tells you the parameter names">
 
 When you use keyword arguments, your code is often easier to understand, because the names of the variables makes the meaning of each argument clear.
-If you use keyword arguments and you put the arguments in the wrong order, the values of the arguments are assigned by the variable names, not the order. However, we strongly advise that even when using keywords, you keep the discipline of maintaining the order of the variales in the function definition. Using the features of your IDE makes this easy.
+If you use keyword arguments and you put the arguments in the wrong order, the values of the arguments are assigned by the variable names, not the order. However, we strongly advise that even when using keywords, you maintain the order of the variables in the function definition. Using the features of your IDE makes this easy.
 
 ```python
 # Use keyword arguments to clarify and to reduce bugs:
 attribute(author = "Margaret Wise Brown", title = "Goodnight Moon")
-# Here we use keyword arguments with the arguments out of order
-# This is poor programming practice, but notice that it still works:
+# Above we use keyword arguments with the arguments out of order
+# Below is poor programming practice since the parameters are out of order. But notice that it still works:
 attribute(title = "Harry Potter", author = "J.K. Rowling")
 ```
 Output:

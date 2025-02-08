@@ -13,6 +13,7 @@ default-theme = "rust"
 additional-js = ["js/disable_keyboard.js"]
 additional-css = ["css/pyscript.css"]
 no-section-label = true
+mathjax-support = true
 
 [output.html.playground]
 editable = true

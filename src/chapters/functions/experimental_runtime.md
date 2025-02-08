@@ -2,7 +2,7 @@
 
 As we write more complicated code, it becomes increasingly important to make it execute quickly. 
 We will start by measuring the runtime experimentally. 
-Knowing how long it takes for our code to run will guide is in determining how critical it is to redesign our code to make it run more efficiently.
+Knowing how long it takes for our code to run will guide us in determining how critical it is to redesign our code to make it run more efficiently.
 
 ## Strategy for experimentally timing how long it takes for a function to run
 The overall strategy is simple: 
@@ -12,7 +12,7 @@ The overall strategy is simple:
 - Calculate the elapsed time by subtracting the start time from the finish time
 
 ## Finding out what time it is
-The function `time.time()` in the python `time` module returns the current time
+The function `time.time()` in the python `time` module returns the current time.
 ```python
 import time
 
@@ -27,12 +27,12 @@ Sample output:
 ```
 1732765128.7487528
 ```
-The current time is in seconds since a fixed starting moment, which in python is set to midnight on January 1, 1970!
+This function returns the current time in seconds since a fixed starting moment, which in python is set to midnight on January 1, 1970!
 The actual value of the time won't be important to us, since we are not interested in what time it is. Rather, we care
 about the amount of time that elapses while a function is executing.
 
 ## Timing the running of a function that takes more than a second
-Here's an example of code that times how long it takes for the function `do_something()` to execute. The contents and purpose of the function here are not what is important here - instead we are focusing on how long it takes to execute.
+Here's an example of code that times how long it takes for the function `do_something()` to execute. The contents and purpose of the function are not what is important in this example - instead we are focusing on how long it takes to execute.
 ```python
 import time
 
@@ -67,7 +67,7 @@ If a function takes a parameter that represents the size of the problem (number 
 then we are very interested in how the execution time grows as the size of the problem grows. 
 The pattern of this change is called the *order of growth* or *time complexity* of the algorithm.
 
-- $\displaystyle O(n)$ If doubling the size of `n` results in a doubling of the execution time for the algorithm, then we call the algorithm *Big-O of n* or *linear*. We write this $O(n)$.
+- If doubling the size of `n` results in a doubling of the execution time for the algorithm, then we call the algorithm *Big-O of n* or *linear*. We write this \\(O(n)\\).
   
 - If doubling the size of `n` results in a quadrupling of the execution time, then we call the algorithm "Big-O of n squared" or "quadratic". We write this $O(n^2)$.
 
