@@ -205,8 +205,14 @@ p2 = p1
 p1.x = 5
 print(p2.x) # outputs 5
 </code></pre>
-<p>In the first line above, a <code>Point</code> object called <code>p1</code> is instantiated. Since <code>p1</code> is actually a reference to the <code>Point</code> object, the next line makes a copy of that reference. Thus <code>p1</code> and <code>p2</code> refer to the same object. In the third line, the <code>x</code> value of <code>p1</code> is changed. Since <code>p2</code> refers to the same object, on line 4, naturally <code>p2.x</code> also has the value 5.  Here is the memory diagram showing the situation:</p>
-<img src="memory_diagram_5.png" alt="memory diagram of two variables referring to the same Point objects" width = 350>
+<p>In the first line above, a <code>Point</code> object called <code>p1</code> is instantiated. Since <code>p1</code> is actually a reference to the <code>Point</code> object, the next line makes a copy of that reference. Thus <code>p1</code> and <code>p2</code> refer to the same object. In the third line, the <code>x</code> instance variable of <code>p1</code> is changed. Since <code>p2</code> refers to the same object, on line 4, naturally <code>p2.x</code> also has the value 5.  Here is the memory diagram showing the situation:</p>
+<table>
+<tr><td>Before:</td><td>After:</td></tr>
+<tr>
+<td><img src="memory_diagram_5.png" alt="memory diagram of two variables referring to the same Point objects" width = 350></td>
+<td><img src="memory_diagram_6.png" alt="memory diagram of two variables referring to the same Point objects, values modified" width = 350></td>
+</tr>
+</table>
 <h2 id="shallow-copy"><a class="header" href="#shallow-copy">Shallow copy</a></h2>
 <p>Sometimes we don't want to copy a reference, but instead we want to make a true copy of an object. The first way to do this in python is with a shallow copy, implemented in the <code>copy</code> function from python's <code>copy</code> module. To use this function, call <code>copy.copy(original_object)</code>, and it returns a new object of the same type, with each instance variable copied from the original. For example:</p>
 <pre><code class="language-python">import copy
@@ -216,13 +222,19 @@ original_point.y = 59
 print(original_point)   # outputs (59, 23), it has been modified
 print(new_point)        # outputs (17, 23), the copy was not modified
 </code></pre>
-<p>Here's the memory diagram right after the line <code>new_point = copy.copy(original_point)</code> is executed:
-<img src="shallow_copy1.png" alt="Point object, along with its shallow copy" width = 350></p>
-<p>Notice <code>new_point</code> is a copy of the original. It is a separate object, thought its values are the same, it has a different id. Thus, when the value of <code>original_point.y</code> is changed, this will not affect <code>new_point</code>. Here's the memory diagram after the line <code>original_point.y = 59</code> is executed:</p>
-<img src="shallow_copy2.png" alt="Point object has been modified, and the copy is unchanged" width = 350>
+<table>
+<tr>
+<td>After `new_point = copy.copy(originl_point)`</td>
+<td>After `original_point.y = 59`:</td></tr>
+<tr>
+<td><img src="shallow_copy1.png" alt="Point object, along with its shallow copy" width = 350></td>
+<td><img src="shallow_copy2.png" alt="Point object has been modified, and the copy is unchanged" width = 350></td>
+</tr>
+</table>
+<p>Notice <code>new_point</code> is a copy of the original. It is a separate object. Though its values are the same, it has a different id. Thus, when the value of <code>original_point.y</code> is changed, that change will not affect <code>new_point</code>.</p>
 <h2 id="a-shallow-copy-is-not-always-ideal-since-it-only-copies-one-level-of-depth"><a class="header" href="#a-shallow-copy-is-not-always-ideal-since-it-only-copies-one-level-of-depth">A shallow copy is not always ideal, since it only copies one level of depth</a></h2>
-<p>Let's look what a shallow copy does on a more complex object:</p>
-<pre><code class="language-python"># Create Triangle object and a shallow copy of it
+<p>Let's look at what a shallow copy does on a more complex object:</p>
+<pre><code class="language-python"># Create Triangle object and make a shallow copy of it
 t1 = Triangle(Point(4, 1), Point(7, 1), Point(5, 2))
 t2 = copy.copy(t1)   # shallow copy!
 print(t1)            # outputs Vertices: (4, 1) (7, 1) (5, 2)
@@ -230,7 +242,7 @@ print(t2)            # outputs Vertices: (4, 1) (7, 1) (5, 2)
 </code></pre>
 <p>Let's examine in detail what happens with the shallow copy. Start with the memory diagram for <code>t1</code>:
 <img src="shallow_copy3.png" alt="One triangle, before copy" width = 450></p>
-<p>Recall that a shallow copy will copy each instance variable of an object. The three instance variables for <code>t1</code> are each references (<code>t1.vertex1</code>, <code>t1.vertex2</code>, and <code>t1.vertex3</code>). So all three of these references get copied to the new object <code>t2</code>. These copies of references do not create new objects. This means that <code>t1</code>s instance variables(<code>t2.vertex1</code>, <code>t2.vertex2</code>, and <code>t2.vertex3</code>) point to the same <code>Point</code> objects as <code>t1</code>. They share these objects!</p>
+<p>Recall that a shallow copy will copy each instance variable of an object. The three instance variables for <code>t1</code> are each references (<code>t1.vertex1</code>, <code>t1.vertex2</code>, and <code>t1.vertex3</code>). So all three of these references get copied to the new object <code>t2</code>. Copying the three references does not create new objects. The result is that <code>t1</code>s instance variables(<code>t2.vertex1</code>, <code>t2.vertex2</code>, and <code>t2.vertex3</code>) point to the same <code>Point</code> objects as <code>t1</code>. The two triangles share these <code>Point</code> objects!</p>
 <img src="shallow_copy4.png" alt="Two triangles, after shallow copy" width = 450>
 <p>The shallow copy works fine when we change one of the instance variables of the original object (i.e., replace one of the vertex <code>Point</code>s)</p>
 <pre><code class="language-python"># Change the first vertex of t1 to a new Point object:
@@ -240,16 +252,16 @@ print(t2)  # still outputs Vertices: (4, 1) (7, 1) (5, 2)
 </code></pre>
 <p>The behavior still makes sense - the copied triangle does not change when the first triangle is modified. Here is the memory diagram after the above code has been executed. Notice that <code>t1.vertex1</code> now refers to a brand-new <code>Point</code>.</p>
 <img src="shallow_copy5.png" alt="Two triangles, after shallow copy, modified instance variables" width = 450>
-<p>But the behavior of the shallow copy really doesn't satisfy our needs in this case when we change values in the underlying <code>Point</code> objects:</p>
+<p>But the behavior of the shallow copy doesn't satisfy our needs in this case when we change intance variables in the underlying <code>Point</code> objects:</p>
 <pre><code class="language-python">t1.vertex3.y = 0
-print(t1)    # As expected, y value of last vertex is modified Vertices: (3, -1) (7, 1) (5, 0)
+print(t1)    # As expected, y value of last vertex is modified: Vertices: (3, -1) (7, 1) (5, 0)
 print(t2)    # t2 is a copy, yet the value of its last vertex also changed: Vertices: (4, 1) (7, 1) (5, 0)
 </code></pre>
-<p>Here is the memory diagram after the last segment of code has run. Notice that the y-coordinate of vertex3 has been modified, for both triangles.</p>
+<p>Here is the memory diagram after the last segment of code has run. Notice that the y-coordinate of <code>vertex3</code> has been modified, for both triangles.</p>
 <img src="shallow_copy6.png" alt="Two triangles, after shallow copy, modified deeper" width = 450>
-<p>We see that for objects with more than one level, a shallow copy can lead to unwanted side effects when changing values on the second level or deeper. To solve this problem, the python <code>copy</code> module provides a function called <code>deepcopy()</code>.</p>
+<p>We see that for objects with more than one level, a shallow copy might lead to unwanted side effects when changing values on the second level or deeper. To solve this problem, the python <code>copy</code> module provides a function called <code>deepcopy()</code>.</p>
 <h2 id="deep-copy"><a class="header" href="#deep-copy">Deep copy</a></h2>
-<p>A call to <code>copy.deepcopy(original_object)</code> returns an new object that is a copy of <code>original_object</code>. Any object that <code>original_object</code> refers to is also copied. This instantiation of copies happens at every level of depth of the object being copied.</p>
+<p>A call to <code>copy.deepcopy(original_object)</code> returns an new object that is a full copy of <code>original_object</code>. Any object that <code>original_object</code> refers to is also copied. This instantiation of copies happens at every level of depth of the object being copied.</p>
 <p>For example, consider this code:</p>
 <pre><code class="language-python">orig = Triangle(Point(1, 6), Point(5, 3), Point(1, 3))
 copied = copy.deepcopy(orig)
@@ -262,7 +274,7 @@ The deep copy completely detaches connection between the two objects. So modific
 orig.vertex3.y = 0
 </code></pre>
 <img src="deep_copy_modified.png" alt="Two triangles, after deep copy and modification of one the original" width = 450>
-<p>In the above memory diagram, <code>orig.vertex1</code> was changed to a newly-instantiated <code>Point</code>. This means that there are no longer any arrows pointing to the initial point <code>orig.vertex1</code>. Since there are no remaining references to this point, it can no longer be accessed from within this program. Python &quot;cleans up&quot; these orphaned objects through a process called <em>garbage collection</em>. Garbage collection recovers space in memory to potentially be used by python later in the running of the program.</p>
+<p>Side note: in the above memory diagram, <code>orig.vertex1</code> was changed to a newly-instantiated <code>Point</code>. This means that there are no longer any arrows pointing to the initial point <code>orig.vertex1</code>. Since there are no remaining references to this point, it can no longer be accessed from within this program. Python &quot;cleans up&quot; these orphaned objects through a process called <em>garbage collection</em>. Garbage collection recovers space in memory to potentially be used by python later in the running of the program.</p>
 
                     </main>
 

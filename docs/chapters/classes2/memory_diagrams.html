@@ -170,7 +170,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="drawing-memory-diagram-of-complicated-objects"><a class="header" href="#drawing-memory-diagram-of-complicated-objects">Drawing memory diagram of complicated objects</a></h1>
-<p>In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html)" target="_blank">variables are references</a>), we learned that variables store references to objects (i.e., the memory address where the object is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:</p>
+<p>In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html" target="_blank">variables are references</a>), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:</p>
 <h2 id="a-simple-example"><a class="header" href="#a-simple-example">A simple example</a></h2>
 <p>Consider the following code:</p>
 <pre><code class="language-python">class Point:
@@ -225,7 +225,7 @@ print(t1)
 <pre><code>p3: (5, 19)
 Vertices: (10, 1) (7, 1) (5, 19)
 </code></pre>
-<p>Since <code>p1</code> refers to the same object as <code>t1.vertex</code>, when <code>p1</code> is changed, so is <code>t1.vertex3</code>. Similarly, since <code>t1.vertex3</code> refers to the same object as <code>p3</code>, when <code>t1.vertex3</code> is changed, so is <code>p1</code>. Here is the final memory diagram showing the changes:</p>
+<p>Since <code>p1</code> refers to the same object as <code>t1.vertex1</code>, when <code>p1</code> is changed, so is <code>t1.vertex1</code>. Similarly, since <code>t1.vertex3</code> refers to the same object as <code>p3</code>, when <code>t1.vertex3</code> is changed, so is <code>p3</code>. Here is the final memory diagram showing the changes:</p>
 <img src="memory_diagram_8.png" alt="Memory diagram of a triangle object, which has three vertices that are each Point objects, after modifications" width = 550>
 
                     </main>

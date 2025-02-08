@@ -2531,12 +2531,6 @@ class Point:
         self.x = x
         self.y = y
     
-    def __add__(self, other: Point)-&gt;Point:
-        return Point(self.x+other.x, self.y+other.y)
-
-    def __eq__(self, other: Point)-&gt;bool:
-        return self.x==other.x and self.y==other.y
-    
 # main code block:
 point1 = Point(3, 5)
 point2 = Point(3, 5)
@@ -2547,12 +2541,12 @@ print(point2)
 <pre><code>&lt;__main__.Point object at 0x100b1bfd0&gt;
 &lt;__main__.Point object at 0x100b1be50&gt;
 </code></pre>
-<p>Without the <code>___str__()</code> function to override the form of the output, python returns the contents of the variable, which is its memory address (shown in the above output as a hexadecimal number).</p>
-<p>The number stored in the variable is a memory address. Examining the values stored <em>at that memory address</em>, we find the actual data associated with the object.  So the variable is a <em>reference</em> of where to find the actual contents of the object. We can represent this situation visually with this memory diagram:</p>
+<p>Without the <code>___str__()</code> method to override the form of the output, python returns the contents of the variable, which is its memory address (shown in the above output as a hexadecimal number).</p>
+<p>This means that the number stored in each variable is a memory address. Examining the values stored <em>at that memory address</em>, we find the actual data associated with the object.  So the variable is a <em>reference</em> of where to find the actual contents of the object. We can represent this situation visually with this memory diagram:</p>
 <img src="chapters/classes2/memory_diagram_1.png" alt="Memory diagram of references to Point objects" width = 350>
-<p>It is awkward to write the values of the memory addresses themselves, in particular because without running the program, we do not even know what these memory addresses will be. Therefore, by convention we represent memory diagrams like the one above with arrows. The start of the arrow is <em>inside</em> the reference variable, and the arrow points to the part of the diagram where the data itself is held.</p>
+<p>It is awkward to write the values of the memory addresses themselves, in particular because without running the program, we do not even know what these memory addresses will be. Therefore, by convention we represent memory diagrams like the literal one above more abstractly by using arrows. The start of the arrow is <em>inside</em> the reference variable, and the arrow points to the part of the diagram where the data itself is held. Because the arrow starts within the reference variable's box, it represents that the information stored in the variable is a memory address. The endpoint of the arrow represents where that memory address points to.</p>
 <img src="chapters/classes2/memory_diagram_2.png" alt="Abstract diagram of references to Point objects" width = 350>
-<p>We view these memory diagrams as equivalent, and we prefer the second version. The arrows make it clear that each variable is a reference to an object.</p>
+<p>We view the literal and abstract memory diagrams as equivalent, and we prefer the abstract version because it is easier to visually process. The arrows make it clear that each variable is a reference to an object.</p>
 <h2 id="the-python-id-function"><a class="header" href="#the-python-id-function">The python <code>id()</code> function</a></h2>
 <p>Suppose we now implement the <code>__str__()</code> method in the <code>Point</code> class, as shown below:</p>
 <pre><code class="language-python">class Point:
@@ -2561,12 +2555,6 @@ print(point2)
         # initialize the values of the point (x, y)
         self.x = x
         self.y = y
-    
-    def __add__(self, other: Point)-&gt;Point:
-        return Point(self.x+other.x, self.y+other.y)
-
-    def __eq__(self, other: Point)-&gt;bool:
-        return self.x==other.x and self.y==other.y
     
     def __str__(self)-&gt;str:
         return f&quot;({self.x}, {self.y})&quot;
@@ -2590,7 +2578,7 @@ print(id(point2))
 4306615888
 </code></pre>
 <p>These are the memory addresses of where the objects are stored, in decimal.</p>
-<p>Note that the two ids that are output are not the same. Even though <code>point1</code> and <code>point2</code> have the same values, they are distinct objects, stored in separate memory locations. Note that if we were to change the x or y values of one of the points, the other would not change, since they are separate objects.</p>
+<p>Note that the two ids that are output above are not the same. Even though <code>point1</code> and <code>point2</code> have the same values, they are distinct objects, stored in separate memory locations. Note that if we were to change the x or y values of one of the points, the other would not change, since they are separate objects.</p>
 <h2 id="copying-references"><a class="header" href="#copying-references">Copying references</a></h2>
 <p>Suppose we modify the main code block to the following:</p>
 <pre><code class="language-python"># main code block:
@@ -2598,12 +2586,25 @@ point1 = Point(3, 5)
 point2 = Point(3, 5)
 point3 = point2
 </code></pre>
-<p>The last line in the above code is an assignment statement, that stores in <code>point3</code> the value found in <code>point2</code>. Since that value is a reference (a memory address), the result is to copy the memory address to <code>point3</code>. Here is a memory diagram showing the result of the assignment statement. Note that <code>point2</code> and <code>point3</code> store the same memory address, so they have the same id.</p>
+<p>The last line in the above code is an assignment statement, that stores in <code>point3</code> the value found in <code>point2</code>. Since that value is a reference (a memory address), the result is to copy the memory address to <code>point3</code>. Here is a literal memory diagram showing the result of the assignment statement. Note that <code>point2</code> and <code>point3</code> store the same memory address, so they have the same id.</p>
 <img src="chapters/classes2/memory_diagram_3.png" alt="Memory diagram including two references to the same object" width = 350>
-<p>The abstract version of this diagram (using arrows instead of actual memory addresses) is below. The arrows make it more obvious that two variables are referring to the same object. There are only two different <code>Point</code> objects, since only two <code>Point</code> objects were instantiated.</p>
+<p>The abstract version of this diagram (using arrows instead of actual memory addresses) is below. The arrows make it more obvious that two variables (<code>point2</code> and <code>point3</code>) are referring to the same object. There are only two different <code>Point</code> objects, since only two <code>Point</code> objects were instantiated.</p>
 <img src="chapters/classes2/memory_diagram_4.png" alt="Abstract memory diagram of two references to the same object" width = 350>
+<p>Suppose now we modify the contents of <code>point2</code>:</p>
+<pre><code class="language-python">point2.x = 7
+print(point1)
+print(point2)
+print(point3)
+</code></pre>
+<p>Since <code>point2</code> and <code>point3</code> refer to the same object, changing one of them also changes the other, as seen in the memory diagram below. Note that <code>point1</code> refers to an entirely different object, so it is not changed.</p>
+<img src="chapters/classes2/memory_diagram_4b.png" alt="Two references to the same object mean changes to one result in changes to the other" width = 350>
+<p>The output of the above code is:</p>
+<pre><code>(3, 5)
+(7, 5)
+(7, 5)
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dunder-methods-methods-whose-name-starts-with-two-underscores"><a class="header" href="#dunder-methods-methods-whose-name-starts-with-two-underscores">Dunder methods (methods whose name starts with two underscores)</a></h1>
-<p>In python, methods that start with two underscores are called <em>dunder</em> (double-underscore) methods. They are sometimes also referred to as <em>magic</em> methods. These methods have special significance, since they are automatically invoked by python in certain situtations. You've seen two examples of this already: the <code>__init__</code> function is automatically (or &quot;magically&quot;) invoked when you instantiate an object, and the <code>__str__</code> method is automatically invoked when you print an object. For example:</p>
+<p>In python, methods that start with two underscores are called <em>dunder</em> (double-underscore) methods. They are sometimes also referred to as <em>magic methods</em>. These methods have special significance, since they are automatically invoked by python in certain situtations. You've seen two examples of this already: the <code>__init__()</code> function is automatically (or &quot;magically&quot;) invoked when you instantiate an object, and the <code>__str__()</code> method is automatically invoked when you print an object. For example:</p>
 <pre><code class="language-python">class Time24:
     &quot;&quot;&quot; A class that represents a time of day on a 24-hour clock
         Default time is 0 hours 0 minutes &quot;&quot;&quot;
@@ -2622,7 +2623,7 @@ point3 = point2
 time1 = Time24(12, 59)  # automatically calls __init__
 print(time1)            # automatically calls __str__, outputs 12:59
 </code></pre>
-<p>Besides <code>__init__</code> and <code>__str__</code>, python has a long list of other dunder methods. We will learn the <em>rich comparison operators</em>, which allows us, whenever it makes sense, to compare two objects of a class using  the operators <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>!=</code>, <code>&gt;=</code>, and <code>&gt;</code>.</p>
+<p>Besides <code>__init__()</code> and <code>__str__()</code>, python has a long list of other dunder methods. We will learn the <em>rich comparison operators</em>, which allows us, whenever it makes sense, to compare two objects of a class using  the operators <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>!=</code>, <code>&gt;=</code>, and <code>&gt;</code>.</p>
 <p>In the work below, we will use the following <code>Time24</code> objects:</p>
 <pre><code class="language-python">time1 = Time24(12, 7)   # instantiate time2 object, represents 12:07
 time2 = Time24(2, 43)   # instantiate time2 object, represents 02:43
@@ -2633,32 +2634,33 @@ default_time = Time24() # default time is 00:00
 <p>Notice that two of the <code>Time24</code> objects above (<code>time1</code> and <code>time2</code>) represent the same time of day. What do you think is output by the following line of code?</p>
 <pre><code class="language-python">print(time1 == time3)
 </code></pre>
-<p>Are you disappointed to find out that the above line of code outputs <code>False</code>? By default, two objects evaluate as equal in python when they represent the identical object (stored in the same memory location). By default, python does not compare the <em>contents</em> of the objects to see if the <em>contents are the same</em>. But when dealing with objects, comparing the contents is often what we want to do. So python gives us a way to make the <code>==</code> comparison between objects compare the contents of the objects, according to a method we provide. This is called &quot;overloading the <code>==</code> operator&quot;.</p>
+<p>Are you disappointed to find out that the above line of code outputs <code>False</code>? By default, two objects evaluate as <code>==</code> in python when they represent the identical object (in other words, they stored in the same memory location, refer to the same object, or have the same <code>id()</code>). Said differently, when evaluating <code>==</code> for two objects, by default python does not compare the <em>contents</em> of the objects to see if the <em>contents are the same</em>. But when dealing with objects, comparing the contents is usually exactly what we want <code>==</code> to do. So python gives us a way to make the <code>==</code> comparison between objects compare the contents of the objects, according to a method we provide. This is called &quot;overloading the <code>==</code> operator&quot;.</p>
 <h2 id="how-to-overload-the--operator"><a class="header" href="#how-to-overload-the--operator">How to overload the <code>==</code> operator</a></h2>
 <ul>
-<li>Within the class, implement a method called <code>__eq__</code>. </li>
-<li>The <code>__eq__</code> method defines in python code how to tell if two objects are equal.</li>
-<li>The <code>__eq__</code> method is automatically (&quot;magically&quot;) called when you use <code>==</code> to compare two objects.</li>
-<li>The <code>__eq__</code> method should return a <code>bool</code>.</li>
+<li>Within the class, implement a method called <code>__eq__()</code>. </li>
+<li>The <code>__eq__()</code> method defines in python code how to tell if two objects are <code>==</code>.</li>
+<li>The <code>__eq__()</code> method is automatically (&quot;magically&quot;) called when you use <code>==</code> to compare two objects.</li>
+<li>The <code>__eq__()</code> method should return a <code>bool</code>.</li>
 <li>In our example, we will say two <code>Time24</code> objects equal if and only if they have the same values for hour and the same values for minutes. </li>
-<li>The <code>__eq__</code> method should take two parameters. The object on the
+<li>The <code>__eq__()</code> method should take two parameters. The object on the
 left side of <code>==</code> becomes <code>self</code>, and the object on the right side of the <code>==</code> becomes the second parameter, typically named <code>other</code>.</li>
 </ul>
 <p>Include this code in the <code>Time24</code> class:</p>
 <pre><code class="language-python">    def __eq__(self, other)-&gt;bool:
+        # Evaluate two Time24 objects as &quot;==&quot; if both of their instance variables (hours and minutes) are equal
         return self.hours == other.hours and self.minutes == other.minutes
 </code></pre>
 <p>Now the following line outputs <code>True</code>, as desired:</p>
 <pre><code class="language-python">print(time1 == time3). # automatically calls the __eq__ method from the Time24 class, time1 is self, time3 is other
 </code></pre>
 <h2 id="using-the--operator-to-compare-two-objects-1"><a class="header" href="#using-the--operator-to-compare-two-objects-1">Using the &lt; operator to compare two objects</a></h2>
-<p>We would like the following line to output <code>False</code>, since time2 is 2:43 in the morning, and time2 is in the afternoon</p>
+<p>We would like the following line to output <code>False</code>, since time2 is 2:43 in the morning, and time2 is in the afternoon:</p>
 <pre><code class="language-python">print(time1 &lt; time2)
 </code></pre>
 <p>But here's the output:</p>
 <pre><code>TypeError: '&lt;' not supported between instances of 'Time24' and 'Time24'
 </code></pre>
-<p>When objects in a class have a natural linear ordering, then it makes sense to compare them with the <code>&lt;</code> operator. To implement this in python, we provide a <code>__lt__</code> operator in our class. The <code>__lt__</code> method should return a boolean, and take two parameters. The <code>__lt__</code> method will automatically be called when the code <code>object &lt; object2</code> is evaluated, with <code>object1</code> becoming the parameter <code>self</code>, and <code>object2</code> becoming the parameter <code>other</code>. For example, here is an implementation of <code>__lt__</code> for our <code>Time24</code> class. Insert this code into the class.</p>
+<p>When objects in a class have a natural linear ordering, then it makes sense to compare them with the <code>&lt;</code> operator. To implement this in python, we provide a <code>__lt__()</code> method in our class. The <code>__lt__()</code> method should return a boolean, and take two parameters. The <code>__lt__()</code> method will automatically be called when the code <code>object &lt; object2</code> is evaluated, with <code>object1</code> becoming the parameter <code>self</code>, and <code>object2</code> becoming the parameter <code>other</code>. For example, here is an implementation of <code>__lt__()</code> for our <code>Time24</code> class. Insert this code into the class.</p>
 <pre><code class="language-python">    def __lt__(self, other)-&gt;bool:
         if self.hours &lt; other.hours:
             return True
@@ -2668,9 +2670,9 @@ left side of <code>==</code> becomes <code>self</code>, and the object on the ri
             return self.minutes &lt; other.minutes
 </code></pre>
 <p>Here is some demo code to show you show to call</p>
-<pre><code class="language-python">print(time1 &lt; time2)        # calls __lt__, outputs False (time2 is earlier in the day)
+<pre><code class="language-python">print(time1 &lt; time2)        # calls __lt__(), outputs False (time2 is earlier in the day)
 print(time1 &lt; time3)        # outputs True (they are equal, so time1 isn't less than time3)
-print(default_time &lt; time2) # outputs True, midnight is earlier than any other time
+print(default_time &lt; time2) # outputs True, midnight is earlier than every other time
 
 </code></pre>
 <h2 id="the-other-rich-comparison-operators"><a class="header" href="#the-other-rich-comparison-operators">The other rich-comparison operators</a></h2>
@@ -2748,7 +2750,7 @@ print(point3)
 <p>But instead here's the output:</p>
 <pre><code>TypeError: unsupported operand type(s) for +: 'Point' and 'Point'
 </code></pre>
-<p>We can &quot;teach&quot; python how to add elements of our <code>Point</code> class by implementing the method <code>__add__</code> in our class. The <code>__add__</code> method will be automatically called when python evaluates the expression <code>point1 + point2</code>. It takes two parameters, <code>self</code> and <code>other</code>, where the first summand <code>point1</code> takes the role of <code>self</code>, and the second summand <code>point2</code> takes th role of <code>other</code>. The <code>__add__</code> method should create and return a new <code>Point</code>, whose values are the sums of the individual points. Here's the implementation, which is incorporated into the <code>Point</code> class:</p>
+<p>We can &quot;teach&quot; python how to add objects of our <code>Point</code> class by implementing the method <code>__add__()</code> in our class. The <code>__add__()</code> method will automatically be called when python evaluates the expression <code>point1 + point2</code>. It takes two parameters, <code>self</code> and <code>other</code>, where the first summand <code>point1</code> takes the role of <code>self</code>, and the second summand <code>point2</code> takes the role of <code>other</code>. The <code>__add__()</code> method should create and return a new <code>Point</code>, whose values are the sums of the individual points. Here's the implementation, which is incorporated into the <code>Point</code> class:</p>
 <pre><code class="language-python">    def __add__(self, other: Point)-&gt;Point:
         newx = self.x + other.x
         newy = self.y + other.y
@@ -2762,15 +2764,15 @@ point3 = point1 + point2
 print(point3)
 </code></pre>
 <p>outputs</p>
-<pre><code>(7. 8)
+<pre><code>(7, 8)
 </code></pre>
-<p>Note: the <code>__add__</code> function could be condensed to one line:</p>
+<p>Note: the <code>__add__()</code> function could be condensed to one line:</p>
 <pre><code class="language-python">    def __add__(self, other: Point)-&gt;Point:
         return Point(self.x+other.x, self.y+other.y)
 </code></pre>
 <p>All of the arithmetic operators you are used to can be overloaded. The table below shows a partial list of arithmetic operators and the dunder methods they correspond to:</p>
 <div class="table-wrapper"><table><thead><tr><th>Operator</th><th>dunder method</th><th>returns:</th></tr></thead><tbody>
-<tr><td>x+y (add)</td><td><code>__add__(self, other</code></td><td>sum of x and y</td></tr>
+<tr><td>x+y (add)</td><td><code>__add__(self, other)</code></td><td>sum of x and y</td></tr>
 <tr><td>x-y (subtract)</td><td><code>__sub__(self, other)</code></td><td>difference of x and y</td></tr>
 <tr><td>x*y (multiply)</td><td><code>__mul__(self, other)</code></td><td>product of x and y</td></tr>
 <tr><td>x/y (divide)</td><td><code>__truediv__(self, other)</code></td><td>quotient of x and y</td></tr>
@@ -2782,8 +2784,9 @@ print(point3)
 </div>
 <h2 id="other-dunder-methods"><a class="header" href="#other-dunder-methods">Other dunder methods</a></h2>
 <p>For the scope of this course, the dunder methods above are sufficient. But if you are curious about what other dunder methods exist, here's an external website that is thorough: <a href="https://www.pythonmorsels.com/every-dunder-method/" target="_blank">https://www.pythonmorsels.com/every-dunder-method/</a></p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="the-difference-between-identity-and-equality-of-objects"><a class="header" href="#the-difference-between-identity-and-equality-of-objects">The difference between &quot;identity&quot; and &quot;equality&quot; of objects</a></h1>
-<p>In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html)" target="_blank">variables are references</a>), we noted that variables don't store objects themselves, but rather store references to objects. We can use the python <code>id()</code> function to find the memory address where the objects are stored.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="the-difference-between-identity-is-and-equality--of-objects"><a class="header" href="#the-difference-between-identity-is-and-equality--of-objects">The difference between &quot;identity&quot; (<code>is</code>) and &quot;equality&quot; (<code>==</code>) of objects</a></h1>
+<h2 id="identity"><a class="header" href="#identity">Identity</a></h2>
+<p>In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html" target="_blank">variables are references</a>), we noted that variables don't store objects themselves, but rather store references to objects. Recall also that we can use the python <code>id()</code> function to find the memory address where the objects are stored.</p>
 <p>Consider the following code:</p>
 <pre><code class="language-python">class Point:
 
@@ -2791,9 +2794,6 @@ print(point3)
         # initialize the values of the point (x, y)
         self.x = x
         self.y = y
-    
-    def __add__(self, other: Point)-&gt;Point:
-        return Point(self.x+other.x, self.y+other.y)
 
     def __eq__(self, other: Point)-&gt;bool:
         return self.x==other.x and self.y==other.y
@@ -2815,6 +2815,7 @@ print(id(point3))
 print(point2 is point3) # outputs True, because point2 and point3 have the same ids (they refer to the same object)
 print(point1 is point3) # outputs False, because point1 and point3 have different ids (they refer to different objects)
 </code></pre>
+<h2 id="equality"><a class="header" href="#equality">Equality</a></h2>
 <p>If rather than comparing identities, we want to determine if the contents of the objects are the same, recall that we learned to use <code>==</code>, which automatically calls the <code>__eq__()</code> method:</p>
 <pre><code class="language-python">print(point1 == point2) # outputs True, because the x and y values for point1 and point2 are the same.
 print(point2 == point3) # outputs True, because the x and y values for point2 and point3 are the same.
@@ -2823,7 +2824,7 @@ print(point1 == point3) # outputs True, because the x and y values for point1 an
 <h2 id="what-to-remember-from-this"><a class="header" href="#what-to-remember-from-this">What to remember from this:</a></h2>
 <p>Remember that <code>obj1 is obj2</code> determines if <code>obj1</code> and <code>obj2</code> have the same identity, while <code>obj1 == obj2</code> determines if <code>obj1</code> and <code>obj2</code> have the same values.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="drawing-memory-diagram-of-complicated-objects"><a class="header" href="#drawing-memory-diagram-of-complicated-objects">Drawing memory diagram of complicated objects</a></h1>
-<p>In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html)" target="_blank">variables are references</a>), we learned that variables store references to objects (i.e., the memory address where the object is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:</p>
+<p>In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html" target="_blank">variables are references</a>), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:</p>
 <h2 id="a-simple-example"><a class="header" href="#a-simple-example">A simple example</a></h2>
 <p>Consider the following code:</p>
 <pre><code class="language-python">class Point:
@@ -2878,7 +2879,7 @@ print(t1)
 <pre><code>p3: (5, 19)
 Vertices: (10, 1) (7, 1) (5, 19)
 </code></pre>
-<p>Since <code>p1</code> refers to the same object as <code>t1.vertex</code>, when <code>p1</code> is changed, so is <code>t1.vertex3</code>. Similarly, since <code>t1.vertex3</code> refers to the same object as <code>p3</code>, when <code>t1.vertex3</code> is changed, so is <code>p1</code>. Here is the final memory diagram showing the changes:</p>
+<p>Since <code>p1</code> refers to the same object as <code>t1.vertex1</code>, when <code>p1</code> is changed, so is <code>t1.vertex1</code>. Similarly, since <code>t1.vertex3</code> refers to the same object as <code>p3</code>, when <code>t1.vertex3</code> is changed, so is <code>p3</code>. Here is the final memory diagram showing the changes:</p>
 <img src="chapters/classes2/memory_diagram_8.png" alt="Memory diagram of a triangle object, which has three vertices that are each Point objects, after modifications" width = 550>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="copy-reference-versus-shallow-copy-versus-deep-copy"><a class="header" href="#copy-reference-versus-shallow-copy-versus-deep-copy">Copy reference, versus shallow copy, versus deep copy</a></h1>
 <p>There are three levels of copying an object:</p>
@@ -2916,8 +2917,14 @@ p2 = p1
 p1.x = 5
 print(p2.x) # outputs 5
 </code></pre>
-<p>In the first line above, a <code>Point</code> object called <code>p1</code> is instantiated. Since <code>p1</code> is actually a reference to the <code>Point</code> object, the next line makes a copy of that reference. Thus <code>p1</code> and <code>p2</code> refer to the same object. In the third line, the <code>x</code> value of <code>p1</code> is changed. Since <code>p2</code> refers to the same object, on line 4, naturally <code>p2.x</code> also has the value 5.  Here is the memory diagram showing the situation:</p>
-<img src="chapters/classes2/memory_diagram_5.png" alt="memory diagram of two variables referring to the same Point objects" width = 350>
+<p>In the first line above, a <code>Point</code> object called <code>p1</code> is instantiated. Since <code>p1</code> is actually a reference to the <code>Point</code> object, the next line makes a copy of that reference. Thus <code>p1</code> and <code>p2</code> refer to the same object. In the third line, the <code>x</code> instance variable of <code>p1</code> is changed. Since <code>p2</code> refers to the same object, on line 4, naturally <code>p2.x</code> also has the value 5.  Here is the memory diagram showing the situation:</p>
+<table>
+<tr><td>Before:</td><td>After:</td></tr>
+<tr>
+<td><img src="chapters/classes2/memory_diagram_5.png" alt="memory diagram of two variables referring to the same Point objects" width = 350></td>
+<td><img src="chapters/classes2/memory_diagram_6.png" alt="memory diagram of two variables referring to the same Point objects, values modified" width = 350></td>
+</tr>
+</table>
 <h2 id="shallow-copy"><a class="header" href="#shallow-copy">Shallow copy</a></h2>
 <p>Sometimes we don't want to copy a reference, but instead we want to make a true copy of an object. The first way to do this in python is with a shallow copy, implemented in the <code>copy</code> function from python's <code>copy</code> module. To use this function, call <code>copy.copy(original_object)</code>, and it returns a new object of the same type, with each instance variable copied from the original. For example:</p>
 <pre><code class="language-python">import copy
@@ -2927,13 +2934,19 @@ original_point.y = 59
 print(original_point)   # outputs (59, 23), it has been modified
 print(new_point)        # outputs (17, 23), the copy was not modified
 </code></pre>
-<p>Here's the memory diagram right after the line <code>new_point = copy.copy(original_point)</code> is executed:
-<img src="chapters/classes2/shallow_copy1.png" alt="Point object, along with its shallow copy" width = 350></p>
-<p>Notice <code>new_point</code> is a copy of the original. It is a separate object, thought its values are the same, it has a different id. Thus, when the value of <code>original_point.y</code> is changed, this will not affect <code>new_point</code>. Here's the memory diagram after the line <code>original_point.y = 59</code> is executed:</p>
-<img src="chapters/classes2/shallow_copy2.png" alt="Point object has been modified, and the copy is unchanged" width = 350>
+<table>
+<tr>
+<td>After `new_point = copy.copy(originl_point)`</td>
+<td>After `original_point.y = 59`:</td></tr>
+<tr>
+<td><img src="chapters/classes2/shallow_copy1.png" alt="Point object, along with its shallow copy" width = 350></td>
+<td><img src="chapters/classes2/shallow_copy2.png" alt="Point object has been modified, and the copy is unchanged" width = 350></td>
+</tr>
+</table>
+<p>Notice <code>new_point</code> is a copy of the original. It is a separate object. Though its values are the same, it has a different id. Thus, when the value of <code>original_point.y</code> is changed, that change will not affect <code>new_point</code>.</p>
 <h2 id="a-shallow-copy-is-not-always-ideal-since-it-only-copies-one-level-of-depth"><a class="header" href="#a-shallow-copy-is-not-always-ideal-since-it-only-copies-one-level-of-depth">A shallow copy is not always ideal, since it only copies one level of depth</a></h2>
-<p>Let's look what a shallow copy does on a more complex object:</p>
-<pre><code class="language-python"># Create Triangle object and a shallow copy of it
+<p>Let's look at what a shallow copy does on a more complex object:</p>
+<pre><code class="language-python"># Create Triangle object and make a shallow copy of it
 t1 = Triangle(Point(4, 1), Point(7, 1), Point(5, 2))
 t2 = copy.copy(t1)   # shallow copy!
 print(t1)            # outputs Vertices: (4, 1) (7, 1) (5, 2)
@@ -2941,7 +2954,7 @@ print(t2)            # outputs Vertices: (4, 1) (7, 1) (5, 2)
 </code></pre>
 <p>Let's examine in detail what happens with the shallow copy. Start with the memory diagram for <code>t1</code>:
 <img src="chapters/classes2/shallow_copy3.png" alt="One triangle, before copy" width = 450></p>
-<p>Recall that a shallow copy will copy each instance variable of an object. The three instance variables for <code>t1</code> are each references (<code>t1.vertex1</code>, <code>t1.vertex2</code>, and <code>t1.vertex3</code>). So all three of these references get copied to the new object <code>t2</code>. These copies of references do not create new objects. This means that <code>t1</code>s instance variables(<code>t2.vertex1</code>, <code>t2.vertex2</code>, and <code>t2.vertex3</code>) point to the same <code>Point</code> objects as <code>t1</code>. They share these objects!</p>
+<p>Recall that a shallow copy will copy each instance variable of an object. The three instance variables for <code>t1</code> are each references (<code>t1.vertex1</code>, <code>t1.vertex2</code>, and <code>t1.vertex3</code>). So all three of these references get copied to the new object <code>t2</code>. Copying the three references does not create new objects. The result is that <code>t1</code>s instance variables(<code>t2.vertex1</code>, <code>t2.vertex2</code>, and <code>t2.vertex3</code>) point to the same <code>Point</code> objects as <code>t1</code>. The two triangles share these <code>Point</code> objects!</p>
 <img src="chapters/classes2/shallow_copy4.png" alt="Two triangles, after shallow copy" width = 450>
 <p>The shallow copy works fine when we change one of the instance variables of the original object (i.e., replace one of the vertex <code>Point</code>s)</p>
 <pre><code class="language-python"># Change the first vertex of t1 to a new Point object:
@@ -2951,16 +2964,16 @@ print(t2)  # still outputs Vertices: (4, 1) (7, 1) (5, 2)
 </code></pre>
 <p>The behavior still makes sense - the copied triangle does not change when the first triangle is modified. Here is the memory diagram after the above code has been executed. Notice that <code>t1.vertex1</code> now refers to a brand-new <code>Point</code>.</p>
 <img src="chapters/classes2/shallow_copy5.png" alt="Two triangles, after shallow copy, modified instance variables" width = 450>
-<p>But the behavior of the shallow copy really doesn't satisfy our needs in this case when we change values in the underlying <code>Point</code> objects:</p>
+<p>But the behavior of the shallow copy doesn't satisfy our needs in this case when we change intance variables in the underlying <code>Point</code> objects:</p>
 <pre><code class="language-python">t1.vertex3.y = 0
-print(t1)    # As expected, y value of last vertex is modified Vertices: (3, -1) (7, 1) (5, 0)
+print(t1)    # As expected, y value of last vertex is modified: Vertices: (3, -1) (7, 1) (5, 0)
 print(t2)    # t2 is a copy, yet the value of its last vertex also changed: Vertices: (4, 1) (7, 1) (5, 0)
 </code></pre>
-<p>Here is the memory diagram after the last segment of code has run. Notice that the y-coordinate of vertex3 has been modified, for both triangles.</p>
+<p>Here is the memory diagram after the last segment of code has run. Notice that the y-coordinate of <code>vertex3</code> has been modified, for both triangles.</p>
 <img src="chapters/classes2/shallow_copy6.png" alt="Two triangles, after shallow copy, modified deeper" width = 450>
-<p>We see that for objects with more than one level, a shallow copy can lead to unwanted side effects when changing values on the second level or deeper. To solve this problem, the python <code>copy</code> module provides a function called <code>deepcopy()</code>.</p>
+<p>We see that for objects with more than one level, a shallow copy might lead to unwanted side effects when changing values on the second level or deeper. To solve this problem, the python <code>copy</code> module provides a function called <code>deepcopy()</code>.</p>
 <h2 id="deep-copy"><a class="header" href="#deep-copy">Deep copy</a></h2>
-<p>A call to <code>copy.deepcopy(original_object)</code> returns an new object that is a copy of <code>original_object</code>. Any object that <code>original_object</code> refers to is also copied. This instantiation of copies happens at every level of depth of the object being copied.</p>
+<p>A call to <code>copy.deepcopy(original_object)</code> returns an new object that is a full copy of <code>original_object</code>. Any object that <code>original_object</code> refers to is also copied. This instantiation of copies happens at every level of depth of the object being copied.</p>
 <p>For example, consider this code:</p>
 <pre><code class="language-python">orig = Triangle(Point(1, 6), Point(5, 3), Point(1, 3))
 copied = copy.deepcopy(orig)
@@ -2973,7 +2986,7 @@ The deep copy completely detaches connection between the two objects. So modific
 orig.vertex3.y = 0
 </code></pre>
 <img src="chapters/classes2/deep_copy_modified.png" alt="Two triangles, after deep copy and modification of one the original" width = 450>
-<p>In the above memory diagram, <code>orig.vertex1</code> was changed to a newly-instantiated <code>Point</code>. This means that there are no longer any arrows pointing to the initial point <code>orig.vertex1</code>. Since there are no remaining references to this point, it can no longer be accessed from within this program. Python &quot;cleans up&quot; these orphaned objects through a process called <em>garbage collection</em>. Garbage collection recovers space in memory to potentially be used by python later in the running of the program.</p>
+<p>Side note: in the above memory diagram, <code>orig.vertex1</code> was changed to a newly-instantiated <code>Point</code>. This means that there are no longer any arrows pointing to the initial point <code>orig.vertex1</code>. Since there are no remaining references to this point, it can no longer be accessed from within this program. Python &quot;cleans up&quot; these orphaned objects through a process called <em>garbage collection</em>. Garbage collection recovers space in memory to potentially be used by python later in the running of the program.</p>
 
                     </main>
 

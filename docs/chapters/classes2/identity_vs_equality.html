@@ -169,8 +169,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="the-difference-between-identity-and-equality-of-objects"><a class="header" href="#the-difference-between-identity-and-equality-of-objects">The difference between &quot;identity&quot; and &quot;equality&quot; of objects</a></h1>
-<p>In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html)" target="_blank">variables are references</a>), we noted that variables don't store objects themselves, but rather store references to objects. We can use the python <code>id()</code> function to find the memory address where the objects are stored.</p>
+                        <h1 id="the-difference-between-identity-is-and-equality--of-objects"><a class="header" href="#the-difference-between-identity-is-and-equality--of-objects">The difference between &quot;identity&quot; (<code>is</code>) and &quot;equality&quot; (<code>==</code>) of objects</a></h1>
+<h2 id="identity"><a class="header" href="#identity">Identity</a></h2>
+<p>In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html" target="_blank">variables are references</a>), we noted that variables don't store objects themselves, but rather store references to objects. Recall also that we can use the python <code>id()</code> function to find the memory address where the objects are stored.</p>
 <p>Consider the following code:</p>
 <pre><code class="language-python">class Point:
 
@@ -178,9 +179,6 @@
         # initialize the values of the point (x, y)
         self.x = x
         self.y = y
-    
-    def __add__(self, other: Point)-&gt;Point:
-        return Point(self.x+other.x, self.y+other.y)
 
     def __eq__(self, other: Point)-&gt;bool:
         return self.x==other.x and self.y==other.y
@@ -202,6 +200,7 @@ print(id(point3))
 print(point2 is point3) # outputs True, because point2 and point3 have the same ids (they refer to the same object)
 print(point1 is point3) # outputs False, because point1 and point3 have different ids (they refer to different objects)
 </code></pre>
+<h2 id="equality"><a class="header" href="#equality">Equality</a></h2>
 <p>If rather than comparing identities, we want to determine if the contents of the objects are the same, recall that we learned to use <code>==</code>, which automatically calls the <code>__eq__()</code> method:</p>
 <pre><code class="language-python">print(point1 == point2) # outputs True, because the x and y values for point1 and point2 are the same.
 print(point2 == point3) # outputs True, because the x and y values for point2 and point3 are the same.

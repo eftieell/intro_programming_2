@@ -170,7 +170,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="dunder-methods-methods-whose-name-starts-with-two-underscores"><a class="header" href="#dunder-methods-methods-whose-name-starts-with-two-underscores">Dunder methods (methods whose name starts with two underscores)</a></h1>
-<p>In python, methods that start with two underscores are called <em>dunder</em> (double-underscore) methods. They are sometimes also referred to as <em>magic</em> methods. These methods have special significance, since they are automatically invoked by python in certain situtations. You've seen two examples of this already: the <code>__init__</code> function is automatically (or &quot;magically&quot;) invoked when you instantiate an object, and the <code>__str__</code> method is automatically invoked when you print an object. For example:</p>
+<p>In python, methods that start with two underscores are called <em>dunder</em> (double-underscore) methods. They are sometimes also referred to as <em>magic methods</em>. These methods have special significance, since they are automatically invoked by python in certain situtations. You've seen two examples of this already: the <code>__init__()</code> function is automatically (or &quot;magically&quot;) invoked when you instantiate an object, and the <code>__str__()</code> method is automatically invoked when you print an object. For example:</p>
 <pre><code class="language-python">class Time24:
     &quot;&quot;&quot; A class that represents a time of day on a 24-hour clock
         Default time is 0 hours 0 minutes &quot;&quot;&quot;
@@ -189,7 +189,7 @@
 time1 = Time24(12, 59)  # automatically calls __init__
 print(time1)            # automatically calls __str__, outputs 12:59
 </code></pre>
-<p>Besides <code>__init__</code> and <code>__str__</code>, python has a long list of other dunder methods. We will learn the <em>rich comparison operators</em>, which allows us, whenever it makes sense, to compare two objects of a class using  the operators <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>!=</code>, <code>&gt;=</code>, and <code>&gt;</code>.</p>
+<p>Besides <code>__init__()</code> and <code>__str__()</code>, python has a long list of other dunder methods. We will learn the <em>rich comparison operators</em>, which allows us, whenever it makes sense, to compare two objects of a class using  the operators <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>!=</code>, <code>&gt;=</code>, and <code>&gt;</code>.</p>
 <p>In the work below, we will use the following <code>Time24</code> objects:</p>
 <pre><code class="language-python">time1 = Time24(12, 7)   # instantiate time2 object, represents 12:07
 time2 = Time24(2, 43)   # instantiate time2 object, represents 02:43
@@ -200,32 +200,33 @@ default_time = Time24() # default time is 00:00
 <p>Notice that two of the <code>Time24</code> objects above (<code>time1</code> and <code>time2</code>) represent the same time of day. What do you think is output by the following line of code?</p>
 <pre><code class="language-python">print(time1 == time3)
 </code></pre>
-<p>Are you disappointed to find out that the above line of code outputs <code>False</code>? By default, two objects evaluate as equal in python when they represent the identical object (stored in the same memory location). By default, python does not compare the <em>contents</em> of the objects to see if the <em>contents are the same</em>. But when dealing with objects, comparing the contents is often what we want to do. So python gives us a way to make the <code>==</code> comparison between objects compare the contents of the objects, according to a method we provide. This is called &quot;overloading the <code>==</code> operator&quot;.</p>
+<p>Are you disappointed to find out that the above line of code outputs <code>False</code>? By default, two objects evaluate as <code>==</code> in python when they represent the identical object (in other words, they stored in the same memory location, refer to the same object, or have the same <code>id()</code>). Said differently, when evaluating <code>==</code> for two objects, by default python does not compare the <em>contents</em> of the objects to see if the <em>contents are the same</em>. But when dealing with objects, comparing the contents is usually exactly what we want <code>==</code> to do. So python gives us a way to make the <code>==</code> comparison between objects compare the contents of the objects, according to a method we provide. This is called &quot;overloading the <code>==</code> operator&quot;.</p>
 <h2 id="how-to-overload-the--operator"><a class="header" href="#how-to-overload-the--operator">How to overload the <code>==</code> operator</a></h2>
 <ul>
-<li>Within the class, implement a method called <code>__eq__</code>. </li>
-<li>The <code>__eq__</code> method defines in python code how to tell if two objects are equal.</li>
-<li>The <code>__eq__</code> method is automatically (&quot;magically&quot;) called when you use <code>==</code> to compare two objects.</li>
-<li>The <code>__eq__</code> method should return a <code>bool</code>.</li>
+<li>Within the class, implement a method called <code>__eq__()</code>. </li>
+<li>The <code>__eq__()</code> method defines in python code how to tell if two objects are <code>==</code>.</li>
+<li>The <code>__eq__()</code> method is automatically (&quot;magically&quot;) called when you use <code>==</code> to compare two objects.</li>
+<li>The <code>__eq__()</code> method should return a <code>bool</code>.</li>
 <li>In our example, we will say two <code>Time24</code> objects equal if and only if they have the same values for hour and the same values for minutes. </li>
-<li>The <code>__eq__</code> method should take two parameters. The object on the
+<li>The <code>__eq__()</code> method should take two parameters. The object on the
 left side of <code>==</code> becomes <code>self</code>, and the object on the right side of the <code>==</code> becomes the second parameter, typically named <code>other</code>.</li>
 </ul>
 <p>Include this code in the <code>Time24</code> class:</p>
 <pre><code class="language-python">    def __eq__(self, other)-&gt;bool:
+        # Evaluate two Time24 objects as &quot;==&quot; if both of their instance variables (hours and minutes) are equal
         return self.hours == other.hours and self.minutes == other.minutes
 </code></pre>
 <p>Now the following line outputs <code>True</code>, as desired:</p>
 <pre><code class="language-python">print(time1 == time3). # automatically calls the __eq__ method from the Time24 class, time1 is self, time3 is other
 </code></pre>
 <h2 id="using-the--operator-to-compare-two-objects-1"><a class="header" href="#using-the--operator-to-compare-two-objects-1">Using the &lt; operator to compare two objects</a></h2>
-<p>We would like the following line to output <code>False</code>, since time2 is 2:43 in the morning, and time2 is in the afternoon</p>
+<p>We would like the following line to output <code>False</code>, since time2 is 2:43 in the morning, and time2 is in the afternoon:</p>
 <pre><code class="language-python">print(time1 &lt; time2)
 </code></pre>
 <p>But here's the output:</p>
 <pre><code>TypeError: '&lt;' not supported between instances of 'Time24' and 'Time24'
 </code></pre>
-<p>When objects in a class have a natural linear ordering, then it makes sense to compare them with the <code>&lt;</code> operator. To implement this in python, we provide a <code>__lt__</code> operator in our class. The <code>__lt__</code> method should return a boolean, and take two parameters. The <code>__lt__</code> method will automatically be called when the code <code>object &lt; object2</code> is evaluated, with <code>object1</code> becoming the parameter <code>self</code>, and <code>object2</code> becoming the parameter <code>other</code>. For example, here is an implementation of <code>__lt__</code> for our <code>Time24</code> class. Insert this code into the class.</p>
+<p>When objects in a class have a natural linear ordering, then it makes sense to compare them with the <code>&lt;</code> operator. To implement this in python, we provide a <code>__lt__()</code> method in our class. The <code>__lt__()</code> method should return a boolean, and take two parameters. The <code>__lt__()</code> method will automatically be called when the code <code>object &lt; object2</code> is evaluated, with <code>object1</code> becoming the parameter <code>self</code>, and <code>object2</code> becoming the parameter <code>other</code>. For example, here is an implementation of <code>__lt__()</code> for our <code>Time24</code> class. Insert this code into the class.</p>
 <pre><code class="language-python">    def __lt__(self, other)-&gt;bool:
         if self.hours &lt; other.hours:
             return True
@@ -235,9 +236,9 @@ left side of <code>==</code> becomes <code>self</code>, and the object on the ri
             return self.minutes &lt; other.minutes
 </code></pre>
 <p>Here is some demo code to show you show to call</p>
-<pre><code class="language-python">print(time1 &lt; time2)        # calls __lt__, outputs False (time2 is earlier in the day)
+<pre><code class="language-python">print(time1 &lt; time2)        # calls __lt__(), outputs False (time2 is earlier in the day)
 print(time1 &lt; time3)        # outputs True (they are equal, so time1 isn't less than time3)
-print(default_time &lt; time2) # outputs True, midnight is earlier than any other time
+print(default_time &lt; time2) # outputs True, midnight is earlier than every other time
 
 </code></pre>
 <h2 id="the-other-rich-comparison-operators"><a class="header" href="#the-other-rich-comparison-operators">The other rich-comparison operators</a></h2>
@@ -315,7 +316,7 @@ print(point3)
 <p>But instead here's the output:</p>
 <pre><code>TypeError: unsupported operand type(s) for +: 'Point' and 'Point'
 </code></pre>
-<p>We can &quot;teach&quot; python how to add elements of our <code>Point</code> class by implementing the method <code>__add__</code> in our class. The <code>__add__</code> method will be automatically called when python evaluates the expression <code>point1 + point2</code>. It takes two parameters, <code>self</code> and <code>other</code>, where the first summand <code>point1</code> takes the role of <code>self</code>, and the second summand <code>point2</code> takes th role of <code>other</code>. The <code>__add__</code> method should create and return a new <code>Point</code>, whose values are the sums of the individual points. Here's the implementation, which is incorporated into the <code>Point</code> class:</p>
+<p>We can &quot;teach&quot; python how to add objects of our <code>Point</code> class by implementing the method <code>__add__()</code> in our class. The <code>__add__()</code> method will automatically be called when python evaluates the expression <code>point1 + point2</code>. It takes two parameters, <code>self</code> and <code>other</code>, where the first summand <code>point1</code> takes the role of <code>self</code>, and the second summand <code>point2</code> takes the role of <code>other</code>. The <code>__add__()</code> method should create and return a new <code>Point</code>, whose values are the sums of the individual points. Here's the implementation, which is incorporated into the <code>Point</code> class:</p>
 <pre><code class="language-python">    def __add__(self, other: Point)-&gt;Point:
         newx = self.x + other.x
         newy = self.y + other.y
@@ -329,15 +330,15 @@ point3 = point1 + point2
 print(point3)
 </code></pre>
 <p>outputs</p>
-<pre><code>(7. 8)
+<pre><code>(7, 8)
 </code></pre>
-<p>Note: the <code>__add__</code> function could be condensed to one line:</p>
+<p>Note: the <code>__add__()</code> function could be condensed to one line:</p>
 <pre><code class="language-python">    def __add__(self, other: Point)-&gt;Point:
         return Point(self.x+other.x, self.y+other.y)
 </code></pre>
 <p>All of the arithmetic operators you are used to can be overloaded. The table below shows a partial list of arithmetic operators and the dunder methods they correspond to:</p>
 <div class="table-wrapper"><table><thead><tr><th>Operator</th><th>dunder method</th><th>returns:</th></tr></thead><tbody>
-<tr><td>x+y (add)</td><td><code>__add__(self, other</code></td><td>sum of x and y</td></tr>
+<tr><td>x+y (add)</td><td><code>__add__(self, other)</code></td><td>sum of x and y</td></tr>
 <tr><td>x-y (subtract)</td><td><code>__sub__(self, other)</code></td><td>difference of x and y</td></tr>
 <tr><td>x*y (multiply)</td><td><code>__mul__(self, other)</code></td><td>product of x and y</td></tr>
 <tr><td>x/y (divide)</td><td><code>__truediv__(self, other)</code></td><td>quotient of x and y</td></tr>
