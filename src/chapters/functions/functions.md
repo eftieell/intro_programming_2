@@ -1,4 +1,4 @@
-## User-defined functions in python
+# User-defined functions in python
 
 Most programming languages give you a way to separate a block of code from the main program. This is useful to
 - provide organization to your program by chunking it into blocks that perform specific tasks, and
@@ -20,7 +20,7 @@ Key points:
 - Defining functions is not completely new to you - you have defined the function `main()` in every program you have written.
 - When you define a function, note that the code in the function is **not executed**. The code within the function is executed only when you *call* the function.
 - Think of the function definition as a recipe, telling python exactly what to do when another part of the program calls the function.
-- To *call* a function (i.e., to *run its code*): at the point where you want it to run, write the name of the function, with parentheses.
+- *Calling* a function means to use it, or to *run its code*. We also say *execute* the function or *invoke the function*.  To call a function, at the point where you want it to run, write the name of the function, with parentheses.
 
 Example:
 
@@ -81,3 +81,36 @@ The following code shows a program that defines and uses several functions. Each
 
 </tr>
 </table>
+
+## Summary
+
+A function definition is a collection of code statements grouped together that perform a specific task.
+
+Every function has a name that can be used to *call* the function. We also use the terms *invoke*, or *execute* to mean *run the lines of code that appear within the function definition*.
+
+You can think of the function definition as a recipe for how to perform a task. When the function is invoked, then the task is actually performed.
+
+### Why use functions?
+
+There are three main reasons that functions are useful in programming:
+
+- Reusability
+
+    Often we need to use the same code multiple times.
+    One solution is to copy/paste the code to reuse it. A downside of that strategy is that it makes our programs much longer. But an even worse downside is that if we make a modification, we need to find and make that same change in every place we copied the code to. Functions instead allow us to efficiently invoke the same code whenever needed without making multiple copies.
+
+- Abstraction
+
+    Once a function has been written and tested, we don't need to know how it works anymore. We only need to remember its **name, purpose, parameters, and return value**. For example, when you use the `dudraw.circle()` function, you can just use it without bothering your mind with the distraction of how that function creates the circle. This allows us to build functions from functions already written, and thus produce very complicated software much more easily.
+
+- Code organization and readability
+
+    Organizing  your code into a sequence of function calls allows you to focus while you are programming on just the task at hand. It also makes it far easier for others to read your code and understand it.
+
+### Next up: arguments and return values
+
+The next two sections cover the following topics:
+
+Functions may take input values (called arguments or parameters) that modify or control how the function runs. This allows the line of code that invokes the function to pass needed information to the function.
+
+Functions may also have output values (called return values). Usually this is the result of some work that the function has completed. It is a way for the function to pass back needed information to the function that called it. 

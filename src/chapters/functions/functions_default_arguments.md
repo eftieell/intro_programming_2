@@ -1,15 +1,19 @@
 # Default argument values
 
-## You've already seen optional arguments to functions
-You may have noticed that some functions can be called with different numbers of arguments (values passed to the function). 
+Default argument values give a way to make it optional for the caller to pass an argument to a function.
+In fact, you've already seen examples of optional arguments to functions.
+Perhaps you have noticed that some functions can be called with different numbers of arguments. 
 For example, you can call `dudraw.clear()` with either no arguments or one argument:
 ```python
 dudraw.clear(dudraw.GREEN)  # clears the canvas, all pixels are now GREEN
 dudraw.clear()              # this time no argument is passed - so the default is to clear with dudraw.WHITE
 ```
-Here's another example. You may pass an argument to `print()` to specify what the end character is.
+Here's another example. You may pass an argument to `print()` to specify what the end character is. But you may also leave that argument out, in which case `print()` ends with a newline.
+
+Without the end character optional argument:
 ```python
-# The code below puts "Hello" and "World" on two different lines, since the default end character is a newline ("\n"):
+# The code below puts "Hello" and "World" on two different lines, 
+# since the default end character for print() is a newline ("\n"):
 print("Hello,")
 print("World")
 ```
@@ -18,7 +22,7 @@ Output:
 Hello,
 World!
 ```
-
+With the end character optional argument:
 ```python
 # Alternately, we can pass an optional extra argument to print().
 # The first print() statement below ends with a space rather than the default newline.
@@ -33,17 +37,15 @@ Hello, World!
 
 ## How does this work?
 
-Behind the scenes, `dudraw.clear()` specifies a default value for the argument (namely `dudraw.WHITE`). By doing so, it allows the client code (your code) to omit that argument. If you include the argument, then you specify the background color. But if you omit that argument, then the function uses the default value `dudraw.WHITE` as the color. The default value is specified in the definition of the function.
+Behind the scenes, in the definition of `dudraw.clear()` a default value for the argument is specified (namely `dudraw.WHITE`). By doing so, it allows the client code (your code) to either include or omit that argument. If you include the argument, it specifies the background color. But if you omit that argument, then the function uses the default value `dudraw.WHITE` as the color. The default value is specified in the definition of the function.
 
 Similarly, you may include or omit an additional argument to `print()` to specify the end character. (for example, `end = " "`). If you call `print()` without the `end` parameter, then `print()` automatically uses the default end value `"\n"`.
 
 ## Defining your own functions with default argument values
-If you want to create functions that can be called with or without one of the arguments, specify `parameter_name = default_value` in the function header. If you specify a default value, then it becomes optional to pass that argument when the function is called.
+If you want to create functions that can be called with or without one or more of the arguments, specify `parameter_name = default_value` in the function header. If you specify a default value, then it becomes optional to pass that argument when the function is called.
 ```python
-# the greet() function outputs "Hello, {name}!".
-# The default value for name is "World".
-# So if no name is passed as a parameter, then
-# the function outputs "Hello, World!"
+# The greet() function outputs "Hello, {name}!". The default value for name is "World".
+# So if no name is passed as a parameter, then the function outputs "Hello, World!"
 def greet(name: str = "World"):
     print("Hello, " + name + "!")
 

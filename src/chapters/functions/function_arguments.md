@@ -19,7 +19,7 @@ def function_name(parameter1_name: parameter1_type, parameter2_name: parameter2_
     # Code defining the function
 ```
 
-Example 1: In the program below, the simple function `greet_user()` outputs `"Hello, world!"` to the console multiple times. The argument to the function determines how many times the line is output. The argument gives a way of passing information (the number of greetings to output) from the line that calls the function to within the function itself.
+Example 1: In the program below, the simple function `greet_user()` outputs `"Hello, world!"` to the console multiple times. The argument to the function determines how many times the greeting is output to the terminal. The argument gives a way of passing information (the number of greetings to output) from the line that calls the function to within the function itself.
 
 <table>
 <tr><td>Code</td><td>Output</td></tr>
@@ -62,7 +62,7 @@ Example 2: Here we see the definition of a simple function that takes two parame
 ```python
 def greet_user(num_greetings: int, name: str) -> None:
     for i in range(num_greetings):
-        print(f"Hello, {name}")
+        print(f"Hello, {name}!")
 
 def main():
     name = input("What is your name? ")
@@ -80,9 +80,9 @@ if __name__ == '__main__':
 ```
 What is your name? Mahsa
 How many greetings do you want? 3
-Hello, Mahsa
-Hello, Mahsa
-Hello, Mahsa
+Hello, Mahsa!
+Hello, Mahsa!
+Hello, Mahsa!
 ```
 </tr>
 </table>
@@ -98,5 +98,5 @@ def greet_user(num_greetings: int, name: str) -> None:
         return: None
     """
     for i in range(num_greetings):
-        print(f"Hello, {name}")
+        print(f"Hello, {name}!")
 ```
