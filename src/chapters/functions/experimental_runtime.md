@@ -121,7 +121,9 @@ When the size of `n` is tripled from 200 million to 600 million, the time approx
 
 We can also see linear behavior by graphing the data, which appears to be a line:
 
-<img src="runtime_graph_linear.png#center"  width="50%" height="50%" alt = "graph of runtime as a function of n">
+
+<img src="runtime_graph_linear.png#center"  width="75%" height="75%" alt = "graph of runtime as a function of n">
+
 
 ## Another example of timing a function for a variety of values of `n`
 Here's another example. The new function is `do_something_else()`. 
@@ -174,7 +176,9 @@ When the size of `n` is tripled from 20000 to 60000, the time increases by appro
 Graphing the data hints at a parabolic (quadratic) shape. Caution though: while this graph convinces us that
 the time complexity is not linear, graphs that are concave up might represent quadratic, cubic, exponential, or other growth rates.
 
-<img src="runtime_graph_quadratic.png"  width="50%" height="50%" alt = "second graph of runtime as a function of n">
+
+<img src="runtime_graph_quadratic.png"  width="75%" height="75%" alt = "second graph of runtime as a function of n">
+
 
 ## Timing the running of a function that takes less than 1 second
 If a function takes less than 1 second to execute, then the technique above is often not accurate.
