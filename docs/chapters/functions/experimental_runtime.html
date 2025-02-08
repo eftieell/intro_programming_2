@@ -31,6 +31,8 @@
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../css/pyscript.css">
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
     <div id="body-container">
@@ -170,7 +172,7 @@
                         <h1 id="timing-how-long-it-takes-for-functions-to-execute"><a class="header" href="#timing-how-long-it-takes-for-functions-to-execute">Timing how long it takes for functions to execute</a></h1>
 <p>As we write more complicated code, it becomes increasingly important to make it execute quickly. 
 We will start by measuring the runtime experimentally. 
-Knowing how long it takes for our code to run will guide is in determining how critical it is to redesign our code to make it run more efficiently.</p>
+Knowing how long it takes for our code to run will guide us in determining how critical it is to redesign our code to make it run more efficiently.</p>
 <h2 id="strategy-for-experimentally-timing-how-long-it-takes-for-a-function-to-run"><a class="header" href="#strategy-for-experimentally-timing-how-long-it-takes-for-a-function-to-run">Strategy for experimentally timing how long it takes for a function to run</a></h2>
 <p>The overall strategy is simple: </p>
 <ul>
@@ -180,7 +182,7 @@ Knowing how long it takes for our code to run will guide is in determining how c
 <li>Calculate the elapsed time by subtracting the start time from the finish time</li>
 </ul>
 <h2 id="finding-out-what-time-it-is"><a class="header" href="#finding-out-what-time-it-is">Finding out what time it is</a></h2>
-<p>The function <code>time.time()</code> in the python <code>time</code> module returns the current time</p>
+<p>The function <code>time.time()</code> in the python <code>time</code> module returns the current time.</p>
 <pre><code class="language-python">import time
 
 def main():
@@ -193,11 +195,11 @@ if __name__ == &quot;__main__&quot;:
 <p>Sample output:</p>
 <pre><code>1732765128.7487528
 </code></pre>
-<p>The current time is in seconds since a fixed starting moment, which in python is set to midnight on January 1, 1970!
+<p>This function returns the current time in seconds since a fixed starting moment, which in python is set to midnight on January 1, 1970!
 The actual value of the time won't be important to us, since we are not interested in what time it is. Rather, we care
 about the amount of time that elapses while a function is executing.</p>
 <h2 id="timing-the-running-of-a-function-that-takes-more-than-a-second"><a class="header" href="#timing-the-running-of-a-function-that-takes-more-than-a-second">Timing the running of a function that takes more than a second</a></h2>
-<p>Here's an example of code that times how long it takes for the function <code>do_something()</code> to execute. The contents and purpose of the function here are not what is important here - instead we are focusing on how long it takes to execute.</p>
+<p>Here's an example of code that times how long it takes for the function <code>do_something()</code> to execute. The contents and purpose of the function are not what is important in this example - instead we are focusing on how long it takes to execute.</p>
 <pre><code class="language-python">import time
 
 def do_something(n: int):
@@ -229,7 +231,7 @@ then we are very interested in how the execution time grows as the size of the p
 The pattern of this change is called the <em>order of growth</em> or <em>time complexity</em> of the algorithm.</p>
 <ul>
 <li>
-<p>$\displaystyle O(n)$ If doubling the size of <code>n</code> results in a doubling of the execution time for the algorithm, then we call the algorithm <em>Big-O of n</em> or <em>linear</em>. We write this $O(n)$.</p>
+<p>If doubling the size of <code>n</code> results in a doubling of the execution time for the algorithm, then we call the algorithm <em>Big-O of n</em> or <em>linear</em>. We write this \(O(n)\).</p>
 </li>
 <li>
 <p>If doubling the size of <code>n</code> results in a quadrupling of the execution time, then we call the algorithm &quot;Big-O of n squared&quot; or &quot;quadratic&quot;. We write this $O(n^2)$.</p>

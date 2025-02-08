@@ -31,6 +31,8 @@
         <!-- Custom theme stylesheets -->
         <link rel="stylesheet" href="../../css/pyscript.css">
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     </head>
     <body>
     <div id="body-container">
@@ -168,7 +170,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="keyword-arguments"><a class="header" href="#keyword-arguments">Keyword arguments</a></h1>
-<p>In the header of a function definition, you name the parameters. These names are local variable names, meaning that the variables are only accessible within the function definition itself. In the line that <em>invokes</em> (or <em>calls</em>) the function, values (called <em>arguments</em>) are passed to fill in as the values of the parameters. These argument must be passed in the correct order. Consider this example:</p>
+<p>In the header of a function definition, you name the parameters. These names are local variable names, meaning that the variables are only accessible within the function definition itself. In the line that <em>invokes</em> (or <em>calls</em>) the function, values (called <em>arguments</em>) are passed to fill in as the values of the parameters. These arguments must be passed in the correct order. Consider this example:</p>
 <pre><code class="language-python">def attribute(author: str, title: str)-&gt;None:
     print(f&quot;{author} wrote the book {title}.&quot;)
 
@@ -198,11 +200,11 @@ Harry Potter wrote the book J.K. Rowling.
 <p>The parameter names should exactly match the names given in the definition of the function itself. VSCode will tell you the name of the parameters so you don't have to refer back to the function definition to remember the names and order of the parameters. To access this feature, type Command-Shift-Space on a Mac, or Control-Shift-Space on Windows. This image shows what the parameter-hinting looks like in VSCode:</p>
 <img src="parameter_hinting.png"  width="50%" height="50%" alt = "When you invoke a function, VSCode tells you the parameter names">
 <p>When you use keyword arguments, your code is often easier to understand, because the names of the variables makes the meaning of each argument clear.
-If you use keyword arguments and you put the arguments in the wrong order, the values of the arguments are assigned by the variable names, not the order. However, we strongly advise that even when using keywords, you keep the discipline of maintaining the order of the variales in the function definition. Using the features of your IDE makes this easy.</p>
+If you use keyword arguments and you put the arguments in the wrong order, the values of the arguments are assigned by the variable names, not the order. However, we strongly advise that even when using keywords, you maintain the order of the variables in the function definition. Using the features of your IDE makes this easy.</p>
 <pre><code class="language-python"># Use keyword arguments to clarify and to reduce bugs:
 attribute(author = &quot;Margaret Wise Brown&quot;, title = &quot;Goodnight Moon&quot;)
-# Here we use keyword arguments with the arguments out of order
-# This is poor programming practice, but notice that it still works:
+# Above we use keyword arguments with the arguments out of order
+# Below is poor programming practice since the parameters are out of order. But notice that it still works:
 attribute(title = &quot;Harry Potter&quot;, author = &quot;J.K. Rowling&quot;)
 </code></pre>
 <p>Output:</p>
