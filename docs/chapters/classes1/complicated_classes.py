@@ -7,7 +7,7 @@ Consider the following code. Read it closely and predict the output.
 from __future__ import annotations
 class Point:
 
-    def __init__(self, x, y):
+    def __init__(self, x: float, y: float):
         # initialize the values of the point (x, y)
         self.x = x
         self.y = y
@@ -41,7 +41,7 @@ Answer:
 We will use the `Point` class above to make a class called `Triangle`. 
 Since a triangle has three vertices, our `Triangle` objects will have three instance variables 
 (`self.vertex1`, `self.vertex2`, and `self.vertex3`), each of which is themself an object, of type `Point`.
-This nesting of classes is common in object-oriented classes. Trace carefully through the following code and
+This nesting of classes is common in object-oriented programming. Trace carefully through the following code and
 predict the output to the terminal.
 
 ```python
@@ -80,7 +80,7 @@ For example, `t1.vertex1` represents the point (4, 1). Notice that since `t1.ver
 we can actually access its two instance variables, with `t1.vertex.x` and `t1.vertex.y`. 
 However, in object-oriented programming practice, by convention we never modify an
 instance variable's instance variable. Instead, we rely on that class to do the modification. 
-You can see an example of this in the code above: The `Triangle` class does not itself change the values of each vertex. 
+You can see an example of this in the code above: the `shift` method in the `Triangle` class does not itself change the values of each vertex. 
 Instead, it calls the `Point` class's `shift()` method
 to modify the `x` and `y` values of each of the three vertices.
 

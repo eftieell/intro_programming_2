@@ -1,0 +1,375 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Overriding methods - Introduction to Programming 2 - DRAFT</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../css/pyscript.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/dudraw_animation.html">Review of animation with dudraw</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists_and_dicts_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_arguments.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/call_stack.html">Call stack memory diagrams</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_chapter.html">Classes, Part 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/implementing_classes.html">Implementing classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/print_object.html">Output of objects to the terminal</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/lists_of_objects.html">Lists of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/complicated_classes.html">More complex classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/class_variables.html">Class variables</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes2/classes_chapter_pt2.html">Classes, Part 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes2/variables_are_references.html">Variables store references to objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/dunder_methods.html">Dunder methods</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/identity_vs_equality.html">Identity versus equality</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/memory_diagrams.html">Memory Diagrams of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/shallow_v_deep_copy.html">Shallow copy vs. deep copy</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance_chapter.html">Inheritance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance.html">Base classes and derived classes</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/method_overriding.html" class="active">Overriding methods</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Introduction to Programming 2 - DRAFT</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="method-overriding"><a class="header" href="#method-overriding">Method overriding</a></h1>
+<p>Consider the following implementation of the <code>Shape</code> and <code>Circle</code> classes:</p>
+<pre><code class="language-python">class Shape:
+
+    def __init__(self, x: float, y: float, c: dudraw.Color):
+        self.x = x
+        self.y = y
+        self.color = c
+
+    def __str__(self)-&gt;str:
+        return f&quot;center: ({self.x}, {self.y}), color: {self.color}&quot;
+    
+    def draw(self)-&gt;str:
+        dudraw.set_pen_color(self.color)
+        dudraw.point(self.x, self.y)
+
+class Circle(Shape):
+
+    def __init__(self, x: float, y: float, r: float, c: dudraw.Color):
+        super().__init__(x, y, c)
+        self.radius = r
+
+    def __str__(self)-&gt;str:
+        return f&quot;{super().__str__()}, radius: {self.radius}&quot;
+
+# main code block:
+shape1 = Shape(0.6, 0.2, dudraw.BLUE)
+shape1.draw()
+circle1 = Circle(0.5, 0.25, 0.075, dudraw.RED)
+circle1.draw()
+dudraw.show(10000)
+</code></pre>
+<p>Trace the main code block carefully. Notice that we instantiate a <code>Shape</code> object called <code>shape1</code>. It has instance variables <code>x</code>, <code>y</code>, and <code>color</code>. When <code>shape1.draw()</code> is called, a point is drawn to the (x, y) location, in the right color. Then a <code>Circle</code> object called <code>circle1</code> is instantiated, and its instance variables are initialized. Notice it has instance variables <code>x</code>, <code>y</code>, and <code>color</code> inherited from its parent class <code>Shape</code>, as well as an instance variable for its radius. On the next line, you might be fooled by the call <code>circle1.draw()</code>. If you're thinking that the program will crash on that line, since the <code>Circle</code> class does not have a <code>draw()</code> method, you've forgotten that <code>Circle</code> <em>inherits all attributes</em> from <code>Shape</code>. So the <code>draw()</code> method from <code>Shape</code> gets called!  Sadly, <code>Shape</code>'s <code>draw()</code> method just draws a point. This is not how we want to draw a circle. The solution is to <em>override</em> the <code>draw()</code> method.</p>
+<h2 id="how-to-override-methods"><a class="header" href="#how-to-override-methods">How to override methods</a></h2>
+<p>Not much to it: just implement a <code>draw()</code> method in <code>Circle</code> that does the task specific to <code>Circle</code> objects. Although <code>Circle</code> already had a <code>draw()</code> method (the one it inherited from <code>Shape</code>), we provide a second <code>draw()</code> method within the definition of <code>Circle</code>, and that method overrides the one in its parent class (base class).</p>
+<pre><code class="language-python">class Shape:
+
+    def __init__(self, x: float, y: float, c: dudraw.Color):
+        self.x = x
+        self.y = y
+        self.color = c
+
+    def __str__(self)-&gt;str:
+        return f&quot;center: ({self.x}, {self.y}), color: {self.color}&quot;
+    
+    def draw(self):
+        dudraw.set_pen_color(self.color)
+        dudraw.point(self.x, self.y)
+
+class Circle(Shape):
+
+    def __init__(self, x: float, y: float, r: float, c: dudraw.Color):
+        super().__init__(x, y, c)
+        self.radius = r
+
+    def __str__(self)-&gt;str:
+        return f&quot;{super().__str__()}, radius: {self.radius}&quot;
+
+    # This method overrides the draw() method in the Shape class
+    def draw(self)-&gt;str:
+        dudraw.set_pen_color(self.color)
+        dudraw.filled_circle(self.x, self.y, self.radius)
+
+# main code block:
+dudraw.set_canvas_size(400, 400)
+shape1 = Shape(0.6, 0.2, dudraw.BLUE)
+shape1.draw()
+circle1 = Circle(0.5, 0.25, 0.075, dudraw.RED)
+# Now that Circle has its own draw() method that overrides the one in the,
+# base class Shape, the line below calls the draw() method from Circle.
+circle1.draw()
+dudraw.show(10000)
+</code></pre>
+<h2 id="another-example"><a class="header" href="#another-example">Another example</a></h2>
+<p>For reference, here is another example. Trace the following code carefully and predict the output. To learn well from this example, in the main code block pay close attention to which version of each method gets called. Sometimes the method in the child class calls the parent to do some of the work, and sometimes the method in the child class fully overrides the
+method in the parent class.</p>
+<pre><code class="language-python">class Employee:
+
+    # initialization method - Employees of all
+    # types must have a name and an id
+    def __init__(self, name: str, id: str):
+        self.name = name
+        self.id = id
+
+    # produce a string representation of this Employee's information
+    def __str__(self)-&gt;str:
+        return f&quot;{self.name}: id: {self.id}&quot;
+    
+    def issue_paycheck(self):
+        print(f&quot;Employee {self.name} is unpaid.&quot;)
+
+# HourlyEmployee is a child clss of Employee
+class HourlyEmployee(Employee):
+
+    def __init__(self, name: str, id: str, wage: float = 0, hours: float = 0):
+        # Have base class do its part of the initialization
+        super().__init__(name, id)
+        # Now create instance variables specific to this derived class
+        self.wage = wage
+        self.hours = hours
+
+    def __str__(self)-&gt;str:
+        return f&quot;{super().__str__()}, wage: {self.wage}, hours: {self.hours}&quot;
+
+    # return amount owed to worker, rounded to nearest penny
+    def unpaid_wages(self)-&gt;float:
+        if self.hours &lt;= 40:
+            return round(self.wage*self.hours, 2)
+        else:
+            # Time-and-a-half for overtime
+            return round(self.wage*40 + 1.5*self.wage*(self.hours-40), 2)
+
+    # print a paycheck to worker resetting hours worked
+    def issue_paycheck(self):
+        print(f&quot;Printing paycheck for ${self.unpaid_wages()} written to {self.name}&quot;)
+        self.hours = 0
+
+# SalariedEmployee is a child clss of Employee
+class SalariedEmployee(Employee):
+
+    def __init__(self, name: str, id: str, weekly_salary: float = 0):
+        # Have base class do its part of the initialization
+        super().__init__(name, id)
+        # Now create instance variables specific to this derived class
+        self.weekly_salary = weekly_salary
+
+    def __str__(self)-&gt;str:
+        return f&quot;{super().__str__()}, weekly_salary: {self.weekly_salary}&quot;
+
+    # print a paycheck to worker resetting hours worked
+    def issue_paycheck(self):
+        print(f&quot;Printing weekly paycheck for ${self.weekly_salary} written to {self.name}&quot;)
+
+# main code block:
+worker0 = Employee(&quot;Winona Begay&quot;, &quot;345176&quot;)
+worker1 = HourlyEmployee(&quot;Suresh Batra&quot;, &quot;212567&quot;, 34.50, 30)
+worker2 = SalariedEmployee(&quot;Karala Lyberth&quot;, &quot;618420&quot;, 1290.75)
+print(worker0)
+print(worker1)
+print(worker2)
+worker0.issue_paycheck()
+worker1.issue_paycheck()
+worker2.issue_paycheck()
+</code></pre>
+<p>Output:</p>
+<pre><code>Winona Begay: id: 345176
+Suresh Batra: id: 212567, wage: 34.5, hours: 30
+Karala Lyberth: id: 618420, weekly_salary: 1290.75
+Employee Winona Begay is unpaid.
+Printing paycheck for $1035.0 written to Suresh Batra
+Printing weekly paycheck for $1290.75 written to Karala Lyberth
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../chapters/inheritance/inheritance.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../chapters/inheritance/inheritance.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../js/disable_keyboard.js"></script>
+
+
+    </div>
+    </body>
+</html>

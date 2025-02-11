@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Memory Diagrams of objects - Introduction to Programming 2 - DRAFT</title>
+        <title>Inheritance - Introduction to Programming 2 - DRAFT</title>
 
 
         <!-- Custom HTML head -->
@@ -86,7 +86,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/dudraw_animation.html">Review of animation with dudraw</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists_and_dicts_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_arguments.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/call_stack.html">Call stack memory diagrams</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_chapter.html">Classes, Part 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/implementing_classes.html">Implementing classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/print_object.html">Output of objects to the terminal</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/lists_of_objects.html">Lists of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/complicated_classes.html">More complex classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/class_variables.html">Class variables</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes2/classes_chapter_pt2.html">Classes, Part 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes2/variables_are_references.html">Variables store references to objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/dunder_methods.html">Dunder methods</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/identity_vs_equality.html">Identity versus equality</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/memory_diagrams.html" class="active">Memory Diagrams of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/shallow_v_deep_copy.html">Shallow copy vs. deep copy</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance_chapter.html">Inheritance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance.html">Base classes and derived classes</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/method_overriding.html">Overriding methods</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/dudraw_animation.html">Review of animation with dudraw</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists_and_dicts_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_arguments.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/call_stack.html">Call stack memory diagrams</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_chapter.html">Classes, Part 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/implementing_classes.html">Implementing classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/print_object.html">Output of objects to the terminal</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/lists_of_objects.html">Lists of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/complicated_classes.html">More complex classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/class_variables.html">Class variables</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes2/classes_chapter_pt2.html">Classes, Part 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes2/variables_are_references.html">Variables store references to objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/dunder_methods.html">Dunder methods</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/identity_vs_equality.html">Identity versus equality</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/memory_diagrams.html">Memory Diagrams of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/shallow_v_deep_copy.html">Shallow copy vs. deep copy</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance_chapter.html" class="active">Inheritance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance.html">Base classes and derived classes</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/method_overriding.html">Overriding methods</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -169,74 +169,18 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="drawing-memory-diagram-of-complicated-objects"><a class="header" href="#drawing-memory-diagram-of-complicated-objects">Drawing memory diagram of complicated objects</a></h1>
-<p>In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html" target="_blank">variables are references</a>), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:</p>
-<h2 id="a-simple-example"><a class="header" href="#a-simple-example">A simple example</a></h2>
-<p>Consider the following code:</p>
-<pre><code class="language-python">class Point:
-
-    def __init__(self, x, y):
-        # initialize the values of the point (x, y)
-        self.x = x
-        self.y = y
-
-    def __str__(self)-&gt;str:
-        # format the string in (x, y) form
-        return f&quot;({self.x}, {self.y})&quot;
-    
-class Triangle:
-
-    def __init__(self, v1: Point, v2: Point, v3: Point):
-        self.vertex1 = v1
-        self.vertex2 = v2
-        self.vertex3 = v3
-
-    def __str__(self)-&gt;str:
-        return f&quot;Vertices: {self.vertex1} {self.vertex2} {self.vertex3}&quot;
-
-# main code block:
-p1 = Point(4, 1)
-p2 = p1
-p1.x += 1
-print(p2)
-</code></pre>
-<p>The memory diagram below shows the state of the objects right before the code <code>p1.x += 1</code> executes:</p>
-<img src="memory_diagram_5.png" alt="memory diagram of two variables referring to the same Point objects" width = 350>
-<p>After the line <code>p1.x += 1</code> executes, the instance variable <code>x</code> in object that <code>p1</code> refers to is changed:</p>
-<img src="memory_diagram_6.png" alt="another memory diagram of two variables referring to the same Point objects" width = 350>
-<p>But notice that <code>p1</code> and <code>p2</code> refer to the same object (they have the same identity, i.e., <code>p1 is p2</code> is <code>True</code>), so when we output <code>p2</code>, we see that same change reflected. Thus the output is <code>(5,1)</code>. Drawing a memory diagram helps us trace more carefully through the code.</p>
-<h2 id="a-more-complicated-example"><a class="header" href="#a-more-complicated-example">A more complicated example</a></h2>
-<p>Now let's instantiate a <code>Triangle</code> object, which is more complicated since it has instance variables that are themselves objects. These instance variables are themselves references.</p>
-<pre><code class="language-python"># main code block
-p1 = Point(4, 1)
-p2 = Point(7, 1)
-p3 = Point(5, 2)
-t1 = Triangle(p1, p2, p3)
-</code></pre>
-<p>Here's a diagram showing the state of memory after the above code executes. Examine each box and arrow carefully. Notice in particular that each of the vertex instance variables refer to objects, so they each contain an error to points to a <code>Point</code> objects. Notice also that <code>p1</code>, <code>p1</code> and <code>p3</code> are part of the diagram, and they refer to the same <code>Point</code> objects as are stored in the <code>Triangle</code> <code>t1</code>.</p>
-<img src="memory_diagram_7.png" alt="Memory diagram of a triangle object, which has three vertices that are each Point objects" width = 550>
-<p>Aided by the above memory diagram, trace through the following code, to be run after the main code block above, and predict its output:</p>
-<pre><code class="language-python">p1.x = 10
-t1.vertex3.y = 19
-print(p3)
-print(t1)
-</code></pre>
-<p>Answer:</p>
-<pre><code>p3: (5, 19)
-Vertices: (10, 1) (7, 1) (5, 19)
-</code></pre>
-<p>Since <code>p1</code> refers to the same object as <code>t1.vertex1</code>, when <code>p1</code> is changed, so is <code>t1.vertex1</code>. Similarly, since <code>t1.vertex3</code> refers to the same object as <code>p3</code>, when <code>t1.vertex3</code> is changed, so is <code>p3</code>. Here is the final memory diagram showing the changes:</p>
-<img src="memory_diagram_8.png" alt="Memory diagram of a triangle object, which has three vertices that are each Point objects, after modifications" width = 550>
+                        <h1 id="inheritance"><a class="header" href="#inheritance">Inheritance</a></h1>
+<p>Inheritance is one of the core concepts of object-oriented programming. The idea is to relate two classes, allowing one to access (and thus &quot;inherit&quot;) the data attributes and method attributes of the other. This powerful technique allows us to reuse base code that can then be shared by one or several classes.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../chapters/classes2/identity_vs_equality.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../chapters/classes2/shallow_v_deep_copy.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../chapters/classes2/shallow_v_deep_copy.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../chapters/inheritance/inheritance.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -246,11 +190,11 @@ Vertices: (10, 1) (7, 1) (5, 19)
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../chapters/classes2/identity_vs_equality.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../chapters/classes2/shallow_v_deep_copy.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../chapters/classes2/shallow_v_deep_copy.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../chapters/inheritance/inheritance.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
