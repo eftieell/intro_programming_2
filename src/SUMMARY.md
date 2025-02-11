@@ -30,3 +30,6 @@
     - [Identity versus equality](chapters/classes2/identity_vs_equality.md)
     - [Memory Diagrams of objects](chapters/classes2/memory_diagrams.md)
     - [Shallow copy vs. deep copy](chapters/classes2/shallow_v_deep_copy.md)
+- [Inheritance](chapters/inheritance/inheritance_chapter.md)
+    - [Base classes and derived classes](chapters/inheritance/inheritance.md)
+    - [Overriding methods](chapters/inheritance/method_overriding.md)

@@ -8,8 +8,8 @@ Recall that each object of a class has its own copy of each *instance variable*.
 Key differences between instance variables and class variables:
 
 * Each object has its own copy of every instance variable. But there is only one value stored for a class variable, shared by all objects.
-* Instance variables are most commonly created within the `__init__` method of a class. On the other hand, class variables are created within the class, but *outside* of any method.
-* If an object makes changes to a class variable, that change is seen by every object (since the variable is shared).
+* Instance variables are most commonly created within the `__init__()` method of a class. On the other hand, class variables are created within the class, but *outside* of any method.
+* If an object makes changes to a class variable, that change is seen by every object (since the variable is shared). If an object makes changes to one of its instance variables, no other objects see a change to their own instance variables.
 * To access an instance variable, we say `object_name.instance_variable_name`. But to access a class variable, we say `ClassName.class_variable_name`.
 
 ### Use case 1 - defining constants that are shared program-wide
@@ -35,7 +35,7 @@ class Star:
         return f"{self.name}, mass: {self.mass} times Sol, age: {self.age}x10^9 years, distance: {self.distance} l.y."
 
     def distance_in_miles(self)->float:
-        # miles = light years * seconds per year * speed of light in miles/hour
+        # miles = light years * seconds per year * speed of light in miles/second
         return self.distance * (60 * 60 * 24 * 365) * Star.speed_of_light
 
 # main code block follows:
@@ -63,10 +63,10 @@ The speed of light is 186000 miles per second.
 What to notice in the above example:
 * The variable `speed_of_light` is defined *within* the class `Star`, but outside of any method definition. This is how we know it is a class variable.
 * Since `speed_of_light` is a class variable, it is shared by all objects of the class. We use a class variable in this case to define a single constant that all objects of the class can access. (There are other uses of class variables - see below.)
-* Since class variables are conventionally accessed with `ClassName.class_variable_name`, all objects can access the class variable in this example with the expression `Star.speed_of_light`. 
+* Since class variables are conventionally accessed with `ClassName.class_variable_name`, in this example all objects can access the class variable with the expression `Star.speed_of_light`. 
 * Look closely at the `distance_in_miles()` method of the `Star` class. This is where you see the use of the class variable `Star.speed_of_light`.
 * Notice that client code (the main code block) can also access class variables with `ClassName.class_variable_name`, as seen in the last line of the code, where `Star.speed_of_light` is output. Although viewing the values stored in a class variable from outside the class is legitimate, it is bad programming practice to modify class variables from outside the class, even though python allows it. Other object-oriented programming languages (C++, Java) have mechanisms for disallowing it.
-* Technical note: in python it is also possible to access class variables using the object name (i.e., `object_name.class_variable_name` rather than `ClassName.class_variable_name`. For example, in the above code, you can use the expression `self.speed_of_light` within the class definition, or `alphaA.speed_of_light` within the client code. However, this practice is strongly discouraged, since if you attempt to mutate (modify) the class variable with this notation, a new instance variable is created with that name rather than modifying the class variable. This causes unexpected side-effects. Thus, it is widely accepted as good python programming practice to always use the notation `ClassName.class_variable_name`.
+* Technical note: in python it is also possible to access class variables using the object name (i.e., `object_name.class_variable_name` rather than `ClassName.class_variable_name`. For example, in the above code, you can use the expression `self.speed_of_light` within the class definition, or `alphaA.speed_of_light` within the client code. However, this practice is strongly discouraged, since if you attempt to mutate (modify) the class variable with this notation, a new instance variable is created with that same name rather than modifying the class variable. This causes unexpected side-effects. Thus, it is widely accepted as good python programming practice to always use the notation `ClassName.class_variable_name`.
 
 ## Other applications of class variables
 
@@ -83,22 +83,23 @@ class Widget:
     def __init__(self, number):
         # create and initialize whatever instance variables are needed:
         self.number = number
-        # This __init__ method gets called each time a Widget is instantiated, so by
-        # updating the shared variable Widget.count, we can keep track of how many times
-        # this __init__ method has been called, and thus how many Widget objects there are.
+        # This __init__() method gets called each time a Widget is instantiated, so
+        # by updating the shared variable Widget.count, we can keep track of how
+        #  many times this __init__() method has been called, 
+        # and thus how many Widget objects there are.
         Widget.count = Widget.count + 1
 
 # main code block:
-# instantiate three Widget objects. Each time, the __init__ method is
+# instantiate three Widget objects. Each time, the __init__() method is
 # called, so Widget.count gets incremented
 widget1 = Widget(17)
 widget2 = Widget(23)
 widget3 = Widget(47)
-# The next line outputs 3, since Widget's __init__ method got called 3 times
+# The next line outputs 3, since Widget's __init__() method got called 3 times
 print(Widget.count)
 ```
 
-In the above code, the class variable `Widget.count` keeps track of the number of times a `Widget` object was instantiated. Since instantiation always calls the `__init__` method, within that method we increment the class variable `Widget.count` to track the total number of `Widget` objects.
+In the above code, the class variable `Widget.count` keeps track of the number of times a `Widget` object was instantiated. Since instantiation always calls the `__init__()` method, within that method we increment the class variable `Widget.count` to track the total number of `Widget` objects.
 
 ### Use case 3 - counting the total number of times that methods within a class have been invoked (called)
 
@@ -117,9 +118,10 @@ class Widget:
     def __init__(self, number):
         # create and initialize whatever instance variables are needed:
         self.number = number
-        # This __init__ method gets called each time a Widget is instantiated, so by
-        # updating the shared variable Widget.count, we can keep track of how many times
-        # this __init__ method has been called, and thus how many Widget objects there are.
+        # This __init__() method gets called each time a Widget is instantiated, so
+        # by updating the shared variable Widget.count, we can keep track of how
+        #  many times this __init__() method has been called, 
+        # and thus how many Widget objects there are.
         Widget.count = Widget.count + 1
         # Count this call towards total method calls
         Widget.method_calls += 1
@@ -140,11 +142,11 @@ class Widget:
 # instantiate two Widget objects.
 widget1 = Widget(17)
 widget2 = Widget(23)
-# change the values stored in the widgets
+# increase the values stored in the widgets
 widget1.grow(100)
 widget1.grow(200)
 widget2.grow(1000)
-# output the contents of each of the two Widgets (automatically calls __str__):
+# output the contents of each of the two Widgets (automatically calls __str__()):
 print(widget1)
 print(widget2)
 # output the values of the class variables:
@@ -164,7 +166,7 @@ method calls, and confirm for yourself that there were 7 method calls in the mai
 
 ### Use case 4
 
-Often it is important to give people or objects unique identification numbers. Examples of this in real life are Social Security numbers (no two individuals can share the same number) or student id numbers (every student at DU has a different 87-number). In python, one way to give every object of a class a unique id is to maintain a class variable that keeps track of the next available id to assign to each subsequent object. When an object is instantiated, in the `__init__` method, an instance variable is created to store that object's id and the next available id is stored there (the next available id being the value of the class variable). Next, still within the `__init__` method, the value of that class variable is incremented so that when the subsequent object is instantitated, its id will not collide with this or any previous object. In the example below, a class is used to represent financial transations. Each financial transaction is given its own unique transaction identification number.
+Often it is important to give people or objects unique identification numbers. Examples of this in real life are Social Security numbers (no two individuals can share the same number) or student id numbers (every student at DU has a different 87-number). In python, one way to give every object of a class a unique id is to maintain a class variable that keeps track of the next available id to assign to each subsequent object. When an object is instantiated, in the `__init__`() method an instance variable is created to store that object's id, and it is to the next available id (stored in the class variable). Next, still within the `__init__()` method, the value of that class variable is incremented so that when the subsequent object is instantitated, its id will not collide with this or any previous object. In the example below, a class is used to represent financial transations. Each financial transaction is given its own unique transaction identification number.
 
 ```python
 class FinancialTransaction:
@@ -174,7 +176,7 @@ class FinancialTransaction:
     # FinancialTransaction object. The first id assigned is 20000
     next_unique_id = 20000
 
-    def __init__(self, source, destination, amount):
+    def __init__(self, source: int, destination: int, amount: float):
         # routing number and account number of source of funds
         self.source = source
         # routing number and account number for deposit

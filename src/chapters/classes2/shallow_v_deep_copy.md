@@ -10,7 +10,7 @@ In the explanations below, we will refer to the following classes:
 ```python
 class Point:
 
-    def __init__(self, x, y):
+    def __init__(self, x: float, y: float):
         # initialize the values of the point (x, y)
         self.x = x
         self.y = y
