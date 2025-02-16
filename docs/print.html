@@ -2832,7 +2832,7 @@ print(point1 == point3) # outputs True, because the x and y values for point1 an
 <h2 id="what-to-remember-from-this"><a class="header" href="#what-to-remember-from-this">What to remember from this:</a></h2>
 <p>Remember that <code>obj1 is obj2</code> determines if <code>obj1</code> and <code>obj2</code> have the same identity, while <code>obj1 == obj2</code> determines if <code>obj1</code> and <code>obj2</code> have the same values.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="drawing-memory-diagram-of-complicated-objects"><a class="header" href="#drawing-memory-diagram-of-complicated-objects">Drawing memory diagram of complicated objects</a></h1>
-<p>In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html" target="_blank">variables are references</a>), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:</p>
+<p>In a previous section (<a href="chapters/classes2//variables_are_references.html">Variables are references</a>), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:</p>
 <h2 id="a-simple-example"><a class="header" href="#a-simple-example">A simple example</a></h2>
 <p>Consider the following code:</p>
 <pre><code class="language-python">class Point:
@@ -3372,7 +3372,7 @@ print(circle1 instanceof Circle)  # True: circle1 is an instance of Circle
 print(circle1 instanceof Shape)   # True: circle1 is an instance of Shape, by inheritance
 </code></pre>
 <p>In the above example, the type of <code>circle1</code> is <code>Circle</code>. Python outputs
-<code>&lt;class '__main__.Circle'&gt;</code> (since the <code>Circle</code> class is defined within the <code>main</code> module).
+<code>&lt;class '__main__.Circle'&gt;</code> (since the <code>Circle</code> class is defined within the <code>__main__</code> module).
 The next line determines if <code>circle1</code> is an instance of the <code>Circle</code> class, which it is since it was instantiated as a <code>Circle</code> object.
 The final line determines if <code>circle1</code> is also an instance of the <code>Shape</code> class. The result is again <code>True</code>. The object <code>circle1</code> is a <code>Circle</code>, and thus is also a <code>Shape</code>, since <code>Circle</code> is a child clcass of <code>Shape</code>.</p>
 <h2 id="composition-relationship"><a class="header" href="#composition-relationship">Composition relationship</a></h2>
@@ -3399,7 +3399,7 @@ print(isinstance(t1, Point))     # False, t1 is not a Point
 </code></pre>
 <p>In the above code, we have two classes, but they are not related by inheritance. Instead, they are related by composition, since the <code>Triangle</code> class uses the <code>Point</code> class by owning instance variables of type <code>Point</code>. </p>
 <p>In the main code block, note that the type of <code>t1</code> is <code>Triangle</code>
-(python outputs <code>&lt;class '__main__.Triangle'&gt;</code>, since the <code>Triangle</code> class is defined within the <code>main</code> module). The next line determines if <code>t1</code> is an instance of the <code>Triangle</code> class, which it is, since <code>t1</code> was instantiated as a <code>Triangle</code>. The final line, however, outputs <code>False</code>. The object <code>t1</code> <em>is not a</em> <code>Point</code>. Rather, it <em>has a</em> <code>Point</code> as one of its instance variables.</p>
+(python outputs <code>&lt;class '__main__.Triangle'&gt;</code>, since the <code>Triangle</code> class is defined within the <code>__main__</code> module). The next line determines if <code>t1</code> is an instance of the <code>Triangle</code> class, which it is, since <code>t1</code> was instantiated as a <code>Triangle</code>. The final line, however, outputs <code>False</code>. The object <code>t1</code> <em>is not a</em> <code>Point</code>. Rather, it <em>has a</em> <code>Point</code> as one of its instance variables.</p>
 
                     </main>
 

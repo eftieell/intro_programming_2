@@ -193,7 +193,7 @@ print(circle1 instanceof Circle)  # True: circle1 is an instance of Circle
 print(circle1 instanceof Shape)   # True: circle1 is an instance of Shape, by inheritance
 </code></pre>
 <p>In the above example, the type of <code>circle1</code> is <code>Circle</code>. Python outputs
-<code>&lt;class '__main__.Circle'&gt;</code> (since the <code>Circle</code> class is defined within the <code>main</code> module).
+<code>&lt;class '__main__.Circle'&gt;</code> (since the <code>Circle</code> class is defined within the <code>__main__</code> module).
 The next line determines if <code>circle1</code> is an instance of the <code>Circle</code> class, which it is since it was instantiated as a <code>Circle</code> object.
 The final line determines if <code>circle1</code> is also an instance of the <code>Shape</code> class. The result is again <code>True</code>. The object <code>circle1</code> is a <code>Circle</code>, and thus is also a <code>Shape</code>, since <code>Circle</code> is a child clcass of <code>Shape</code>.</p>
 <h2 id="composition-relationship"><a class="header" href="#composition-relationship">Composition relationship</a></h2>
@@ -220,7 +220,7 @@ print(isinstance(t1, Point))     # False, t1 is not a Point
 </code></pre>
 <p>In the above code, we have two classes, but they are not related by inheritance. Instead, they are related by composition, since the <code>Triangle</code> class uses the <code>Point</code> class by owning instance variables of type <code>Point</code>. </p>
 <p>In the main code block, note that the type of <code>t1</code> is <code>Triangle</code>
-(python outputs <code>&lt;class '__main__.Triangle'&gt;</code>, since the <code>Triangle</code> class is defined within the <code>main</code> module). The next line determines if <code>t1</code> is an instance of the <code>Triangle</code> class, which it is, since <code>t1</code> was instantiated as a <code>Triangle</code>. The final line, however, outputs <code>False</code>. The object <code>t1</code> <em>is not a</em> <code>Point</code>. Rather, it <em>has a</em> <code>Point</code> as one of its instance variables.</p>
+(python outputs <code>&lt;class '__main__.Triangle'&gt;</code>, since the <code>Triangle</code> class is defined within the <code>__main__</code> module). The next line determines if <code>t1</code> is an instance of the <code>Triangle</code> class, which it is, since <code>t1</code> was instantiated as a <code>Triangle</code>. The final line, however, outputs <code>False</code>. The object <code>t1</code> <em>is not a</em> <code>Point</code>. Rather, it <em>has a</em> <code>Point</code> as one of its instance variables.</p>
 
                     </main>
 
