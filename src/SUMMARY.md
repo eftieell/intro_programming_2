@@ -34,4 +34,6 @@
     - [Base classes and derived classes](chapters/inheritance/inheritance.md)
     - [Overriding methods](chapters/inheritance/method_overriding.md)
     - [Polymorphism](chapters/inheritance/polymorphism.md)
+    - [Type and isinstance](chapters/inheritance/type)and_isinstance.md)   
     - [Inheritance vs. composition](chapters/inheritance/is_a_versus_has_a.md)
+    - [Multilevel inheritance](chapters/inheritance/multilevel.md)
