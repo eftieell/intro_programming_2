@@ -41,7 +41,8 @@ Answer:
 We will use the `Point` class above to make a class called `Triangle`. 
 Since a triangle has three vertices, our `Triangle` objects will have three instance variables 
 (`self.vertex1`, `self.vertex2`, and `self.vertex3`), each of which is themself an object, of type `Point`.
-This nesting of classes is common in object-oriented programming. Trace carefully through the following code and
+This nesting of classes, in which one class has instance variables of another class is called *composition*. 
+Composition is common practice in object-oriented programming. Trace carefully through the following code and
 predict the output to the terminal.
 
 ```python

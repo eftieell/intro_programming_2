@@ -10,9 +10,10 @@ class Shape:
         self.color = c
 
     def __str__(self)->str:
-        return f"center: ({self.x}, {self.y}), color: {self.color}"
+        # the ".4g" formatting specification outputs at most 4 decimal places
+        return f"center: ({self.x:.4g}, {self.y:.4g}), color: {self.color}"
     
-    def draw(self)->str:
+    def draw(self):
         dudraw.set_pen_color(self.color)
         dudraw.point(self.x, self.y)
 
@@ -23,7 +24,12 @@ class Circle(Shape):
         self.radius = r
 
     def __str__(self)->str:
-        return f"{super().__str__()}, radius: {self.radius}"
+        return f"{super().__str__()}, circle radius: {self.radius:.3g}"
+
+    # This method overrides the draw() method in the Shape class
+    def draw(self)->str:
+        dudraw.set_pen_color(self.color)
+        dudraw.filled_circle(self.x, self.y, self.radius)
 
 # main code block:
 shape1 = Shape(0.6, 0.2, dudraw.BLUE)

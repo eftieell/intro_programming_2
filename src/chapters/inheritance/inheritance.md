@@ -36,6 +36,7 @@ class Shape:
 
 class Circle(Shape):
 
+    # The __init__() method calls on its parent class to do part of the initialization work
     def __init__(self, x: float, y: float, r: float, c: dudraw.Color):
         super().__init__(x, y, c)
         self.radius = r
@@ -68,7 +69,8 @@ class Shape:
         self.color = c
 
     def __str__(self)->str:
-        return f"center: ({self.x}, {self.y}), color: {self.color}"
+        # the ".4g" formatting specification outputs at most 4 decimal places
+        return f"center: ({self.x:.4g}, {self.y:.4g}), color: {self.color}"
 
 class Circle(Shape):
 
@@ -76,8 +78,9 @@ class Circle(Shape):
         super().__init__(x, y, c)
         self.radius = r
 
+    # The __str__() method calls its parent class Shape to do part of the formatting work
     def __str__(self)->str:
-        return f"{super().__str__()}, radius: {self.radius}"
+        return f"{super().__str__()}, circle radius: {self.radius:.3g}"
 
 
 # The __str__() methods for Rectangle and Ellipse are left to you
