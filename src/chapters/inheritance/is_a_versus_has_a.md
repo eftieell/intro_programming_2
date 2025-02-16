@@ -28,7 +28,7 @@ print(circle1 instanceof Shape)   # True: circle1 is an instance of Shape, by in
 ```
 
 In the above example, the type of `circle1` is `Circle`. Python outputs
-`<class '__main__.Circle'>` (since the `Circle` class is defined within the `main` module).
+`<class '__main__.Circle'>` (since the `Circle` class is defined within the `__main__` module).
 The next line determines if `circle1` is an instance of the `Circle` class, which it is since it was instantiated as a `Circle` object.
 The final line determines if `circle1` is also an instance of the `Shape` class. The result is again `True`. The object `circle1` is a `Circle`, and thus is also a `Shape`, since `Circle` is a child clcass of `Shape`.
 
@@ -60,4 +60,4 @@ print(isinstance(t1, Point))     # False, t1 is not a Point
 In the above code, we have two classes, but they are not related by inheritance. Instead, they are related by composition, since the `Triangle` class uses the `Point` class by owning instance variables of type `Point`. 
 
 In the main code block, note that the type of `t1` is `Triangle`
-(python outputs `<class '__main__.Triangle'>`, since the `Triangle` class is defined within the `main` module). The next line determines if `t1` is an instance of the `Triangle` class, which it is, since `t1` was instantiated as a `Triangle`. The final line, however, outputs `False`. The object `t1` *is not a* `Point`. Rather, it *has a* `Point` as one of its instance variables.
+(python outputs `<class '__main__.Triangle'>`, since the `Triangle` class is defined within the `__main__` module). The next line determines if `t1` is an instance of the `Triangle` class, which it is, since `t1` was instantiated as a `Triangle`. The final line, however, outputs `False`. The object `t1` *is not a* `Point`. Rather, it *has a* `Point` as one of its instance variables.

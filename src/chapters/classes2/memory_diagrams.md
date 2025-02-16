@@ -1,6 +1,6 @@
 # Drawing memory diagram of complicated objects
 
-In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html" target="_blank">variables are references</a>), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:
+In a previous section ([Variables are references](/variables_are_references.html)), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:
 
 ## A simple example
 Consider the following code:
