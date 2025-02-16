@@ -2227,7 +2227,115 @@ center: (0.6660610136763881, 0.9802962789008293), width: 0.02, height: 0.02, cen
 <p>It is good programming practice in python to implement a <code>__repr__()</code> method in every class.</p>
 <p>Note: in python, there is another official purpose for <code>__repr__()</code> methods, 
 so in future work you might be required to have <code>__repr__()</code> produce strings with a different format than <code>__str__()</code>.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="more-complex-classes"><a class="header" href="#more-complex-classes">More complex classes</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="classes-can-have-a-simple-or-more-complicated-structure"><a class="header" href="#classes-can-have-a-simple-or-more-complicated-structure">Classes can have a simple, or more complicated structure</a></h1>
+<p>We'll start with a simple class, and then show how it can be used to build more complicated and useful classes.</p>
+<h2 id="a-simple-class"><a class="header" href="#a-simple-class">A simple class</a></h2>
+<p>Consider the following code. Read it closely and predict the output.</p>
+<pre><code class="language-python">from __future__ import annotations
+class Point:
+
+    def __init__(self, x: float, y: float):
+        # initialize the values of the point (x, y)
+        self.x = x
+        self.y = y
+
+    def __str__(self)-&gt;str:
+        # format the string in (x, y) form
+        return f&quot;({self.x}, {self.y})&quot;
+    
+    # Change the location of this point, shifting it by the amount indicated by other.
+    # Side note: notice that the header indicates that the second parameter is of type Point.
+    # In order to define types that are user-defined classes, you need the import statement
+    # from __future__ import annotations (and it has to be the first import).
+    def shift(self, shift_by: Point)-&gt;None:
+        self.x += shift_by.x
+        self.y += shift_by.y
+    
+    
+# main code block:
+p1 = Point(4, 1)
+print(p1)
+p1.shift(Point(3, 4))
+print(p1)
+</code></pre>
+<p>Answer:</p>
+<pre><code>(4, 1)
+(7, 5)
+</code></pre>
+<h1 id="a-more-complicated-class"><a class="header" href="#a-more-complicated-class">A more complicated class</a></h1>
+<p>We will use the <code>Point</code> class above to make a class called <code>Triangle</code>. 
+Since a triangle has three vertices, our <code>Triangle</code> objects will have three instance variables 
+(<code>self.vertex1</code>, <code>self.vertex2</code>, and <code>self.vertex3</code>), each of which is themself an object, of type <code>Point</code>.
+This nesting of classes, in which one class has instance variables of another class is called <em>composition</em>. 
+Composition is common practice in object-oriented programming. Trace carefully through the following code and
+predict the output to the terminal.</p>
+<pre><code class="language-python">class Triangle:
+
+    def __init__(self, v1: Point, v2: Point, v3: Point):
+        self.vertex1 = v1
+        self.vertex2 = v2
+        self.vertex3 = v3
+
+    def __str__(self)-&gt;str:
+        return f&quot;Vertices: {self.vertex1} {self.vertex2} {self.vertex3}&quot;
+
+    def shift(self, shift_by: Point)-&gt;None:
+        self.vertex1.shift(shift_by)
+        self.vertex2.shift(shift_by)
+        self.vertex3.shift(shift_by)
+
+# main code block:
+p1 = Point(4, 1)
+p2 = Point(7, 1)
+p3 = Point(5, 2)
+t1 = Triangle(p1, p2, p3)
+print(t1)
+t1.shift(Point(3, 4))
+print(t1)
+</code></pre>
+<p>Output:</p>
+<pre><code>Vertices: (4, 1) (7, 1) (5, 2)
+Vertices: (7, 5) (10, 5) (8, 6)
+</code></pre>
+<p>The variable <code>t1</code> has three instance variables, each of which are points. 
+For example, <code>t1.vertex1</code> represents the point (4, 1). Notice that since <code>t1.vertex</code> is a <code>Point</code>, 
+we can actually access its two instance variables, with <code>t1.vertex.x</code> and <code>t1.vertex.y</code>. 
+However, in object-oriented programming practice, by convention we never modify an
+instance variable's instance variable. Instead, we rely on that class to do the modification. 
+You can see an example of this in the code above: the <code>shift</code> method in the <code>Triangle</code> class does not itself change the values of each vertex. 
+Instead, it calls the <code>Point</code> class's <code>shift()</code> method
+to modify the <code>x</code> and <code>y</code> values of each of the three vertices.</p>
+<h2 id="a-class-with-a-list-as-an-instance-variable"><a class="header" href="#a-class-with-a-list-as-an-instance-variable">A class with a list as an instance variable</a></h2>
+<p>Below we define and use the class <code>Polygon</code>. It has one instance variable, which is a list of its vertices
+(each of which is a <code>Point</code> object). 
+Notice that the methods in this class will often need to traverse through that list of vertices.
+In the code below, you see these loops both in the <code>__str__()</code> method and the <code>shift()</code> method. Notice two different styles of iteration (looping through index or looping through content) are used, 
+so you can see different options. Carefully trace the code and predict the output to the terminal.</p>
+<pre><code class="language-python">class Polygon:
+    def __init__(self, vertices:list):
+        self.vertices = vertices
+
+    def __str__(self)-&gt;str:
+        result = &quot;vertices: &quot;
+        for point in self.vertices:
+            result += str(point) + &quot; &quot;
+        return result
+    
+    def shift(self, shift_by: Point):
+        for i in (range(len(self.vertices))):
+            self.vertices[i].shift(shift_by)
+
+# main code block:
+vertices = [Point(4, 0), Point(0, 4), Point(4, 8), Point(8, 4)]
+poly = Polygon(vertices)
+print(poly)
+poly.shift(Point(10, 20))
+print(poly)
+</code></pre>
+<p>Output:</p>
+<pre><code>vertices: (4, 0) (0, 4) (4, 8) (8, 4) 
+vertices: (14, 20) (10, 24) (14, 28) (18, 24) 
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="class-variables"><a class="header" href="#class-variables">Class variables</a></h1>
 <h2 id="how-to-create-and-use-class-variables"><a class="header" href="#how-to-create-and-use-class-variables">How to create and use class variables</a></h2>
 <p>Recall that each object of a class has its own copy of each <em>instance variable</em>. On the other hand, there is a way to create variables that are shared by every object of the class - these are called <em>class variables</em>.</p>
