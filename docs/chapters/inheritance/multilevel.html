@@ -1,0 +1,329 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Multilevel inheritance - Introduction to Programming 2 - DRAFT</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../css/pyscript.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/dudraw_animation.html">Review of animation with dudraw</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists_and_dicts_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_arguments.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/call_stack.html">Call stack memory diagrams</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_chapter.html">Classes, Part 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/implementing_classes.html">Implementing classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/print_object.html">Output of objects to the terminal</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/lists_of_objects.html">Lists of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/complicated_classes.html">More complex classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/class_variables.html">Class variables</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes2/classes_chapter_pt2.html">Classes, Part 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes2/variables_are_references.html">Variables store references to objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/dunder_methods.html">Dunder methods</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/identity_vs_equality.html">Identity versus equality</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/memory_diagrams.html">Memory Diagrams of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/shallow_v_deep_copy.html">Shallow copy vs. deep copy</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance_chapter.html">Inheritance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance.html">Base classes and derived classes</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/method_overriding.html">Overriding methods</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/polymorphism.html">Polymorphism</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/type.html">Type and isinstance</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/is_a_versus_has_a.html">Inheritance vs. composition</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/multilevel.html" class="active">Multilevel inheritance</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Introduction to Programming 2 - DRAFT</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="multilevel-inheritance"><a class="header" href="#multilevel-inheritance">Multilevel inheritance.</a></h1>
+<p>If a child class itself has a child class, we call that <em>multilevel inheritance</em>. For example, suppose we have a class called <code>Publication</code>, which has two subclasses <code>Podcast</code> and <code>Book</code>. Then say <code>Book</code> itself has two subclasses, <code>AudioBook</code> and <code>PrintBook</code>. In multilevel inheritance, class diagrams are a particularly useful visualization tool.</p>
+<h2 id="class-diagram-of-multilevel-inheritance"><a class="header" href="#class-diagram-of-multilevel-inheritance">Class diagram of multilevel inheritance</a></h2>
+<img src="class_diagram_multilevel.png" alt="Class diagram of multilevel inheritance" width = 300>
+<p>The top-level class is sometimes referred to as a <em>grandparent</em> class, while a class two levels down is called a <em>grandchild</em>.</p>
+<p>Side note: <em>multilevel inheritance</em> is different from <em>multiple inheritance</em>. You may find information about multiple inheritance online, which is the idea that a class can have more than one parent classes. Multiple inheritance is possible in python and C++, but not Java. We do not cover multiple inheritance in this course.</p>
+<h2 id="uml-diagram-of-multilevel-inheritance"><a class="header" href="#uml-diagram-of-multilevel-inheritance">UML diagram of multilevel inheritance</a></h2>
+<p>When we need more details than a class diagram, we use a UML diagram, which includes lists of instance variables as well as methods:</p>
+<img src="multilevel_uml.png" alt="UML diagram of multilevel inheritance" width = 650>
+<h2 id="code-example-for-multilevel-inheritance"><a class="header" href="#code-example-for-multilevel-inheritance">Code example for multilevel inheritance</a></h2>
+<p>Here's the implementation of the 5 classes described above:</p>
+<pre><code class="language-python">class Publication:
+
+    def __init__(self, author: str, title: str):
+        self.author = author
+        self.title =  title
+
+    def __str__(self)-&gt;str:
+        return f&quot;author: {self.author}, title: {self.title}&quot;
+    
+class Podcast(Publication):
+        
+    def __init__(self, author: str, title: str, url: str, length: float):
+        super().__init__(author, title)
+        self.url = url
+        self.length = length
+
+    def __str__(self)-&gt;str:
+        return f&quot;{super().__str__()},\n\turl: {self.url}, length: {self.length}&quot;
+
+class Book(Publication):
+
+    def __init__(self, author: str, title: str, ISBN: str):
+        super().__init__(author, title)
+        self.ISBN = ISBN
+
+    def __str__(self)-&gt;str:
+        return f&quot;{super().__str__()}, ISBN: {self.ISBN}&quot;
+    
+class AudioBook(Book):
+
+    def __init__(self, author: str, title: str, ISBN: str, narrator: str, length: float ):
+        super().__init__(author, title, ISBN)
+        self.narrator = narrator
+        self.length = length
+
+    def __str__(self)-&gt;str:
+        return f&quot;{super().__str__()},\n\tnarrator: {self.narrator}, length: {self.length}&quot;
+    
+class PrintBook(Book):
+
+    def __init__(self, author: str, title: str, ISBN: str, pages: int ):
+        super().__init__(author, title, ISBN)
+        self.pages = pages
+
+    def __str__(self)-&gt;str:
+        return f&quot;{super().__str__()}, pages: {self.pages}&quot;
+
+# main code block:
+publications = []
+publications.append(Book(author = &quot;F. Scott Fitzgerald&quot;, 
+                         title = &quot;The Great Gatsby&quot;, 
+                         ISBN = &quot;978-1328948854&quot;))
+publications.append(PrintBook(author = &quot;William Goldman&quot;, 
+                         title = &quot;The Princess Bride&quot;, 
+                         ISBN = &quot;978-1328948854&quot;, 
+                         pages = 496))
+publications.append(AudioBook(author = &quot;Ann Patchett&quot;, 
+                              title = &quot;Tom Lake&quot;, 
+                              ISBN = &quot;978-0063327528&quot;, 
+                              narrator = &quot;Meryl Streep&quot;, 
+                              length = 682.0))
+publications.append(Podcast(author = &quot;Ira Glass&quot;, 
+                            title = &quot;This American Life - The Ghost of Bobby Dunbar&quot;,
+                            url = &quot;https://www.thisamericanlife.org/352/the-ghost-of-bobby-dunbar&quot;,
+                            length = 58.1))
+
+for publication in publications:
+    print(publication)
+</code></pre>
+<p>output:</p>
+<pre><code>author: F. Scott Fitzgerald, title: The Great Gatsby, ISBN: 978-1328948854
+author: William Goldman, title: The Princess Bride, ISBN: 978-1328948854, pages: 496
+author: Ann Patchett, title: Tom Lake, ISBN: 978-0063327528,
+        narrator: Meryl Streep, length: 682.0
+author: Ira Glass, title: This American Life - The Ghost of Bobby Dunbar,
+        url: https://www.thisamericanlife.org/352/the-ghost-of-bobby-dunbar, length: 58.1
+</code></pre>
+<p>Key points in the code example above:</p>
+<ul>
+<li>Consider the flow of information when instantiating an object of a grandchild class. For example, when instantiating an <code>AudioBook</code>, the <code>__init__()</code> method calls <code>super().__init__()</code>, which invokes the <code>__init__()</code> method for <code>Book</code>. But then the <code>__init__()</code> method for <code>Book</code> in turn calls <code>super().__init__()</code>, which invokes the <code>__init__()</code> method for <code>Publication</code>. So the information goes up the chain to the top-level class.</li>
+<li>A similar process occurs when the <code>Audiobook</code>'s <code>__str__()</code> method is called. It calls its parent's <code>__str__()</code> method, and that method in turn calls its parent's <code>__str__()</code> method. At each level the string is computed and returned down the chain, where it is combined with the string information passed back from the level above.</li>
+<li>In the main code block,  a list is created that holds a variety of objects from the 5 defined classes. Since regardless of type, each is also an instance of the <code>Publication</code> class, they can be treated in a homogenous way. Thus the for-loop can seamlessly traverse the objects and print them, even though they are potentially all of different subclasses.</li>
+<li>Predict what wil be output by the following code:</li>
+</ul>
+<pre><code class="language-python">print(type(publications[2]))
+print(isinstance(publications[1], Book))
+print(isinstance(publications[3], Book))
+print(isinstance(publications[2], Publication))
+</code></pre>
+<p>Answer:</p>
+<pre><code>&lt;class '__main__.AudioBook'&gt;
+True
+False
+True
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../chapters/inheritance/is_a_versus_has_a.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../chapters/inheritance/is_a_versus_has_a.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../js/disable_keyboard.js"></script>
+
+
+    </div>
+    </body>
+</html>
