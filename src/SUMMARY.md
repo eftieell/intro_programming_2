@@ -37,3 +37,5 @@
     - [Type and isinstance](chapters/inheritance/type_and_isinstance.md)   
     - [Inheritance vs. composition](chapters/inheritance/is_a_versus_has_a.md)
     - [Multilevel inheritance](chapters/inheritance/multilevel.md)
+- [Recursion](chapters/recursion/recursion_chapter.md)
+    - [Recursive functions](chapters/recursion/recursion.md)

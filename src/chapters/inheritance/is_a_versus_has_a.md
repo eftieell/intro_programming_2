@@ -34,7 +34,7 @@ The final line determines if `circle1` is also an instance of the `Shape` class.
 
 ## Composition relationship
 
-Here is an abridged version of code from a previous section ([More complex classes](../classes1/complicated_classes.html)):
+Here is an abridged version of code from a previous section ([More complex classes](../classes1/complicated_classes.md)):
 ```python
 class Point:
 
