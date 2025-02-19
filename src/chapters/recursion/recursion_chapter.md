@@ -1,3 +1,3 @@
 # Recursion
 
-    Recursion is a fundamental concept in Computer Science. Its a problem-solving technique that is an alternative to iteration (loops). Recursion applies whenever you can break a problem down into the same problem, but with smaller inputs. Recursion is important because there are some computational problems whose solutions are fantastically easier using recursion. You will see recursion again many times in your Computer Science journey.
+Recursion is a fundamental concept in Computer Science. Its a problem-solving technique that is an alternative to iteration (loops). Recursion applies whenever you can break a problem down into the same problem, but with smaller inputs. Recursion is important because there are some computational problems whose solutions are fantastically easier using recursion. You will see recursion again many times in your Computer Science journey.
