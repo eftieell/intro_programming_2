@@ -3581,10 +3581,10 @@ True
 <div style="break-before: page; page-break-before: always;"></div><h1 id="implementing-recursive-functions"><a class="header" href="#implementing-recursive-functions">Implementing recursive functions</a></h1>
 <p>You can implement a recursive algorithm any time you can break a computation down into one or more parts that involve the same computation, but with smaller values. This is known as a <em>recursive relationship</em>. In addition to the recursive relationship, you also always need a <em>base case</em>, which tells you when to stop the reursion.</p>
 <h2 id="example-1---computing-powers"><a class="header" href="#example-1---computing-powers">Example 1 - computing powers</a></h2>
-<p>Suppose you want to write a function called <code>power()</code> that evaluates an exponential expression \a^n\. For example, we want the line</p>
+<p>Suppose you want to write a function called <code>power()</code> that evaluates an exponential expression \(a^n\). For example, we want the line</p>
 <pre><code class="language-python">print(power(2, 5))
 </code></pre>
-<p>to output the number 32 (since \2^5 = 32\). You already should know how to implement this iteratively (i.e., using a for-loop - try it for practice!). We'll now see how to implement it using recursion. Suppose we already knew the value of \2^4\. Then it would be trivial to compute \2^5\: since \2^5 = 2^4*2, we would simply multiply \2^4\ by 2. So within the implementation of the <code>power()</code> function, when computing \2^5\, we call the <code>power()</code> function to perform the subtask of computing \2^4\. More generally, <code>power(a, n)</code> is just <code>power(a, n-1)*a</code>. This line of code expresses the mathematical recursive relationship \a^n = a\cdot a^{n-1}. Here's a partial (and flawed!) implementation that uses this idea:</p>
+<p>to output the number 32 (since \(2^5 = 32\)). You already should know how to implement this iteratively (i.e., using a for-loop - try it for practice!). We'll now see how to implement it using recursion. Suppose we already knew the value of \(2^4\). Then it would be trivial to compute \(2^5\): since \(2^5 = 2^4*2\), we would simply multiply \(2^4\) by 2. So within the implementation of the <code>power()</code> function, when computing \(2^5\), we call the <code>power()</code> function to perform the subtask of computing \(2^4\). More generally, <code>power(a, n)</code> is just <code>power(a, n-1)*a</code>. This line of code expresses the mathematical recursive relationship \(a^n = a\cdot a^{n-1}\). Here's a partial (and flawed!) implementation that uses this idea:</p>
 <pre><code class="language-python">def power(a, n):
     return power(a, n-1)*a
 </code></pre>
@@ -3602,16 +3602,16 @@ print(power(2, 5)) # correctly outputs 32
 </code></pre>
 <p>Other than error-checking (n must be a positive integer for this code to work), this is a correct and complete implementation. To summarize the key facts we needed to implement this function:</p>
 <ul>
-<li>base case: \a^0=1\</li>
-<li>recursive relationship: \a^n = a^{n-1} * a\</li>
+<li>base case: \(a^0=1\)</li>
+<li>recursive relationship: \(a^n = a^{n-1} * a\)</li>
 </ul>
 <p>Notice how these two components appear as different cases in the code.</p>
 <h2 id="example-2---computing-factorials"><a class="header" href="#example-2---computing-factorials">Example 2 - computing factorials</a></h2>
-<p>Now we will implement the factorial function. Recall that the factorial of a non-negative integer n is written n!, and it is the product of all positive integers less than or equal to n. For example, \5! = 5\cdot4\cdot3\cdot2\cdot1\. Note that 1! = 1 and 0! = 1. Finally, note that there is a relationship between a factorial value and the one before it. For example, \5! = 5 \cdot 4!\.
+<p>Now we will implement the factorial function. Recall that the factorial of a non-negative integer n is written n!, and it is the product of all positive integers less than or equal to n. For example, \(5! = 5\cdot4\cdot3\cdot2\cdot1\). Note that 1! = 1 and 0! = 1. Finally, note that there is a relationship between a factorial value and the one before it. For example, \(5! = 5 \cdot 4!\).
 As always with recursion, we start by identifying the recursive relationship, and the base case:</p>
 <ul>
-<li>base case: \0! = 1\</li>
-<li>recursive relationship: \n! = n\cdot (n-1)!\</li>
+<li>base case: 0! = 1</li>
+<li>recursive relationship: \(n! = n\cdot (n-1)!\)</li>
 </ul>
 <p>These two components of the recursion translate directly to two cases in the implementation:</p>
 <pre><code class="language-python">def factorial(n: int):
@@ -3647,9 +3647,9 @@ print(f&quot;10! is {factorial(10):,}&quot;)
 </code></pre>
 <h2 id="example-3---computing-greatest-common-divisors"><a class="header" href="#example-3---computing-greatest-common-divisors">Example 3 - computing greatest common divisors</a></h2>
 <h3 id="greatest-common-divisors-and-their-recursive-relationship"><a class="header" href="#greatest-common-divisors-and-their-recursive-relationship">Greatest common divisors and their recursive relationship</a></h3>
-<p>It's common in Computer Science to need to find the greatest common divisor (gcd) of two numbers. Recall that the greatest common divisor of two integers is the largest integer that divides both numbers. For example, gcd(25, 15) = 5, and gcd(60, 72) = 12. In grade school you learned how to find the gcd of two numbers by fully factoring each, and finding the overlap of the factors. For example, \60 = 5\cdot3\cdot2\cdot2\ and \72 = 3\cdot3\cdot2\cdot2\cdot2\. The shared factors are \3\cdot2\cdot2\, so gcd(60, 72) = 12. </p>
+<p>It's common in Computer Science to need to find the greatest common divisor (gcd) of two numbers. Recall that the greatest common divisor of two integers is the largest integer that divides both numbers. For example, gcd(25, 15) = 5, and gcd(60, 72) = 12. In grade school you learned how to find the gcd of two numbers by fully factoring each, and finding the overlap of the factors. For example, \(60 = 5\cdot3\cdot2\cdot2\) and \(72 = 3\cdot3\cdot2\cdot2\cdot2\). The shared factors are \(3\cdot2\cdot2\), so gcd(60, 72) = 12. </p>
 <p>However, when integers are large, factoring becomes computationally intractible, so the factoring method of finding gcds is not feasible. Fortunately, there is a theorem for reducing the problem to a smaller size. Divide the larger number by the smaller number, and find the remainder.
-Then the gcd of the original two numbers is the same as the gcd of the smaller number and the remainder. For example, \72 = 1\cdot 60 + 12\, so gcd(72, 60) = gcd(60, 12). This new problem with smaller values is easier. Since 12 goes into 60 evenly, gcd(72, 60) = gcd(60, 12) = 12. Repeatedly applying this strategy is called <em>the Euclidean algorithm</em>. We can describe this algorithm for finding gcd(a,b) (where a &gt; b) as follows:</p>
+Then the gcd of the original two numbers is the same as the gcd of the smaller number and the remainder. For example, \(72 = 1\cdot 60 + 12\), so gcd(72, 60) = gcd(60, 12). This new problem with smaller values is easier. Since 12 goes into 60 evenly, gcd(72, 60) = gcd(60, 12) = 12. Repeatedly applying this strategy is called <em>the Euclidean algorithm</em>. We can describe this algorithm for finding gcd(a,b) (where a &gt; b) as follows:</p>
 <ul>
 <li>base case: if b divides a, then the answer is b. Note that b divides a if <code>a%b == 0</code></li>
 <li>recursive relationship: gcd(a, b) = gcd(b, r), where r is the remainder when a is divided by b. Note that <code>r = a%b</code>.</li>
