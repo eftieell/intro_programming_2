@@ -1,0 +1,271 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>More examples of tracing - Introduction to Programming 2 - DRAFT</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="../../css/pyscript.css">
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/dudraw_animation.html">Review of animation with dudraw</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists_and_dicts_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_arguments.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/call_stack.html">Call stack memory diagrams</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_chapter.html">Classes, Part 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/implementing_classes.html">Implementing classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/print_object.html">Output of objects to the terminal</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/lists_of_objects.html">Lists of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/complicated_classes.html">More complex classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/class_variables.html">Class variables</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes2/classes_chapter_pt2.html">Classes, Part 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes2/variables_are_references.html">Variables store references to objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/dunder_methods.html">Dunder methods</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/identity_vs_equality.html">Identity versus equality</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/memory_diagrams.html">Memory Diagrams of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/shallow_v_deep_copy.html">Shallow copy vs. deep copy</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance_chapter.html">Inheritance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance.html">Base classes and derived classes</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/method_overriding.html">Overriding methods</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/polymorphism.html">Polymorphism</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/type_and_isinstance.html">Type and isinstance</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/is_a_versus_has_a.html">Inheritance vs. composition</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/multilevel.html">Multilevel inheritance</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/recursion/recursion_chapter.html">Recursion</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/recursion/recursion.html">Recursion</a></li><li class="chapter-item expanded "><a href="../../chapters/recursion/implementing_recursion.html">Implementing recursive functions</a></li><li class="chapter-item expanded "><a href="../../chapters/recursion/graphical_recursion.html">Graphical example of recursion</a></li><li class="chapter-item expanded "><a href="../../chapters/recursion/thorough_tracing.html" class="active">More examples of tracing</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Introduction to Programming 2 - DRAFT</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="complete-tracing-through-recursive-functions"><a class="header" href="#complete-tracing-through-recursive-functions">Complete tracing through recursive functions</a></h1>
+<h2 id="building-the-stack-sets-up-the-computation-which-is-done-while-unwinding-the-stack"><a class="header" href="#building-the-stack-sets-up-the-computation-which-is-done-while-unwinding-the-stack">Building the stack sets up the computation, which is done while unwinding the stack</a></h2>
+<p>During execution of a recursive function, the call stack is built. As we return from the recursive calls, the frames are popped off of the call stack, and the stack is unwound. The building of the call stack should be considered part of the computation, as the structure of the call stack often stores the information that will be processed as the stack is unwound. For example, consider the execution of the following code:</p>
+<img src="factorial_6_screenshot.png" alt="Recursive implementation of factorial" width="300"/>
+<p>Notice that the call to <code>factorial(6)</code> results in a stack of 8 recursive calls. Trace through it yourself to confirm this call stack is correct at the deepest level reached:</p>
+<img src="factorial_6_callstack.png" alt="Stack of 7 frames when executing factorial(6)" width="150"/>
+<p>The call stack has the values of n all lined up and ready to go - as we unwind the stack, each time the previous return value is multiplied by n, and that product is then returned to the next frame down the stack:</p>
+<table style = "table-layout: fixed" max-width="900px">
+<tr>
+    <td valign = "bottom"><img src="stack_unwind1.png" alt="first step unwinding stack" min-width="150px", max-width="150px"></td>
+    <td valign = "bottom"><img src="stack_unwind2.png" alt="second step unwinding stack" min-width="150px" ></td>
+    <td valign = "bottom"><img src="stack_unwind3.png" alt="third step unwinding stack" min-width="150px" ></td>
+    <td valign = "bottom"><img src="stack_unwind4.png" alt="fourth step unwinding stack" min-width="150px" ></td>
+</tr>
+<tr> 
+    <td>Return from call with n = 0</td>
+    <td>Return from call with n = 1</td>
+    <td>Return from call with n = 2</td>
+    <td>Return from call with n = 3</td></tr>
+</table>
+<table style = "table-layout: fixed" max-width="900px">
+<tr>
+    <td valign = "bottom"><img src="stack_unwind5.png" alt="fifth step unwinding stack" min-width="150px" max-width="150px"></td>
+    <td valign = "bottom"><img src="stack_unwind6.png" alt="sixth step unwinding stack" min-width="150px" max-width="150px"></td>
+    <td valign = "bottom"><img src="stack_unwind7.png" alt="seventh step unwinding stack" min-width="150px" max-width="150px"></td>
+</tr>
+<tr> 
+    <td>Return from call with n = 0</td>
+    <td>Return from call with n = 1</td>
+    <td>Return from call with n = 2</td>
+    <td>Return from call with n = 3</td></tr>
+</table>
+<h2 id="the-order-that-lines-are-executed-might-surprise-you"><a class="header" href="#the-order-that-lines-are-executed-might-surprise-you">The order that lines are executed might surprise you</a></h2>
+<p>Consider the following code, with a call to a recursive function:</p>
+<img src="down_up_code.png" alt="Tracing a recursive function" width="300"/>
+<p>Notice there is a <code>print()</code> statement both before and after the recursive call. Before continuing reading, carefully trace the code (using a call stack) and determine the output. Pay close attention to the order of each output line.</p>
+<p>First line 10 executes, and invokes <code>down_up(3)</code>. The base case is skipped, the code proceeding to line 5. The text <code>Entering down_up: 3</code> is output. Then on line 6, a recursive call is made <code>down_up(2)</code>. Entering that function, the base case is skipped again, the code proceeding to line 5. The text <code>Entering down_up: 2</code> is output. Moving to line 6, a recursive call is made <code>down_up(1)</code>, and upon entering that function we skip the base case, outputting <code>Entering down_up(1)</code>. Moving to line 6, a final recursive call is made <code>down_up(0)</code>. This time we enter the function one line 1, and here is the state of the call stack at that point:</p>
+<img src="down_up_stack.png" alt="Call stack for a recursive function" width="150"/>
+<p>This time, since n is 0, we enter the base case and output <code>Done</code>. Now we begin returning from the recursive calls. When the first frame is popped off the stack, we re-enter the call to <code>down_up</code> with n = 1 on line 6. Proceeding to line 7, we output <code>Continuing down_up: 1</code>. The function is done executing, so we pop the top frame off the stack, returning to line 6 in the call with n = 2. Then on line 7, we output <code>Continuing down_up: 2</code>. Again this function is done executing, we pop the top frame from the stack, and proceed to line 7 of the call to <code>down_up</code> with n = 3. We output <code>Continuing down_up: 3</code>. The complete output is:</p>
+<pre><code>Entering down_up: 3
+Entering down_up: 2
+Entering down_up: 1
+Done
+Continuing down_up: 1
+Continuing down_up: 2
+Continuing down_up: 3
+</code></pre>
+<p>Notice that lines executed <em>before</em> the recursive call are executed as the stack is being built, so they occur in the order that n is passed to the function (in this case, since we call <code>down_up(n-1)</code>, the values of n are decreasing). But lines executed <em>after</em> the recursive call are executed as the stack unwinds. So they are output in the reverse order.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../chapters/recursion/graphical_recursion.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../chapters/recursion/graphical_recursion.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace.js"></script>
+        <script src="../../editor.js"></script>
+        <script src="../../mode-rust.js"></script>
+        <script src="../../theme-dawn.js"></script>
+        <script src="../../theme-tomorrow_night.js"></script>
+
+        <script src="../../elasticlunr.min.js"></script>
+        <script src="../../mark.min.js"></script>
+        <script src="../../searcher.js"></script>
+
+        <script src="../../clipboard.min.js"></script>
+        <script src="../../highlight.js"></script>
+        <script src="../../book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../js/disable_keyboard.js"></script>
+
+
+    </div>
+    </body>
+</html>
