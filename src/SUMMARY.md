@@ -38,4 +38,7 @@
     - [Inheritance vs. composition](chapters/inheritance/is_a_versus_has_a.md)
     - [Multilevel inheritance](chapters/inheritance/multilevel.md)
 - [Recursion](chapters/recursion/recursion_chapter.md)
-    - [Recursive functions](chapters/recursion/recursion.md)
+    - [Recursion](chapters/recursion/recursion.md)
+    - [Implementing recursive functions](chapters/recursion/implementing_recursion.md)
+    - [Graphical example of recursion](chapters/recursion/graphical_recursion.md)
+    - [More examples of tracing](chapters/recursion/thorough_tracing.md)
