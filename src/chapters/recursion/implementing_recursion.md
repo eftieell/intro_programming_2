@@ -4,11 +4,11 @@ You can implement a recursive algorithm any time you can break a computation dow
 
 ## Example 1 - computing powers
 
-Suppose you want to write a function called `power()` that evaluates an exponential expression \\a^n\\. For example, we want the line
+Suppose you want to write a function called `power()` that evaluates an exponential expression \\(a^n\\). For example, we want the line
 ``` python
 print(power(2, 5))
 ```
-to output the number 32 (since \\2^5 = 32\\). You already should know how to implement this iteratively (i.e., using a for-loop - try it for practice!). We'll now see how to implement it using recursion. Suppose we already knew the value of \\2^4\\. Then it would be trivial to compute \\2^5\\: since \\2^5 = 2^4*2, we would simply multiply \\2^4\\ by 2. So within the implementation of the `power()` function, when computing \\2^5\\, we call the `power()` function to perform the subtask of computing \\2^4\\. More generally, `power(a, n)` is just `power(a, n-1)*a`. This line of code expresses the mathematical recursive relationship \\a^n = a\cdot a^{n-1}. Here's a partial (and flawed!) implementation that uses this idea:
+to output the number 32 (since \\(2^5 = 32\\)). You already should know how to implement this iteratively (i.e., using a for-loop - try it for practice!). We'll now see how to implement it using recursion. Suppose we already knew the value of \\(2^4\\). Then it would be trivial to compute \\(2^5\\): since \\(2^5 = 2^4*2\\), we would simply multiply \\(2^4\\) by 2. So within the implementation of the `power()` function, when computing \\(2^5\\), we call the `power()` function to perform the subtask of computing \\(2^4\\). More generally, `power(a, n)` is just `power(a, n-1)*a`. This line of code expresses the mathematical recursive relationship \\(a^n = a\cdot a^{n-1}\\). Here's a partial (and flawed!) implementation that uses this idea:
 ```python
 def power(a, n):
     return power(a, n-1)*a
@@ -27,17 +27,17 @@ def power(a, n):
 print(power(2, 5)) # correctly outputs 32
 ```
 Other than error-checking (n must be a positive integer for this code to work), this is a correct and complete implementation. To summarize the key facts we needed to implement this function:
-* base case: \\a^0=1\\
-* recursive relationship: \\a^n = a^{n-1} * a\\
+* base case: \\(a^0=1\\)
+* recursive relationship: \\(a^n = a^{n-1} * a\\)
 
 Notice how these two components appear as different cases in the code.
 
 ## Example 2 - computing factorials
 
-Now we will implement the factorial function. Recall that the factorial of a non-negative integer n is written n!, and it is the product of all positive integers less than or equal to n. For example, \\5! = 5\cdot4\cdot3\cdot2\cdot1\\. Note that 1! = 1 and 0! = 1. Finally, note that there is a relationship between a factorial value and the one before it. For example, \\5! = 5 \cdot 4!\\.
+Now we will implement the factorial function. Recall that the factorial of a non-negative integer n is written n!, and it is the product of all positive integers less than or equal to n. For example, \\(5! = 5\cdot4\cdot3\cdot2\cdot1\\). Note that 1! = 1 and 0! = 1. Finally, note that there is a relationship between a factorial value and the one before it. For example, \\(5! = 5 \cdot 4!\\).
 As always with recursion, we start by identifying the recursive relationship, and the base case:
-* base case: \\0! = 1\\
-* recursive relationship: \\n! = n\cdot (n-1)!\\
+* base case: 0! = 1
+* recursive relationship: \\(n! = n\cdot (n-1)!\\)
 
 These two components of the recursion translate directly to two cases in the implementation:
 ```python
@@ -82,10 +82,10 @@ def factorial(n: int):
 ## Example 3 - computing greatest common divisors
 
 ### Greatest common divisors and their recursive relationship
-It's common in Computer Science to need to find the greatest common divisor (gcd) of two numbers. Recall that the greatest common divisor of two integers is the largest integer that divides both numbers. For example, gcd(25, 15) = 5, and gcd(60, 72) = 12. In grade school you learned how to find the gcd of two numbers by fully factoring each, and finding the overlap of the factors. For example, \\60 = 5\cdot3\cdot2\cdot2\\ and \\72 = 3\cdot3\cdot2\cdot2\cdot2\\. The shared factors are \\3\cdot2\cdot2\\, so gcd(60, 72) = 12. 
+It's common in Computer Science to need to find the greatest common divisor (gcd) of two numbers. Recall that the greatest common divisor of two integers is the largest integer that divides both numbers. For example, gcd(25, 15) = 5, and gcd(60, 72) = 12. In grade school you learned how to find the gcd of two numbers by fully factoring each, and finding the overlap of the factors. For example, \\(60 = 5\cdot3\cdot2\cdot2\\) and \\(72 = 3\cdot3\cdot2\cdot2\cdot2\\). The shared factors are \\(3\cdot2\cdot2\\), so gcd(60, 72) = 12. 
 
 However, when integers are large, factoring becomes computationally intractible, so the factoring method of finding gcds is not feasible. Fortunately, there is a theorem for reducing the problem to a smaller size. Divide the larger number by the smaller number, and find the remainder.
-Then the gcd of the original two numbers is the same as the gcd of the smaller number and the remainder. For example, \\72 = 1\cdot 60 + 12\\, so gcd(72, 60) = gcd(60, 12). This new problem with smaller values is easier. Since 12 goes into 60 evenly, gcd(72, 60) = gcd(60, 12) = 12. Repeatedly applying this strategy is called *the Euclidean algorithm*. We can describe this algorithm for finding gcd(a,b) (where a > b) as follows:
+Then the gcd of the original two numbers is the same as the gcd of the smaller number and the remainder. For example, \\(72 = 1\cdot 60 + 12\\), so gcd(72, 60) = gcd(60, 12). This new problem with smaller values is easier. Since 12 goes into 60 evenly, gcd(72, 60) = gcd(60, 12) = 12. Repeatedly applying this strategy is called *the Euclidean algorithm*. We can describe this algorithm for finding gcd(a,b) (where a > b) as follows:
 * base case: if b divides a, then the answer is b. Note that b divides a if `a%b == 0`
 * recursive relationship: gcd(a, b) = gcd(b, r), where r is the remainder when a is divided by b. Note that ``r = a%b``.
 
