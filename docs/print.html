@@ -2530,9 +2530,7 @@ id: 20001, source: 1234567800987, destination: 9876543200987, amount: 2319.24
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="variables-are-references-to-objects"><a class="header" href="#variables-are-references-to-objects">Variables are references to objects</a></h1>
 <p>A variable that refers to an object is technically a reference. This means that the variable stores the memory address of the object itself (in other words, the location in your computer's memory where the full data for the object is stored). To see this in action, consider this implementation of the class <code>Point</code>, which has no <code>__str__()</code> method:</p>
-<pre><code class="language-python">from __future__ import annotations
-
-class Point:
+<pre><code class="language-python">class Point:
 
     def __init__(self, x, y):
         # initialize the values of the point (x, y)
