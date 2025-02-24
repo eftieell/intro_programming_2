@@ -3,8 +3,6 @@
 A variable that refers to an object is technically a reference. This means that the variable stores the memory address of the object itself (in other words, the location in your computer's memory where the full data for the object is stored). To see this in action, consider this implementation of the class `Point`, which has no `__str__()` method:
 
 ```python
-from __future__ import annotations
-
 class Point:
 
     def __init__(self, x, y):
