@@ -42,3 +42,6 @@
     - [Implementing recursive functions](chapters/recursion/implementing_recursion.md)
     - [Graphical example of recursion](chapters/recursion/graphical_recursion.md)
     - [More examples of tracing](chapters/recursion/thorough_tracing.md)
+- [Numpy](chapters/numpy/numpy_chapter.md)
+    - [Numpy arrays](chapters/numpy/numpy_arrays.md)
+    - [Computing with numpy arrays](chapters/numpy/numpy_compute.md)

@@ -1,0 +1,3 @@
+# NumPy
+
+The python package `numpy` provides a wide swath of computational power that is done on fixed-size lists. Using `numpy` arrays rather than python lists provides significant efficiency improvements when doing large computations. NumPy is an open-source package. In this chapter we cover `numpy` arrays, but please see [Numpy Official Website](https://numpy.org) for information on the package's comprehensive mathematical offerings. 
