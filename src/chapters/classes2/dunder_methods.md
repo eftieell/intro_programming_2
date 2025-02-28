@@ -1,6 +1,7 @@
 # Dunder methods (methods whose name starts with two underscores)
 
 In python, methods that start with two underscores are called *dunder* (double-underscore) methods. They are sometimes also referred to as *magic methods*. These methods have special significance, since they are automatically invoked by python in certain situtations. You've seen two examples of this already: the `__init__()` function is automatically (or "magically") invoked when you instantiate an object, and the `__str__()` method is automatically invoked when you print an object. For example:
+
 ```python
 class Time24:
     """ A class that represents a time of day on a 24-hour clock
@@ -16,20 +17,21 @@ class Time24:
     def __str__(self)->str:
         return f"{self.hours:02d}:{self.minutes:02d}"
 
+    def __repr__(self)->str:
+        return self.__str__()
 
-time1 = Time24(12, 59)  # automatically calls __init__
-print(time1)            # automatically calls __str__, outputs 12:59
+time1 = Time24(12, 7)   # automatically calls __init__ to initialize to 12:07
+time2 = Time24(2, 43)   # automatically calls __init__ to initialize to 02:43
+time3 = Time24(12, 7)   # automatically calls __init__ to initialize to 12:07
+default_time = Time24() # also calls __init__, default time is 00:00
+times = [time1, time2, time3, default_time]
+print(time1)            # automatically calls __str__, outputs 12:07
+print(times)            # automatically calls __repr__ for each object
 ```
 
-Besides `__init__()` and `__str__()`, python has a long list of other dunder methods. We will learn the *rich comparison operators*, which allows us, whenever it makes sense, to compare two objects of a class using  the operators `<`, `<=`, `==`, <code>!=</code>, `>=`, and `>`.
+Carefully read and trace the code above, paying special attention to how `__init__()` automatically gets called when we instantiate an object, how `__str__()` automatically gets called when we print an object, and how `__repr__()` automatically gets called when we print a list of objects.
 
-In the work below, we will use the following `Time24` objects:
-```python
-time1 = Time24(12, 7)   # instantiate time2 object, represents 12:07
-time2 = Time24(2, 43)   # instantiate time2 object, represents 02:43
-time3 = Time24(12, 7)   # instantiate time3 object, represents 12:07
-default_time = Time24() # default time is 00:00
-```
+Besides `__init__()` and `__str__()`, and `__repr__` methods, python has a long list of other dunder methods. First, we will learn the *rich comparison operators*, which allows us, whenever it makes sense, to compare two objects of a class using  the operators `<`, `<=`, `==`, <code>!=</code>, `>=`, and `>`.
 
 ## Using the == operator to compare two objects
 
@@ -80,7 +82,7 @@ When objects in a class have a natural linear ordering, then it makes sense to c
         else:
             return self.minutes < other.minutes
 ```
-Here is some demo code to show you show to call
+Here is some demo code to show how the `__lt__` method gets called:
 ```python
 print(time1 < time2)        # calls __lt__(), outputs False (time2 is earlier in the day)
 print(time1 < time3)        # outputs True (they are equal, so time1 isn't less than time3)
@@ -90,6 +92,7 @@ print(default_time < time2) # outputs True, midnight is earlier than every other
 
 ## The other rich-comparison operators
 The table below lists the names of the dunder methods to implement for each of the comparison operators.
+
 | Operator | dunder method |
 | -------- | ------- |
 | `==` (equal to) | `__eq__(self, other)` |
@@ -196,7 +199,7 @@ Note: the `__add__()` function could be condensed to one line:
 ```
 All of the arithmetic operators you are used to can be overloaded. The table below shows a partial list of arithmetic operators and the dunder methods they correspond to:
 
-| Operator | dunder method | returns:
+| Operator | dunder method | returns:|
 | -------- | ------- | ------- |
 | x+y (add) | `__add__(self, other)` | sum of x and y |
 | x-y (subtract) | `__sub__(self, other)` | difference of x and y |

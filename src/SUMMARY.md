@@ -45,3 +45,4 @@
 - [Numpy](chapters/numpy/numpy_chapter.md)
     - [Numpy arrays](chapters/numpy/numpy_arrays.md)
     - [Computing with numpy arrays](chapters/numpy/numpy_compute.md)
+    - [Multi-dimensional numpy arrays](chapters/numpy/numpy_multi.md)
