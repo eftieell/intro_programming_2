@@ -70,7 +70,7 @@ On line 11, the line number in the memory diagram is updated, output is sent to 
 
 More details of how the memory diagrams above were built are shown in this video:
 
-<video src="https://cs.du.edu/~ftl/1352/videos/call_stack_simplest_case.mp4" width="480" height="270" controls></video>
+<video src="https://cs.du.edu/~ftl/1352/videos/functions/call_stack_simplest_case.mp4" width="480" height="270" controls></video>
 
 # Another example
 
@@ -96,7 +96,7 @@ if __name__ == '__main__':
 ```
 
 
-<video src="https://cs.du.edu/~ftl/1352/videos/call_stack_second_demo.mp4" width="480" height="270" controls></video>
+<video src="https://cs.du.edu/~ftl/1352/videos/functions/call_stack_second_demo.mp4" width="480" height="270" controls></video>
 
 # Tools for visualizing
 
@@ -105,7 +105,7 @@ if __name__ == '__main__':
 
 This video demonstrates using both of these tools for tracing, debugging, and seeing the contents of the call stack:
 
-<video src="https://cs.du.edu/~ftl/1352/videos/tools_demo.mp4" width="480" height="270" controls></video>
+<video src="https://cs.du.edu/~ftl/1352/videos/functions/tools_demo.mp4" width="480" height="270" controls></video>
 
 
 

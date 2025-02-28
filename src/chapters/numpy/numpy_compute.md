@@ -65,3 +65,6 @@ print(d)  # outputs "[3 3 3]"
 e = a * b
 print(e)  # outputs "[4 10 18]"
 ```
+
+## Video explanations:
+<video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_computation.mp4" width="480" height="270" controls></video>

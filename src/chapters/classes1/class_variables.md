@@ -205,6 +205,9 @@ id: 20001, source: 1234567800987, destination: 9876543200987, amount: 2319.24
 ```
 Notice above that each id assigned is unique to that particular `FinancialTransaction` object. This technique guarantees no collisions of transaction id numbers.
 
+## Video explanations
+<video src="https://cs.du.edu/~ftl/1352/videos/classes1/class_variables.mp4" width="480" height="270" controls></video>
+
 
 
 

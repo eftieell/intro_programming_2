@@ -118,4 +118,7 @@ print(python_column)
 print(sum(python_column))
 ```
 
+## Video explanations:
+<video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_multi.mp4" width="480" height="270" controls></video>
+
 

@@ -91,6 +91,9 @@ rectangle2.draw()
 dudraw.show(10000)
 ```
 
+## Video explanations
+<video src="https://cs.du.edu/~ftl/1352/videos/classes1/implementing_classes.mp4" width="480" height="270" controls></video>
+
 
 
 

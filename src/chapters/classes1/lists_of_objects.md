@@ -116,3 +116,6 @@ It is good programming practice in python to implement a `__repr__()` method in 
 
 Note: in python, there is another official purpose for `__repr__()` methods, 
 so in future work you might be required to have `__repr__()` produce strings with a different format than `__str__()`.
+
+## Video explanations
+<video src="https://cs.du.edu/~ftl/1352/videos/classes1/lists_of_objects.mp4" width="480" height="270" controls></video>

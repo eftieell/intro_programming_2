@@ -85,7 +85,7 @@ if __name__ == "__main__":
 [comment]: <> (https://github.com/user-attachments/assets/a540b4c6-e952-4814-bfbc-bac4b4b0f837)
 Here's a video demonstrating the above code running:
 
-<video src="https://cs.du.edu/~ftl/1352/videos/simplest_animation.mov" width="320" height="320" controls></video>
+<video src="https://cs.du.edu/~ftl/1352/videos/review/simplest_animation.mov" width="320" height="320" controls></video>
 
 
 
@@ -161,7 +161,7 @@ Here's a video demonstrating the code above running:
 
 [comment]: <> (ttps://github.com/user-attachments/assets/9ff759bf-cddf-48fc-a6a8-1f6540f618ec)
 
-<video src="https://cs.du.edu/~ftl/1352/videos/rocket_animation.mov" width="320" height="320" controls></video>
+<video src="https://cs.du.edu/~ftl/1352/videos/review/rocket_animation.mov" width="320" height="320" controls></video>
 
 
 

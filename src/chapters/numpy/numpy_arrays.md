@@ -114,3 +114,6 @@ print(e.dtype)               # outputs int64
 ```
 
 In numpy arrays, the type `int64` has a fixed size of 64 bits (8 bytes). This means that the integers that can be stored have a minimum value of -9,223,372,036,854,775,808 and a maximum value of 9,223,372,036,854,775,807 (inclusive). This is unlike the python `int` type, which can hold to an unlimited value, increasing behind the scenes the storage space used to store the number.
+
+## Video explanations:
+<video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_arrays.mp4" width="480" height="270" controls></video>

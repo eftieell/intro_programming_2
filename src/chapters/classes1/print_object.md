@@ -56,3 +56,6 @@ the output is now:
 ```
 center: (2, 3), width: 0.1, height: 0.2
 ```
+
+## Video explanations
+<video src="https://cs.du.edu/~ftl/1352/videos/classes1/output_object.mp4" width="480" height="270" controls></video>

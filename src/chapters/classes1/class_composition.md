@@ -119,3 +119,6 @@ Output:
 vertices: (4, 0) (0, 4) (4, 8) (8, 4) 
 vertices: (14, 20) (10, 24) (14, 28) (18, 24) 
 ```
+
+## Video explanations
+<video src="https://cs.du.edu/~ftl/1352/videos/classes1/class_composition.mp4" width="480" height="270" controls></video>

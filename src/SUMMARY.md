@@ -22,7 +22,7 @@
     - [Implementing classes](chapters/classes1/implementing_classes.md)
     - [Output of objects to the terminal](chapters/classes1/print_object.md)
     - [Lists of objects](chapters/classes1/lists_of_objects.md)
-    - [More complex classes](chapters/classes1/complicated_classes.md)
+    - [Class composition](chapters/classes1/class_composition.md)
     - [Class variables](chapters/classes1/class_variables.md)
 - [Classes, Part 2](chapters/classes2/classes_chapter_pt2.md)
     - [Variables store references to objects](chapters/classes2/variables_are_references.md)
