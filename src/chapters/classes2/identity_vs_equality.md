@@ -48,3 +48,6 @@ print(point1 == point3) # outputs True, because the x and y values for point1 an
 
 Remember that `obj1 is obj2` determines if `obj1` and `obj2` have the same identity, while `obj1 == obj2` determines if `obj1` and `obj2` have the same values.
 
+## Video explanations
+<video src="https://cs.du.edu/~ftl/1352/videos/classes2/identity_v_equality.mp4" width="480" height="270" controls></video>
+

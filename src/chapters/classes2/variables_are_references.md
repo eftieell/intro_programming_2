@@ -109,6 +109,9 @@ The output of the above code is:
 (7, 5)
 ```
 
+## Video explanations
+<video src="https://cs.du.edu/~ftl/1352/videos/classes2/variables_are_references.mp4" width="480" height="270" controls></video>
+
 
 
 
