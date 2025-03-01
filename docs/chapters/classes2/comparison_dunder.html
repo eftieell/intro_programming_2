@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Dunder methods - Introduction to Programming 2 - DRAFT</title>
+        <title>Comparing objects (dunder part 1) - Introduction to Programming 2 - DRAFT</title>
 
 
         <!-- Custom HTML head -->
@@ -86,7 +86,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/dudraw_animation.html">Review of animation with dudraw</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists_and_dicts_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_arguments.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/call_stack.html">Call stack memory diagrams</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_chapter.html">Classes, Part 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/implementing_classes.html">Implementing classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/print_object.html">Output of objects to the terminal</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/lists_of_objects.html">Lists of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/class_composition.html">Class composition</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/class_variables.html">Class variables</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes2/classes_chapter_pt2.html">Classes, Part 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes2/variables_are_references.html">Variables store references to objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/dunder_methods.html" class="active">Dunder methods</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/identity_vs_equality.html">Identity versus equality</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/memory_diagrams.html">Memory Diagrams of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/shallow_v_deep_copy.html">Shallow copy vs. deep copy</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance_chapter.html">Inheritance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance.html">Base classes and derived classes</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/method_overriding.html">Overriding methods</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/polymorphism.html">Polymorphism</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/type_and_isinstance.html">Type and isinstance</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/is_a_versus_has_a.html">Inheritance vs. composition</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/multilevel.html">Multilevel inheritance</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/recursion/recursion_chapter.html">Recursion</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/recursion/recursion.html">Recursion</a></li><li class="chapter-item expanded "><a href="../../chapters/recursion/implementing_recursion.html">Implementing recursive functions</a></li><li class="chapter-item expanded "><a href="../../chapters/recursion/graphical_recursion.html">Graphical example of recursion</a></li><li class="chapter-item expanded "><a href="../../chapters/recursion/thorough_tracing.html">More examples of tracing</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/numpy/numpy_chapter.html">Numpy</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/numpy/numpy_arrays.html">Numpy arrays</a></li><li class="chapter-item expanded "><a href="../../chapters/numpy/numpy_compute.html">Computing with numpy arrays</a></li><li class="chapter-item expanded "><a href="../../chapters/numpy/numpy_multi.html">Multi-dimensional numpy arrays</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../chapters/intro.html">Introduction</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/review/dudraw_animation.html">Review of animation with dudraw</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists_and_dicts_chapter.html">Lists and Dictionaries</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/lists.html">Python lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/dictionary.html">Python dictionaries</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/list_comprehension.html">List comprehension</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/2DLists.html">Nested lists (2D lists)</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_data_structures.html">Nested data structures</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/traversing_nested_lists.html">Traversing nested lists</a></li><li class="chapter-item expanded "><a href="../../chapters/lists_and_dicts/nested_list_computation.html">Nested list computations</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_chapter.html">Functions</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/functions/functions.html">User-defined functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_arguments.html">Functions that take arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_return_values.html">Functions that return a value</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/functions_default_arguments.html">Default values for arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/function_keyword_arguments.html">Keyword arguments</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/experimental_runtime.html">Measuring runtime for functions</a></li><li class="chapter-item expanded "><a href="../../chapters/functions/call_stack.html">Call stack memory diagrams</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_chapter.html">Classes, Part 1</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes1/classes_and_objects.html">Classes, and creating objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/implementing_classes.html">Implementing classes</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/print_object.html">Output of objects to the terminal</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/lists_of_objects.html">Lists of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/class_composition.html">Class composition</a></li><li class="chapter-item expanded "><a href="../../chapters/classes1/class_variables.html">Class variables</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/classes2/classes_chapter_pt2.html">Classes, Part 2</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/classes2/comparison_dunder.html" class="active">Comparing objects (dunder part 1)</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/arithmetic_dunder.html">Arithmetic with objects (dunder part 2)</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/variables_are_references.html">Variables store references to objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/identity_vs_equality.html">Identity versus equality</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/memory_diagrams.html">Memory Diagrams of objects</a></li><li class="chapter-item expanded "><a href="../../chapters/classes2/shallow_v_deep_copy.html">Shallow copy vs. deep copy</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance_chapter.html">Inheritance</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/inheritance/inheritance.html">Base classes and derived classes</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/method_overriding.html">Overriding methods</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/polymorphism.html">Polymorphism</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/type_and_isinstance.html">Type and isinstance</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/is_a_versus_has_a.html">Inheritance vs. composition</a></li><li class="chapter-item expanded "><a href="../../chapters/inheritance/multilevel.html">Multilevel inheritance</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/recursion/recursion_chapter.html">Recursion</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/recursion/recursion.html">Recursion</a></li><li class="chapter-item expanded "><a href="../../chapters/recursion/implementing_recursion.html">Implementing recursive functions</a></li><li class="chapter-item expanded "><a href="../../chapters/recursion/graphical_recursion.html">Graphical example of recursion</a></li><li class="chapter-item expanded "><a href="../../chapters/recursion/thorough_tracing.html">More examples of tracing</a></li></ol></li><li class="chapter-item expanded "><a href="../../chapters/numpy/numpy_chapter.html">Numpy</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../chapters/numpy/numpy_arrays.html">Numpy arrays</a></li><li class="chapter-item expanded "><a href="../../chapters/numpy/numpy_compute.html">Computing with numpy arrays</a></li><li class="chapter-item expanded "><a href="../../chapters/numpy/numpy_multi.html">Multi-dimensional numpy arrays</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -169,8 +169,8 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="dunder-methods-methods-whose-name-starts-with-two-underscores"><a class="header" href="#dunder-methods-methods-whose-name-starts-with-two-underscores">Dunder methods (methods whose name starts with two underscores)</a></h1>
-<p>In python, methods that start with two underscores are called <em>dunder</em> (double-underscore) methods. They are sometimes also referred to as <em>magic methods</em>. These methods have special significance, since they are automatically invoked by python in certain situtations. You've seen two examples of this already: the <code>__init__()</code> function is automatically (or &quot;magically&quot;) invoked when you instantiate an object, and the <code>__str__()</code> method is automatically invoked when you print an object. For example:</p>
+                        <h1 id="comparing-objects-using-dunder-methods-methods-whose-name-starts-with-two-underscores"><a class="header" href="#comparing-objects-using-dunder-methods-methods-whose-name-starts-with-two-underscores">Comparing objects using dunder methods (methods whose name starts with two underscores)</a></h1>
+<p>In python, methods that start with two underscores are called <em>dunder</em> (double-underscore) methods. They are sometimes also referred to as <em>special methods</em> or <em>magic methods</em>. These methods have special significance, since they are automatically invoked by python in certain situtations. You've seen two examples of this already: the <code>__init__()</code> function is automatically (or &quot;magically&quot;) invoked when you instantiate an object, and the <code>__str__()</code> method is automatically invoked when you print an object, and the <code>__repr__</code> method is automatically invoked for each object when you print a list of objects. For example:</p>
 <pre><code class="language-python">class Time24:
     &quot;&quot;&quot; A class that represents a time of day on a 24-hour clock
         Default time is 0 hours 0 minutes &quot;&quot;&quot;
@@ -219,7 +219,11 @@ left side of <code>==</code> becomes <code>self</code>, and the object on the ri
         return self.hours == other.hours and self.minutes == other.minutes
 </code></pre>
 <p>Now the following line outputs <code>True</code>, as desired:</p>
-<pre><code class="language-python">print(time1 == time3). # automatically calls the __eq__ method from the Time24 class, time1 is self, time3 is other
+<pre><code class="language-python">print(time1 == time3)  # automatically calls the __eq__ method from the Time24 class, time1 is self, time3 is other
+</code></pre>
+<p>Whenever you overload the <code>==</code> operator by implementing <code>__eq__()</code> in your class, you should also overload the <code>!=</code> operator by implementing <code>__ne__()</code> in your class. Rather than modifying the code in <code>__eq__()</code>, in <code>__ne__()</code> you can just return the logical negation of the result of <code>__eq__()</code>. Include this method in the <code>Time24</code> class:</p>
+<pre><code class="language-python">    def __ne__(self, other)-&gt;bool:
+        return not self==other  # notice that this calls __eq__() automatically
 </code></pre>
 <h2 id="using-the--operator-to-compare-two-objects-1"><a class="header" href="#using-the--operator-to-compare-two-objects-1">Using the &lt; operator to compare two objects</a></h2>
 <p>We would like the following line to output <code>False</code>, since time2 is 2:43 in the morning, and time2 is in the afternoon:</p>
@@ -237,7 +241,7 @@ left side of <code>==</code> becomes <code>self</code>, and the object on the ri
         else:
             return self.minutes &lt; other.minutes
 </code></pre>
-<p>Here is some demo code to show how the <code>__lt__</code> method gets called:</p>
+<p>Here is some demo code to show how the <code>__lt__()</code> method gets called:</p>
 <pre><code class="language-python">print(time1 &lt; time2)        # calls __lt__(), outputs False (time2 is earlier in the day)
 print(time1 &lt; time3)        # outputs True (they are equal, so time1 isn't less than time3)
 print(default_time &lt; time2) # outputs True, midnight is earlier than every other time
@@ -297,72 +301,18 @@ print(default_time &lt; time2) # outputs True, midnight is earlier than every ot
     def __ge__(self, other)-&gt;bool:
         return not self &lt; other
 </code></pre>
-<h2 id="using-dunder-methods-to-overload-arithmetic-operators"><a class="header" href="#using-dunder-methods-to-overload-arithmetic-operators">Using dunder methods to overload arithmetic operators</a></h2>
-<p>Suppose we have a class that it makes sense to do arithmetic with. For example, say I implement the <code>Point</code> class, where each point is a location in the (x, y) plane. In some contexts it is mathematically useful to add two points by separately adding their x and y coordinates. For example, (1, 3) + (6, 5) = (7, 8). Consider the following implementation of the <code>Point</code> class:</p>
-<pre><code class="language-python">class Point:
-
-    def __init__(self, x, y):
-        # initialize the values of the point (x, y)
-        self.x = x
-        self.y = y
-
-    def __str__(self)-&gt;str:
-        # format the string in (x, y) form
-        return f&quot;({self.x}, {self.y})&quot;
-</code></pre>
-<p>We wish the following code would output (7, 8):</p>
-<pre><code class="language-python">point1 = Point(1, 3)
-point2 = Point(6, 5)
-point3 = point1 + point2
-print(point3)
-</code></pre>
-<p>But instead here's the output:</p>
-<pre><code>TypeError: unsupported operand type(s) for +: 'Point' and 'Point'
-</code></pre>
-<p>We can &quot;teach&quot; python how to add objects of our <code>Point</code> class by implementing the method <code>__add__()</code> in our class. The <code>__add__()</code> method will automatically be called when python evaluates the expression <code>point1 + point2</code>. It takes two parameters, <code>self</code> and <code>other</code>, where the first summand <code>point1</code> takes the role of <code>self</code>, and the second summand <code>point2</code> takes the role of <code>other</code>. The <code>__add__()</code> method should create and return a new <code>Point</code>, whose values are the sums of the individual points. Here's the implementation, which is incorporated into the <code>Point</code> class:</p>
-<pre><code class="language-python">    def __add__(self, other: Point)-&gt;Point:
-        newx = self.x + other.x
-        newy = self.y + other.y
-        new_point = Point(newx, newy)
-        return new_point
-</code></pre>
-<p>Now, the code</p>
-<pre><code class="language-python">point1 = Point(1, 3)
-point2 = Point(6, 5)
-point3 = point1 + point2
-print(point3)
-</code></pre>
-<p>outputs</p>
-<pre><code>(7, 8)
-</code></pre>
-<p>Note: the <code>__add__()</code> function could be condensed to one line:</p>
-<pre><code class="language-python">    def __add__(self, other: Point)-&gt;Point:
-        return Point(self.x+other.x, self.y+other.y)
-</code></pre>
-<p>All of the arithmetic operators you are used to can be overloaded. The table below shows a partial list of arithmetic operators and the dunder methods they correspond to:</p>
-<div class="table-wrapper"><table><thead><tr><th>Operator</th><th>dunder method</th><th>returns:</th></tr></thead><tbody>
-<tr><td>x+y (add)</td><td><code>__add__(self, other)</code></td><td>sum of x and y</td></tr>
-<tr><td>x-y (subtract)</td><td><code>__sub__(self, other)</code></td><td>difference of x and y</td></tr>
-<tr><td>x*y (multiply)</td><td><code>__mul__(self, other)</code></td><td>product of x and y</td></tr>
-<tr><td>x/y (divide)</td><td><code>__truediv__(self, other)</code></td><td>quotient of x and y</td></tr>
-<tr><td>x += y (adds y to x)</td><td><code>__iadd__(self, other)</code></td><td>modifies x by adding y, returns x</td></tr>
-<tr><td>x -= y (subtracts y from x)</td><td><code>__isub__(self, other)</code></td><td>modifies x by subtracting y, returns x</td></tr>
-<tr><td>x *= y (multiplies x by y)</td><td><code>__imul__(self, other)</code></td><td>modifies x by multiplying by y, returns x</td></tr>
-<tr><td>x /= y (divides x by y)</td><td><code>__itruediv__(self, other)</code></td><td>modifies x by dividing it by y, returns x</td></tr>
-</tbody></table>
-</div>
-<h2 id="other-dunder-methods"><a class="header" href="#other-dunder-methods">Other dunder methods</a></h2>
-<p>For the scope of this course, the dunder methods above are sufficient. But if you are curious about what other dunder methods exist, here's an external website that is thorough: <a href="https://www.pythonmorsels.com/every-dunder-method/" target="_blank">https://www.pythonmorsels.com/every-dunder-method/</a></p>
+<h2 id="video-explanations"><a class="header" href="#video-explanations">Video explanations</a></h2>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/comparison_dunder.mp4" width="480" height="270" controls></video></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../chapters/classes2/variables_are_references.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../chapters/classes2/classes_chapter_pt2.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../../chapters/classes2/identity_vs_equality.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="../../chapters/classes2/arithmetic_dunder.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -372,11 +322,11 @@ print(point3)
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../chapters/classes2/variables_are_references.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../chapters/classes2/classes_chapter_pt2.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../../chapters/classes2/identity_vs_equality.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="../../chapters/classes2/arithmetic_dunder.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
