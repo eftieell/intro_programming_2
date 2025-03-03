@@ -159,8 +159,6 @@ if __name__ == "__main__":
 
 Here's a video demonstrating the code above running:
 
-[comment]: <> (ttps://github.com/user-attachments/assets/9ff759bf-cddf-48fc-a6a8-1f6540f618ec)
-
 <video src="https://cs.du.edu/~ftl/1352/videos/review/rocket_animation.mov" width="320" height="320" controls></video>
 
 

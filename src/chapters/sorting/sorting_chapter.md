@@ -1,0 +1,9 @@
+# Algorithms and sorting
+
+Algorithms are, simply put, a sequence of instructions to perform a task given a set of input values. Later courses will go into more detail about algorithm design, analysis, and efficiency.
+Algorithms that sort are a great introduction into the world of algorithms and are also extremely useful in practice.
+Although this course will not go into details about algorithms (look forward to Data Structures and Algorithms I, II and III!), we will get a feel for what an algorithm is, in particular by using sorting as an example.
+
+Sorting is the quintessential algorithm in computer science. To sort means to arrange a sequence of elements in order. The act of sorting can be useful in many situations, even outside of computer science. Perhaps you sort bills in your wallet to more easily find 1-dollar bills versus 5-dollar bills. When you play any sort of card game, you might sort the cards in your hand to better understand the distribution of your cards and therefore more easily strategize your next move. On many websites, whether it's the course schedule on MyDU or a community forum like Reddit, information is likely sorted by certain criteria to better display the content on the page.
+
+Interestingly, sorting comes up extremely often in computer science. As you take more advanced courses, you'll see why it is so important to understand sorting algorithms because of its ubiquity. Due to its importance, there are many, many sorting algorithms out there, though only a small portion are widely used in practice. The Wikipedia page on sorting algorithm includes a list of the more popular ones: [Wikipedia sorting page](https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms)

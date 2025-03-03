@@ -47,3 +47,8 @@
     - [Numpy arrays](chapters/numpy/numpy_arrays.md)
     - [Computing with numpy arrays](chapters/numpy/numpy_compute.md)
     - [Multi-dimensional numpy arrays](chapters/numpy/numpy_multi.md)
+- [Sorting](chapters/sorting/sorting_chapter.md)
+    - [Sorting - introduction](chapters/sorting/sorting.md)
+    - [Selection sort](chapters/sorting/selection_sort.md)
+    - [Bubble sort](chapters/sorting/bubble_sort.md)
+    - [Insertion sort](chapters/sorting/insertion_sort.md)
