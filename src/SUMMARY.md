@@ -52,3 +52,4 @@
     - [Selection sort](chapters/sorting/selection_sort.md)
     - [Bubble sort](chapters/sorting/bubble_sort.md)
     - [Insertion sort](chapters/sorting/insertion_sort.md)
+    - [Visualizing sort algorithms](chapters/sorting/visualize_sorting.md)
