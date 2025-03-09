@@ -18,7 +18,7 @@ Many people have created cool visualizations of sorting algorithms. Here are a f
 * Animations with side-by-side comparison of several different sort algorithms: [https://www.toptal.com/developers/sorting-algorithms](https://www.toptal.com/developers/sorting-algorithms)
 
 * The following video gives a nice idea of the general process each sorting algorithm follows. 
-SEIZURE AND LOUD AUDIO WARNING. [https://www.youtube.com/watch?v=kPRA0W1kECg][15 sorting algorithms in 6 minutes - https://www.youtube.com/watch?v=kPRA0W1kECg(https://www.youtube.com/watch?v=kPRA0W1kECg)
+SEIZURE AND LOUD AUDIO WARNING. 15 sorting algorithms in 6 minutes: [https://www.youtube.com/watch?v=kPRA0W1kECg](https://www.youtube.com/watch?v=kPRA0W1kECg)
 
 * Sorting algorithms depicted in Hungarian folk dance:
 
