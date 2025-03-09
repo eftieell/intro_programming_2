@@ -4062,7 +4062,7 @@ Although this course will not go into details about algorithms (look forward to 
 <p>Sorting is the quintessential algorithm in computer science. To sort means to arrange a sequence of elements in order. The act of sorting can be useful in many situations, even outside of computer science. Perhaps you sort bills in your wallet to more easily find 1-dollar bills versus 5-dollar bills. When you play any sort of card game, you might sort the cards in your hand to better understand the distribution of your cards and therefore more easily strategize your next move. On many websites, whether it's the course schedule on MyDU or a community forum like Reddit, information is likely sorted by certain criteria to better display the content on the page.</p>
 <p>Interestingly, sorting comes up extremely often in computer science. As you take more advanced courses, you'll see why it is so important to understand sorting algorithms because of its ubiquity. Due to its importance, there are many, many sorting algorithms out there, though only a small portion are widely used in practice. The Wikipedia page on sorting algorithm includes a list of the more popular ones: <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Comparison_of_algorithms">Wikipedia sorting page</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="sorting---introduction"><a class="header" href="#sorting---introduction">Sorting - introduction</a></h1>
-<p>If data items are sorted, there is a very fast recursive algorithm (binary search) for locating the item you are looking for. But if data items are unsorted, you have to look at each item, one after the other, to find the item you are looking for. This is much slower. Therefore, we often store data in sorted form. Sorting is essentially important in Computer Science!</p>
+<p>If data items are sorted, there is a very fast recursive algorithm (binary search) for locating the item you are looking for. But if data items are unsorted, you have to look at each item, one after the other, to find the item you are looking for. This is much slower. Therefore, we often store data in sorted form. Sorting is of essential importance in Computer Science!</p>
 <p>In python there are multiple built-in methods/functions to sort data.</p>
 <ul>
 <li>The python list <code>sort()</code> method.</li>
@@ -4186,7 +4186,7 @@ stop = time.time()
 <p>Sample output:</p>
 <pre><code>Elapsed time for array with 10000 elements: 5.73 seconds
 </code></pre>
-<p>When we doubled the size of the array, the time quadrupled. This significant effect on the runtime as the size of the array increases follows the pattern of \(O(n^2)\) algorithms. It is the \(O(n^2)\ runtime is what makes selection sort so devastatingly slow for large arrays.</p>
+<p>When we doubled the size of the array, the time quadrupled. This significant effect on the runtime as the size of the array increases follows the pattern of \(O(n^2)\) algorithms. It is the \(O(n^2)\) runtime is what makes selection sort so devastatingly slow for large arrays.</p>
 <p>In the first Data Structures and Algorithms course, you will learn how to determine the runtime of algorithms more completely using both experimental analysis and theoretical analysis.</p>
 <h2 id="video-explanations-14"><a class="header" href="#video-explanations-14">Video explanations:</a></h2>
 <p>Part 1:</p>
@@ -4235,7 +4235,7 @@ stop = time.time()
 <p>Timing of running of bubble sort, as we did with selection sort, suggests that bubble sort is also a \(O(n^2)\)algorithm, and thus, like selection sort, is <em>never</em> used in practice. In the first Data Structures and Algorithms course, you will learn how to determine the runtime of algorithms more completely using both experimental analysis and theoretical analysis.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="insertion-sort"><a class="header" href="#insertion-sort">Insertion sort</a></h1>
 <p>The final easy-to-implement but notoriously-slow sort algorithm we will study is insertion sort.</p>
-<p>Like selection sort and bubble sort, insertion sort also is a \(O(n^2))\ algorithm. However, insertion sort has some redeeming features:</p>
+<p>Like selection sort and bubble sort, insertion sort also is on average a \(O(n^2))\) algorithm. However, insertion sort has some redeeming features:</p>
 <ul>
 <li>It is easy to understand, sorting similarly to how humans would sort a stack of papers or a poker hand.</li>
 <li>Like selection sort and bubble sort, the sorting happens in place. This means it does not use extra memory.</li>
@@ -4275,11 +4275,11 @@ stop = time.time()
 <pre><code>[6  7  8  18  23  47]
 </code></pre>
 <h2 id="online-sorting"><a class="header" href="#online-sorting">Online sorting</a></h2>
-<p>Notice that if additional data are added after the insert sort is complete, those elements can be inserted into the list once they are received. This ability to process the values piece-by-piece in a serial fashion is known as &quot;online sorting&quot;. Online sorting is useful when data is arriving in a continuous stream, such as a live data stream.</p>
+<p>Notice that if additional data are added after the insertion sort is complete, those elements can be inserted into the list once they are received. This ability to process the values piece-by-piece in a serial fashion is known as &quot;online sorting&quot;. Online sorting is useful when data is arriving in a continuous stream, such as a live data stream.</p>
 <h2 id="time-efficiency-considerations"><a class="header" href="#time-efficiency-considerations">Time efficiency considerations</a></h2>
-<p>If an already-sorted list is processed with insert-sort, the insertion of each new element requires only one compare, and no swapping. Thus, the algorithm runs in \(O(n)\) time. If the list is largely sorted, few extra compares and swaps are needed. So insert sort is actually an efficient algorithm for lists that are mostly sorted, but have just a few elements out of place.</p>
+<p>While insertion sort is on average a \(O(n^2)\), algorithm, if an already-sorted list is processed with insertion sort, the insertion of each new element requires only one compare, and no swapping. Thus, the algorithm runs in \(O(n)\) time in this best case scenario. If the list is largely sorted, few extra compares and swaps are needed. So insertion sort is actually an efficient algorithm for lists that are mostly sorted, but have just a few elements out of place.</p>
 <h2 id="video-explanations-15"><a class="header" href="#video-explanations-15">Video explanations:</a></h2>
-<p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/insertion_sort_part1.mov" width="480" height="270" controls></video></p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/insertion_sort.mov" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="visual-depictions-of-sorting-algorithms"><a class="header" href="#visual-depictions-of-sorting-algorithms">Visual depictions of sorting algorithms</a></h1>
 <p>Many people have created cool visualizations of sorting algorithms. Here are a few good ones:</p>
 <ul>
