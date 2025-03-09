@@ -26,7 +26,7 @@ state_capitals = {
 }
 ```
 
-- Create an empty dictionary, then append elements within a loop (this strategy is especially useful
+- Create an empty dictionary, then enter elements into the dictionary within a loop (this strategy is especially useful
 for building a dictionary from data stored in a file):
 ```python
 student_ids = {}
@@ -34,9 +34,12 @@ name = ""
 while name != ".":
     name = input("Student name? (Enter . to finish) ")
     if name != ".":
-        id = input("Student id? ")
-        student_ids[name] = id # this makes name:id be a key:value pair in the dictionary
+        student_id = input("Student id? ")
+        # the following line makes name:id be a key:value pair in the dictionary
+        student_ids[name] = student_id 
+print(student_ids)
 ```
+Note: keys in a dictionary are unique. So if you enter a duplicate key with a new value, the original key:value pair is replaced.
 
 - Create a dictionary using the `dict()` function. This constructor allows you to pass the information in a variety of forms.
 ```python

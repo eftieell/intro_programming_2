@@ -1,4 +1,4 @@
-# Multilevel inheritance.
+# Multilevel inheritance
 If a child class itself has a child class, we call that *multilevel inheritance*. For example, suppose we have a class called `Publication`, which has two subclasses `Podcast` and `Book`. Then say `Book` itself has two subclasses, `AudioBook` and `PrintBook`. In multilevel inheritance, class diagrams are a particularly useful visualization tool.
 
 ## Class diagram of multilevel inheritance
@@ -25,6 +25,9 @@ class Publication:
 
     def __str__(self)->str:
         return f"author: {self.author}, title: {self.title}"
+
+    def __repr__(self)->str:
+        return self.__str__()
     
 class Podcast(Publication):
         
@@ -71,7 +74,7 @@ publications.append(Book(author = "F. Scott Fitzgerald",
                          ISBN = "978-1328948854"))
 publications.append(PrintBook(author = "William Goldman", 
                          title = "The Princess Bride", 
-                         ISBN = "978-1328948854", 
+                         ISBN = "978-0544173767", 
                          pages = 496))
 publications.append(AudioBook(author = "Ann Patchett", 
                               title = "Tom Lake", 
@@ -101,7 +104,7 @@ Key points in the code example above:
 * Consider the flow of information when instantiating an object of a grandchild class. For example, when instantiating an `AudioBook`, the `__init__()` method calls `super().__init__()`, which invokes the `__init__()` method for `Book`. But then the `__init__()` method for `Book` in turn calls `super().__init__()`, which invokes the `__init__()` method for `Publication`. So the information goes up the chain to the top-level class.
 * A similar process occurs when the `Audiobook`'s `__str__()` method is called. It calls its parent's `__str__()` method, and that method in turn calls its parent's `__str__()` method. At each level the string is computed and returned down the chain, where it is combined with the string information passed back from the level above.
 * In the main code block,  a list is created that holds a variety of objects from the 5 defined classes. Since regardless of type, each is also an instance of the `Publication` class, they can be treated in a homogenous way. Thus the for-loop can seamlessly traverse the objects and print them, even though they are potentially all of different subclasses.
-* Predict what wil be output by the following code:
+* Predict what will be output by the following code:
 ```python
 print(type(publications[2]))
 print(isinstance(publications[1], Book))

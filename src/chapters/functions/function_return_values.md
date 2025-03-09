@@ -1,8 +1,8 @@
-# A function can return a value
+# Functions that return a value
 
 Once a function completes its task, sometimes it is useful for the function to *return* a result to the line of code that called it. You can choose the type of the returned value. If no value is returned, then the return type is `None`.
 
-For example, the print function, as in
+For example, the `print()` function, as in
 
 ```python
 print("Hello!")
@@ -28,7 +28,7 @@ print(random())
 
 ## User-defined functions that return values
 
-When you define a function, you only need to do so once. Once defined, however, a function may be invoked (used) many times. You can think of a function as an opaque box that performs work with optional inputs and an optional output.
+When you define a function, you only need to do so once. Once defined, however, a function may be invoked (used) many times. You can think of a function as a black box that performs work with optional inputs and an optional output. When invoking the function, you don't need to be concerned any longer about its inner workings.
 
 The syntax is:
 
@@ -69,6 +69,8 @@ In the above line of code, `celsius(user_temp_f)` is an expression whose value i
 user_temp_f = float(input("Please enter the temperature in Fahrenheit: "))
 print(f"{user_temp_f} degrees Fahrenheit is {celsius(user_temp_f):.1f} degrees Celsius")
 ```
+
+Technical note: python is known as a *dynamically-typed language*. This means that the types of each variable are not determined until you run the program. Thus, unlike many other programming languages, mismatch of types (e.g., your function returns a value of the wrong type) is not detected until run-time. A consequence of this is that explicitly stating the return type in python is optional. In the context of this course, however, we will typically explicitly state the return type.
 
 ## Boolean functions
 
@@ -125,7 +127,7 @@ def is_prime(number: int) -> bool:
         if number % tester == 0:
             # We now know that tester divides number, so
             # we know the answer - number is not prime!
-            # The function teriminates, returning False
+            # The function terminates, returning False
             return False
         else:
             tester += 1

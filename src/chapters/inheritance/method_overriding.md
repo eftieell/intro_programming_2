@@ -26,11 +26,6 @@ class Circle(Shape):
     def __str__(self)->str:
         return f"{super().__str__()}, circle radius: {self.radius:.3g}"
 
-    # This method overrides the draw() method in the Shape class
-    def draw(self)->str:
-        dudraw.set_pen_color(self.color)
-        dudraw.filled_circle(self.x, self.y, self.radius)
-
 # main code block:
 shape1 = Shape(0.6, 0.2, dudraw.BLUE)
 shape1.draw()
@@ -70,7 +65,7 @@ class Circle(Shape):
         return f"{super().__str__()}, radius: {self.radius}"
 
     # This method overrides the draw() method in the Shape class
-    def draw(self)->str:
+    def draw(self):
         dudraw.set_pen_color(self.color)
         dudraw.filled_circle(self.x, self.y, self.radius)
 

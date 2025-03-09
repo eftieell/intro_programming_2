@@ -15,7 +15,7 @@ Without the end character optional argument:
 # The code below puts "Hello" and "World" on two different lines, 
 # since the default end character for print() is a newline ("\n"):
 print("Hello,")
-print("World")
+print("World!")
 ```
 Output:
 ```
@@ -59,7 +59,7 @@ if __name__ == "__main__":
 ```
 
 If there are two or more parameters, then mandatory arguments must come first. So always put
-parameters with default values at the end of the parameter list. Here's another example (taken from python documentation [https://docs.python.org/3/tutorial/controlflow.html#default-argument-values](https://docs.python.org/3/tutorial/controlflow.html#default-argument-values)).
+parameters with default values at the end of the parameter list. Here's another example (taken from python documentation <a href = "https://docs.python.org/3/tutorial/controlflow.html#default-argument-values" target = "blank">https://docs.python.org/3/tutorial/controlflow.html#default-argument-values</a>
 ```python
 # There are three parameters. The second two parameters have default values.
 def ask_ok(prompt, retries=4, reminder='Please try again!'):

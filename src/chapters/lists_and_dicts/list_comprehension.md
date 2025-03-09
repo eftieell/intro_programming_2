@@ -31,7 +31,7 @@ Consider this list:
 ```python
 digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 ```
-That sam list can be defined more robustly using list comprehension:
+That same list can be defined more robustly using list comprehension:
 
 ```python
 digits = [str(i) for i in range(10)]
@@ -149,7 +149,7 @@ nested_list = [[digit + letter for letter in letters] for digit in digits]
 ```
 Here we have a list comprehension with the loop `for digit in digits`. For each of those digits, an entire list is created,
 resulting in a list of lists. Each internal list is itself created with a list comprehension (`[digit + letter for letter in letters]`)
-So we have a nested list-comprehension (not a list comprehension with nested loops). The makes the result a nested list. 
+So we have a nested list-comprehension (not a list comprehension with nested loops). This makes the result a nested list. 
 (`nested_list = [['1a', '1b', '1c'], ['2a', '2b', '2c'], ['3a', '3b', '3c']]`).
 
 

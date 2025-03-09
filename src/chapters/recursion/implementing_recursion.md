@@ -1,6 +1,6 @@
 # Implementing recursive functions
 
-You can implement a recursive algorithm any time you can break a computation down into one or more parts that involve the same computation, but with smaller values. This is known as a *recursive relationship*. In addition to the recursive relationship, you also always need a *base case*, which tells you when to stop the reursion.
+You can implement a recursive algorithm any time you can break a computation down into one or more parts that involve the same computation, but with smaller values. This is known as a *recursive relationship*. In addition to the recursive relationship, you also always need a *base case*, which tells you when to stop the recursion.
 
 ## Example 1 - computing powers
 

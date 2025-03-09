@@ -3,7 +3,7 @@ Suppose we have a class that it makes sense to do arithmetic with. For example, 
 ```python
 class Point:
 
-    def __init__(self, x, y):
+    def __init__(self, x: float, y: float):
         # initialize the values of the point (x, y)
         self.x = x
         self.y = y

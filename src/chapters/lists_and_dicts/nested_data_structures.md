@@ -18,7 +18,7 @@ This list is used by a payroll department. Each element of the list is a diction
 Try the following exercises (there are multiple ways to solve each question!)
 1. Output the wage of the second person in the list (index 1)
 2. Create a list of last names
-3. Output the total pay for a person whose last name is "Kingsley"
+3. Output the total pay for every person in the list whose last name is "Kingsley"
 4. Find the total dollar amount to be paid to all employees
 
 Solutions:
@@ -70,34 +70,26 @@ One way to store this data is to use a dictionary where the key is the name of t
 ```python
 scores = {
     'Alice': [78, 83, 62, 91],
-    'Bob':[93, 69, 88, 72],
+    'Bob': [93, 69, 88, 72],
     'Charlie': [75, 82, 78, 83],
 }
 ```
 Exercises:
 1. What type is the expression `scores['Alice']`
-
-Answer: It is a list!
-
 2. What is output by `print(scores['Alice'])`?
-
-Answer: `[78, 83, 62, 91]`
-
 3. What is output by `print(scores['Alice'][1])`?
-
-Answer: `83`
-
 4. What expression will tell you how many scores Bob has?
-
-Answer: `len(scores['Bob'])`
-
 5. What expression will give Charlie's last score?
-
-Answer: `scores['Charlie'][-1]` or `scores['Charlie'][len(scores['Charlie'])-1]`
-
 6. How do you find the average of Bob's scores?
 
-Answer:
+Solutions:
+
+1. The expression `scores['Alice']` is a list.
+2. `print(scores['Alice'])` outputs `[78, 83, 62, 91]`.
+3. `print(scores['Alice'][1])` outputs `83`.
+4. To find the number of scores Bob has, use the expression `len(scores['Bob'])`.
+5. To find Charlie's last score, use the expression `scores['Charlie'][-1]` or `scores['Charlie'][len(scores['Charlie'])-1]`.
+6. The average of Bob's scores can be found by either of these two code blocks:
 ```python
 total = 0
 for score in scores['Charlie']:
@@ -105,6 +97,7 @@ for score in scores['Charlie']:
 average = total/len(scores['Charlie'])
 ```
 or
+
 `average = sum(scores['Charlie'])/len(scores['Charlie'])`
 
 

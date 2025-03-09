@@ -17,7 +17,7 @@ cities = ["Denver", "Colorado Springs", "Pueblo"]
 
 # example of a content-based iteration:
 for city in cities:
-    print(f"I love {city}")
+    print(f'I love {city}')
 ```
 Output:
 ```
@@ -34,9 +34,9 @@ Example of index-based iteration:
 # This gives us a way to put the output all on one line by treating the last city differently.
 for i in range(len(cities)):
     if i == len(cities) - 1:
-        print(f"I love {cities[i]}!")
+        print'I love {cities[i]}!')
     else:
-        print(f"I love {cities[i]}", end = ", ")
+        print(f'I love {cities[i]}", end = ', ')
 ```
 Output:
 ```
@@ -50,9 +50,9 @@ Example of using `enumerate()` to track index and value simultaneously:
 # in which you keep track of index and content at the same time
 for i, city in enumerate(cities):
     if i == len(cities) - 1:
-        print(f"I love {city}!")
+        print(f'I love {city}!')
     else:
-        print(f"I love {city}", end = ', ')
+        print(f'I love {city}', end = ', ')
 ```
 Output:
 ```
@@ -79,7 +79,7 @@ more_cities = [
 ```python
 for row in more_cities:
     for city in row:
-        print(f"I love {city}")
+        print(f'I love {city}')
 ```
 Output:
 ```
@@ -105,10 +105,10 @@ Giving clear names to the variables is part of documenting your code well.
 ```python
 for row_index in range(len(more_cities)):
     for col_index in range(len(more_cities[row_index])):
-        if col_index == len(row)-1:
+        if col_index == len(more_cities[row_index])-1:
             print(f'I love {more_cities[row_index][col_index]}!')
         else:
-            print(f'I love {more_cities[row_index][col_index]},', end = " ")
+            print(f'I love {more_cities[row_index][col_index]},', end = ' ')
 ```
 Output:
 ```
@@ -117,7 +117,7 @@ I love Los Angeles, I love San Diego, I love Fresno!
 I love Chicago, I love Springfield, I love Champaign!
 I love Boston, I love Worcester, I love Springfield!
 ```
-This time the outer loop traverses over each index of rows, meaning `row_index` varies through 0, 1, 2, 3. When `row_index == 0`, we will look at the cities in Colorado, when `row_index == 1`, we will look at the cities in California, when `row_index==2`, we will look at the cities in Illinois, and when `row_index == 3`, we will look at the cities in Massachusetts. For each value of `row_index`, our inner loop has `col_index` taking the values 0, 1 and 2 (one value of `col_index` for each city in that state).
+This time the outer loop traverses over each index of rows, meaning `row_index` varies through 0, 1, 2, 3. When `row_index == 0`, we will look at the cities in Colorado, when `row_index == 1`, we will look at the cities in California, when `row_index == 2`, we will look at the cities in Illinois, and when `row_index == 3`, we will look at the cities in Massachusetts. For each value of `row_index`, our inner loop has `col_index` taking the values 0, 1 and 2 (one value of `col_index` for each city in that state).
 Then inside the two loops, `more_cities[row_index][col_index]` accesses the city name for the relevant row index and column index.
 
 Important note on number of rows and number of columns: `len(more_cities)` gives the number rows. Since `more_cities` is a list of lists, its length is the number of lists (which is the number of rows, or 4). Notice that `more_cities[row_index]` is itself a list (because it is one of the rows). So `len(more_cities[row_index])` gives the number of columns in that row, or 3.
@@ -132,7 +132,7 @@ for row_index, row in enumerate(more_cities):
         if col_index == len(row)-1:
             print(f'I love {city}!')
         else:
-            print(f'I love {city},', end = " ")
+            print(f'I love {city},', end = ' ')
 ```
 Output:
 ```

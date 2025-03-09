@@ -4,7 +4,7 @@
 In python, a variable of type int, float, char, etc. can be used to store and reprsent one value.
 But often one needs multiple values to represent one concept, or one object. For example:
 * a point in two-dimensional space is represented by two variables (x, y),
-* A rectangle has a center point, a width and a height,
+* a rectangle has a center point, a width and a height,
 * a college registrar stores many pieces of information about each student (name, address, year in school, gpa, etc.),
 * a bouncing circle in an animation has an x-position, a y-position, a size, an x-velocity, a y-velocity, and a color.
 

@@ -42,7 +42,7 @@ class Star:
 # Note the use of named parameters in the next two lines that instantiate Star objects
 alphaA = Star(name = "Alpha Centauri A", mass = 1.1, age = 5.3, distance = 4.37)
 sirius = Star(name = "Sirius - the Dog Star", mass = 2.0, age = 0.2, distance = 8.6)
-# Note that the next two lines automatially call the __str__() method for Star
+# Note that the next two lines automatically call the __str__() method for Star
 print(alphaA)
 print(sirius)
 # Demonstration of calling the distance_in_miles() method (which internally uses the Star.speed_of_light class variable)
@@ -87,7 +87,7 @@ class Widget:
         # by updating the shared variable Widget.count, we can keep track of how
         #  many times this __init__() method has been called, 
         # and thus how many Widget objects there are.
-        Widget.count = Widget.count + 1
+        Widget.count += 1
 
 # main code block:
 # instantiate three Widget objects. Each time, the __init__() method is
@@ -122,7 +122,7 @@ class Widget:
         # by updating the shared variable Widget.count, we can keep track of how
         #  many times this __init__() method has been called, 
         # and thus how many Widget objects there are.
-        Widget.count = Widget.count + 1
+        Widget.count += 1
         # Count this call towards total method calls
         Widget.method_calls += 1
 
@@ -166,7 +166,7 @@ method calls, and confirm for yourself that there were 7 method calls in the mai
 
 ### Use case 4
 
-Often it is important to give people or objects unique identification numbers. Examples of this in real life are Social Security numbers (no two individuals can share the same number) or student id numbers (every student at DU has a different 87-number). In python, one way to give every object of a class a unique id is to maintain a class variable that keeps track of the next available id to assign to each subsequent object. When an object is instantiated, in the `__init__`() method an instance variable is created to store that object's id, and it is to the next available id (stored in the class variable). Next, still within the `__init__()` method, the value of that class variable is incremented so that when the subsequent object is instantitated, its id will not collide with this or any previous object. In the example below, a class is used to represent financial transations. Each financial transaction is given its own unique transaction identification number.
+Often it is important to give people or objects unique identification numbers. Examples of this in real life are Social Security numbers (no two individuals can share the same number) or student id numbers (every student at DU has a different 87-number). In python, one way to give every object of a class a unique id is to maintain a class variable that keeps track of the next available id to assign to each subsequent object. When an object is instantiated, in the `__init__()` method an instance variable is created to store that object's id, and it is to the next available id (stored in the class variable). Next, still within the `__init__()` method, the value of that class variable is incremented so that when the subsequent object is instantitated, its id will not collide with this or any previous object. In the example below, a class is used to represent financial transations. Each financial transaction is given its own unique transaction identification number.
 
 ```python
 class FinancialTransaction:

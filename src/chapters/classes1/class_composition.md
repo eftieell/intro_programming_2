@@ -77,11 +77,11 @@ Vertices: (7, 5) (10, 5) (8, 6)
 ```
 
 The variable `t1` has three instance variables, each of which are points. 
-For example, `t1.vertex1` represents the point (4, 1). Notice that since `t1.vertex` is a `Point`, 
-we can actually access its two instance variables, with `t1.vertex.x` and `t1.vertex.y`. 
+For example, `t1.vertex1` represents the point (4, 1). Notice that since `t1.vertex1` is a `Point`, 
+we can actually access its two instance variables, with `t1.vertex1.x` and `t1.vertex1.y`. 
 However, in object-oriented programming practice, by convention we never modify an
 instance variable's instance variable. Instead, we rely on that class to do the modification. 
-You can see an example of this in the code above: the `shift` method in the `Triangle` class does not itself change the values of each vertex. 
+You can see an example of this in the code above: the `shift()` method in the `Triangle` class does not itself change the values of each vertex. 
 Instead, it calls the `Point` class's `shift()` method
 to modify the `x` and `y` values of each of the three vertices.
 
@@ -94,7 +94,7 @@ In the code below, you see these loops both in the `__str__()` method and the `s
 so you can see different options. Carefully trace the code and predict the output to the terminal.
 ```python
 class Polygon:
-    def __init__(self, vertices:list):
+    def __init__(self, vertices: list[Point]):
         self.vertices = vertices
 
     def __str__(self)->str:

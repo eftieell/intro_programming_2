@@ -57,5 +57,17 @@ the output is now:
 center: (2, 3), width: 0.1, height: 0.2
 ```
 
+The `__str__()` method of a class is also called when you cast an object to a string. For example:
+
+```python
+str(rectangle1)
+```
+
+is equivalent to
+
+```python
+rectangle1.__str__()
+```
+
 ## Video explanations
-<video src="https://cs.du.edu/~ftl/1352/videos/classes1/output_object.mp4" width="480" height="270" controls></video>
+<video src="https://cs.du.edu/~ftl/1352/videos/classes1/print_object.mp4" width="480" height="270" controls></video>

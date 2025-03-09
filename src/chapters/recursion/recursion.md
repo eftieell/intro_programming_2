@@ -21,7 +21,7 @@ On line 2, we see n is not less than or equal to 0, so we proceed to the else bl
 
 <img src="recursion_callstack2.png" alt="second call stack in recursion example" width="200"/>
 
-We proceed again to line 2, we see n is not less than or equal to 0 this time either, so we proceed to the else block. On line 5, the number 1 is output to the terminal, On line 6, we call we call `recursion_example()`, this time with an argument of 0. We jump to line 1 of the code, but notice this is a yet a new function call! This means yet a new frame must get pushed onto the call stack. The call stack now has *three* frames with calls to `recursion_example()`:
+We proceed again to line 2, we see n is not less than or equal to 0 this time either, so we proceed to the else block. On line 5, the number 1 is output to the terminal, On line 6, we call `recursion_example()`, this time with an argument of 0. We jump to line 1 of the code, but notice this is a yet a new function call! This means yet a new frame must get pushed onto the call stack. The call stack now has *three* frames with calls to `recursion_example()`:
 
 <img src="recursion_callstack3.png" alt="third call stack in recursion example" width="200"/>
 
@@ -29,7 +29,7 @@ Just when you feared this process would go on forever, we see that this time on 
 
 <img src="recursion_callstack2.png" alt="fourth call stack in recursion example" width="200"/>
 
-But this is the last line of the funtion, so we return to the caller, popping the top frame off of the stack:
+But this is the last line of the function, so we return to the caller, popping the top frame off of the stack:
 
 <img src="recursion_callstack1.png" alt="fifth call stack in recursion example" width="200"/>
 

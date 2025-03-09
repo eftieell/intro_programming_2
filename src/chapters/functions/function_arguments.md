@@ -29,7 +29,7 @@ Example 1: In the program below, the simple function `greet_user()` outputs `"He
 ```python
 def greet_user(num_greetings: int) -> None:
     for i in range(num_greetings):
-        print(f"Hello, world!")
+        print("Hello, world!")
 
 def main():
     greet_user(5)

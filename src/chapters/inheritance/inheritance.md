@@ -20,11 +20,11 @@ To indicate the base class/derived class relationship (parent/child relationship
 class BaseClass:
     pass
 
-class DerivedClass(BaseClass)
+class DerivedClass(BaseClass):
     pass
 ```
 
-Very commonly within the definition of methods in the derived class, we need the base class to do part of the work, since the base class is responsible for the shared instance variables. Typically we do this by invoking methods from the base class, using the expression `super().method_name`. The following example shows a partial implementation of the `Shape`, `Circle` and `Rectangle` classes described above.
+Very commonly within the definition of methods in the derived class, we need the base class to do part of the work, since the base class is responsible for the shared instance variables. Typically we do this by invoking methods from the base class, using the expression `super().method_name()`. The following example shows a partial implementation of the `Shape`, `Circle` and `Rectangle` classes described above.
 
 ```python
 class Shape:
@@ -41,7 +41,7 @@ class Circle(Shape):
         super().__init__(x, y, c)
         self.radius = r
 
- class Rectangle(Shape):
+class Rectangle(Shape):
     def __init__(self, x: float, y: float, w: float, h: float, c: dudraw.Color):
         super().__init__(x, y, c)
         self.width = w
@@ -100,6 +100,6 @@ Tracing through this code:
 Output:
 ```
 center: (0.6, 0.2), color: (0, 0, 255)
-center: (0.5, 0.25), color: (255, 0, 0), radius: 0.075
+center: (0.5, 0.25), color: (255, 0, 0), circle radius: 0.075
 ```
 While it is a common pattern for the base class to call on its `super()` to do part of the work of a method, it is not the only pattern. Another option is *method overriding*, explained in the next section.

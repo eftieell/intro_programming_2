@@ -14,28 +14,24 @@ The call stack has the values of n all lined up and ready to go - as we unwind t
 <table style = "table-layout: fixed" max-width="900px">
 <tr>
     <td valign = "bottom"><img src="stack_unwind1.png" alt="first step unwinding stack" min-width="150px", max-width="150px"></td>
-    <td valign = "bottom"><img src="stack_unwind2.png" alt="second step unwinding stack" min-width="150px" ></td>
-    <td valign = "bottom"><img src="stack_unwind3.png" alt="third step unwinding stack" min-width="150px" ></td>
-    <td valign = "bottom"><img src="stack_unwind4.png" alt="fourth step unwinding stack" min-width="150px" ></td>
+    <td valign = "bottom"><img src="stack_unwind2.png" alt="second step unwinding stack" min-width="150px" max-width="150px"></td>
+    <td valign = "bottom"><img src="stack_unwind3.png" alt="third step unwinding stack" min-width="150px" max-width="150px"></td>
+    <td valign = "bottom"><img src="stack_unwind4.png" alt="fourth step unwinding stack" min-width="150px" max-width="150px"></td>
 </tr>
 <tr> 
     <td>Return from call with n = 0</td>
     <td>Return from call with n = 1</td>
     <td>Return from call with n = 2</td>
     <td>Return from call with n = 3</td></tr>
-</table>
-
-<table style = "table-layout: fixed" max-width="900px">
 <tr>
     <td valign = "bottom"><img src="stack_unwind5.png" alt="fifth step unwinding stack" min-width="150px" max-width="150px"></td>
     <td valign = "bottom"><img src="stack_unwind6.png" alt="sixth step unwinding stack" min-width="150px" max-width="150px"></td>
     <td valign = "bottom"><img src="stack_unwind7.png" alt="seventh step unwinding stack" min-width="150px" max-width="150px"></td>
 </tr>
 <tr> 
-    <td>Return from call with n = 0</td>
-    <td>Return from call with n = 1</td>
-    <td>Return from call with n = 2</td>
-    <td>Return from call with n = 3</td></tr>
+    <td>Return from call with n = 4</td>
+    <td>Return from call with n = 5</td>
+    <td>Return from call with n = 6</td></tr>
 </table>
 
 ## The order that lines are executed might surprise you

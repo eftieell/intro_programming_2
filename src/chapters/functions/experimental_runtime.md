@@ -36,7 +36,7 @@ Here's an example of code that times how long it takes for the function `do_some
 ```python
 import time
 
-def do_something(n: int):
+def do_something(n: int) -> None:
     # How long does this take to run?
     count = 0
     for i in range(n):
@@ -69,16 +69,16 @@ The pattern of this change is called the *order of growth* or *time complexity* 
 
 - If doubling the size of `n` results in a doubling of the execution time for the algorithm, then we call the algorithm *Big-O of n* or *linear*. We write this \\(O(n)\\).
   
-- If doubling the size of `n` results in a quadrupling of the execution time, then we call the algorithm "Big-O of n squared" or "quadratic". We write this \\(O(n^2)\\).
+- If doubling the size of `n` results in a quadrupling of the execution time, then we call the algorithm *Big-O of n squared* or *quadratic*. We write this \\(O(n^2)\\).
 
-- If doubling the size of `n` results in a factor of 8 increase of the execution time, then we call the algorithm "Big-O of n-cubed" or "cubic". We write this \\(O(n^3)\\).
+- If doubling the size of `n` results in a factor of 8 increase of the execution time, then we call the algorithm *Big-O of n-cubed* or *cubic*. We write this \\(O(n^3)\\).
 
 The code below is a modification of the original timing code, but with an extra loop that modifies the size of `n`.
 Carefully compare the two versions, enough so you could make the modification yourself.
 ```python
 import time
 
-def do_something(n: int):
+def do_something(n: int) -> None:
     # How long does this take to run?
     count = 0
     for i in range(n):
@@ -111,13 +111,13 @@ runtime for do_something(600000000): 18.69 seconds
 ```
 We can see by a rough look at the data above that the algorithm shows linear, or \\(O(n)\\), behavior. Look at the time behavior when `n` is doubled or tripled:
 
-When the size of `n` is doubled from 100 million to 200 million, the time approximately doubles (\\(.18 sec/3.13 sec \approx 1.97\\)).
+When the size of `n` is doubled from 100 million to 200 million, the time approximately doubles (\\(6.18 sec/3.13 sec \approx 2\\)).
 
-When the size of `n` is tripled from 100 million to 300 million, the time approximately triples (\\(9.24/3.13 \approx 2.95\\)).
+When the size of `n` is tripled from 100 million to 300 million, the time approximately triples (\\(9.24/3.13 \approx 3\\)).
 
-When the size of `n` is doubled from 300 million to 600 million, the time approximately doubles (\\(18.69/9.24 \approx 2.02\\)).
+When the size of `n` is doubled from 300 million to 600 million, the time approximately doubles (\\(18.69/9.24 \approx 2\\)).
 
-When the size of `n` is tripled from 200 million to 600 million, the time approximately triples (\\(18.69/6.18 \approx 3.02\\)).
+When the size of `n` is tripled from 200 million to 600 million, the time approximately triples (\\(18.69/6.18 \approx 3\\)).
 
 We can also see linear behavior by graphing the data, which appears to be a line:
 
@@ -130,7 +130,7 @@ Since it runs much slower, the experimental values of `n` are chosen to be small
 ```python
 import time
 
-def do_something_else(n: int):
+def do_something_else(n: int) -> None:
     # How long does this take to run?
     count = 0
     for i in range(n):

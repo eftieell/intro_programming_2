@@ -38,7 +38,7 @@ In the above code, nothing is executed. The lines of code within the function on
 <img src="greet_user.png" alt="definition and use of greet_user() function" class="center", width="300">
 </figure>
 
-In the above code, lines 1-3 are the *definition* of the `greet_user()` function. Those lines define what you want python to do whenever `greet_user()` is called. On line 6, the `greet_user()` function is called. So when python executes line 6, it puts `main()` on hold, jumps to line 1, and executes the contents of the `greet_user()` function. That's the moment that the user is asked for their name, and the greeting is output. After that completes, the running of the program reverts back to line 6 in `main()` and continues from there.
+In the above code, lines 1-3 are the *definition* of the `greet_user()` function. Those lines define what you want python to do whenever `greet_user()` is called. Similarly, lines 5-6 are the *definition* of the `main()` function. The first executable lines are lines 9-10. On line 10, the function `main()` is executed, which in turn, on line 6, calls the `greet_user()` function. So when python executes line 6, it puts `main()` on hold, jumps to line 1, and executes the contents of the `greet_user()` function. That's the moment that the user is asked for their name, and the greeting is output. After that completes, the running of the program reverts back to line 6 in `main()` and continues from there.
 
 ## Commenting functions
 

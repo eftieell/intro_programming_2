@@ -22,9 +22,9 @@ class Circle(Shape):
 
 # main code block:
 circle1 = Circle(0.5, 0.5, 0.2, dudraw.RED)
-print(type(circle1))              # circle1 is of type Circle
-print(circle1 instanceof Circle)  # True: circle1 is an instance of Circle
-print(circle1 instanceof Shape)   # True: circle1 is an instance of Shape, by inheritance
+print(type(circle1))               # circle1 is of type Circle
+print(isinstance(circle1, Circle)) # True: circle1 is an instance of Circle
+print(isinstance(circle1, Shape))  # True: circle1 is an instance of Shape, by inheritance
 ```
 
 In the above example, the type of `circle1` is `Circle`. Python outputs

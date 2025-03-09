@@ -89,7 +89,7 @@ print(t2)            # outputs Vertices: (4, 1) (7, 1) (5, 2)
 Let's examine in detail what happens with the shallow copy. Start with the memory diagram for `t1`:
 <img src="shallow_copy3.png" alt="One triangle, before copy" width = 450>
 
-Recall that a shallow copy will copy each instance variable of an object. The three instance variables for `t1` are each references (`t1.vertex1`, `t1.vertex2`, and `t1.vertex3`). So all three of these references get copied to the new object `t2`. Copying the three references does not create new objects. The result is that `t1`s instance variables(`t2.vertex1`, `t2.vertex2`, and `t2.vertex3`) point to the same `Point` objects as `t1`. The two triangles share these `Point` objects!
+Recall that a shallow copy will copy each instance variable of an object. The three instance variables for `t1` are each references (`t1.vertex1`, `t1.vertex2`, and `t1.vertex3`). So all three of these references get copied to the new object `t2`. Copying the three references does not create new objects. The result is that `t2`'s instance variables(`t2.vertex1`, `t2.vertex2`, and `t2.vertex3`) point to the same `Point` objects as `t1`. The two triangles share these `Point` objects!
 
 <img src="shallow_copy4.png" alt="Two triangles, after shallow copy" width = 450>
 

@@ -1,6 +1,6 @@
 # Drawing memory diagram of complicated objects
 
-In a previous section ([Variables are references](variables_are_references.md), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:
+In a previous section ([Variables are references](variables_are_references.md)), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:
 
 ## A simple example
 Consider the following code:
@@ -52,7 +52,7 @@ p2 = Point(7, 1)
 p3 = Point(5, 2)
 t1 = Triangle(p1, p2, p3)
 ```
-Here's a diagram showing the state of memory after the above code executes. Examine each box and arrow carefully. Notice in particular that each of the vertex instance variables refer to objects, so they each contain an error to points to a `Point` objects. Notice also that `p1`, `p1` and `p3` are part of the diagram, and they refer to the same `Point` objects as are stored in the `Triangle` `t1`.
+Here's a diagram showing the state of memory after the above code executes. Examine each box and arrow carefully. Notice in particular that each of the vertex instance variables refer to objects, so they each contain an arrow that points to a `Point` object. Notice also that `p1`, `p1` and `p3` are part of the diagram, and they refer to the same `Point` objects as are stored in the `Triangle` `t1`.
 
 <img src="memory_diagram_7.png" alt="Memory diagram of a triangle object, which has three vertices that are each Point objects" width = 550>
 

@@ -36,23 +36,23 @@ We review the process with the code below, which finds the maximum value of all 
 Notice that in this code block, the outer loop iterates over each row index, while the inner loop iterates over each column index.
 This means that we visit each list element in row-major order. In other words, we first traverse every element in the first row, then every element
 in the second row, then every element in the third row.
-Detail: `len(scores)` gives the number of rows, while `len(scores(row_index))` gives the number of columns in a specific row.
+Detail: `len(scores)` gives the number of rows, while `len(scores[row_index])` gives the number of columns in a specific row.
 ```python
 # Maximum value of all scores in the 2D list.
 # In the outer loop, have the row index vary through index values 0, 1, 2, 
 # and in the inner loop, have the column index vary through index values 0, 1, 2, 3.
 # Before beginning, initialize the maximum to be the first score in the first list.
 maximum = scores[0][0]
-for row_index in range(0, len(scores)):
-    for column_index in range(0, len(scores[row_index])):
+for row_index in range(len(scores)):
+    for column_index in range(len(scores[row_index])):
         if scores[row_index][column_index] > maximum:
             maximum = scores[row_index][column_index]
 print(maximum) # outputs 93
 ```
 
 Notice that the given 2D list is rectangular, not jagged. In other words, each row has the same number of columns.
-In this situation, we can actually reverse the order of the loops. In other words, the outer loop can vary over each of the column
-indexes 0, 1, 2, 3, while the inner loop varies over each row index 0, 1, 2. Reversing the order of the loops results in us visiting the
+In this situation, we can actually reverse the order of the loops. Thus, this time the outer loop can vary over each of the column
+index values 0, 1, 2, 3, while the inner loop varies over each row index 0, 1, 2. Reversing the order of the loops results in us visiting the
 list elements in column-major order. So we first traverse every element in the first column, then every element in the second column,
 then every element in the third column, and finally every element in the fourth column. Since we are finding a result that treats every
 element in the matrix equally, it's fine to switch the order. Detail: `len(scores)` gives the number of rows. But one quirk of the
@@ -64,8 +64,8 @@ For the number of columns, we will just use the number of columns in the first r
 # and in the inner loop, have the row index vary through index values 0, 1, 2.
 # Before beginning, initialize the maximum to be the first score in the first list.
 maximum = scores[0][0]
-for column_index in range(0, len(scores[0])):
-    for row_index in range(0, len(scores)):
+for column_index in range(len(scores[0])):
+    for row_index in range(len(scores)):
         if scores[row_index][column_index] > maximum:
             maximum = scores[row_index][column_index]
 print(maximum) # outputs 93
@@ -82,23 +82,23 @@ The code below calculates the average of Student 3's scores.
 # The column_index varies from 0 to 3. Add up all four scores, then
 # divide by the number of columns (the number of scores).
 total = 0
-for column_index in range(0, len(scores[2])):
+for column_index in range(len(scores[2])):
     total += scores[2][column_index]
 average = total/len(scores[2])
 print(average) # outputs 79.5
 ```
 
 ### Compute a quantity for a single column
-If we now want calculate a quantity for only one specific column, there is similarly no need for a nested loop.
+If we now want to calculate a quantity for only one specific column, there is similarly no need for a nested loop.
 Instead, the column index never changes, but the row index traverses over all possible rows.
-This means that the `row_index` will vary from 0 to `len[scores]-1` (the number of rows is `len[scores])`.
+This means that the `row_index` will vary from 0 to `len(scores)-1` (the number of rows is `len(scores))`.
 The code below calculates the average of all students on Quiz 4.
 ```python
 # Average score of all students on Quiz 4. The column_index of 3 doesn't change.
 # The row_index varies from 0 to 2. Add up all 3 scores, then divide
 # by the number of rows (the number of students)
 total = 0
-for row_index in range(0, len(scores)):
+for row_index in range(len(scores)):
     total += scores[row_index][3]
 average = total/len(scores)
 print(average) # outputs 82.0
@@ -116,9 +116,9 @@ The code below finds the average score for each student separately.
 # loop. For each row_index, the column_index varies from 0 to 3, through
 # each quiz score for that student. Add up all four scores, then
 # divide by the number of columns.
-for row_index in range(0, len(scores)):
+for row_index in range(len(scores)):
     total = 0
-    for column_index in range(0, len(scores[row_index])):
+    for column_index in range(len(scores[row_index])):
         total += scores[row_index][column_index]
     average = total/len(scores[row_index])
     print(average) # This line is executed 3 times, outputting 78.5, then 80.5, then 79.5
@@ -132,7 +132,7 @@ The output is executed once for each student, at the end of the computation for 
 ### Compute a quantity for every column individually
 Say we want to calculate a quantity for every column separately. This computation requires us to visit every value in the matrix,
 so we must use a nested for-loop. But since we are doing a column-wise computation, the outer loop must vary over each column.
-A matrix must be rectangular (not jagged) for this to work. In the outside loop, allow the col_index to vary over every column. 
+A matrix must be rectangular (not jagged) for this to work. In the outside loop, allow the `column_index` to vary over every column. 
 Then within that loop, compute the quantity you want by looking at the values for each row within that column. This means the inner
 loop will vary over every possible row.
 ```python
@@ -140,10 +140,10 @@ loop will vary over every possible row.
 # loop. For each column_index, the row_index varies from 0 to 2, through
 # each quiz score for that student. Each time we find a score smaller
 # than we've seen yet for that quiz, update the minimum
-for column_index in range(0, len(scores[0])):
+for column_index in range(len(scores[0])):
     # initialize minimum to the first row in this column
     minimum = scores[0][column_index]
-    for row_index in range(0, len(scores)):
+    for row_index in range(len(scores)):
         if scores[row_index][column_index] < minimum:   
             minimum = scores[row_index][column_index]  
     print(minimum) # This line executes 4 times, outputting 75, then 69, then 62, then 72

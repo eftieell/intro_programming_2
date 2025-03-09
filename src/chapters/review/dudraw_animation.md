@@ -32,7 +32,7 @@ if __name__ == "__main__":
 
 ```
 
-Check for key presses by using `dudraw.next_key()`, which returns a single character if a key was pressed, and returns an empty string (`''`) if no key has been pressed since the most recent query.
+Check for key presses by using `dudraw.next_key()`, which returns the associated character(s) for the next key (if there was a key press), and returns an empty string (`''`) if no key has been pressed since the most recent query.
 
 Check for mouse clicks using `dudraw.mouse_clicked()`. Sometimes you may need to recognize if the mouse is currently pressed and not yet released (so you can process dragging of the mouse). Then use `dudraw.mouse_is_pressed()`. Occasionally you may also need the supporting functions `dudraw.mouse_dragged()` and `dudraw.mouse_released()`.
 
@@ -55,7 +55,7 @@ def main():
     y = 0.5
 
     key = ''
-    # main animation loop (infinite loop, later we will give a way for users to quit)
+    # main animation loop (infinite loop, quits when user enters 'q' or 'Q'
     while key.lower() != 'q':
         # clear background
         dudraw.clear(dudraw.LIGHT_GRAY)
@@ -66,7 +66,7 @@ def main():
         # display the frame and pause (20 milliseconds = 50 frames per second)
         dudraw.show(20)
 
-        # Prepare for the  next frame by moving circle, one pixel
+        # Prepare for the next frame by moving circle, one pixel
         x += .0025
         y += .0025
         # Save keypress to check for 'q' next time through the loop
@@ -111,7 +111,6 @@ def draw_rocket(x: float, y: float)->None:
     dudraw.set_font_size(8)
     dudraw.text(x, y, "NASA")
     # draw a bunch of circles, to look like smoke:
-    print(int(y*80))
     for _ in range(int(y*80)):
         y_offset = random.uniform(max(0,y-0.25), y-0.125)
         x_offset = random.uniform((y_offset-y)*0.2, (y-y_offset)*0.2)
@@ -136,7 +135,7 @@ def main():
     y = 0.125
 
     key = ''
-    # main animation loop (infinite loop, later we will give a way for users to quit)
+    # main animation loop (infinite loop, quits when user enters 'q' or 'Q'
     while key.lower() != 'q':
         # clear background
         dudraw.clear(dudraw.LIGHT_GRAY)
@@ -147,7 +146,7 @@ def main():
         # display the frame and pause (20 milliseconds = 50 frames per second)
         dudraw.show(20)
 
-        # Prepare for the  next frame by moving rocket, upwards one pixel
+        # Prepare for the next frame by moving rocket, upwards one pixel
         y += .0025
         # Save keypress to check for 'q' next time through the loop
         key = dudraw.next_key()      
@@ -160,6 +159,9 @@ if __name__ == "__main__":
 Here's a video demonstrating the code above running:
 
 <video src="https://cs.du.edu/~ftl/1352/videos/review/rocket_animation.mov" width="320" height="320" controls></video>
+
+## Video explanations:
+<video src="https://cs.du.edu/~ftl/1352/videos/review/dudraw_animation_review.mp4" width="480" height="270" controls></video>
 
 
 

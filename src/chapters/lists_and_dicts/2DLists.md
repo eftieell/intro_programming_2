@@ -64,8 +64,8 @@ heating_bill = [
 ```
 Notice that `heating_bill` is a list with 3 items. Each item is itself a list. 
 - The first element `heating_bill[0]` is itself a list: `[112, 32, 10, 96]`.
-- The second element` heating_bill[1]` is itself a list: `[60, 15, 0, 70]`.
-- The third element heating_bill[2] is itself a list: `[196, 65, 15, 180]`.
+- The second element `heating_bill[1]` is itself a list: `[60, 15, 0, 70]`.
+- The third element `heating_bill[2]` is itself a list: `[196, 65, 15, 180]`.
 
 ## How to access individual elements in a 2D list
 

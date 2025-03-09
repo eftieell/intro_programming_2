@@ -21,6 +21,7 @@ scores = [[94, 78, 56], [67, 82, 91]]
 ten_odds = []
 for i in range(10):
     ten_odds.append(2*i+1)
+print(ten_odds)  # outputs [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 
 # get input from user, appending each entry into list:
 friends = []
@@ -60,7 +61,7 @@ num_items = list(numbers.items())   #num_items is [(1, 'one'), (2, 'two'), (3, '
 
 ## Accessing elements in a list
 You can access (view or change) each element in a list using its index value 
-(the number of its location in the list) within square brackets. For example, `list_name[n]`.
+(the number of its location in the list) within square brackets. For example, `list_name[index]`.
 
 Elements in a list are indexed starting at 0, so `list_name[0]` gives the value of the first element of the list,
 and `list_name[n]` gives the value of the n+1st element in the list.
@@ -91,7 +92,7 @@ languages[0] = "C#"
 There are multiple ways to remove an element from a list in python. Here are two ways:
 - Use the `remove()` list method. The parameter you pass is the *value* you want to remove. 
 So the `remove()` method traverses through the list until it reaches the *first* instance of the value. That value is then removed from the list.
-Details: this method does not return a value. If the value you want to return is not found in the list, python throws a `ValueError`.
+Details: this method does not return a value. If the value you want to remove is not found in the list, python throws a `ValueError`.
 
 ```python
 # Remove the first instance of "Perl" from the list

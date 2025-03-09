@@ -54,7 +54,7 @@ Learning to work with numpy arrays will help prepare you to write code in those 
 
 Below you'll see four `np` functions for creating arrays:
 
-* The `np.zeroes(size: int)` function instantiates a numpy array of the given size, initializing all values to 0.
+* The `np.zeros(size: int)` function instantiates a numpy array of the given size, initializing all values to 0.
 These values can then be changed later, filling the array with data from some source.
 
 ```python
@@ -107,7 +107,7 @@ b = np.array([1, 2, 3], dtype = float) # Specifying dtype when creating an array
 print(b.dtype)               # outputs float64
 c = np.array([1, 2, 3.5])    # the dtype of float is inferred from input data
 print(c.dtype)               # outputs float64
-d = np.zeros(5)              # np.zeroes by default uses dtype of float
+d = np.zeros(5)              # np.zeros by default uses dtype of float
 print(d.dtype)               # outputs float64
 e = np.zeros(3, dtype = int) # you can specify the dtype
 print(e.dtype)               # outputs int64
