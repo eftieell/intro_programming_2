@@ -169,7 +169,7 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="multilevel-inheritance"><a class="header" href="#multilevel-inheritance">Multilevel inheritance.</a></h1>
+                        <h1 id="multilevel-inheritance"><a class="header" href="#multilevel-inheritance">Multilevel inheritance</a></h1>
 <p>If a child class itself has a child class, we call that <em>multilevel inheritance</em>. For example, suppose we have a class called <code>Publication</code>, which has two subclasses <code>Podcast</code> and <code>Book</code>. Then say <code>Book</code> itself has two subclasses, <code>AudioBook</code> and <code>PrintBook</code>. In multilevel inheritance, class diagrams are a particularly useful visualization tool.</p>
 <h2 id="class-diagram-of-multilevel-inheritance"><a class="header" href="#class-diagram-of-multilevel-inheritance">Class diagram of multilevel inheritance</a></h2>
 <img src="class_diagram_multilevel.png" alt="Class diagram of multilevel inheritance" width = 300>
@@ -188,6 +188,9 @@
 
     def __str__(self)-&gt;str:
         return f&quot;author: {self.author}, title: {self.title}&quot;
+
+    def __repr__(self)-&gt;str:
+        return self.__str__()
     
 class Podcast(Publication):
         
@@ -234,7 +237,7 @@ publications.append(Book(author = &quot;F. Scott Fitzgerald&quot;,
                          ISBN = &quot;978-1328948854&quot;))
 publications.append(PrintBook(author = &quot;William Goldman&quot;, 
                          title = &quot;The Princess Bride&quot;, 
-                         ISBN = &quot;978-1328948854&quot;, 
+                         ISBN = &quot;978-0544173767&quot;, 
                          pages = 496))
 publications.append(AudioBook(author = &quot;Ann Patchett&quot;, 
                               title = &quot;Tom Lake&quot;, 
@@ -262,7 +265,7 @@ author: Ira Glass, title: This American Life - The Ghost of Bobby Dunbar,
 <li>Consider the flow of information when instantiating an object of a grandchild class. For example, when instantiating an <code>AudioBook</code>, the <code>__init__()</code> method calls <code>super().__init__()</code>, which invokes the <code>__init__()</code> method for <code>Book</code>. But then the <code>__init__()</code> method for <code>Book</code> in turn calls <code>super().__init__()</code>, which invokes the <code>__init__()</code> method for <code>Publication</code>. So the information goes up the chain to the top-level class.</li>
 <li>A similar process occurs when the <code>Audiobook</code>'s <code>__str__()</code> method is called. It calls its parent's <code>__str__()</code> method, and that method in turn calls its parent's <code>__str__()</code> method. At each level the string is computed and returned down the chain, where it is combined with the string information passed back from the level above.</li>
 <li>In the main code block,  a list is created that holds a variety of objects from the 5 defined classes. Since regardless of type, each is also an instance of the <code>Publication</code> class, they can be treated in a homogenous way. Thus the for-loop can seamlessly traverse the objects and print them, even though they are potentially all of different subclasses.</li>
-<li>Predict what wil be output by the following code:</li>
+<li>Predict what will be output by the following code:</li>
 </ul>
 <pre><code class="language-python">print(type(publications[2]))
 print(isinstance(publications[1], Book))

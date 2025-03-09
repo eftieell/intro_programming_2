@@ -186,7 +186,7 @@ This section gives you some examples of these structures, and how to traverse th
 <ol>
 <li>Output the wage of the second person in the list (index 1)</li>
 <li>Create a list of last names</li>
-<li>Output the total pay for a person whose last name is &quot;Kingsley&quot;</li>
+<li>Output the total pay for every person in the list whose last name is &quot;Kingsley&quot;</li>
 <li>Find the total dollar amount to be paid to all employees</li>
 </ol>
 <p>Solutions:</p>
@@ -234,42 +234,35 @@ This section gives you some examples of these structures, and how to traverse th
 <p>One way to store this data is to use a dictionary where the key is the name of the student, and the value is a list of their scores.</p>
 <pre><code class="language-python">scores = {
     'Alice': [78, 83, 62, 91],
-    'Bob':[93, 69, 88, 72],
+    'Bob': [93, 69, 88, 72],
     'Charlie': [75, 82, 78, 83],
 }
 </code></pre>
 <p>Exercises:</p>
 <ol>
 <li>What type is the expression <code>scores['Alice']</code></li>
-</ol>
-<p>Answer: It is a list!</p>
-<ol start="2">
 <li>What is output by <code>print(scores['Alice'])</code>?</li>
-</ol>
-<p>Answer: <code>[78, 83, 62, 91]</code></p>
-<ol start="3">
 <li>What is output by <code>print(scores['Alice'][1])</code>?</li>
-</ol>
-<p>Answer: <code>83</code></p>
-<ol start="4">
 <li>What expression will tell you how many scores Bob has?</li>
-</ol>
-<p>Answer: <code>len(scores['Bob'])</code></p>
-<ol start="5">
 <li>What expression will give Charlie's last score?</li>
-</ol>
-<p>Answer: <code>scores['Charlie'][-1]</code> or <code>scores['Charlie'][len(scores['Charlie'])-1]</code></p>
-<ol start="6">
 <li>How do you find the average of Bob's scores?</li>
 </ol>
-<p>Answer:</p>
+<p>Solutions:</p>
+<ol>
+<li>The expression <code>scores['Alice']</code> is a list.</li>
+<li><code>print(scores['Alice'])</code> outputs <code>[78, 83, 62, 91]</code>.</li>
+<li><code>print(scores['Alice'][1])</code> outputs <code>83</code>.</li>
+<li>To find the number of scores Bob has, use the expression <code>len(scores['Bob'])</code>.</li>
+<li>To find Charlie's last score, use the expression <code>scores['Charlie'][-1]</code> or <code>scores['Charlie'][len(scores['Charlie'])-1]</code>.</li>
+<li>The average of Bob's scores can be found by either of these two code blocks:</li>
+</ol>
 <pre><code class="language-python">total = 0
 for score in scores['Charlie']:
     total += score
 average = total/len(scores['Charlie'])
 </code></pre>
-<p>or
-<code>average = sum(scores['Charlie'])/len(scores['Charlie'])</code></p>
+<p>or</p>
+<p><code>average = sum(scores['Charlie'])/len(scores['Charlie'])</code></p>
 <h2 id="example-of-a-dictionary-of-dictionaries"><a class="header" href="#example-of-a-dictionary-of-dictionaries">Example of a dictionary of dictionaries</a></h2>
 <p>Here is a dictionary, where each key is a state abbreviation. The value for each state is a dictionary with (city name/population) as (key,value) pairs.</p>
 <pre><code class="language-python">populations = {

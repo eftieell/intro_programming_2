@@ -207,7 +207,7 @@
 # Note the use of named parameters in the next two lines that instantiate Star objects
 alphaA = Star(name = &quot;Alpha Centauri A&quot;, mass = 1.1, age = 5.3, distance = 4.37)
 sirius = Star(name = &quot;Sirius - the Dog Star&quot;, mass = 2.0, age = 0.2, distance = 8.6)
-# Note that the next two lines automatially call the __str__() method for Star
+# Note that the next two lines automatically call the __str__() method for Star
 print(alphaA)
 print(sirius)
 # Demonstration of calling the distance_in_miles() method (which internally uses the Star.speed_of_light class variable)
@@ -248,7 +248,7 @@ The speed of light is 186000 miles per second.
         # by updating the shared variable Widget.count, we can keep track of how
         #  many times this __init__() method has been called, 
         # and thus how many Widget objects there are.
-        Widget.count = Widget.count + 1
+        Widget.count += 1
 
 # main code block:
 # instantiate three Widget objects. Each time, the __init__() method is
@@ -278,7 +278,7 @@ print(Widget.count)
         # by updating the shared variable Widget.count, we can keep track of how
         #  many times this __init__() method has been called, 
         # and thus how many Widget objects there are.
-        Widget.count = Widget.count + 1
+        Widget.count += 1
         # Count this call towards total method calls
         Widget.method_calls += 1
 
@@ -318,7 +318,7 @@ Number of Widget method calls: 7
 <p>Carefully trace the code above to verify how the (shared) class variable <code>Widget.method_calls</code> tracks the
 method calls, and confirm for yourself that there were 7 method calls in the main code block.</p>
 <h3 id="use-case-4"><a class="header" href="#use-case-4">Use case 4</a></h3>
-<p>Often it is important to give people or objects unique identification numbers. Examples of this in real life are Social Security numbers (no two individuals can share the same number) or student id numbers (every student at DU has a different 87-number). In python, one way to give every object of a class a unique id is to maintain a class variable that keeps track of the next available id to assign to each subsequent object. When an object is instantiated, in the <code>__init__</code>() method an instance variable is created to store that object's id, and it is to the next available id (stored in the class variable). Next, still within the <code>__init__()</code> method, the value of that class variable is incremented so that when the subsequent object is instantitated, its id will not collide with this or any previous object. In the example below, a class is used to represent financial transations. Each financial transaction is given its own unique transaction identification number.</p>
+<p>Often it is important to give people or objects unique identification numbers. Examples of this in real life are Social Security numbers (no two individuals can share the same number) or student id numbers (every student at DU has a different 87-number). In python, one way to give every object of a class a unique id is to maintain a class variable that keeps track of the next available id to assign to each subsequent object. When an object is instantiated, in the <code>__init__()</code> method an instance variable is created to store that object's id, and it is to the next available id (stored in the class variable). Next, still within the <code>__init__()</code> method, the value of that class variable is incremented so that when the subsequent object is instantitated, its id will not collide with this or any previous object. In the example below, a class is used to represent financial transations. Each financial transaction is given its own unique transaction identification number.</p>
 <pre><code class="language-python">class FinancialTransaction:
 
     # The class variable FinancialTransaction.next_unique_id keeps

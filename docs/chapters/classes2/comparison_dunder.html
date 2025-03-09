@@ -170,7 +170,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="comparing-objects-using-dunder-methods-methods-whose-name-starts-with-two-underscores"><a class="header" href="#comparing-objects-using-dunder-methods-methods-whose-name-starts-with-two-underscores">Comparing objects using dunder methods (methods whose name starts with two underscores)</a></h1>
-<p>In python, methods that start with two underscores are called <em>dunder</em> (double-underscore) methods. They are sometimes also referred to as <em>special methods</em> or <em>magic methods</em>. These methods have special significance, since they are automatically invoked by python in certain situtations. You've seen two examples of this already: the <code>__init__()</code> function is automatically (or &quot;magically&quot;) invoked when you instantiate an object, and the <code>__str__()</code> method is automatically invoked when you print an object, and the <code>__repr__</code> method is automatically invoked for each object when you print a list of objects. For example:</p>
+<p>In python, methods that start with two underscores are called <em>dunder</em> (double-underscore) methods. They are sometimes also referred to as <em>special methods</em> or <em>magic methods</em>. These methods have special significance, since they are automatically invoked by python in certain situtations. You've seen two examples of this already: the <code>__init__()</code> function is automatically (or &quot;magically&quot;) invoked when you instantiate an object, and the <code>__str__()</code> method is automatically invoked when you print an object, and the <code>__repr__()</code> method is automatically invoked for each object when you print a list of objects. For example:</p>
 <pre><code class="language-python">class Time24:
     &quot;&quot;&quot; A class that represents a time of day on a 24-hour clock
         Default time is 0 hours 0 minutes &quot;&quot;&quot;
@@ -188,21 +188,21 @@
     def __repr__(self)-&gt;str:
         return self.__str__()
 
-time1 = Time24(12, 7)   # automatically calls __init__ to initialize to 12:07
-time2 = Time24(2, 43)   # automatically calls __init__ to initialize to 02:43
-time3 = Time24(12, 7)   # automatically calls __init__ to initialize to 12:07
-default_time = Time24() # also calls __init__, default time is 00:00
+time1 = Time24(12, 7)   # automatically calls __init__() to initialize to 12:07
+time2 = Time24(2, 43)   # automatically calls __init__() to initialize to 02:43
+time3 = Time24(12, 7)   # automatically calls __init__() to initialize to 12:07
+default_time = Time24() # also calls __init__(), default time is 00:00
 times = [time1, time2, time3, default_time]
-print(time1)            # automatically calls __str__, outputs 12:07
-print(times)            # automatically calls __repr__ for each object
+print(time1)            # automatically calls __str__(), outputs 12:07
+print(times)            # automatically calls __repr__() for each object
 </code></pre>
 <p>Carefully read and trace the code above, paying special attention to how <code>__init__()</code> automatically gets called when we instantiate an object, how <code>__str__()</code> automatically gets called when we print an object, and how <code>__repr__()</code> automatically gets called when we print a list of objects.</p>
-<p>Besides <code>__init__()</code> and <code>__str__()</code>, and <code>__repr__</code> methods, python has a long list of other dunder methods. First, we will learn the <em>rich comparison operators</em>, which allows us, whenever it makes sense, to compare two objects of a class using  the operators <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>!=</code>, <code>&gt;=</code>, and <code>&gt;</code>.</p>
+<p>Besides <code>__init__()</code> and <code>__str__()</code>, and <code>__repr__()</code> methods, python has a long list of other dunder methods. First, we will learn the <em>rich comparison operators</em>, which allows us, whenever it makes sense, to compare two objects of a class using  the operators <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>!=</code>, <code>&gt;=</code>, and <code>&gt;</code>.</p>
 <h2 id="using-the--operator-to-compare-two-objects"><a class="header" href="#using-the--operator-to-compare-two-objects">Using the == operator to compare two objects</a></h2>
 <p>Notice that two of the <code>Time24</code> objects above (<code>time1</code> and <code>time2</code>) represent the same time of day. What do you think is output by the following line of code?</p>
 <pre><code class="language-python">print(time1 == time3)
 </code></pre>
-<p>Are you disappointed to find out that the above line of code outputs <code>False</code>? By default, two objects evaluate as <code>==</code> in python when they represent the identical object (in other words, they stored in the same memory location, refer to the same object, or have the same <code>id()</code>). Said differently, when evaluating <code>==</code> for two objects, by default python does not compare the <em>contents</em> of the objects to see if the <em>contents are the same</em>. But when dealing with objects, comparing the contents is usually exactly what we want <code>==</code> to do. So python gives us a way to make the <code>==</code> comparison between objects compare the contents of the objects, according to a method we provide. This is called &quot;overloading the <code>==</code> operator&quot;.</p>
+<p>Are you disappointed to find out that the above line of code outputs <code>False</code>? By default, two objects evaluate as <code>==</code> in python when they represent the identical object (in other words, they are stored in the same memory location, and refer to the same object). Said differently, when evaluating <code>==</code> for two objects, by default python does not compare the <em>contents</em> of the objects to see if the <em>contents are the same</em>. But when dealing with objects, comparing the contents is often exactly what we want <code>==</code> to do. So python gives us a way to make the <code>==</code> comparison between objects compare the contents of the objects, according to a method we provide. This is called &quot;overloading the <code>==</code> operator&quot;.</p>
 <h2 id="how-to-overload-the--operator"><a class="header" href="#how-to-overload-the--operator">How to overload the <code>==</code> operator</a></h2>
 <ul>
 <li>Within the class, implement a method called <code>__eq__()</code>. </li>
@@ -214,7 +214,7 @@ print(times)            # automatically calls __repr__ for each object
 left side of <code>==</code> becomes <code>self</code>, and the object on the right side of the <code>==</code> becomes the second parameter, typically named <code>other</code>.</li>
 </ul>
 <p>Include this code in the <code>Time24</code> class:</p>
-<pre><code class="language-python">    def __eq__(self, other)-&gt;bool:
+<pre><code class="language-python">    def __eq__(self, other: Time24)-&gt;bool:
         # Evaluate two Time24 objects as &quot;==&quot; if both of their instance variables (hours and minutes) are equal
         return self.hours == other.hours and self.minutes == other.minutes
 </code></pre>
@@ -222,7 +222,7 @@ left side of <code>==</code> becomes <code>self</code>, and the object on the ri
 <pre><code class="language-python">print(time1 == time3)  # automatically calls the __eq__ method from the Time24 class, time1 is self, time3 is other
 </code></pre>
 <p>Whenever you overload the <code>==</code> operator by implementing <code>__eq__()</code> in your class, you should also overload the <code>!=</code> operator by implementing <code>__ne__()</code> in your class. Rather than modifying the code in <code>__eq__()</code>, in <code>__ne__()</code> you can just return the logical negation of the result of <code>__eq__()</code>. Include this method in the <code>Time24</code> class:</p>
-<pre><code class="language-python">    def __ne__(self, other)-&gt;bool:
+<pre><code class="language-python">    def __ne__(self, other: Time24)-&gt;bool:
         return not self==other  # notice that this calls __eq__() automatically
 </code></pre>
 <h2 id="using-the--operator-to-compare-two-objects-1"><a class="header" href="#using-the--operator-to-compare-two-objects-1">Using the &lt; operator to compare two objects</a></h2>
@@ -233,7 +233,7 @@ left side of <code>==</code> becomes <code>self</code>, and the object on the ri
 <pre><code>TypeError: '&lt;' not supported between instances of 'Time24' and 'Time24'
 </code></pre>
 <p>When objects in a class have a natural linear ordering, then it makes sense to compare them with the <code>&lt;</code> operator. To implement this in python, we provide a <code>__lt__()</code> method in our class. The <code>__lt__()</code> method should return a boolean, and take two parameters. The <code>__lt__()</code> method will automatically be called when the code <code>object &lt; object2</code> is evaluated, with <code>object1</code> becoming the parameter <code>self</code>, and <code>object2</code> becoming the parameter <code>other</code>. For example, here is an implementation of <code>__lt__()</code> for our <code>Time24</code> class. Insert this code into the class.</p>
-<pre><code class="language-python">    def __lt__(self, other)-&gt;bool:
+<pre><code class="language-python">    def __lt__(self, other: Time24)-&gt;bool:
         if self.hours &lt; other.hours:
             return True
         elif self.hours &gt; other.hours:
@@ -262,7 +262,7 @@ print(default_time &lt; time2) # outputs True, midnight is earlier than every ot
 <pre><code class="language-python">class Time24:
     &quot;&quot;&quot; A class that represents a time of day on a 24-hour clock
         Default time is 0 hours 0 minutes &quot;&quot;&quot;
-    def __init__(self,h: int = 0, m: float = 0):
+    def __init__(self, h: int = 0, m: float = 0):
         # set up the instance variables. Note that this initialization
         # method does not do error checking on the values, and it should
         self.hours = h
@@ -273,10 +273,10 @@ print(default_time &lt; time2) # outputs True, midnight is earlier than every ot
     def __str__(self)-&gt;str:
         return f&quot;{self.hours:02d}:{self.minutes:02d}&quot;
     
-    def __eq__(self, other)-&gt;bool:
+    def __eq__(self, other: Time24)-&gt;bool:
         return self.hours == other.hours and self.minutes == other.minutes
 
-    def __lt__(self, other)-&gt;bool:
+    def __lt__(self, other: Time24)-&gt;bool:
         if self.hours &lt; other.hours:
             return True
         elif self.hours &gt; other.hours:
@@ -284,7 +284,7 @@ print(default_time &lt; time2) # outputs True, midnight is earlier than every ot
         else:
             return self.minutes &lt; other.minutes
         
-    def __le__(self, other)-&gt;bool:
+    def __le__(self, other: Time24)-&gt;bool:
         if self.hours &lt; other.hours:
             return True
         elif self.hours &gt; other.hours:
@@ -292,13 +292,13 @@ print(default_time &lt; time2) # outputs True, midnight is earlier than every ot
         else:
             return self.minutes &lt;= other.minutes
         
-    def __ne__(self, other)-&gt;bool:
+    def __ne__(self, other: Time24)-&gt;bool:
         return not self==other
     
-    def __gt__(self, other)-&gt;bool:
+    def __gt__(self, other: Time24)-&gt;bool:
         return not self &lt;= other
     
-    def __ge__(self, other)-&gt;bool:
+    def __ge__(self, other: Time24)-&gt;bool:
         return not self &lt; other
 </code></pre>
 <h2 id="video-explanations"><a class="header" href="#video-explanations">Video explanations</a></h2>

@@ -173,7 +173,7 @@
 <p>Suppose we have a class that it makes sense to do arithmetic with. For example, say I implement the <code>Point</code> class, where each point is a location in the (x, y) plane. In some contexts it is mathematically useful to add two points by separately adding their x and y coordinates. For example, (1, 3) + (6, 5) = (7, 8). Consider the following implementation of the <code>Point</code> class:</p>
 <pre><code class="language-python">class Point:
 
-    def __init__(self, x, y):
+    def __init__(self, x: float, y: float):
         # initialize the values of the point (x, y)
         self.x = x
         self.y = y

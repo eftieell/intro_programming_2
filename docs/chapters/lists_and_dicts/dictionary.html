@@ -193,7 +193,7 @@ state_capitals = {
 }
 </code></pre>
 <ul>
-<li>Create an empty dictionary, then append elements within a loop (this strategy is especially useful
+<li>Create an empty dictionary, then enter elements into the dictionary within a loop (this strategy is especially useful
 for building a dictionary from data stored in a file):</li>
 </ul>
 <pre><code class="language-python">student_ids = {}
@@ -201,9 +201,12 @@ name = &quot;&quot;
 while name != &quot;.&quot;:
     name = input(&quot;Student name? (Enter . to finish) &quot;)
     if name != &quot;.&quot;:
-        id = input(&quot;Student id? &quot;)
-        student_ids[name] = id # this makes name:id be a key:value pair in the dictionary
+        student_id = input(&quot;Student id? &quot;)
+        # the following line makes name:id be a key:value pair in the dictionary
+        student_ids[name] = student_id 
+print(student_ids)
 </code></pre>
+<p>Note: keys in a dictionary are unique. So if you enter a duplicate key with a new value, the original key:value pair is replaced.</p>
 <ul>
 <li>Create a dictionary using the <code>dict()</code> function. This constructor allows you to pass the information in a variety of forms.</li>
 </ul>

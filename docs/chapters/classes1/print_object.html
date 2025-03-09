@@ -216,8 +216,14 @@ print(rectangle1)
 <p>the output is now:</p>
 <pre><code>center: (2, 3), width: 0.1, height: 0.2
 </code></pre>
+<p>The <code>__str__()</code> method of a class is also called when you cast an object to a string. For example:</p>
+<pre><code class="language-python">str(rectangle1)
+</code></pre>
+<p>is equivalent to</p>
+<pre><code class="language-python">rectangle1.__str__()
+</code></pre>
 <h2 id="video-explanations"><a class="header" href="#video-explanations">Video explanations</a></h2>
-<p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/output_object.mp4" width="480" height="270" controls></video></p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/print_object.mp4" width="480" height="270" controls></video></p>
 
                     </main>
 

@@ -172,6 +172,7 @@
                     <main>
                         <h1 id="what-is-this-book"><a class="header" href="#what-is-this-book">What is this book?</a></h1>
 <p>This is the on-line textbook used at the University of Denver for the second-quarter Introduction to Programming 2 course (COMP 1352). This course is a continuation of the preceding quarter (Introduction to Programming 1, COMP 1351). This book is written to teach programming in python, and relies on <code>dudraw</code>, a simple in-house graphics package that extends Princeton's <code>stddraw</code>. Instructions on software installation can be found in the on-line textbook for COMP 1351, which you can find at <a href="https://cs.du.edu/~intropython/intro-to-programming/">Introduction to Programming 1</a>.</p>
+<p>©2025 Faan Tone Liu</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="review-of-producing-animations-using-the-dudraw-graphics-package"><a class="header" href="#review-of-producing-animations-using-the-dudraw-graphics-package">Review of producing animations using the dudraw graphics package</a></h1>
 <p>The present section reviews how to animate drawings using the <code>dudraw</code> package, assuming you already know how to create simple drawings using <code>dudraw</code>.
 Basic information about creating static drawings using <code>dudraw</code> can be found in a section of the COMP 1351 text here: <a href="https://cs.du.edu/~intropython/intro-to-programming/dudraw_quickstart.html">dudraw basics</a>.</p>
@@ -201,7 +202,7 @@ if __name__ == &quot;__main__&quot;:
     main()
 
 </code></pre>
-<p>Check for key presses by using <code>dudraw.next_key()</code>, which returns a single character if a key was pressed, and returns an empty string (<code>''</code>) if no key has been pressed since the most recent query.</p>
+<p>Check for key presses by using <code>dudraw.next_key()</code>, which returns the associated character(s) for the next key (if there was a key press), and returns an empty string (<code>''</code>) if no key has been pressed since the most recent query.</p>
 <p>Check for mouse clicks using <code>dudraw.mouse_clicked()</code>. Sometimes you may need to recognize if the mouse is currently pressed and not yet released (so you can process dragging of the mouse). Then use <code>dudraw.mouse_is_pressed()</code>. Occasionally you may also need the supporting functions <code>dudraw.mouse_dragged()</code> and <code>dudraw.mouse_released()</code>.</p>
 <p>Here's a simplest example of an animation:</p>
 <pre><code class="language-python">import dudraw
@@ -221,7 +222,7 @@ def main():
     y = 0.5
 
     key = ''
-    # main animation loop (infinite loop, later we will give a way for users to quit)
+    # main animation loop (infinite loop, quits when user enters 'q' or 'Q'
     while key.lower() != 'q':
         # clear background
         dudraw.clear(dudraw.LIGHT_GRAY)
@@ -232,7 +233,7 @@ def main():
         # display the frame and pause (20 milliseconds = 50 frames per second)
         dudraw.show(20)
 
-        # Prepare for the  next frame by moving circle, one pixel
+        # Prepare for the next frame by moving circle, one pixel
         x += .0025
         y += .0025
         # Save keypress to check for 'q' next time through the loop
@@ -269,7 +270,6 @@ def draw_rocket(x: float, y: float)-&gt;None:
     dudraw.set_font_size(8)
     dudraw.text(x, y, &quot;NASA&quot;)
     # draw a bunch of circles, to look like smoke:
-    print(int(y*80))
     for _ in range(int(y*80)):
         y_offset = random.uniform(max(0,y-0.25), y-0.125)
         x_offset = random.uniform((y_offset-y)*0.2, (y-y_offset)*0.2)
@@ -294,7 +294,7 @@ def main():
     y = 0.125
 
     key = ''
-    # main animation loop (infinite loop, later we will give a way for users to quit)
+    # main animation loop (infinite loop, quits when user enters 'q' or 'Q'
     while key.lower() != 'q':
         # clear background
         dudraw.clear(dudraw.LIGHT_GRAY)
@@ -305,7 +305,7 @@ def main():
         # display the frame and pause (20 milliseconds = 50 frames per second)
         dudraw.show(20)
 
-        # Prepare for the  next frame by moving rocket, upwards one pixel
+        # Prepare for the next frame by moving rocket, upwards one pixel
         y += .0025
         # Save keypress to check for 'q' next time through the loop
         key = dudraw.next_key()      
@@ -316,6 +316,8 @@ if __name__ == &quot;__main__&quot;:
 </code></pre>
 <p>Here's a video demonstrating the code above running:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/review/rocket_animation.mov" width="320" height="320" controls></video></p>
+<h2 id="video-explanations"><a class="header" href="#video-explanations">Video explanations:</a></h2>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/review/dudraw_animation_review.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="python-built-in-data-structures-lists-and-dictionaries"><a class="header" href="#python-built-in-data-structures-lists-and-dictionaries">Python built-in data structures: lists and dictionaries</a></h1>
 <p>This chapter contains some review of lists and dictionaries, as well as some new material.</p>
 <ul>
@@ -346,6 +348,7 @@ scores = [[94, 78, 56], [67, 82, 91]]
 <pre><code class="language-python">ten_odds = []
 for i in range(10):
     ten_odds.append(2*i+1)
+print(ten_odds)  # outputs [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 
 # get input from user, appending each entry into list:
 friends = []
@@ -384,7 +387,7 @@ num_items = list(numbers.items())   #num_items is [(1, 'one'), (2, 'two'), (3, '
 </code></pre>
 <h2 id="accessing-elements-in-a-list"><a class="header" href="#accessing-elements-in-a-list">Accessing elements in a list</a></h2>
 <p>You can access (view or change) each element in a list using its index value 
-(the number of its location in the list) within square brackets. For example, <code>list_name[n]</code>.</p>
+(the number of its location in the list) within square brackets. For example, <code>list_name[index]</code>.</p>
 <p>Elements in a list are indexed starting at 0, so <code>list_name[0]</code> gives the value of the first element of the list,
 and <code>list_name[n]</code> gives the value of the n+1st element in the list.</p>
 <p>You can find out the number of elements in a python list with <code>len(list_name)</code>. 
@@ -411,7 +414,7 @@ languages[0] = &quot;C#&quot;
 <ul>
 <li>Use the <code>remove()</code> list method. The parameter you pass is the <em>value</em> you want to remove. 
 So the <code>remove()</code> method traverses through the list until it reaches the <em>first</em> instance of the value. That value is then removed from the list.
-Details: this method does not return a value. If the value you want to return is not found in the list, python throws a <code>ValueError</code>.</li>
+Details: this method does not return a value. If the value you want to remove is not found in the list, python throws a <code>ValueError</code>.</li>
 </ul>
 <pre><code class="language-python"># Remove the first instance of &quot;Perl&quot; from the list
 languages.remove(&quot;Perl&quot;)
@@ -492,7 +495,7 @@ state_capitals = {
 }
 </code></pre>
 <ul>
-<li>Create an empty dictionary, then append elements within a loop (this strategy is especially useful
+<li>Create an empty dictionary, then enter elements into the dictionary within a loop (this strategy is especially useful
 for building a dictionary from data stored in a file):</li>
 </ul>
 <pre><code class="language-python">student_ids = {}
@@ -500,9 +503,12 @@ name = &quot;&quot;
 while name != &quot;.&quot;:
     name = input(&quot;Student name? (Enter . to finish) &quot;)
     if name != &quot;.&quot;:
-        id = input(&quot;Student id? &quot;)
-        student_ids[name] = id # this makes name:id be a key:value pair in the dictionary
+        student_id = input(&quot;Student id? &quot;)
+        # the following line makes name:id be a key:value pair in the dictionary
+        student_ids[name] = student_id 
+print(student_ids)
 </code></pre>
+<p>Note: keys in a dictionary are unique. So if you enter a duplicate key with a new value, the original key:value pair is replaced.</p>
 <ul>
 <li>Create a dictionary using the <code>dict()</code> function. This constructor allows you to pass the information in a variety of forms.</li>
 </ul>
@@ -614,7 +620,7 @@ the identical list:</p>
 <p>Consider this list:</p>
 <pre><code class="language-python">digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 </code></pre>
-<p>That sam list can be defined more robustly using list comprehension:</p>
+<p>That same list can be defined more robustly using list comprehension:</p>
 <pre><code class="language-python">digits = [str(i) for i in range(10)]
 </code></pre>
 <p>With practice, you'll use list-comprehension creatively in a wide variety of applications.</p>
@@ -708,7 +714,7 @@ nested_list = [[digit + letter for letter in letters] for digit in digits]
 </code></pre>
 <p>Here we have a list comprehension with the loop <code>for digit in digits</code>. For each of those digits, an entire list is created,
 resulting in a list of lists. Each internal list is itself created with a list comprehension (<code>[digit + letter for letter in letters]</code>)
-So we have a nested list-comprehension (not a list comprehension with nested loops). The makes the result a nested list. 
+So we have a nested list-comprehension (not a list comprehension with nested loops). This makes the result a nested list. 
 (<code>nested_list = [['1a', '1b', '1c'], ['2a', '2b', '2c'], ['3a', '3b', '3c']]</code>).</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="nested-lists-also-called-2d-lists"><a class="header" href="#nested-lists-also-called-2d-lists">Nested lists (also called 2D lists)</a></h1>
 <p>You've already learned about nested lists. The material below is a copy of the content found here: </p>
@@ -758,8 +764,8 @@ So the image can be stored as a 2D grid of colors. In python this is a 2D list, 
 <p>Notice that <code>heating_bill</code> is a list with 3 items. Each item is itself a list. </p>
 <ul>
 <li>The first element <code>heating_bill[0]</code> is itself a list: <code>[112, 32, 10, 96]</code>.</li>
-<li>The second element<code> heating_bill[1]</code> is itself a list: <code>[60, 15, 0, 70]</code>.</li>
-<li>The third element heating_bill[2] is itself a list: <code>[196, 65, 15, 180]</code>.</li>
+<li>The second element <code>heating_bill[1]</code> is itself a list: <code>[60, 15, 0, 70]</code>.</li>
+<li>The third element <code>heating_bill[2]</code> is itself a list: <code>[196, 65, 15, 180]</code>.</li>
 </ul>
 <h2 id="how-to-access-individual-elements-in-a-2d-list"><a class="header" href="#how-to-access-individual-elements-in-a-2d-list">How to access individual elements in a 2D list</a></h2>
 <figure>
@@ -811,7 +817,7 @@ This section gives you some examples of these structures, and how to traverse th
 <ol>
 <li>Output the wage of the second person in the list (index 1)</li>
 <li>Create a list of last names</li>
-<li>Output the total pay for a person whose last name is &quot;Kingsley&quot;</li>
+<li>Output the total pay for every person in the list whose last name is &quot;Kingsley&quot;</li>
 <li>Find the total dollar amount to be paid to all employees</li>
 </ol>
 <p>Solutions:</p>
@@ -859,42 +865,35 @@ This section gives you some examples of these structures, and how to traverse th
 <p>One way to store this data is to use a dictionary where the key is the name of the student, and the value is a list of their scores.</p>
 <pre><code class="language-python">scores = {
     'Alice': [78, 83, 62, 91],
-    'Bob':[93, 69, 88, 72],
+    'Bob': [93, 69, 88, 72],
     'Charlie': [75, 82, 78, 83],
 }
 </code></pre>
 <p>Exercises:</p>
 <ol>
 <li>What type is the expression <code>scores['Alice']</code></li>
-</ol>
-<p>Answer: It is a list!</p>
-<ol start="2">
 <li>What is output by <code>print(scores['Alice'])</code>?</li>
-</ol>
-<p>Answer: <code>[78, 83, 62, 91]</code></p>
-<ol start="3">
 <li>What is output by <code>print(scores['Alice'][1])</code>?</li>
-</ol>
-<p>Answer: <code>83</code></p>
-<ol start="4">
 <li>What expression will tell you how many scores Bob has?</li>
-</ol>
-<p>Answer: <code>len(scores['Bob'])</code></p>
-<ol start="5">
 <li>What expression will give Charlie's last score?</li>
-</ol>
-<p>Answer: <code>scores['Charlie'][-1]</code> or <code>scores['Charlie'][len(scores['Charlie'])-1]</code></p>
-<ol start="6">
 <li>How do you find the average of Bob's scores?</li>
 </ol>
-<p>Answer:</p>
+<p>Solutions:</p>
+<ol>
+<li>The expression <code>scores['Alice']</code> is a list.</li>
+<li><code>print(scores['Alice'])</code> outputs <code>[78, 83, 62, 91]</code>.</li>
+<li><code>print(scores['Alice'][1])</code> outputs <code>83</code>.</li>
+<li>To find the number of scores Bob has, use the expression <code>len(scores['Bob'])</code>.</li>
+<li>To find Charlie's last score, use the expression <code>scores['Charlie'][-1]</code> or <code>scores['Charlie'][len(scores['Charlie'])-1]</code>.</li>
+<li>The average of Bob's scores can be found by either of these two code blocks:</li>
+</ol>
 <pre><code class="language-python">total = 0
 for score in scores['Charlie']:
     total += score
 average = total/len(scores['Charlie'])
 </code></pre>
-<p>or
-<code>average = sum(scores['Charlie'])/len(scores['Charlie'])</code></p>
+<p>or</p>
+<p><code>average = sum(scores['Charlie'])/len(scores['Charlie'])</code></p>
 <h2 id="example-of-a-dictionary-of-dictionaries"><a class="header" href="#example-of-a-dictionary-of-dictionaries">Example of a dictionary of dictionaries</a></h2>
 <p>Here is a dictionary, where each key is a state abbreviation. The value for each state is a dictionary with (city name/population) as (key,value) pairs.</p>
 <pre><code class="language-python">populations = {
@@ -986,7 +985,7 @@ cities = [&quot;Denver&quot;, &quot;Colorado Springs&quot;, &quot;Pueblo&quot;]
 
 # example of a content-based iteration:
 for city in cities:
-    print(f&quot;I love {city}&quot;)
+    print(f'I love {city}')
 </code></pre>
 <p>Output:</p>
 <pre><code>I love Denver
@@ -1000,9 +999,9 @@ I love Pueblo
 # This gives us a way to put the output all on one line by treating the last city differently.
 for i in range(len(cities)):
     if i == len(cities) - 1:
-        print(f&quot;I love {cities[i]}!&quot;)
+        print'I love {cities[i]}!')
     else:
-        print(f&quot;I love {cities[i]}&quot;, end = &quot;, &quot;)
+        print(f'I love {cities[i]}&quot;, end = ', ')
 </code></pre>
 <p>Output:</p>
 <pre><code>I love Denver, I love Colorado Springs, I love Pueblo!
@@ -1012,9 +1011,9 @@ for i in range(len(cities)):
 # in which you keep track of index and content at the same time
 for i, city in enumerate(cities):
     if i == len(cities) - 1:
-        print(f&quot;I love {city}!&quot;)
+        print(f'I love {city}!')
     else:
-        print(f&quot;I love {city}&quot;, end = ', ')
+        print(f'I love {city}', end = ', ')
 </code></pre>
 <p>Output:</p>
 <pre><code>I love Denver, I love Colorado Springs, I love Pueblo!
@@ -1038,7 +1037,7 @@ for i, city in enumerate(cities):
 <h3 id="content-based-traversal-of-a-2d-list"><a class="header" href="#content-based-traversal-of-a-2d-list">Content-based traversal of a 2D list:</a></h3>
 <pre><code class="language-python">for row in more_cities:
     for city in row:
-        print(f&quot;I love {city}&quot;)
+        print(f'I love {city}')
 </code></pre>
 <p>Output:</p>
 <pre><code>I love Denver
@@ -1061,10 +1060,10 @@ Giving clear names to the variables is part of documenting your code well.</p>
 <h3 id="index-based-traversal-of-a-2d-list"><a class="header" href="#index-based-traversal-of-a-2d-list">Index-based traversal of a 2D list:</a></h3>
 <pre><code class="language-python">for row_index in range(len(more_cities)):
     for col_index in range(len(more_cities[row_index])):
-        if col_index == len(row)-1:
+        if col_index == len(more_cities[row_index])-1:
             print(f'I love {more_cities[row_index][col_index]}!')
         else:
-            print(f'I love {more_cities[row_index][col_index]},', end = &quot; &quot;)
+            print(f'I love {more_cities[row_index][col_index]},', end = ' ')
 </code></pre>
 <p>Output:</p>
 <pre><code>I love Denver, I love Colorado Springs, I love Pueblo!
@@ -1072,7 +1071,7 @@ I love Los Angeles, I love San Diego, I love Fresno!
 I love Chicago, I love Springfield, I love Champaign!
 I love Boston, I love Worcester, I love Springfield!
 </code></pre>
-<p>This time the outer loop traverses over each index of rows, meaning <code>row_index</code> varies through 0, 1, 2, 3. When <code>row_index == 0</code>, we will look at the cities in Colorado, when <code>row_index == 1</code>, we will look at the cities in California, when <code>row_index==2</code>, we will look at the cities in Illinois, and when <code>row_index == 3</code>, we will look at the cities in Massachusetts. For each value of <code>row_index</code>, our inner loop has <code>col_index</code> taking the values 0, 1 and 2 (one value of <code>col_index</code> for each city in that state).
+<p>This time the outer loop traverses over each index of rows, meaning <code>row_index</code> varies through 0, 1, 2, 3. When <code>row_index == 0</code>, we will look at the cities in Colorado, when <code>row_index == 1</code>, we will look at the cities in California, when <code>row_index == 2</code>, we will look at the cities in Illinois, and when <code>row_index == 3</code>, we will look at the cities in Massachusetts. For each value of <code>row_index</code>, our inner loop has <code>col_index</code> taking the values 0, 1 and 2 (one value of <code>col_index</code> for each city in that state).
 Then inside the two loops, <code>more_cities[row_index][col_index]</code> accesses the city name for the relevant row index and column index.</p>
 <p>Important note on number of rows and number of columns: <code>len(more_cities)</code> gives the number rows. Since <code>more_cities</code> is a list of lists, its length is the number of lists (which is the number of rows, or 4). Notice that <code>more_cities[row_index]</code> is itself a list (because it is one of the rows). So <code>len(more_cities[row_index])</code> gives the number of columns in that row, or 3.</p>
 <p>By knowing the index values (rather than just the content stored at each location), we can determine when we are on the last one
@@ -1083,7 +1082,7 @@ Then inside the two loops, <code>more_cities[row_index][col_index]</code> access
         if col_index == len(row)-1:
             print(f'I love {city}!')
         else:
-            print(f'I love {city},', end = &quot; &quot;)
+            print(f'I love {city},', end = ' ')
 </code></pre>
 <p>Output:</p>
 <pre><code>I love Denver, I love Colorado Springs, I love Pueblo!
@@ -1124,21 +1123,21 @@ We review the process with the code below, which finds the maximum value of all 
 Notice that in this code block, the outer loop iterates over each row index, while the inner loop iterates over each column index.
 This means that we visit each list element in row-major order. In other words, we first traverse every element in the first row, then every element
 in the second row, then every element in the third row.
-Detail: <code>len(scores)</code> gives the number of rows, while <code>len(scores(row_index))</code> gives the number of columns in a specific row.</p>
+Detail: <code>len(scores)</code> gives the number of rows, while <code>len(scores[row_index])</code> gives the number of columns in a specific row.</p>
 <pre><code class="language-python"># Maximum value of all scores in the 2D list.
 # In the outer loop, have the row index vary through index values 0, 1, 2, 
 # and in the inner loop, have the column index vary through index values 0, 1, 2, 3.
 # Before beginning, initialize the maximum to be the first score in the first list.
 maximum = scores[0][0]
-for row_index in range(0, len(scores)):
-    for column_index in range(0, len(scores[row_index])):
+for row_index in range(len(scores)):
+    for column_index in range(len(scores[row_index])):
         if scores[row_index][column_index] &gt; maximum:
             maximum = scores[row_index][column_index]
 print(maximum) # outputs 93
 </code></pre>
 <p>Notice that the given 2D list is rectangular, not jagged. In other words, each row has the same number of columns.
-In this situation, we can actually reverse the order of the loops. In other words, the outer loop can vary over each of the column
-indexes 0, 1, 2, 3, while the inner loop varies over each row index 0, 1, 2. Reversing the order of the loops results in us visiting the
+In this situation, we can actually reverse the order of the loops. Thus, this time the outer loop can vary over each of the column
+index values 0, 1, 2, 3, while the inner loop varies over each row index 0, 1, 2. Reversing the order of the loops results in us visiting the
 list elements in column-major order. So we first traverse every element in the first column, then every element in the second column,
 then every element in the third column, and finally every element in the fourth column. Since we are finding a result that treats every
 element in the matrix equally, it's fine to switch the order. Detail: <code>len(scores)</code> gives the number of rows. But one quirk of the
@@ -1149,8 +1148,8 @@ For the number of columns, we will just use the number of columns in the first r
 # and in the inner loop, have the row index vary through index values 0, 1, 2.
 # Before beginning, initialize the maximum to be the first score in the first list.
 maximum = scores[0][0]
-for column_index in range(0, len(scores[0])):
-    for row_index in range(0, len(scores)):
+for column_index in range(len(scores[0])):
+    for row_index in range(len(scores)):
         if scores[row_index][column_index] &gt; maximum:
             maximum = scores[row_index][column_index]
 print(maximum) # outputs 93
@@ -1165,21 +1164,21 @@ The code below calculates the average of Student 3's scores.</p>
 # The column_index varies from 0 to 3. Add up all four scores, then
 # divide by the number of columns (the number of scores).
 total = 0
-for column_index in range(0, len(scores[2])):
+for column_index in range(len(scores[2])):
     total += scores[2][column_index]
 average = total/len(scores[2])
 print(average) # outputs 79.5
 </code></pre>
 <h3 id="compute-a-quantity-for-a-single-column"><a class="header" href="#compute-a-quantity-for-a-single-column">Compute a quantity for a single column</a></h3>
-<p>If we now want calculate a quantity for only one specific column, there is similarly no need for a nested loop.
+<p>If we now want to calculate a quantity for only one specific column, there is similarly no need for a nested loop.
 Instead, the column index never changes, but the row index traverses over all possible rows.
-This means that the <code>row_index</code> will vary from 0 to <code>len[scores]-1</code> (the number of rows is <code>len[scores])</code>.
+This means that the <code>row_index</code> will vary from 0 to <code>len(scores)-1</code> (the number of rows is <code>len(scores))</code>.
 The code below calculates the average of all students on Quiz 4.</p>
 <pre><code class="language-python"># Average score of all students on Quiz 4. The column_index of 3 doesn't change.
 # The row_index varies from 0 to 2. Add up all 3 scores, then divide
 # by the number of rows (the number of students)
 total = 0
-for row_index in range(0, len(scores)):
+for row_index in range(len(scores)):
     total += scores[row_index][3]
 average = total/len(scores)
 print(average) # outputs 82.0
@@ -1195,9 +1194,9 @@ The code below finds the average score for each student separately.</p>
 # loop. For each row_index, the column_index varies from 0 to 3, through
 # each quiz score for that student. Add up all four scores, then
 # divide by the number of columns.
-for row_index in range(0, len(scores)):
+for row_index in range(len(scores)):
     total = 0
-    for column_index in range(0, len(scores[row_index])):
+    for column_index in range(len(scores[row_index])):
         total += scores[row_index][column_index]
     average = total/len(scores[row_index])
     print(average) # This line is executed 3 times, outputting 78.5, then 80.5, then 79.5
@@ -1210,17 +1209,17 @@ The output is executed once for each student, at the end of the computation for 
 <h3 id="compute-a-quantity-for-every-column-individually"><a class="header" href="#compute-a-quantity-for-every-column-individually">Compute a quantity for every column individually</a></h3>
 <p>Say we want to calculate a quantity for every column separately. This computation requires us to visit every value in the matrix,
 so we must use a nested for-loop. But since we are doing a column-wise computation, the outer loop must vary over each column.
-A matrix must be rectangular (not jagged) for this to work. In the outside loop, allow the col_index to vary over every column. 
+A matrix must be rectangular (not jagged) for this to work. In the outside loop, allow the <code>column_index</code> to vary over every column. 
 Then within that loop, compute the quantity you want by looking at the values for each row within that column. This means the inner
 loop will vary over every possible row.</p>
 <pre><code class="language-python"># Minimum score for each quiz. The column_index changes in the outer
 # loop. For each column_index, the row_index varies from 0 to 2, through
 # each quiz score for that student. Each time we find a score smaller
 # than we've seen yet for that quiz, update the minimum
-for column_index in range(0, len(scores[0])):
+for column_index in range(len(scores[0])):
     # initialize minimum to the first row in this column
     minimum = scores[0][column_index]
-    for row_index in range(0, len(scores)):
+    for row_index in range(len(scores)):
         if scores[row_index][column_index] &lt; minimum:   
             minimum = scores[row_index][column_index]  
     print(minimum) # This line executes 4 times, outputting 75, then 69, then 62, then 72
@@ -1271,7 +1270,7 @@ is indented one level, so it is output once for each column.</p>
 <figure>
 <img src="chapters/functions/greet_user.png" alt="definition and use of greet_user() function" class="center", width="300">
 </figure>
-<p>In the above code, lines 1-3 are the <em>definition</em> of the <code>greet_user()</code> function. Those lines define what you want python to do whenever <code>greet_user()</code> is called. On line 6, the <code>greet_user()</code> function is called. So when python executes line 6, it puts <code>main()</code> on hold, jumps to line 1, and executes the contents of the <code>greet_user()</code> function. That's the moment that the user is asked for their name, and the greeting is output. After that completes, the running of the program reverts back to line 6 in <code>main()</code> and continues from there.</p>
+<p>In the above code, lines 1-3 are the <em>definition</em> of the <code>greet_user()</code> function. Those lines define what you want python to do whenever <code>greet_user()</code> is called. Similarly, lines 5-6 are the <em>definition</em> of the <code>main()</code> function. The first executable lines are lines 9-10. On line 10, the function <code>main()</code> is executed, which in turn, on line 6, calls the <code>greet_user()</code> function. So when python executes line 6, it puts <code>main()</code> on hold, jumps to line 1, and executes the contents of the <code>greet_user()</code> function. That's the moment that the user is asked for their name, and the greeting is output. After that completes, the running of the program reverts back to line 6 in <code>main()</code> and continues from there.</p>
 <h2 id="commenting-functions"><a class="header" href="#commenting-functions">Commenting functions</a></h2>
 <p>In this course, we will have a standard for commenting every function. After the <code>def</code> line, put a block comment explaining the purpose of the function. This special block comment is called a <em>docstring</em>. When we learn about parameters and return values, we will add additional information into these docstrings.</p>
 <p>Example:</p>
@@ -1348,7 +1347,7 @@ dudraw.ellipse(0, 0, 1, 0.5)
 <td nowrap>
 <pre><code class="language-python">def greet_user(num_greetings: int) -&gt; None:
     for i in range(num_greetings):
-        print(f&quot;Hello, world!&quot;)
+        print(&quot;Hello, world!&quot;)
 
 def main():
     greet_user(5)
@@ -1406,9 +1405,9 @@ Hello, Mahsa!
     for i in range(num_greetings):
         print(f&quot;Hello, {name}!&quot;)
 </code></pre>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="a-function-can-return-a-value"><a class="header" href="#a-function-can-return-a-value">A function can return a value</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="functions-that-return-a-value"><a class="header" href="#functions-that-return-a-value">Functions that return a value</a></h1>
 <p>Once a function completes its task, sometimes it is useful for the function to <em>return</em> a result to the line of code that called it. You can choose the type of the returned value. If no value is returned, then the return type is <code>None</code>.</p>
-<p>For example, the print function, as in</p>
+<p>For example, the <code>print()</code> function, as in</p>
 <pre><code class="language-python">print(&quot;Hello!&quot;)
 </code></pre>
 <p>takes an argument (the input to the function is <code>&quot;Hello&quot;</code>), but it does not return a value.</p>
@@ -1423,7 +1422,7 @@ x_position = random()
 print(random())
 </code></pre>
 <h2 id="user-defined-functions-that-return-values"><a class="header" href="#user-defined-functions-that-return-values">User-defined functions that return values</a></h2>
-<p>When you define a function, you only need to do so once. Once defined, however, a function may be invoked (used) many times. You can think of a function as an opaque box that performs work with optional inputs and an optional output.</p>
+<p>When you define a function, you only need to do so once. Once defined, however, a function may be invoked (used) many times. You can think of a function as a black box that performs work with optional inputs and an optional output. When invoking the function, you don't need to be concerned any longer about its inner workings.</p>
 <p>The syntax is:</p>
 <pre><code class="language-python">def function_name(optional parameters) -&gt; return type:
     # Indented code block
@@ -1452,6 +1451,7 @@ The last line gives full formatted output to the user.</p>
 <pre><code class="language-python">user_temp_f = float(input(&quot;Please enter the temperature in Fahrenheit: &quot;))
 print(f&quot;{user_temp_f} degrees Fahrenheit is {celsius(user_temp_f):.1f} degrees Celsius&quot;)
 </code></pre>
+<p>Technical note: python is known as a <em>dynamically-typed language</em>. This means that the types of each variable are not determined until you run the program. Thus, unlike many other programming languages, mismatch of types (e.g., your function returns a value of the wrong type) is not detected until run-time. A consequence of this is that explicitly stating the return type in python is optional. In the context of this course, however, we will typically explicitly state the return type.</p>
 <h2 id="boolean-functions"><a class="header" href="#boolean-functions">Boolean functions</a></h2>
 <p>Note that a function may return a value of type <code>bool</code>. These are called <em>boolean functions</em>, and just as before, the return value can be used as an expression. For example:</p>
 <pre><code class="language-python">def first_digit_even(number: int) -&gt; bool:
@@ -1496,7 +1496,7 @@ A prime number is an integer bigger than 1 that is divisible only by 1 and by it
         if number % tester == 0:
             # We now know that tester divides number, so
             # we know the answer - number is not prime!
-            # The function teriminates, returning False
+            # The function terminates, returning False
             return False
         else:
             tester += 1
@@ -1578,7 +1578,7 @@ dudraw.clear()              # this time no argument is passed - so the default i
 <pre><code class="language-python"># The code below puts &quot;Hello&quot; and &quot;World&quot; on two different lines, 
 # since the default end character for print() is a newline (&quot;\n&quot;):
 print(&quot;Hello,&quot;)
-print(&quot;World&quot;)
+print(&quot;World!&quot;)
 </code></pre>
 <p>Output:</p>
 <pre><code>Hello,
@@ -1613,7 +1613,7 @@ if __name__ == &quot;__main__&quot;:
     main()
 </code></pre>
 <p>If there are two or more parameters, then mandatory arguments must come first. So always put
-parameters with default values at the end of the parameter list. Here's another example (taken from python documentation <a href="https://docs.python.org/3/tutorial/controlflow.html#default-argument-values">https://docs.python.org/3/tutorial/controlflow.html#default-argument-values</a>).</p>
+parameters with default values at the end of the parameter list. Here's another example (taken from python documentation <a href = "https://docs.python.org/3/tutorial/controlflow.html#default-argument-values" target = "blank">https://docs.python.org/3/tutorial/controlflow.html#default-argument-values</a></p>
 <pre><code class="language-python"># There are three parameters. The second two parameters have default values.
 def ask_ok(prompt, retries=4, reminder='Please try again!'):
     while True:
@@ -1714,7 +1714,7 @@ about the amount of time that elapses while a function is executing.</p>
 <p>Here's an example of code that times how long it takes for the function <code>do_something()</code> to execute. The contents and purpose of the function are not what is important in this example - instead we are focusing on how long it takes to execute.</p>
 <pre><code class="language-python">import time
 
-def do_something(n: int):
+def do_something(n: int) -&gt; None:
     # How long does this take to run?
     count = 0
     for i in range(n):
@@ -1746,17 +1746,17 @@ The pattern of this change is called the <em>order of growth</em> or <em>time co
 <p>If doubling the size of <code>n</code> results in a doubling of the execution time for the algorithm, then we call the algorithm <em>Big-O of n</em> or <em>linear</em>. We write this \(O(n)\).</p>
 </li>
 <li>
-<p>If doubling the size of <code>n</code> results in a quadrupling of the execution time, then we call the algorithm &quot;Big-O of n squared&quot; or &quot;quadratic&quot;. We write this \(O(n^2)\).</p>
+<p>If doubling the size of <code>n</code> results in a quadrupling of the execution time, then we call the algorithm <em>Big-O of n squared</em> or <em>quadratic</em>. We write this \(O(n^2)\).</p>
 </li>
 <li>
-<p>If doubling the size of <code>n</code> results in a factor of 8 increase of the execution time, then we call the algorithm &quot;Big-O of n-cubed&quot; or &quot;cubic&quot;. We write this \(O(n^3)\).</p>
+<p>If doubling the size of <code>n</code> results in a factor of 8 increase of the execution time, then we call the algorithm <em>Big-O of n-cubed</em> or <em>cubic</em>. We write this \(O(n^3)\).</p>
 </li>
 </ul>
 <p>The code below is a modification of the original timing code, but with an extra loop that modifies the size of <code>n</code>.
 Carefully compare the two versions, enough so you could make the modification yourself.</p>
 <pre><code class="language-python">import time
 
-def do_something(n: int):
+def do_something(n: int) -&gt; None:
     # How long does this take to run?
     count = 0
     for i in range(n):
@@ -1787,10 +1787,10 @@ runtime for do_something(500000000): 15.50 seconds
 runtime for do_something(600000000): 18.69 seconds
 </code></pre>
 <p>We can see by a rough look at the data above that the algorithm shows linear, or \(O(n)\), behavior. Look at the time behavior when <code>n</code> is doubled or tripled:</p>
-<p>When the size of <code>n</code> is doubled from 100 million to 200 million, the time approximately doubles (\(.18 sec/3.13 sec \approx 1.97\)).</p>
-<p>When the size of <code>n</code> is tripled from 100 million to 300 million, the time approximately triples (\(9.24/3.13 \approx 2.95\)).</p>
-<p>When the size of <code>n</code> is doubled from 300 million to 600 million, the time approximately doubles (\(18.69/9.24 \approx 2.02\)).</p>
-<p>When the size of <code>n</code> is tripled from 200 million to 600 million, the time approximately triples (\(18.69/6.18 \approx 3.02\)).</p>
+<p>When the size of <code>n</code> is doubled from 100 million to 200 million, the time approximately doubles (\(6.18 sec/3.13 sec \approx 2\)).</p>
+<p>When the size of <code>n</code> is tripled from 100 million to 300 million, the time approximately triples (\(9.24/3.13 \approx 3\)).</p>
+<p>When the size of <code>n</code> is doubled from 300 million to 600 million, the time approximately doubles (\(18.69/9.24 \approx 2\)).</p>
+<p>When the size of <code>n</code> is tripled from 200 million to 600 million, the time approximately triples (\(18.69/6.18 \approx 3\)).</p>
 <p>We can also see linear behavior by graphing the data, which appears to be a line:</p>
 <img src="chapters/functions/runtime_graph_linear.png#center"  width="75%" height="75%" alt = "graph of runtime as a function of n" class="center">
 <h2 id="another-example-of-timing-a-function-for-a-variety-of-values-of-n"><a class="header" href="#another-example-of-timing-a-function-for-a-variety-of-values-of-n">Another example of timing a function for a variety of values of <code>n</code></a></h2>
@@ -1798,7 +1798,7 @@ runtime for do_something(600000000): 18.69 seconds
 Since it runs much slower, the experimental values of <code>n</code> are chosen to be smaller (ranging from 10000 to 60000):</p>
 <pre><code class="language-python">import time
 
-def do_something_else(n: int):
+def do_something_else(n: int) -&gt; None:
     # How long does this take to run?
     count = 0
     for i in range(n):
@@ -1843,36 +1843,36 @@ Instead, we must execute the function multiple times (so the total elapsed time 
 then divide by the number of times the function was called, to get the average execution time. You will learn this technique in a future course.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="drawing-memory-diagrams-to-represent-the-call-stack"><a class="header" href="#drawing-memory-diagrams-to-represent-the-call-stack">Drawing memory diagrams to represent the call stack</a></h1>
 <p>Consider a python program that has function calls. Here is a simplest example:</p>
-<pre><code>def my_function(val: int):
-    print(f&quot;In my_function line 2, val is {val}&quot;)
+<pre><code class="language-python">def my_function(val: int):
+    print(f&quot;In my_function() line 2, val is {val}&quot;)
     val = val + 10
-    print(f&quot;In my_function line 4, val is {val}&quot;)
+    print(f&quot;In my_function() line 4, val is {val}&quot;)
     return val
 
 def main():
     value = 23
-    print(&quot;In main, line 9&quot;)
+    print(&quot;In main(), line 9&quot;)
     another = my_function(value)
-    print(f&quot;In main, line 11, value: {value}, another_value: {another}&quot;)
+    print(f&quot;In main(), line 11, value: {value}, another: {another}&quot;)
 
 
 if __name__ == &quot;__main__&quot;:
     main()
 </code></pre>
-<p>Below is an image of the same program, with line numbers that we will refer to while tracing the function.
-<img src="chapters/functions/simple_call_stack.png" alt="code with functions main and my_function" width="500"/></p>
+<p>Below is an image of the same program, with line numbers that we will refer to while tracing the function.</p>
+<img src="chapters/functions/simple_call_stack.png" alt="code with functions main() and my_function()" width="500"/>
 <p>Please stop reading for a moment to trace the code by hand, giving the output. Run the code to double-check.</p>
 <p>Notice that when the code runs line 10, it must evaluate the right-hand side by calling <code>my_function(value)</code> before it can
-store the return value in the variable <code>another</code>. When the function <code>my_function(value)</code> is called, running of the function <code>main()</code> is paused until <code>my_function</code> completes running and returns. At that point program control returns to line 10 and
+store the return value in the variable <code>another</code>. When the function <code>my_function(value)</code> is called, running of the function <code>main()</code> is paused until <code>my_function()</code> completes running and returns. At that point program control returns to line 10 and
 picks back up where it left off.
-When we trace code by hand, we naturally remember exactly where we paused, and even the values of the local variables. This allows us seamlessly resume running line 10 after <code>my_function</code> completes executing and returns. However, unlike humans, computers have no natural or automatic process for remembering. Thus, when a function is called, all information about the current values of local variables and the line currently being executed must be stored. This information is all stored in the <em>call stack</em>.</p>
+When we trace code by hand, we naturally remember exactly where we paused, and even the values of the local variables. This allows us seamlessly resume running line 10 after <code>my_function()</code> completes executing and returns. However, unlike humans, computers have no natural or automatic process for remembering. Thus, when a function is called, all information about the current values of local variables and the line currently being executed must be stored. This information is all stored in the <em>call stack</em>.</p>
 <p>The call stack consists of individual frames. When a function begins execution, a frame is added to the top of the call stack (we say it is &quot;pushed&quot; onto the stack). Each frame stores the current line number being executed, as well as the values of every local variable. When a new
 function is invoked, a new frame is created and added to the top of the call stack.</p>
 <p>Here is a memory diagram showing the state of the call stack when the program is executing line 7:</p>
 <img src="chapters/functions/call_stack_line_7.png" alt="call stack memory diagram line 7" width="200"/>
-<p>The next line creates a variable called <code>value</code>, and stores <code>23</code> there. On line 9, output is sent to the terminal. Here is the call stack memory diagram when the program is executing line 9. Notice that a new local variable to represent <code>value</code> has been added to the frame for the function <code>main</code>:</p>
+<p>The next line creates a variable called <code>value</code>, and stores <code>23</code> there. On line 9, output is sent to the terminal. Here is the call stack memory diagram when the program is executing line 9. Notice that a new local variable to represent <code>value</code> has been added to the frame for the function <code>main()</code>:</p>
 <img src="chapters/functions/call_stack_line_9.png" alt="call stack memory diagram line 9" width="200"/>
-<p>On line 10, the program calls the function <code>my_function()</code>. This means that the funtion <code>main()</code> pauses its execution. A new frame for this call to <code>my_function</code> is created and added to the top of the call stack. The top frame on the call stack always shows the information for the function that is currently executing. Here is the call stack memory diagram when the program has invoked <code>my_function()</code> and is executing line 2. Notice that <code>val</code> is passed as a parameter, so it behaves like a local variable. Its value is initialized with the value that was passed (23 in this case). The variable <code>val</code> exists only as long as <code>my_function()</code> is still executing. Thus we draw it in the frame associated with <code>my_function()</code>:</p>
+<p>On line 10, the program calls the function <code>my_function()</code>. This means that the funtion <code>main()</code> pauses its execution. A new frame for this call to <code>my_function()</code> is created and added to the top of the call stack. The top frame on the call stack always shows the information for the function that is currently executing. Here is the call stack memory diagram when the program has invoked <code>my_function()</code> and is executing line 2. Notice that <code>val</code> is passed as a parameter, so it behaves like a local variable. Its value is initialized with the value that was passed (23 in this case). The variable <code>val</code> exists only as long as <code>my_function()</code> is still executing. Thus we draw it in the frame associated with <code>my_function()</code>:</p>
 <img src="chapters/functions/call_stack_line_2.png" alt="call stack memory diagram line 2" width="200"/>
 <p>On line 3, the value stored in <code>val</code> is changed. Notice that only the local variable is modified. Since <code>my_function()</code> only has access to the local variables stored in its own frame, the variables owned by <code>main()</code> cannot be modified by this function. Here is the call stack memory diagram when the program is executing line 4:</p>
 <img src="chapters/functions/call_stack_line_4.png" alt="call stack memory diagram line 4" width="200"/>
@@ -1917,7 +1917,7 @@ if __name__ == '__main__':
 <h1 id="tools-for-visualizing"><a class="header" href="#tools-for-visualizing">Tools for visualizing</a></h1>
 <ul>
 <li>The debugger in VSCode can be used to see the call stack (see the bottom window of the debug pane). It doesn't show the entire frame for each function call, but lists the calls.</li>
-<li>Python tutor (https://pythontutor.com/visualize.html#mode=edit) is a valuable online tool for stepping through code. It shows the call stack, including all local variables.</li>
+<li>Python tutor (<a href = "https://pythontutor.com/visualize.html#mode=edit" target = "blank">https://pythontutor.com/visualize.html#mode=edit</a>) is a valuable online tool for stepping through code. It shows the call stack, including all local variables.</li>
 </ul>
 <p>This video demonstrates using both of these tools for tracing, debugging, and seeing the contents of the call stack:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/functions/tools_demo.mp4" width="480" height="270" controls></video></p>
@@ -1929,7 +1929,7 @@ if __name__ == '__main__':
 But often one needs multiple values to represent one concept, or one object. For example:</p>
 <ul>
 <li>a point in two-dimensional space is represented by two variables (x, y),</li>
-<li>A rectangle has a center point, a width and a height,</li>
+<li>a rectangle has a center point, a width and a height,</li>
 <li>a college registrar stores many pieces of information about each student (name, address, year in school, gpa, etc.),</li>
 <li>a bouncing circle in an animation has an x-position, a y-position, a size, an x-velocity, a y-velocity, and a color.</li>
 </ul>
@@ -2085,7 +2085,7 @@ print(rectangle1.area())
 rectangle2.draw()
 dudraw.show(10000)
 </code></pre>
-<h2 id="video-explanations"><a class="header" href="#video-explanations">Video explanations</a></h2>
+<h2 id="video-explanations-1"><a class="header" href="#video-explanations-1">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/implementing_classes.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-output-the-contents-of-an-object-to-the-terminal"><a class="header" href="#how-to-output-the-contents-of-an-object-to-the-terminal">How to output the contents of an object to the terminal</a></h1>
 <p>For reference, in this section we will continue developing the <code>Rectangle</code> class created in the previous section:</p>
@@ -2134,8 +2134,14 @@ print(rectangle1)
 <p>the output is now:</p>
 <pre><code>center: (2, 3), width: 0.1, height: 0.2
 </code></pre>
-<h2 id="video-explanations-1"><a class="header" href="#video-explanations-1">Video explanations</a></h2>
-<p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/output_object.mp4" width="480" height="270" controls></video></p>
+<p>The <code>__str__()</code> method of a class is also called when you cast an object to a string. For example:</p>
+<pre><code class="language-python">str(rectangle1)
+</code></pre>
+<p>is equivalent to</p>
+<pre><code class="language-python">rectangle1.__str__()
+</code></pre>
+<h2 id="video-explanations-2"><a class="header" href="#video-explanations-2">Video explanations</a></h2>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/print_object.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="lists-of-objects"><a class="header" href="#lists-of-objects">Lists of objects</a></h1>
 <p>If we have many objects, we can store them in a list. This use of classes highlights their power.</p>
 <h2 id="example-1"><a class="header" href="#example-1">Example</a></h2>
@@ -2231,8 +2237,8 @@ center: (0.6660610136763881, 0.9802962789008293), width: 0.02, height: 0.02, cen
 <p>It is good programming practice in python to implement a <code>__repr__()</code> method in every class.</p>
 <p>Note: in python, there is another official purpose for <code>__repr__()</code> methods, 
 so in future work you might be required to have <code>__repr__()</code> produce strings with a different format than <code>__str__()</code>.</p>
-<h2 id="video-explanations-2"><a class="header" href="#video-explanations-2">Video explanations</a></h2>
-<p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/lists_of_objects.mp4" width="480" height="270" controls></video></p>
+<h2 id="video-explanations-3"><a class="header" href="#video-explanations-3">Video explanations</a></h2>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/list_of_objects.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="classes-can-have-a-simple-or-more-complicated-structure"><a class="header" href="#classes-can-have-a-simple-or-more-complicated-structure">Classes can have a simple, or more complicated structure</a></h1>
 <p>We'll start with a simple class, and then show how it can be used to build more complicated and useful classes.</p>
 <h2 id="a-simple-class"><a class="header" href="#a-simple-class">A simple class</a></h2>
@@ -2304,11 +2310,11 @@ print(t1)
 Vertices: (7, 5) (10, 5) (8, 6)
 </code></pre>
 <p>The variable <code>t1</code> has three instance variables, each of which are points. 
-For example, <code>t1.vertex1</code> represents the point (4, 1). Notice that since <code>t1.vertex</code> is a <code>Point</code>, 
-we can actually access its two instance variables, with <code>t1.vertex.x</code> and <code>t1.vertex.y</code>. 
+For example, <code>t1.vertex1</code> represents the point (4, 1). Notice that since <code>t1.vertex1</code> is a <code>Point</code>, 
+we can actually access its two instance variables, with <code>t1.vertex1.x</code> and <code>t1.vertex1.y</code>. 
 However, in object-oriented programming practice, by convention we never modify an
 instance variable's instance variable. Instead, we rely on that class to do the modification. 
-You can see an example of this in the code above: the <code>shift</code> method in the <code>Triangle</code> class does not itself change the values of each vertex. 
+You can see an example of this in the code above: the <code>shift()</code> method in the <code>Triangle</code> class does not itself change the values of each vertex. 
 Instead, it calls the <code>Point</code> class's <code>shift()</code> method
 to modify the <code>x</code> and <code>y</code> values of each of the three vertices.</p>
 <h2 id="a-class-with-a-list-as-an-instance-variable"><a class="header" href="#a-class-with-a-list-as-an-instance-variable">A class with a list as an instance variable</a></h2>
@@ -2318,7 +2324,7 @@ Notice that the methods in this class will often need to traverse through that l
 In the code below, you see these loops both in the <code>__str__()</code> method and the <code>shift()</code> method. Notice two different styles of iteration (looping through index or looping through content) are used, 
 so you can see different options. Carefully trace the code and predict the output to the terminal.</p>
 <pre><code class="language-python">class Polygon:
-    def __init__(self, vertices:list):
+    def __init__(self, vertices: list[Point]):
         self.vertices = vertices
 
     def __str__(self)-&gt;str:
@@ -2342,7 +2348,7 @@ print(poly)
 <pre><code>vertices: (4, 0) (0, 4) (4, 8) (8, 4) 
 vertices: (14, 20) (10, 24) (14, 28) (18, 24) 
 </code></pre>
-<h2 id="video-explanations-3"><a class="header" href="#video-explanations-3">Video explanations</a></h2>
+<h2 id="video-explanations-4"><a class="header" href="#video-explanations-4">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/class_composition.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="class-variables"><a class="header" href="#class-variables">Class variables</a></h1>
 <h2 id="how-to-create-and-use-class-variables"><a class="header" href="#how-to-create-and-use-class-variables">How to create and use class variables</a></h2>
@@ -2382,7 +2388,7 @@ vertices: (14, 20) (10, 24) (14, 28) (18, 24)
 # Note the use of named parameters in the next two lines that instantiate Star objects
 alphaA = Star(name = &quot;Alpha Centauri A&quot;, mass = 1.1, age = 5.3, distance = 4.37)
 sirius = Star(name = &quot;Sirius - the Dog Star&quot;, mass = 2.0, age = 0.2, distance = 8.6)
-# Note that the next two lines automatially call the __str__() method for Star
+# Note that the next two lines automatically call the __str__() method for Star
 print(alphaA)
 print(sirius)
 # Demonstration of calling the distance_in_miles() method (which internally uses the Star.speed_of_light class variable)
@@ -2423,7 +2429,7 @@ The speed of light is 186000 miles per second.
         # by updating the shared variable Widget.count, we can keep track of how
         #  many times this __init__() method has been called, 
         # and thus how many Widget objects there are.
-        Widget.count = Widget.count + 1
+        Widget.count += 1
 
 # main code block:
 # instantiate three Widget objects. Each time, the __init__() method is
@@ -2453,7 +2459,7 @@ print(Widget.count)
         # by updating the shared variable Widget.count, we can keep track of how
         #  many times this __init__() method has been called, 
         # and thus how many Widget objects there are.
-        Widget.count = Widget.count + 1
+        Widget.count += 1
         # Count this call towards total method calls
         Widget.method_calls += 1
 
@@ -2493,7 +2499,7 @@ Number of Widget method calls: 7
 <p>Carefully trace the code above to verify how the (shared) class variable <code>Widget.method_calls</code> tracks the
 method calls, and confirm for yourself that there were 7 method calls in the main code block.</p>
 <h3 id="use-case-4"><a class="header" href="#use-case-4">Use case 4</a></h3>
-<p>Often it is important to give people or objects unique identification numbers. Examples of this in real life are Social Security numbers (no two individuals can share the same number) or student id numbers (every student at DU has a different 87-number). In python, one way to give every object of a class a unique id is to maintain a class variable that keeps track of the next available id to assign to each subsequent object. When an object is instantiated, in the <code>__init__</code>() method an instance variable is created to store that object's id, and it is to the next available id (stored in the class variable). Next, still within the <code>__init__()</code> method, the value of that class variable is incremented so that when the subsequent object is instantitated, its id will not collide with this or any previous object. In the example below, a class is used to represent financial transations. Each financial transaction is given its own unique transaction identification number.</p>
+<p>Often it is important to give people or objects unique identification numbers. Examples of this in real life are Social Security numbers (no two individuals can share the same number) or student id numbers (every student at DU has a different 87-number). In python, one way to give every object of a class a unique id is to maintain a class variable that keeps track of the next available id to assign to each subsequent object. When an object is instantiated, in the <code>__init__()</code> method an instance variable is created to store that object's id, and it is to the next available id (stored in the class variable). Next, still within the <code>__init__()</code> method, the value of that class variable is incremented so that when the subsequent object is instantitated, its id will not collide with this or any previous object. In the example below, a class is used to represent financial transations. Each financial transaction is given its own unique transaction identification number.</p>
 <pre><code class="language-python">class FinancialTransaction:
 
     # The class variable FinancialTransaction.next_unique_id keeps
@@ -2528,7 +2534,7 @@ print(transaction2)
 id: 20001, source: 1234567800987, destination: 9876543200987, amount: 2319.24
 </code></pre>
 <p>Notice above that each id assigned is unique to that particular <code>FinancialTransaction</code> object. This technique guarantees no collisions of transaction id numbers.</p>
-<h2 id="video-explanations-4"><a class="header" href="#video-explanations-4">Video explanations</a></h2>
+<h2 id="video-explanations-5"><a class="header" href="#video-explanations-5">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/class_variables.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="class-part-2"><a class="header" href="#class-part-2">Class, Part 2</a></h2>
 <p>In this chapter we look at more details of implementing classes. This includes:</p>
@@ -2539,7 +2545,7 @@ id: 20001, source: 1234567800987, destination: 9876543200987, amount: 2319.24
 <li>copying references, shallow copying, and deep copying.</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="comparing-objects-using-dunder-methods-methods-whose-name-starts-with-two-underscores"><a class="header" href="#comparing-objects-using-dunder-methods-methods-whose-name-starts-with-two-underscores">Comparing objects using dunder methods (methods whose name starts with two underscores)</a></h1>
-<p>In python, methods that start with two underscores are called <em>dunder</em> (double-underscore) methods. They are sometimes also referred to as <em>special methods</em> or <em>magic methods</em>. These methods have special significance, since they are automatically invoked by python in certain situtations. You've seen two examples of this already: the <code>__init__()</code> function is automatically (or &quot;magically&quot;) invoked when you instantiate an object, and the <code>__str__()</code> method is automatically invoked when you print an object, and the <code>__repr__</code> method is automatically invoked for each object when you print a list of objects. For example:</p>
+<p>In python, methods that start with two underscores are called <em>dunder</em> (double-underscore) methods. They are sometimes also referred to as <em>special methods</em> or <em>magic methods</em>. These methods have special significance, since they are automatically invoked by python in certain situtations. You've seen two examples of this already: the <code>__init__()</code> function is automatically (or &quot;magically&quot;) invoked when you instantiate an object, and the <code>__str__()</code> method is automatically invoked when you print an object, and the <code>__repr__()</code> method is automatically invoked for each object when you print a list of objects. For example:</p>
 <pre><code class="language-python">class Time24:
     &quot;&quot;&quot; A class that represents a time of day on a 24-hour clock
         Default time is 0 hours 0 minutes &quot;&quot;&quot;
@@ -2557,21 +2563,21 @@ id: 20001, source: 1234567800987, destination: 9876543200987, amount: 2319.24
     def __repr__(self)-&gt;str:
         return self.__str__()
 
-time1 = Time24(12, 7)   # automatically calls __init__ to initialize to 12:07
-time2 = Time24(2, 43)   # automatically calls __init__ to initialize to 02:43
-time3 = Time24(12, 7)   # automatically calls __init__ to initialize to 12:07
-default_time = Time24() # also calls __init__, default time is 00:00
+time1 = Time24(12, 7)   # automatically calls __init__() to initialize to 12:07
+time2 = Time24(2, 43)   # automatically calls __init__() to initialize to 02:43
+time3 = Time24(12, 7)   # automatically calls __init__() to initialize to 12:07
+default_time = Time24() # also calls __init__(), default time is 00:00
 times = [time1, time2, time3, default_time]
-print(time1)            # automatically calls __str__, outputs 12:07
-print(times)            # automatically calls __repr__ for each object
+print(time1)            # automatically calls __str__(), outputs 12:07
+print(times)            # automatically calls __repr__() for each object
 </code></pre>
 <p>Carefully read and trace the code above, paying special attention to how <code>__init__()</code> automatically gets called when we instantiate an object, how <code>__str__()</code> automatically gets called when we print an object, and how <code>__repr__()</code> automatically gets called when we print a list of objects.</p>
-<p>Besides <code>__init__()</code> and <code>__str__()</code>, and <code>__repr__</code> methods, python has a long list of other dunder methods. First, we will learn the <em>rich comparison operators</em>, which allows us, whenever it makes sense, to compare two objects of a class using  the operators <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>!=</code>, <code>&gt;=</code>, and <code>&gt;</code>.</p>
+<p>Besides <code>__init__()</code> and <code>__str__()</code>, and <code>__repr__()</code> methods, python has a long list of other dunder methods. First, we will learn the <em>rich comparison operators</em>, which allows us, whenever it makes sense, to compare two objects of a class using  the operators <code>&lt;</code>, <code>&lt;=</code>, <code>==</code>, <code>!=</code>, <code>&gt;=</code>, and <code>&gt;</code>.</p>
 <h2 id="using-the--operator-to-compare-two-objects"><a class="header" href="#using-the--operator-to-compare-two-objects">Using the == operator to compare two objects</a></h2>
 <p>Notice that two of the <code>Time24</code> objects above (<code>time1</code> and <code>time2</code>) represent the same time of day. What do you think is output by the following line of code?</p>
 <pre><code class="language-python">print(time1 == time3)
 </code></pre>
-<p>Are you disappointed to find out that the above line of code outputs <code>False</code>? By default, two objects evaluate as <code>==</code> in python when they represent the identical object (in other words, they stored in the same memory location, refer to the same object, or have the same <code>id()</code>). Said differently, when evaluating <code>==</code> for two objects, by default python does not compare the <em>contents</em> of the objects to see if the <em>contents are the same</em>. But when dealing with objects, comparing the contents is usually exactly what we want <code>==</code> to do. So python gives us a way to make the <code>==</code> comparison between objects compare the contents of the objects, according to a method we provide. This is called &quot;overloading the <code>==</code> operator&quot;.</p>
+<p>Are you disappointed to find out that the above line of code outputs <code>False</code>? By default, two objects evaluate as <code>==</code> in python when they represent the identical object (in other words, they are stored in the same memory location, and refer to the same object). Said differently, when evaluating <code>==</code> for two objects, by default python does not compare the <em>contents</em> of the objects to see if the <em>contents are the same</em>. But when dealing with objects, comparing the contents is often exactly what we want <code>==</code> to do. So python gives us a way to make the <code>==</code> comparison between objects compare the contents of the objects, according to a method we provide. This is called &quot;overloading the <code>==</code> operator&quot;.</p>
 <h2 id="how-to-overload-the--operator"><a class="header" href="#how-to-overload-the--operator">How to overload the <code>==</code> operator</a></h2>
 <ul>
 <li>Within the class, implement a method called <code>__eq__()</code>. </li>
@@ -2583,7 +2589,7 @@ print(times)            # automatically calls __repr__ for each object
 left side of <code>==</code> becomes <code>self</code>, and the object on the right side of the <code>==</code> becomes the second parameter, typically named <code>other</code>.</li>
 </ul>
 <p>Include this code in the <code>Time24</code> class:</p>
-<pre><code class="language-python">    def __eq__(self, other)-&gt;bool:
+<pre><code class="language-python">    def __eq__(self, other: Time24)-&gt;bool:
         # Evaluate two Time24 objects as &quot;==&quot; if both of their instance variables (hours and minutes) are equal
         return self.hours == other.hours and self.minutes == other.minutes
 </code></pre>
@@ -2591,7 +2597,7 @@ left side of <code>==</code> becomes <code>self</code>, and the object on the ri
 <pre><code class="language-python">print(time1 == time3)  # automatically calls the __eq__ method from the Time24 class, time1 is self, time3 is other
 </code></pre>
 <p>Whenever you overload the <code>==</code> operator by implementing <code>__eq__()</code> in your class, you should also overload the <code>!=</code> operator by implementing <code>__ne__()</code> in your class. Rather than modifying the code in <code>__eq__()</code>, in <code>__ne__()</code> you can just return the logical negation of the result of <code>__eq__()</code>. Include this method in the <code>Time24</code> class:</p>
-<pre><code class="language-python">    def __ne__(self, other)-&gt;bool:
+<pre><code class="language-python">    def __ne__(self, other: Time24)-&gt;bool:
         return not self==other  # notice that this calls __eq__() automatically
 </code></pre>
 <h2 id="using-the--operator-to-compare-two-objects-1"><a class="header" href="#using-the--operator-to-compare-two-objects-1">Using the &lt; operator to compare two objects</a></h2>
@@ -2602,7 +2608,7 @@ left side of <code>==</code> becomes <code>self</code>, and the object on the ri
 <pre><code>TypeError: '&lt;' not supported between instances of 'Time24' and 'Time24'
 </code></pre>
 <p>When objects in a class have a natural linear ordering, then it makes sense to compare them with the <code>&lt;</code> operator. To implement this in python, we provide a <code>__lt__()</code> method in our class. The <code>__lt__()</code> method should return a boolean, and take two parameters. The <code>__lt__()</code> method will automatically be called when the code <code>object &lt; object2</code> is evaluated, with <code>object1</code> becoming the parameter <code>self</code>, and <code>object2</code> becoming the parameter <code>other</code>. For example, here is an implementation of <code>__lt__()</code> for our <code>Time24</code> class. Insert this code into the class.</p>
-<pre><code class="language-python">    def __lt__(self, other)-&gt;bool:
+<pre><code class="language-python">    def __lt__(self, other: Time24)-&gt;bool:
         if self.hours &lt; other.hours:
             return True
         elif self.hours &gt; other.hours:
@@ -2631,7 +2637,7 @@ print(default_time &lt; time2) # outputs True, midnight is earlier than every ot
 <pre><code class="language-python">class Time24:
     &quot;&quot;&quot; A class that represents a time of day on a 24-hour clock
         Default time is 0 hours 0 minutes &quot;&quot;&quot;
-    def __init__(self,h: int = 0, m: float = 0):
+    def __init__(self, h: int = 0, m: float = 0):
         # set up the instance variables. Note that this initialization
         # method does not do error checking on the values, and it should
         self.hours = h
@@ -2642,10 +2648,10 @@ print(default_time &lt; time2) # outputs True, midnight is earlier than every ot
     def __str__(self)-&gt;str:
         return f&quot;{self.hours:02d}:{self.minutes:02d}&quot;
     
-    def __eq__(self, other)-&gt;bool:
+    def __eq__(self, other: Time24)-&gt;bool:
         return self.hours == other.hours and self.minutes == other.minutes
 
-    def __lt__(self, other)-&gt;bool:
+    def __lt__(self, other: Time24)-&gt;bool:
         if self.hours &lt; other.hours:
             return True
         elif self.hours &gt; other.hours:
@@ -2653,7 +2659,7 @@ print(default_time &lt; time2) # outputs True, midnight is earlier than every ot
         else:
             return self.minutes &lt; other.minutes
         
-    def __le__(self, other)-&gt;bool:
+    def __le__(self, other: Time24)-&gt;bool:
         if self.hours &lt; other.hours:
             return True
         elif self.hours &gt; other.hours:
@@ -2661,22 +2667,22 @@ print(default_time &lt; time2) # outputs True, midnight is earlier than every ot
         else:
             return self.minutes &lt;= other.minutes
         
-    def __ne__(self, other)-&gt;bool:
+    def __ne__(self, other: Time24)-&gt;bool:
         return not self==other
     
-    def __gt__(self, other)-&gt;bool:
+    def __gt__(self, other: Time24)-&gt;bool:
         return not self &lt;= other
     
-    def __ge__(self, other)-&gt;bool:
+    def __ge__(self, other: Time24)-&gt;bool:
         return not self &lt; other
 </code></pre>
-<h2 id="video-explanations-5"><a class="header" href="#video-explanations-5">Video explanations</a></h2>
+<h2 id="video-explanations-6"><a class="header" href="#video-explanations-6">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/comparison_dunder.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="using-dunder-methods-to-overload-arithmetic-operators"><a class="header" href="#using-dunder-methods-to-overload-arithmetic-operators">Using dunder methods to overload arithmetic operators</a></h2>
 <p>Suppose we have a class that it makes sense to do arithmetic with. For example, say I implement the <code>Point</code> class, where each point is a location in the (x, y) plane. In some contexts it is mathematically useful to add two points by separately adding their x and y coordinates. For example, (1, 3) + (6, 5) = (7, 8). Consider the following implementation of the <code>Point</code> class:</p>
 <pre><code class="language-python">class Point:
 
-    def __init__(self, x, y):
+    def __init__(self, x: float, y: float):
         # initialize the values of the point (x, y)
         self.x = x
         self.y = y
@@ -2728,7 +2734,7 @@ print(point3)
 </div>
 <h2 id="other-dunder-methods"><a class="header" href="#other-dunder-methods">Other dunder methods</a></h2>
 <p>For the scope of this course, the dunder methods above are sufficient. But if you are curious about what other dunder methods exist, here's an external website that is thorough: <a href="https://www.pythonmorsels.com/every-dunder-method/" target="_blank">https://www.pythonmorsels.com/every-dunder-method/</a></p>
-<h2 id="video-explanations-6"><a class="header" href="#video-explanations-6">Video explanations</a></h2>
+<h2 id="video-explanations-7"><a class="header" href="#video-explanations-7">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/arithmetic_dunder.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="variables-are-references-to-objects"><a class="header" href="#variables-are-references-to-objects">Variables are references to objects</a></h1>
 <p>A variable that refers to an object is technically a reference. This means that the variable stores the memory address of the object itself (in other words, the location in your computer's memory where the full data for the object is stored). To see this in action, consider this implementation of the class <code>Point</code>, which has no <code>__str__()</code> method:</p>
@@ -2811,11 +2817,11 @@ print(point3)
 (7, 5)
 (7, 5)
 </code></pre>
-<h2 id="video-explanations-7"><a class="header" href="#video-explanations-7">Video explanations</a></h2>
+<h2 id="video-explanations-8"><a class="header" href="#video-explanations-8">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/variables_are_references.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-difference-between-identity-is-and-equality--of-objects"><a class="header" href="#the-difference-between-identity-is-and-equality--of-objects">The difference between &quot;identity&quot; (<code>is</code>) and &quot;equality&quot; (<code>==</code>) of objects</a></h1>
 <h2 id="identity"><a class="header" href="#identity">Identity</a></h2>
-<p>In a previous section (<a href="https://cs.du.edu/~intropython/intro-to-programming-2/chapters/classes/variables_are_references.html" target="_blank">variables are references</a>), we noted that variables don't store objects themselves, but rather store references to objects. Recall also that we can use the python <code>id()</code> function to find the memory address where the objects are stored.</p>
+<p>In a previous section (<a href="chapters/classes2/variables_are_references.html">Variables are references</a>), we noted that variables don't store objects themselves, but rather store references to objects. Recall also that we can use the python <code>id()</code> function to find the memory address where the objects are stored.</p>
 <p>Consider the following code:</p>
 <pre><code class="language-python">class Point:
 
@@ -2852,10 +2858,10 @@ print(point1 == point3) # outputs True, because the x and y values for point1 an
 </code></pre>
 <h2 id="what-to-remember-from-this"><a class="header" href="#what-to-remember-from-this">What to remember from this:</a></h2>
 <p>Remember that <code>obj1 is obj2</code> determines if <code>obj1</code> and <code>obj2</code> have the same identity, while <code>obj1 == obj2</code> determines if <code>obj1</code> and <code>obj2</code> have the same values.</p>
-<h2 id="video-explanations-8"><a class="header" href="#video-explanations-8">Video explanations</a></h2>
+<h2 id="video-explanations-9"><a class="header" href="#video-explanations-9">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/identity_v_equality.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="drawing-memory-diagram-of-complicated-objects"><a class="header" href="#drawing-memory-diagram-of-complicated-objects">Drawing memory diagram of complicated objects</a></h1>
-<p>In a previous section (<a href="chapters/classes2/variables_are_references.html">Variables are references</a>, we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:</p>
+<p>In a previous section (<a href="chapters/classes2/variables_are_references.html">Variables are references</a>), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:</p>
 <h2 id="a-simple-example"><a class="header" href="#a-simple-example">A simple example</a></h2>
 <p>Consider the following code:</p>
 <pre><code class="language-python">class Point:
@@ -2898,7 +2904,7 @@ p2 = Point(7, 1)
 p3 = Point(5, 2)
 t1 = Triangle(p1, p2, p3)
 </code></pre>
-<p>Here's a diagram showing the state of memory after the above code executes. Examine each box and arrow carefully. Notice in particular that each of the vertex instance variables refer to objects, so they each contain an error to points to a <code>Point</code> objects. Notice also that <code>p1</code>, <code>p1</code> and <code>p3</code> are part of the diagram, and they refer to the same <code>Point</code> objects as are stored in the <code>Triangle</code> <code>t1</code>.</p>
+<p>Here's a diagram showing the state of memory after the above code executes. Examine each box and arrow carefully. Notice in particular that each of the vertex instance variables refer to objects, so they each contain an arrow that points to a <code>Point</code> object. Notice also that <code>p1</code>, <code>p1</code> and <code>p3</code> are part of the diagram, and they refer to the same <code>Point</code> objects as are stored in the <code>Triangle</code> <code>t1</code>.</p>
 <img src="chapters/classes2/memory_diagram_7.png" alt="Memory diagram of a triangle object, which has three vertices that are each Point objects" width = 550>
 <p>Aided by the above memory diagram, trace through the following code, to be run after the main code block above, and predict its output:</p>
 <pre><code class="language-python">p1.x = 10
@@ -2985,7 +2991,7 @@ print(t2)            # outputs Vertices: (4, 1) (7, 1) (5, 2)
 </code></pre>
 <p>Let's examine in detail what happens with the shallow copy. Start with the memory diagram for <code>t1</code>:
 <img src="chapters/classes2/shallow_copy3.png" alt="One triangle, before copy" width = 450></p>
-<p>Recall that a shallow copy will copy each instance variable of an object. The three instance variables for <code>t1</code> are each references (<code>t1.vertex1</code>, <code>t1.vertex2</code>, and <code>t1.vertex3</code>). So all three of these references get copied to the new object <code>t2</code>. Copying the three references does not create new objects. The result is that <code>t1</code>s instance variables(<code>t2.vertex1</code>, <code>t2.vertex2</code>, and <code>t2.vertex3</code>) point to the same <code>Point</code> objects as <code>t1</code>. The two triangles share these <code>Point</code> objects!</p>
+<p>Recall that a shallow copy will copy each instance variable of an object. The three instance variables for <code>t1</code> are each references (<code>t1.vertex1</code>, <code>t1.vertex2</code>, and <code>t1.vertex3</code>). So all three of these references get copied to the new object <code>t2</code>. Copying the three references does not create new objects. The result is that <code>t2</code>'s instance variables(<code>t2.vertex1</code>, <code>t2.vertex2</code>, and <code>t2.vertex3</code>) point to the same <code>Point</code> objects as <code>t1</code>. The two triangles share these <code>Point</code> objects!</p>
 <img src="chapters/classes2/shallow_copy4.png" alt="Two triangles, after shallow copy" width = 450>
 <p>The shallow copy works fine when we change one of the instance variables of the original object (i.e., replace one of the vertex <code>Point</code>s)</p>
 <pre><code class="language-python"># Change the first vertex of t1 to a new Point object:
@@ -3033,10 +3039,10 @@ orig.vertex3.y = 0
 <pre><code class="language-python">class BaseClass:
     pass
 
-class DerivedClass(BaseClass)
+class DerivedClass(BaseClass):
     pass
 </code></pre>
-<p>Very commonly within the definition of methods in the derived class, we need the base class to do part of the work, since the base class is responsible for the shared instance variables. Typically we do this by invoking methods from the base class, using the expression <code>super().method_name</code>. The following example shows a partial implementation of the <code>Shape</code>, <code>Circle</code> and <code>Rectangle</code> classes described above.</p>
+<p>Very commonly within the definition of methods in the derived class, we need the base class to do part of the work, since the base class is responsible for the shared instance variables. Typically we do this by invoking methods from the base class, using the expression <code>super().method_name()</code>. The following example shows a partial implementation of the <code>Shape</code>, <code>Circle</code> and <code>Rectangle</code> classes described above.</p>
 <pre><code class="language-python">class Shape:
 
     def __init__(self, x: float, y: float, c: dudraw.Color):
@@ -3051,7 +3057,7 @@ class Circle(Shape):
         super().__init__(x, y, c)
         self.radius = r
 
- class Rectangle(Shape):
+class Rectangle(Shape):
     def __init__(self, x: float, y: float, w: float, h: float, c: dudraw.Color):
         super().__init__(x, y, c)
         self.width = w
@@ -3108,7 +3114,7 @@ print(circle1)
 Output:</li>
 </ul>
 <pre><code>center: (0.6, 0.2), color: (0, 0, 255)
-center: (0.5, 0.25), color: (255, 0, 0), radius: 0.075
+center: (0.5, 0.25), color: (255, 0, 0), circle radius: 0.075
 </code></pre>
 <p>While it is a common pattern for the base class to call on its <code>super()</code> to do part of the work of a method, it is not the only pattern. Another option is <em>method overriding</em>, explained in the next section.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="method-overriding"><a class="header" href="#method-overriding">Method overriding</a></h1>
@@ -3136,11 +3142,6 @@ class Circle(Shape):
 
     def __str__(self)-&gt;str:
         return f&quot;{super().__str__()}, circle radius: {self.radius:.3g}&quot;
-
-    # This method overrides the draw() method in the Shape class
-    def draw(self)-&gt;str:
-        dudraw.set_pen_color(self.color)
-        dudraw.filled_circle(self.x, self.y, self.radius)
 
 # main code block:
 shape1 = Shape(0.6, 0.2, dudraw.BLUE)
@@ -3176,7 +3177,7 @@ class Circle(Shape):
         return f&quot;{super().__str__()}, radius: {self.radius}&quot;
 
     # This method overrides the draw() method in the Shape class
-    def draw(self)-&gt;str:
+    def draw(self):
         dudraw.set_pen_color(self.color)
         dudraw.filled_circle(self.x, self.y, self.radius)
 
@@ -3424,9 +3425,9 @@ class Circle(Shape):
 
 # main code block:
 circle1 = Circle(0.5, 0.5, 0.2, dudraw.RED)
-print(type(circle1))              # circle1 is of type Circle
-print(circle1 instanceof Circle)  # True: circle1 is an instance of Circle
-print(circle1 instanceof Shape)   # True: circle1 is an instance of Shape, by inheritance
+print(type(circle1))               # circle1 is of type Circle
+print(isinstance(circle1, Circle)) # True: circle1 is an instance of Circle
+print(isinstance(circle1, Shape))  # True: circle1 is an instance of Shape, by inheritance
 </code></pre>
 <p>In the above example, the type of <code>circle1</code> is <code>Circle</code>. Python outputs
 <code>&lt;class '__main__.Circle'&gt;</code> (since the <code>Circle</code> class is defined within the <code>__main__</code> module).
@@ -3457,7 +3458,7 @@ print(isinstance(t1, Point))     # False, t1 is not a Point
 <p>In the above code, we have two classes, but they are not related by inheritance. Instead, they are related by composition, since the <code>Triangle</code> class uses the <code>Point</code> class by owning instance variables of type <code>Point</code>. </p>
 <p>In the main code block, note that the type of <code>t1</code> is <code>Triangle</code>
 (python outputs <code>&lt;class '__main__.Triangle'&gt;</code>, since the <code>Triangle</code> class is defined within the <code>__main__</code> module). The next line determines if <code>t1</code> is an instance of the <code>Triangle</code> class, which it is, since <code>t1</code> was instantiated as a <code>Triangle</code>. The final line, however, outputs <code>False</code>. The object <code>t1</code> <em>is not a</em> <code>Point</code>. Rather, it <em>has a</em> <code>Point</code> as one of its instance variables.</p>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="multilevel-inheritance"><a class="header" href="#multilevel-inheritance">Multilevel inheritance.</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="multilevel-inheritance"><a class="header" href="#multilevel-inheritance">Multilevel inheritance</a></h1>
 <p>If a child class itself has a child class, we call that <em>multilevel inheritance</em>. For example, suppose we have a class called <code>Publication</code>, which has two subclasses <code>Podcast</code> and <code>Book</code>. Then say <code>Book</code> itself has two subclasses, <code>AudioBook</code> and <code>PrintBook</code>. In multilevel inheritance, class diagrams are a particularly useful visualization tool.</p>
 <h2 id="class-diagram-of-multilevel-inheritance"><a class="header" href="#class-diagram-of-multilevel-inheritance">Class diagram of multilevel inheritance</a></h2>
 <img src="chapters/inheritance/class_diagram_multilevel.png" alt="Class diagram of multilevel inheritance" width = 300>
@@ -3476,6 +3477,9 @@ print(isinstance(t1, Point))     # False, t1 is not a Point
 
     def __str__(self)-&gt;str:
         return f&quot;author: {self.author}, title: {self.title}&quot;
+
+    def __repr__(self)-&gt;str:
+        return self.__str__()
     
 class Podcast(Publication):
         
@@ -3522,7 +3526,7 @@ publications.append(Book(author = &quot;F. Scott Fitzgerald&quot;,
                          ISBN = &quot;978-1328948854&quot;))
 publications.append(PrintBook(author = &quot;William Goldman&quot;, 
                          title = &quot;The Princess Bride&quot;, 
-                         ISBN = &quot;978-1328948854&quot;, 
+                         ISBN = &quot;978-0544173767&quot;, 
                          pages = 496))
 publications.append(AudioBook(author = &quot;Ann Patchett&quot;, 
                               title = &quot;Tom Lake&quot;, 
@@ -3550,7 +3554,7 @@ author: Ira Glass, title: This American Life - The Ghost of Bobby Dunbar,
 <li>Consider the flow of information when instantiating an object of a grandchild class. For example, when instantiating an <code>AudioBook</code>, the <code>__init__()</code> method calls <code>super().__init__()</code>, which invokes the <code>__init__()</code> method for <code>Book</code>. But then the <code>__init__()</code> method for <code>Book</code> in turn calls <code>super().__init__()</code>, which invokes the <code>__init__()</code> method for <code>Publication</code>. So the information goes up the chain to the top-level class.</li>
 <li>A similar process occurs when the <code>Audiobook</code>'s <code>__str__()</code> method is called. It calls its parent's <code>__str__()</code> method, and that method in turn calls its parent's <code>__str__()</code> method. At each level the string is computed and returned down the chain, where it is combined with the string information passed back from the level above.</li>
 <li>In the main code block,  a list is created that holds a variety of objects from the 5 defined classes. Since regardless of type, each is also an instance of the <code>Publication</code> class, they can be treated in a homogenous way. Thus the for-loop can seamlessly traverse the objects and print them, even though they are potentially all of different subclasses.</li>
-<li>Predict what wil be output by the following code:</li>
+<li>Predict what will be output by the following code:</li>
 </ul>
 <pre><code class="language-python">print(type(publications[2]))
 print(isinstance(publications[1], Book))
@@ -3576,11 +3580,11 @@ True
 <img src="chapters/recursion/recursion_callstack1.png" alt="first call stack in recursion example" width="200"/>
 <p>On line 2, we see n is not less than or equal to 0, so we proceed to the else block. On line 5, the number 2 is output to the terminal. On line 6, we call <code>recursion_example()</code>, this time with an argument of 1. We jump to line 1 of the code, but notice this is a new function call. This means a new frame must get pushed onto the call stack. The call stack now has <em>two</em> frames with calls to <code>recursion_example()</code>:</p>
 <img src="chapters/recursion/recursion_callstack2.png" alt="second call stack in recursion example" width="200"/>
-<p>We proceed again to line 2, we see n is not less than or equal to 0 this time either, so we proceed to the else block. On line 5, the number 1 is output to the terminal, On line 6, we call we call <code>recursion_example()</code>, this time with an argument of 0. We jump to line 1 of the code, but notice this is a yet a new function call! This means yet a new frame must get pushed onto the call stack. The call stack now has <em>three</em> frames with calls to <code>recursion_example()</code>:</p>
+<p>We proceed again to line 2, we see n is not less than or equal to 0 this time either, so we proceed to the else block. On line 5, the number 1 is output to the terminal, On line 6, we call <code>recursion_example()</code>, this time with an argument of 0. We jump to line 1 of the code, but notice this is a yet a new function call! This means yet a new frame must get pushed onto the call stack. The call stack now has <em>three</em> frames with calls to <code>recursion_example()</code>:</p>
 <img src="chapters/recursion/recursion_callstack3.png" alt="third call stack in recursion example" width="200"/>
 <p>Just when you feared this process would go on forever, we see that this time on line 2, n <em>is</em> less than or equal to 0. We call this a <em>base case</em>, which stops the recursion. So on line 3 we return from the most recent call. When we return from a call to a function, the top frame is popped off of the stack, so we can continue executing from where we left off in the calling function. Here's the call stack with the top frame popped, putting us back into our second call to <code>recursion_example()</code>, on line 6:</p>
 <img src="chapters/recursion/recursion_callstack2.png" alt="fourth call stack in recursion example" width="200"/>
-<p>But this is the last line of the funtion, so we return to the caller, popping the top frame off of the stack:</p>
+<p>But this is the last line of the function, so we return to the caller, popping the top frame off of the stack:</p>
 <img src="chapters/recursion/recursion_callstack1.png" alt="fifth call stack in recursion example" width="200"/>
 <p>We are back on line 6 of our first call to <code>recursion_exaple()</code>. But this is the last line of the function, so we return to the calling function <code>main()</code>, popping the top frame off of the stack:</p>
 <img src="chapters/recursion/recursion_callstack4.png" alt="last call stack in recursion example" width="200"/>
@@ -3602,7 +3606,7 @@ True
 <p>To avoid this problem, every recursive function must contain conditions to stop the recursion in at least one base case.</p>
 <p>In the next section you will see some examples of implementing recursive functions that perform useful and interesting tasks.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="implementing-recursive-functions"><a class="header" href="#implementing-recursive-functions">Implementing recursive functions</a></h1>
-<p>You can implement a recursive algorithm any time you can break a computation down into one or more parts that involve the same computation, but with smaller values. This is known as a <em>recursive relationship</em>. In addition to the recursive relationship, you also always need a <em>base case</em>, which tells you when to stop the reursion.</p>
+<p>You can implement a recursive algorithm any time you can break a computation down into one or more parts that involve the same computation, but with smaller values. This is known as a <em>recursive relationship</em>. In addition to the recursive relationship, you also always need a <em>base case</em>, which tells you when to stop the recursion.</p>
 <h2 id="example-1---computing-powers"><a class="header" href="#example-1---computing-powers">Example 1 - computing powers</a></h2>
 <p>Suppose you want to write a function called <code>power()</code> that evaluates an exponential expression \(a^n\). For example, we want the line</p>
 <pre><code class="language-python">print(power(2, 5))
@@ -3768,27 +3772,24 @@ if __name__ == &quot;__main__&quot;:
 <table style = "table-layout: fixed" max-width="900px">
 <tr>
     <td valign = "bottom"><img src="chapters/recursion/stack_unwind1.png" alt="first step unwinding stack" min-width="150px", max-width="150px"></td>
-    <td valign = "bottom"><img src="chapters/recursion/stack_unwind2.png" alt="second step unwinding stack" min-width="150px" ></td>
-    <td valign = "bottom"><img src="chapters/recursion/stack_unwind3.png" alt="third step unwinding stack" min-width="150px" ></td>
-    <td valign = "bottom"><img src="chapters/recursion/stack_unwind4.png" alt="fourth step unwinding stack" min-width="150px" ></td>
+    <td valign = "bottom"><img src="chapters/recursion/stack_unwind2.png" alt="second step unwinding stack" min-width="150px" max-width="150px"></td>
+    <td valign = "bottom"><img src="chapters/recursion/stack_unwind3.png" alt="third step unwinding stack" min-width="150px" max-width="150px"></td>
+    <td valign = "bottom"><img src="chapters/recursion/stack_unwind4.png" alt="fourth step unwinding stack" min-width="150px" max-width="150px"></td>
 </tr>
 <tr> 
     <td>Return from call with n = 0</td>
     <td>Return from call with n = 1</td>
     <td>Return from call with n = 2</td>
     <td>Return from call with n = 3</td></tr>
-</table>
-<table style = "table-layout: fixed" max-width="900px">
 <tr>
     <td valign = "bottom"><img src="chapters/recursion/stack_unwind5.png" alt="fifth step unwinding stack" min-width="150px" max-width="150px"></td>
     <td valign = "bottom"><img src="chapters/recursion/stack_unwind6.png" alt="sixth step unwinding stack" min-width="150px" max-width="150px"></td>
     <td valign = "bottom"><img src="chapters/recursion/stack_unwind7.png" alt="seventh step unwinding stack" min-width="150px" max-width="150px"></td>
 </tr>
 <tr> 
-    <td>Return from call with n = 0</td>
-    <td>Return from call with n = 1</td>
-    <td>Return from call with n = 2</td>
-    <td>Return from call with n = 3</td></tr>
+    <td>Return from call with n = 4</td>
+    <td>Return from call with n = 5</td>
+    <td>Return from call with n = 6</td></tr>
 </table>
 <h2 id="the-order-that-lines-are-executed-might-surprise-you"><a class="header" href="#the-order-that-lines-are-executed-might-surprise-you">The order that lines are executed might surprise you</a></h2>
 <p>Consider the following code, with a call to a recursive function:</p>
@@ -3849,7 +3850,7 @@ A numpy array is similar to the &quot;array&quot; data type in languages like C/
 Learning to work with numpy arrays will help prepare you to write code in those languages, including systems-level programs.</p>
 <p>Below you'll see four <code>np</code> functions for creating arrays:</p>
 <ul>
-<li>The <code>np.zeroes(size: int)</code> function instantiates a numpy array of the given size, initializing all values to 0.
+<li>The <code>np.zeros(size: int)</code> function instantiates a numpy array of the given size, initializing all values to 0.
 These values can then be changed later, filling the array with data from some source.</li>
 </ul>
 <pre><code class="language-python">a = np.zeros(5) # Create an array of zeros with length 5
@@ -3894,13 +3895,13 @@ b = np.array([1, 2, 3], dtype = float) # Specifying dtype when creating an array
 print(b.dtype)               # outputs float64
 c = np.array([1, 2, 3.5])    # the dtype of float is inferred from input data
 print(c.dtype)               # outputs float64
-d = np.zeros(5)              # np.zeroes by default uses dtype of float
+d = np.zeros(5)              # np.zeros by default uses dtype of float
 print(d.dtype)               # outputs float64
 e = np.zeros(3, dtype = int) # you can specify the dtype
 print(e.dtype)               # outputs int64
 </code></pre>
 <p>In numpy arrays, the type <code>int64</code> has a fixed size of 64 bits (8 bytes). This means that the integers that can be stored have a minimum value of -9,223,372,036,854,775,808 and a maximum value of 9,223,372,036,854,775,807 (inclusive). This is unlike the python <code>int</code> type, which can hold to an unlimited value, increasing behind the scenes the storage space used to store the number.</p>
-<h2 id="video-explanations-9"><a class="header" href="#video-explanations-9">Video explanations:</a></h2>
+<h2 id="video-explanations-10"><a class="header" href="#video-explanations-10">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_arrays.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="computation-using-numpy-arrays"><a class="header" href="#computation-using-numpy-arrays">Computation using numpy arrays</a></h1>
 <p>Once a numpy array is created, you can access and modify it using indexing and slicing, similar to a python list.
@@ -3961,7 +3962,7 @@ print(d)  # outputs &quot;[3 3 3]&quot;
 e = a * b
 print(e)  # outputs &quot;[4 10 18]&quot;
 </code></pre>
-<h2 id="video-explanations-10"><a class="header" href="#video-explanations-10">Video explanations:</a></h2>
+<h2 id="video-explanations-11"><a class="header" href="#video-explanations-11">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_computation.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="two-dimensional-and-multi-dimensional-numpy-arrays"><a class="header" href="#two-dimensional-and-multi-dimensional-numpy-arrays">Two-dimensional and multi-dimensional numpy arrays</a></h1>
 <p>A multidimensional array is an array of arrays, in much the same way a multidimensional list is a list of lists. One of Numpy's strengths is the tools it has for making it easier to work with higher-dimensional arrays.</p>
@@ -3974,7 +3975,7 @@ arr_2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]])
 <p>You can find out the number of rows and columns in a multi-dimensional <code>numpy</code> array using the <code>shape</code> attribute, which is a tuple giving the number of rows, then the number of columns. For example:</p>
 <pre><code class="language-python">arr_2d = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]])
 print(arr_2d)
-print(arr_2d.shape).
+print(arr_2d.shape)
 </code></pre>
 <p>Output:</p>
 <pre><code>[[ 1  2  3]
@@ -4052,7 +4053,7 @@ python_column = [row[1] for row in lst] # iterate over the rows grabbing the sec
 print(python_column)
 print(sum(python_column))
 </code></pre>
-<h2 id="video-explanations-11"><a class="header" href="#video-explanations-11">Video explanations:</a></h2>
+<h2 id="video-explanations-12"><a class="header" href="#video-explanations-12">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_multi.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="algorithms-and-sorting"><a class="header" href="#algorithms-and-sorting">Algorithms and sorting</a></h1>
 <p>Algorithms are, simply put, a sequence of instructions to perform a task given a set of input values. Later courses will go into more detail about algorithm design, analysis, and efficiency.
@@ -4085,7 +4086,7 @@ You will learn how to implement these first three:</p>
 <p>These three algorithms rely on nested loops, and are the easiest to learn and understand. So first-year Computer Science students always learn them. But they are also notoriously slow, and so are <em>never</em> used in practice!</p>
 <p>One exampe of a better sorting algorithm is merge sort. You will see a demo of this fourth algorithm, which relies on recursion. The point of the demonstration is for you to see how much faster it runs than any of the other three algorithms.</p>
 <p>There are many other strategies for sorting that you will see in future courses.</p>
-<h2 id="video-explanations-12"><a class="header" href="#video-explanations-12">Video explanations</a></h2>
+<h2 id="video-explanations-13"><a class="header" href="#video-explanations-13">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/sorting_intro.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="selection-sort"><a class="header" href="#selection-sort">Selection sort</a></h1>
 <p>Selection sort is a notoriously inefficient sorting algorithm, but easier to understand than efficient strategies that you will learn in later courses. That's why it's frequently taught to first-year Computer Science students as a great application of nested loops.</p>
@@ -4187,7 +4188,7 @@ stop = time.time()
 </code></pre>
 <p>When we doubled the size of the array, the time quadrupled. This significant effect on the runtime as the size of the array increases follows the pattern of \(O(n^2)\) algorithms. It is the \(O(n^2)\ runtime is what makes selection sort so devastatingly slow for large arrays.</p>
 <p>In the first Data Structures and Algorithms course, you will learn how to determine the runtime of algorithms more completely using both experimental analysis and theoretical analysis.</p>
-<h2 id="video-explanations-13"><a class="header" href="#video-explanations-13">Video explanations:</a></h2>
+<h2 id="video-explanations-14"><a class="header" href="#video-explanations-14">Video explanations:</a></h2>
 <p>Part 1:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/select_sort_part1.mp4" width="480" height="270" controls></video></p>
 <p>Part 2:</p>
@@ -4277,7 +4278,7 @@ stop = time.time()
 <p>Notice that if additional data are added after the insert sort is complete, those elements can be inserted into the list once they are received. This ability to process the values piece-by-piece in a serial fashion is known as &quot;online sorting&quot;. Online sorting is useful when data is arriving in a continuous stream, such as a live data stream.</p>
 <h2 id="time-efficiency-considerations"><a class="header" href="#time-efficiency-considerations">Time efficiency considerations</a></h2>
 <p>If an already-sorted list is processed with insert-sort, the insertion of each new element requires only one compare, and no swapping. Thus, the algorithm runs in \(O(n)\) time. If the list is largely sorted, few extra compares and swaps are needed. So insert sort is actually an efficient algorithm for lists that are mostly sorted, but have just a few elements out of place.</p>
-<h2 id="video-explanations-14"><a class="header" href="#video-explanations-14">Video explanations:</a></h2>
+<h2 id="video-explanations-15"><a class="header" href="#video-explanations-15">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/insertion_sort_part1.mov" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="visual-depictions-of-sorting-algorithms"><a class="header" href="#visual-depictions-of-sorting-algorithms">Visual depictions of sorting algorithms</a></h1>
 <p>Many people have created cool visualizations of sorting algorithms. Here are a few good ones:</p>

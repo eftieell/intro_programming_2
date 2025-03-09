@@ -189,6 +189,7 @@ scores = [[94, 78, 56], [67, 82, 91]]
 <pre><code class="language-python">ten_odds = []
 for i in range(10):
     ten_odds.append(2*i+1)
+print(ten_odds)  # outputs [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 
 # get input from user, appending each entry into list:
 friends = []
@@ -227,7 +228,7 @@ num_items = list(numbers.items())   #num_items is [(1, 'one'), (2, 'two'), (3, '
 </code></pre>
 <h2 id="accessing-elements-in-a-list"><a class="header" href="#accessing-elements-in-a-list">Accessing elements in a list</a></h2>
 <p>You can access (view or change) each element in a list using its index value 
-(the number of its location in the list) within square brackets. For example, <code>list_name[n]</code>.</p>
+(the number of its location in the list) within square brackets. For example, <code>list_name[index]</code>.</p>
 <p>Elements in a list are indexed starting at 0, so <code>list_name[0]</code> gives the value of the first element of the list,
 and <code>list_name[n]</code> gives the value of the n+1st element in the list.</p>
 <p>You can find out the number of elements in a python list with <code>len(list_name)</code>. 
@@ -254,7 +255,7 @@ languages[0] = &quot;C#&quot;
 <ul>
 <li>Use the <code>remove()</code> list method. The parameter you pass is the <em>value</em> you want to remove. 
 So the <code>remove()</code> method traverses through the list until it reaches the <em>first</em> instance of the value. That value is then removed from the list.
-Details: this method does not return a value. If the value you want to return is not found in the list, python throws a <code>ValueError</code>.</li>
+Details: this method does not return a value. If the value you want to remove is not found in the list, python throws a <code>ValueError</code>.</li>
 </ul>
 <pre><code class="language-python"># Remove the first instance of &quot;Perl&quot; from the list
 languages.remove(&quot;Perl&quot;)

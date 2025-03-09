@@ -240,11 +240,11 @@ print(t1)
 Vertices: (7, 5) (10, 5) (8, 6)
 </code></pre>
 <p>The variable <code>t1</code> has three instance variables, each of which are points. 
-For example, <code>t1.vertex1</code> represents the point (4, 1). Notice that since <code>t1.vertex</code> is a <code>Point</code>, 
-we can actually access its two instance variables, with <code>t1.vertex.x</code> and <code>t1.vertex.y</code>. 
+For example, <code>t1.vertex1</code> represents the point (4, 1). Notice that since <code>t1.vertex1</code> is a <code>Point</code>, 
+we can actually access its two instance variables, with <code>t1.vertex1.x</code> and <code>t1.vertex1.y</code>. 
 However, in object-oriented programming practice, by convention we never modify an
 instance variable's instance variable. Instead, we rely on that class to do the modification. 
-You can see an example of this in the code above: the <code>shift</code> method in the <code>Triangle</code> class does not itself change the values of each vertex. 
+You can see an example of this in the code above: the <code>shift()</code> method in the <code>Triangle</code> class does not itself change the values of each vertex. 
 Instead, it calls the <code>Point</code> class's <code>shift()</code> method
 to modify the <code>x</code> and <code>y</code> values of each of the three vertices.</p>
 <h2 id="a-class-with-a-list-as-an-instance-variable"><a class="header" href="#a-class-with-a-list-as-an-instance-variable">A class with a list as an instance variable</a></h2>
@@ -254,7 +254,7 @@ Notice that the methods in this class will often need to traverse through that l
 In the code below, you see these loops both in the <code>__str__()</code> method and the <code>shift()</code> method. Notice two different styles of iteration (looping through index or looping through content) are used, 
 so you can see different options. Carefully trace the code and predict the output to the terminal.</p>
 <pre><code class="language-python">class Polygon:
-    def __init__(self, vertices:list):
+    def __init__(self, vertices: list[Point]):
         self.vertices = vertices
 
     def __str__(self)-&gt;str:

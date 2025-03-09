@@ -192,7 +192,7 @@ the identical list:</p>
 <p>Consider this list:</p>
 <pre><code class="language-python">digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 </code></pre>
-<p>That sam list can be defined more robustly using list comprehension:</p>
+<p>That same list can be defined more robustly using list comprehension:</p>
 <pre><code class="language-python">digits = [str(i) for i in range(10)]
 </code></pre>
 <p>With practice, you'll use list-comprehension creatively in a wide variety of applications.</p>
@@ -286,7 +286,7 @@ nested_list = [[digit + letter for letter in letters] for digit in digits]
 </code></pre>
 <p>Here we have a list comprehension with the loop <code>for digit in digits</code>. For each of those digits, an entire list is created,
 resulting in a list of lists. Each internal list is itself created with a list comprehension (<code>[digit + letter for letter in letters]</code>)
-So we have a nested list-comprehension (not a list comprehension with nested loops). The makes the result a nested list. 
+So we have a nested list-comprehension (not a list comprehension with nested loops). This makes the result a nested list. 
 (<code>nested_list = [['1a', '1b', '1c'], ['2a', '2b', '2c'], ['3a', '3b', '3c']]</code>).</p>
 
                     </main>

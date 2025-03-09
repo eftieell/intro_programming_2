@@ -169,9 +169,9 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="a-function-can-return-a-value"><a class="header" href="#a-function-can-return-a-value">A function can return a value</a></h1>
+                        <h1 id="functions-that-return-a-value"><a class="header" href="#functions-that-return-a-value">Functions that return a value</a></h1>
 <p>Once a function completes its task, sometimes it is useful for the function to <em>return</em> a result to the line of code that called it. You can choose the type of the returned value. If no value is returned, then the return type is <code>None</code>.</p>
-<p>For example, the print function, as in</p>
+<p>For example, the <code>print()</code> function, as in</p>
 <pre><code class="language-python">print(&quot;Hello!&quot;)
 </code></pre>
 <p>takes an argument (the input to the function is <code>&quot;Hello&quot;</code>), but it does not return a value.</p>
@@ -186,7 +186,7 @@ x_position = random()
 print(random())
 </code></pre>
 <h2 id="user-defined-functions-that-return-values"><a class="header" href="#user-defined-functions-that-return-values">User-defined functions that return values</a></h2>
-<p>When you define a function, you only need to do so once. Once defined, however, a function may be invoked (used) many times. You can think of a function as an opaque box that performs work with optional inputs and an optional output.</p>
+<p>When you define a function, you only need to do so once. Once defined, however, a function may be invoked (used) many times. You can think of a function as a black box that performs work with optional inputs and an optional output. When invoking the function, you don't need to be concerned any longer about its inner workings.</p>
 <p>The syntax is:</p>
 <pre><code class="language-python">def function_name(optional parameters) -&gt; return type:
     # Indented code block
@@ -215,6 +215,7 @@ The last line gives full formatted output to the user.</p>
 <pre><code class="language-python">user_temp_f = float(input(&quot;Please enter the temperature in Fahrenheit: &quot;))
 print(f&quot;{user_temp_f} degrees Fahrenheit is {celsius(user_temp_f):.1f} degrees Celsius&quot;)
 </code></pre>
+<p>Technical note: python is known as a <em>dynamically-typed language</em>. This means that the types of each variable are not determined until you run the program. Thus, unlike many other programming languages, mismatch of types (e.g., your function returns a value of the wrong type) is not detected until run-time. A consequence of this is that explicitly stating the return type in python is optional. In the context of this course, however, we will typically explicitly state the return type.</p>
 <h2 id="boolean-functions"><a class="header" href="#boolean-functions">Boolean functions</a></h2>
 <p>Note that a function may return a value of type <code>bool</code>. These are called <em>boolean functions</em>, and just as before, the return value can be used as an expression. For example:</p>
 <pre><code class="language-python">def first_digit_even(number: int) -&gt; bool:
@@ -259,7 +260,7 @@ A prime number is an integer bigger than 1 that is divisible only by 1 and by it
         if number % tester == 0:
             # We now know that tester divides number, so
             # we know the answer - number is not prime!
-            # The function teriminates, returning False
+            # The function terminates, returning False
             return False
         else:
             tester += 1

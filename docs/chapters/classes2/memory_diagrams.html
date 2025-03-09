@@ -170,7 +170,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="drawing-memory-diagram-of-complicated-objects"><a class="header" href="#drawing-memory-diagram-of-complicated-objects">Drawing memory diagram of complicated objects</a></h1>
-<p>In a previous section (<a href="variables_are_references.html">Variables are references</a>, we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:</p>
+<p>In a previous section (<a href="variables_are_references.html">Variables are references</a>), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:</p>
 <h2 id="a-simple-example"><a class="header" href="#a-simple-example">A simple example</a></h2>
 <p>Consider the following code:</p>
 <pre><code class="language-python">class Point:
@@ -213,7 +213,7 @@ p2 = Point(7, 1)
 p3 = Point(5, 2)
 t1 = Triangle(p1, p2, p3)
 </code></pre>
-<p>Here's a diagram showing the state of memory after the above code executes. Examine each box and arrow carefully. Notice in particular that each of the vertex instance variables refer to objects, so they each contain an error to points to a <code>Point</code> objects. Notice also that <code>p1</code>, <code>p1</code> and <code>p3</code> are part of the diagram, and they refer to the same <code>Point</code> objects as are stored in the <code>Triangle</code> <code>t1</code>.</p>
+<p>Here's a diagram showing the state of memory after the above code executes. Examine each box and arrow carefully. Notice in particular that each of the vertex instance variables refer to objects, so they each contain an arrow that points to a <code>Point</code> object. Notice also that <code>p1</code>, <code>p1</code> and <code>p3</code> are part of the diagram, and they refer to the same <code>Point</code> objects as are stored in the <code>Triangle</code> <code>t1</code>.</p>
 <img src="memory_diagram_7.png" alt="Memory diagram of a triangle object, which has three vertices that are each Point objects" width = 550>
 <p>Aided by the above memory diagram, trace through the following code, to be run after the main code block above, and predict its output:</p>
 <pre><code class="language-python">p1.x = 10
