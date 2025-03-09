@@ -2,7 +2,7 @@
 
 The final easy-to-implement but notoriously-slow sort algorithm we will study is insertion sort.
 
-Like selection sort and bubble sort, insertion sort also is a \\(O(n^2))\\ algorithm. However, insertion sort has some redeeming features:
+Like selection sort and bubble sort, insertion sort also is on average a \\(O(n^2))\\) algorithm. However, insertion sort has some redeeming features:
 * It is easy to understand, sorting similarly to how humans would sort a stack of papers or a poker hand.
 * Like selection sort and bubble sort, the sorting happens in place. This means it does not use extra memory.
 * It is efficient for arrays that are already largely sorted.
@@ -56,10 +56,10 @@ We insert 7 into the sorted part of the list. Notice that 5 compares and 4 swaps
 ```
 ## Online sorting
 
-Notice that if additional data are added after the insert sort is complete, those elements can be inserted into the list once they are received. This ability to process the values piece-by-piece in a serial fashion is known as "online sorting". Online sorting is useful when data is arriving in a continuous stream, such as a live data stream.
+Notice that if additional data are added after the insertion sort is complete, those elements can be inserted into the list once they are received. This ability to process the values piece-by-piece in a serial fashion is known as "online sorting". Online sorting is useful when data is arriving in a continuous stream, such as a live data stream.
 
 ## Time efficiency considerations
-If an already-sorted list is processed with insert-sort, the insertion of each new element requires only one compare, and no swapping. Thus, the algorithm runs in \\(O(n)\\) time. If the list is largely sorted, few extra compares and swaps are needed. So insert sort is actually an efficient algorithm for lists that are mostly sorted, but have just a few elements out of place.
+While insertion sort is on average a \\(O(n^2)\\), algorithm, if an already-sorted list is processed with insertion sort, the insertion of each new element requires only one compare, and no swapping. Thus, the algorithm runs in \\(O(n)\\) time in this best case scenario. If the list is largely sorted, few extra compares and swaps are needed. So insertion sort is actually an efficient algorithm for lists that are mostly sorted, but have just a few elements out of place.
 
 ## Video explanations:
-<video src="https://cs.du.edu/~ftl/1352/videos/sorting/insertion_sort_part1.mov" width="480" height="270" controls></video>
+<video src="https://cs.du.edu/~ftl/1352/videos/sorting/insertion_sort.mov" width="480" height="270" controls></video>

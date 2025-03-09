@@ -1,6 +1,6 @@
 # Sorting - introduction
 
-If data items are sorted, there is a very fast recursive algorithm (binary search) for locating the item you are looking for. But if data items are unsorted, you have to look at each item, one after the other, to find the item you are looking for. This is much slower. Therefore, we often store data in sorted form. Sorting is essentially important in Computer Science!
+If data items are sorted, there is a very fast recursive algorithm (binary search) for locating the item you are looking for. But if data items are unsorted, you have to look at each item, one after the other, to find the item you are looking for. This is much slower. Therefore, we often store data in sorted form. Sorting is of essential importance in Computer Science!
 
 In python there are multiple built-in methods/functions to sort data.
 * The python list `sort()` method.

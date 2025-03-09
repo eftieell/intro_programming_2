@@ -118,7 +118,7 @@ Sample output:
 ```
 Elapsed time for array with 10000 elements: 5.73 seconds
 ```
-When we doubled the size of the array, the time quadrupled. This significant effect on the runtime as the size of the array increases follows the pattern of \\(O(n^2)\\) algorithms. It is the \\(O(n^2)\\ runtime is what makes selection sort so devastatingly slow for large arrays.
+When we doubled the size of the array, the time quadrupled. This significant effect on the runtime as the size of the array increases follows the pattern of \\(O(n^2)\\) algorithms. It is the \\(O(n^2)\\) runtime is what makes selection sort so devastatingly slow for large arrays.
 
 In the first Data Structures and Algorithms course, you will learn how to determine the runtime of algorithms more completely using both experimental analysis and theoretical analysis.
 
