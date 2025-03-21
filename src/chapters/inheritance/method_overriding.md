@@ -24,7 +24,7 @@ class Circle(Shape):
         self.radius = r
 
     def __str__(self)->str:
-        return f"{super().__str__()}, circle radius: {self.radius:.3g}"
+        return f"{super().__str__()}, circle radius: {self.radius:.4g}"
 
 # main code block:
 shape1 = Shape(0.6, 0.2, dudraw.BLUE)
@@ -34,7 +34,7 @@ circle1.draw()
 dudraw.show(10000)
 ```
 
-Trace the main code block carefully. Notice that we instantiate a `Shape` object called `shape1`. It has instance variables `x`, `y`, and `color`. When `shape1.draw()` is called, a point is drawn to the (x, y) location, in the right color. Then a `Circle` object called `circle1` is instantiated, and its instance variables are initialized. Notice it has instance variables `x`, `y`, and `color` inherited from its parent class `Shape`, as well as an instance variable for its radius. On the next line, you might be fooled by the call `circle1.draw()`. If you're thinking that the program will crash on that line, since the `Circle` class does not have a `draw()` method, you've forgotten that `Circle` *inherits all attributes* from `Shape`. So the `draw()` method from `Shape` gets called!  Sadly, `Shape`'s `draw()` method just draws a point. This is not how we want to draw a circle. The solution is to *override* the `draw()` method.
+Trace the main code block carefully. Notice that we instantiate a `Shape` object called `shape1`. It has instance variables `x`, `y`, and `color`. When `shape1.draw()` is called, a point is drawn to the (x, y) location, in the color specified by `self.color`. Then a `Circle` object called `circle1` is instantiated, and its instance variables are initialized. Notice it has instance variables `x`, `y`, and `color` inherited from its parent class `Shape`, as well as an instance variable for its radius. On the next line, you might be fooled by the call `circle1.draw()`. If you're thinking that the program will crash on that line, since the `Circle` class does not have a `draw()` method, you've forgotten that `Circle` *inherits all attributes* from `Shape`. So the `draw()` method from `Shape` gets called!  Sadly, `Shape`'s `draw()` method just draws a point. This is not how we want to draw a circle. The solution is to *override* the `draw()` method.
 
 ## How to override methods
 
@@ -49,7 +49,7 @@ class Shape:
         self.color = c
 
     def __str__(self)->str:
-        return f"center: ({self.x}, {self.y}), color: {self.color}"
+        return f"center: ({self.x:.4g}, {self.y:.4g}), color: {self.color}"
     
     def draw(self):
         dudraw.set_pen_color(self.color)
@@ -62,7 +62,7 @@ class Circle(Shape):
         self.radius = r
 
     def __str__(self)->str:
-        return f"{super().__str__()}, radius: {self.radius}"
+        return f"{super().__str__()}, circle radius: {self.radius:.4g}"
 
     # This method overrides the draw() method in the Shape class
     def draw(self):
@@ -162,6 +162,11 @@ Employee Winona Begay is unpaid.
 Printing paycheck for $1035.0 written to Suresh Batra
 Printing weekly paycheck for $1290.75 written to Karala Lyberth
 ```
+
+## Video explanations
+
+<video src="https://cs.du.edu/~ftl/1352/videos/inheritance/method_overriding.mp4" width="480" height="270" controls></video>
+
 
 
 

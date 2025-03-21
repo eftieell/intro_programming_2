@@ -31,7 +31,7 @@ class Circle(Shape):
         self.radius = r
 
     def __str__(self)->str:
-        return f"{super().__str__()}, circle radius: {self.radius:.3g}"
+        return f"{super().__str__()}, circle radius: {self.radius:.4g}"
 
     # This method overrides the draw() method in the Shape class
     def draw(self)->str:
@@ -49,24 +49,24 @@ class Rectangle(Shape):
         return f"{super().__str__()}, rect width: {self.width:.4g}, rect height: {self.height:.4g}"
 
     # This method overrides the draw() method in the Shape class
-    def draw(self)->str:
+    def draw(self):
         dudraw.set_pen_color(self.color)
-        dudraw.filled_rectangle(self.x, self.y, self.width, self.height)
+        dudraw.filled_rectangle(self.x, self.y, self.width/2, self.height/2)
 
 class Ellipse(Shape):
 
-    def __init__(self, x: float, y: float, w: float, h: float, c: dudraw.Color):
+    def __init__(self, x: float, y: float, x_rad: float, y_rad: float, c: dudraw.Color):
         super().__init__(x, y, c)
-        self.width = w
-        self.height = h
+        self.x_rad = x_rad
+        self.y_rad = y_rad
 
     def __str__(self)->str:
-        return f"{super().__str__()}, ellipse x-rad: {self.width:.4f}, y-rad: {self.height:.4f}"
+        return f"{super().__str__()}, ellipse x-rad: {self.x_rad:.4f}, y-rad: {self.y_rad:.4f}"
 
     # This method overrides the draw() method in the Shape class
     def draw(self)->str:
         dudraw.set_pen_color(self.color)
-        dudraw.filled_ellipse(self.x, self.y, self.width, self.height)
+        dudraw.filled_ellipse(self.x, self.y, self.x_rad, self.y_rad)
 
 def rand_color()->dudraw.Color:
     return dudraw.Color(randint(0, 255), randint(0, 255), randint(0, 255))
@@ -106,4 +106,8 @@ This time, the `__str__()` method is called, depending on the type of the object
 If it is a `Shape`, then the `__str__()` method of the parent class is called.
 But when it is one of the child classes, the child class's overriding version of `__str__()` is called. 
 Each `__str__()` method in the child classes invokes the `__str__()` method of the parent to do the parent's part of the job.
+
+## Video explanations
+
+<video src="https://cs.du.edu/~ftl/1352/videos/inheritance/polymorphism.mp4" width="480" height="270" controls></video>
 

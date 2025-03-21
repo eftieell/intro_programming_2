@@ -80,7 +80,7 @@ class Circle(Shape):
 
     # The __str__() method calls its parent class Shape to do part of the formatting work
     def __str__(self)->str:
-        return f"{super().__str__()}, circle radius: {self.radius:.3g}"
+        return f"{super().__str__()}, circle radius: {self.radius:.4g}"
 
 
 # The __str__() methods for Rectangle and Ellipse are left to you
@@ -103,3 +103,13 @@ center: (0.6, 0.2), color: (0, 0, 255)
 center: (0.5, 0.25), color: (255, 0, 0), circle radius: 0.075
 ```
 While it is a common pattern for the base class to call on its `super()` to do part of the work of a method, it is not the only pattern. Another option is *method overriding*, explained in the next section.
+
+## Video explanations
+
+Motivation for inheritance:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/inheritance/inheritance_motivation.mp4" width="480" height="270" controls></video>
+
+Example of implementation:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/inheritance/inheritance_implementation.mp4" width="480" height="270" controls></video>

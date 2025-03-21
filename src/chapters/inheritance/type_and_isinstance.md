@@ -41,3 +41,7 @@ print(isinstance(circle1, Shape))   # True, by inheritance. Every Circle is a Sh
 print(isinstance(shape1, Shape))    # True (shape1 was instantiated as a Shape)
 print(isinstance(shape1, Circle))   # False, shape1 is not an instance of the child class Circle
 ```
+
+## Video explanations
+
+<video src="https://cs.du.edu/~ftl/1352/videos/inheritance/type_isinstance.mp4" width="480" height="270" controls></video>

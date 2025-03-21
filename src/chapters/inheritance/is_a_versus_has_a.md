@@ -61,3 +61,7 @@ In the above code, we have two classes, but they are not related by inheritance.
 
 In the main code block, note that the type of `t1` is `Triangle`
 (python outputs `<class '__main__.Triangle'>`, since the `Triangle` class is defined within the `__main__` module). The next line determines if `t1` is an instance of the `Triangle` class, which it is, since `t1` was instantiated as a `Triangle`. The final line, however, outputs `False`. The object `t1` *is not a* `Point`. Rather, it *has a* `Point` as one of its instance variables.
+
+## Video explanations
+
+<video src="https://cs.du.edu/~ftl/1352/videos/inheritance/is_a_versus_has_a.mp4" width="480" height="270" controls></video>

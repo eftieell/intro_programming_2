@@ -68,3 +68,13 @@ RecursionError: maximum recursion depth exceeded
 To avoid this problem, every recursive function must contain conditions to stop the recursion in at least one base case.
 
 In the next section you will see some examples of implementing recursive functions that perform useful and interesting tasks.
+
+## Video explanations
+First recursion example, with flaws:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/recursion/bad_recursion.mp4" width="480" height="270" controls></video>
+
+Second recursion example, this one works:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/recursion/good_recursion.mp4" width="480" height="270" controls></video>
+
