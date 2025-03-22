@@ -75,9 +75,15 @@ def ask_ok(prompt, retries=4, reminder='Please try again!'):
         print(reminder)
 ```
 The above function can be called multiple ways:
-- giving only the mandatory argument: `ask_ok('Do you really want to quit?')`
+- giving only the mandatory argument: `ask_ok('Do you really want to quit? ')`
 
-- giving one of the optional arguments: `ask_ok('OK to overwrite the file?', 2)`
+- giving one of the optional arguments: `ask_ok('OK to overwrite the file? ', 2)`
 
-- or even giving all arguments: `ask_ok('OK to overwrite the file?', 2, 'Come on, only yes or no!')`
+- or even giving all arguments: `ask_ok('OK to overwrite the file? ', 2, 'Come on, only yes or no!')`
 
+## A note about order of parameters
+
+When you specify default values for parameters in the definition of a function,  those parameters must come last in the list of parameters. In other words, if the caller can omit passing one or more arguments, those omitted arguments must come last.
+
+## Video explanations
+<video src="https://cs.du.edu/~ftl/1352/videos/functions/default_argument_values.mp4" width="480" height="270" controls></video>

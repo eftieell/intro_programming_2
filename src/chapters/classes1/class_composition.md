@@ -85,6 +85,12 @@ You can see an example of this in the code above: the `shift()` method in the `T
 Instead, it calls the `Point` class's `shift()` method
 to modify the `x` and `y` values of each of the three vertices.
 
+## UML diagrams for class composition
+
+The UML diagram below shows the relationship between the `Triangle` class and the `Point` class. Notice the diamond at the start of the line connecting them - this symbol indicates a composition relationship. A `Triangle` object *has* three `Point` objects as its instance variables.
+
+<img src="class_composition.png" alt="UML diagram showing class composition" width = 450>
+
 ## A class with a list as an instance variable
 
 Below we define and use the class `Polygon`. It has one instance variable, which is a list of its vertices

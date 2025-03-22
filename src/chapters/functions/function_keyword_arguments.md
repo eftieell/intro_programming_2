@@ -54,3 +54,6 @@ Output:
 Margaret Wise Brown wrote the book Goodnight Moon.
 J.K. Rowling wrote the book Harry Potter.
 ```
+
+## Video explanations
+<video src="https://cs.du.edu/~ftl/1352/videos/functions/keyword_arguments.mp4" width="480" height="270" controls></video>

@@ -8,6 +8,7 @@
     - [Default values for arguments (new)](chapters/functions/functions_default_arguments.md)
     - [Keyword arguments (new)](chapters/functions/function_keyword_arguments.md)
     - [Measuring runtime for functions (new)](chapters/functions/experimental_runtime.md)
+    - [Measuring runtime as n changes (new)](chapters/functions/experimental_runtime_n.md)
     - [Call stack memory diagrams (new)](chapters/functions/call_stack.md)
 - [Lists and Dictionaries (Review + New)](chapters/lists_and_dicts/lists_and_dicts_chapter.md)
     - [Python lists (review)](chapters/lists_and_dicts/lists.md)
