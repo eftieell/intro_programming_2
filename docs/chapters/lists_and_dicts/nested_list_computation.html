@@ -250,7 +250,7 @@ print(average) # outputs 79.5
 <h3 id="compute-a-quantity-for-a-single-column"><a class="header" href="#compute-a-quantity-for-a-single-column">Compute a quantity for a single column</a></h3>
 <p>If we now want to calculate a quantity for only one specific column, there is similarly no need for a nested loop.
 Instead, the column index never changes, but the row index traverses over all possible rows.
-This means that the <code>row_index</code> will vary from 0 to <code>len(scores)-1</code> (the number of rows is <code>len(scores))</code>.
+This means that the <code>row_index</code> will vary from 0 to <code>len(scores)-1</code> (the number of rows is <code>len(scores)</code>.
 The code below calculates the average of all students on Quiz 4.</p>
 <pre><code class="language-python"># Average score of all students on Quiz 4. The column_index of 3 doesn't change.
 # The row_index varies from 0 to 2. Add up all 3 scores, then divide

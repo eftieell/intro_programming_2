@@ -171,7 +171,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="what-is-this-book"><a class="header" href="#what-is-this-book">What is this book?</a></h1>
-<p>This is the on-line textbook used at the University of Denver for the second-quarter Introduction to Programming 2 course (COMP 1352). This course is a continuation of the preceding quarter (Introduction to Programming 1, COMP 1351). This book is written to teach programming in python, and relies on <code>dudraw</code>, a simple in-house graphics package that extends Princeton's <code>stddraw</code>. Instructions on software installation can be found in the on-line textbook for COMP 1351, which you can find at <a href="https://cs.du.edu/~intropython/intro-to-programming/">Introduction to Programming 1</a>.</p>
+<p>This is the on-line textbook used at the University of Denver for the second-quarter Introduction to Programming 2 course (COMP 1352). This course is a continuation of the preceding quarter (Introduction to Programming 1, COMP 1351). This book is written to teach programming in python, and relies on <code>dudraw</code>, a simple in-house graphics package that extends Princeton's <code>stddraw</code>. Instructions on software installation can be found in the on-line textbook for COMP 1351, which you can find at <a href = "https://cs.du.edu/~intropython/intro-to-programming/" target = "blank">https://cs.du.edu/~intropython/intro-to-programming/</a> </p>
 <p>©2025 Faan Tone Liu</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="review-of-producing-animations-using-the-dudraw-graphics-package"><a class="header" href="#review-of-producing-animations-using-the-dudraw-graphics-package">Review of producing animations using the dudraw graphics package</a></h1>
 <p>The present section reviews how to animate drawings using the <code>dudraw</code> package, assuming you already know how to create simple drawings using <code>dudraw</code>.
@@ -846,13 +846,13 @@ then we are very interested in how the execution time grows as the size of the p
 The pattern of this change is called the <em>order of growth</em> or <em>time complexity</em> of the algorithm.</p>
 <ul>
 <li>
-<p>If doubling the size of <code>n</code> results in a doubling of the execution time for the algorithm, then we call the algorithm <em>Big-O of n</em> or <em>linear</em>. We write this \(O(n)\).</p>
+<p>If doubling the size of \(n\) results in a doubling of the execution time for the algorithm, then we call the algorithm <em>Big-O of n</em> or <em>linear</em>. We write this \(O(n)\).</p>
 </li>
 <li>
-<p>If doubling the size of <code>n</code> results in a quadrupling of the execution time, then we call the algorithm <em>Big-O of n squared</em> or <em>quadratic</em>. We write this \(O(n^2)\).</p>
+<p>If doubling the size of \(n\) results in a quadrupling of the execution time, then we call the algorithm <em>Big-O of n squared</em> or <em>quadratic</em>. We write this \(O(n^2)\).</p>
 </li>
 <li>
-<p>If doubling the size of <code>n</code> results in a factor of 8 increase of the execution time, then we call the algorithm <em>Big-O of n-cubed</em> or <em>cubic</em>. We write this \(O(n^3)\).</p>
+<p>If doubling the size of \(n\) results in a factor of 8 increase of the execution time, then we call the algorithm <em>Big-O of n-cubed</em> or <em>cubic</em>. We write this \(O(n^3)\).</p>
 </li>
 </ul>
 <p>The code below is a modification of the original timing code, but with an extra loop that modifies the size of <code>n</code>.
@@ -890,7 +890,7 @@ runtime for do_something(500000000): 15.50 seconds
 runtime for do_something(600000000): 18.69 seconds
 </code></pre>
 <p>We can see by a rough look at the data above that the algorithm shows linear, or \(O(n)\), behavior. Look at the time behavior when <code>n</code> is doubled or tripled:</p>
-<p>When the size of <code>n</code> is doubled from 100 million to 200 million, the time approximately doubles (\(6.18 sec/3.13 sec \approx 2\)).</p>
+<p>When the size of <code>n</code> is doubled from 100 million to 200 million, the time approximately doubles (\(6.18/3.13 \approx 2\)).</p>
 <p>When the size of <code>n</code> is tripled from 100 million to 300 million, the time approximately triples (\(9.24/3.13 \approx 3\)).</p>
 <p>When the size of <code>n</code> is doubled from 300 million to 600 million, the time approximately doubles (\(18.69/9.24 \approx 2\)).</p>
 <p>When the size of <code>n</code> is tripled from 200 million to 600 million, the time approximately triples (\(18.69/6.18 \approx 3\)).</p>
@@ -932,10 +932,10 @@ runtime for do_something_else(40000): 50.97 seconds
 runtime for do_something_else(50000): 80.41 seconds
 runtime for do_something_else(60000): 116.78 seconds
 </code></pre>
-<p>This time, a rough look at the data above indicates that the algorithm shows quadratic, or \(O(n^2)\), behavior. Look at the time behavior when <code>n</code> is doubled or tripled:</p>
-<p>When the size of <code>n</code> is doubled from 10000 to 20000, the time increases by approximately a factor of 4 \(12.37/3.09 \approx 4.003\)).</p>
-<p>When the size of <code>n</code> is tripled from 10000 to 30000, the time increases by approximately a factor of 9 (\(28.08/3.09 \approx 9.09\)).</p>
-<p>When the size of <code>n</code> is doubled from 30000 to 60000, the time increases by approximately a factor of 4 (\(116.78/28.08 \approx 4.16\)).</p>
+<p>This time, a rough look at the data above indicates that the algorithm shows quadratic, or \(O(n^2)\), behavior. Look at the time behavior when \(n\) is doubled or tripled:</p>
+<p>When the size of \(n\) is doubled from 10000 to 20000, the time increases by approximately a factor of 4 (\(12.37/3.09 \approx 4.003\)).</p>
+<p>When the size of \(n\) is tripled from 10000 to 30000, the time increases by approximately a factor of 9 (\(28.08/3.09 \approx 9.09\)).</p>
+<p>When the size of \(n\) is doubled from 30000 to 60000, the time increases by approximately a factor of 4 (\(116.78/28.08 \approx 4.16\)).</p>
 <p>When the size of <code>n</code> is tripled from 20000 to 60000, the time increases by approximately a factor of 9 (\(116.78/12.37 \approx 9.44\))</p>
 <p>Graphing the data hints at a parabolic (quadratic) shape. Caution though: while this graph convinces us that
 the time complexity is not linear, graphs that are concave up might represent quadratic, cubic, exponential, or other growth rates.</p>
@@ -996,7 +996,7 @@ function is invoked, a new frame is created and added to the top of the call sta
 <p><video src="https://cs.du.edu/~ftl/1352/videos/functions/call_stack_simplest_case.mp4" width="480" height="270" controls></video></p>
 <h1 id="another-example"><a class="header" href="#another-example">Another example</a></h1>
 <p>The video below demonstrates tracing through the following code, and maintaining the call stack memory diagram through each step.</p>
-<pre><code>def fourth(number: int)-&gt;int:
+<pre><code class="language-python">def fourth(number: int)-&gt;int:
     partial_result = cube(number)
     return partial_result*number
 
@@ -1093,7 +1093,7 @@ num_items = list(numbers.items())   #num_items is [(1, 'one'), (2, 'two'), (3, '
 <p>You can access (view or change) each element in a list using its index value 
 (the number of its location in the list) within square brackets. For example, <code>list_name[index]</code>.</p>
 <p>Elements in a list are indexed starting at 0, so <code>list_name[0]</code> gives the value of the first element of the list,
-and <code>list_name[n]</code> gives the value of the n+1st element in the list.</p>
+and <code>list_name[i]</code> gives the value of the i+1st element in the list.</p>
 <p>You can find out the number of elements in a python list with <code>len(list_name)</code>. 
 So the value of the last element of a list is <code>list_name[len(list_name)-1]</code>. 
 Alternately, in python, you can use an index of -1 for the last element of a list, so <code>list_name[-1]</code> is the value of the last element.
@@ -1420,6 +1420,8 @@ nested_list = [[digit + letter for letter in letters] for digit in digits]
 resulting in a list of lists. Each internal list is itself created with a list comprehension (<code>[digit + letter for letter in letters]</code>)
 So we have a nested list-comprehension (not a list comprehension with nested loops). This makes the result a nested list. 
 (<code>nested_list = [['1a', '1b', '1c'], ['2a', '2b', '2c'], ['3a', '3b', '3c']]</code>).</p>
+<h2 id="video-explanations-5"><a class="header" href="#video-explanations-5">Video explanations</a></h2>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/lists_and_dictionaries/list_comprehension.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="nested-lists-also-called-2d-lists"><a class="header" href="#nested-lists-also-called-2d-lists">Nested lists (also called 2D lists)</a></h1>
 <p>You've already learned about nested lists. The material below is a copy of the content found here: </p>
 <ul>
@@ -1442,7 +1444,7 @@ Writing a computer program in python to implement any of the following games wou
 <figure>
 <img src="chapters/lists_and_dicts/games_2D.png" alt="Images of 2-dimensional games" class="center", width="500">
 </figure>
-<p>Another example is the storage of digital images, which can be stored as 2D lists. If you zoom in closely on a digital image, you will see that the image is composed of small squares of color called pixels (the word comes from “<em>pic</em>ture <em>el</em>ements”).
+<p>Another example is the storage of digital images, which can be stored as 2D lists. If you zoom in closely on a digital image, you will see that the image is composed of small squares of color called pixels (the word pixel comes from combining the words “<u><em>pic</em></u>ture <u><em>el</em></u>ements”).
 So the image can be stored as a 2D grid of colors. In python this is a 2D list, or a list of lists.</p>
 <figure>
 <img src="chapters/lists_and_dicts/pixels.png" alt="Visual demonstrating how images are composed of pixels" class="center", width="500">
@@ -1705,7 +1707,7 @@ for i in range(len(cities)):
     if i == len(cities) - 1:
         print'I love {cities[i]}!')
     else:
-        print(f'I love {cities[i]}&quot;, end = ', ')
+        print(f'I love {cities[i]}', end = ', ')
 </code></pre>
 <p>Output:</p>
 <pre><code>I love Denver, I love Colorado Springs, I love Pueblo!
@@ -1876,7 +1878,7 @@ print(average) # outputs 79.5
 <h3 id="compute-a-quantity-for-a-single-column"><a class="header" href="#compute-a-quantity-for-a-single-column">Compute a quantity for a single column</a></h3>
 <p>If we now want to calculate a quantity for only one specific column, there is similarly no need for a nested loop.
 Instead, the column index never changes, but the row index traverses over all possible rows.
-This means that the <code>row_index</code> will vary from 0 to <code>len(scores)-1</code> (the number of rows is <code>len(scores))</code>.
+This means that the <code>row_index</code> will vary from 0 to <code>len(scores)-1</code> (the number of rows is <code>len(scores)</code>.
 The code below calculates the average of all students on Quiz 4.</p>
 <pre><code class="language-python"># Average score of all students on Quiz 4. The column_index of 3 doesn't change.
 # The row_index varies from 0 to 2. Add up all 3 scores, then divide
@@ -2095,7 +2097,7 @@ print(rectangle1.area())
 rectangle2.draw()
 dudraw.show(10000)
 </code></pre>
-<h2 id="video-explanations-5"><a class="header" href="#video-explanations-5">Video explanations</a></h2>
+<h2 id="video-explanations-6"><a class="header" href="#video-explanations-6">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/implementing_classes.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-output-the-contents-of-an-object-to-the-terminal"><a class="header" href="#how-to-output-the-contents-of-an-object-to-the-terminal">How to output the contents of an object to the terminal</a></h1>
 <p>For reference, in this section we will continue developing the <code>Rectangle</code> class created in the previous section:</p>
@@ -2150,7 +2152,7 @@ print(rectangle1)
 <p>is equivalent to</p>
 <pre><code class="language-python">rectangle1.__str__()
 </code></pre>
-<h2 id="video-explanations-6"><a class="header" href="#video-explanations-6">Video explanations</a></h2>
+<h2 id="video-explanations-7"><a class="header" href="#video-explanations-7">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/print_object.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="lists-of-objects"><a class="header" href="#lists-of-objects">Lists of objects</a></h1>
 <p>If we have many objects, we can store them in a list. This use of classes highlights their power.</p>
@@ -2247,7 +2249,7 @@ center: (0.6660610136763881, 0.9802962789008293), width: 0.02, height: 0.02, cen
 <p>It is good programming practice in python to implement a <code>__repr__()</code> method in every class.</p>
 <p>Note: in python, there is another official purpose for <code>__repr__()</code> methods, 
 so in future work you might be required to have <code>__repr__()</code> produce strings with a different format than <code>__str__()</code>.</p>
-<h2 id="video-explanations-7"><a class="header" href="#video-explanations-7">Video explanations</a></h2>
+<h2 id="video-explanations-8"><a class="header" href="#video-explanations-8">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/list_of_objects.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="classes-can-have-a-simple-or-more-complicated-structure"><a class="header" href="#classes-can-have-a-simple-or-more-complicated-structure">Classes can have a simple, or more complicated structure</a></h1>
 <p>We'll start with a simple class, and then show how it can be used to build more complicated and useful classes.</p>
@@ -2361,7 +2363,7 @@ print(poly)
 <pre><code>vertices: (4, 0) (0, 4) (4, 8) (8, 4) 
 vertices: (14, 20) (10, 24) (14, 28) (18, 24) 
 </code></pre>
-<h2 id="video-explanations-8"><a class="header" href="#video-explanations-8">Video explanations</a></h2>
+<h2 id="video-explanations-9"><a class="header" href="#video-explanations-9">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/class_composition.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="class-variables"><a class="header" href="#class-variables">Class variables</a></h1>
 <h2 id="how-to-create-and-use-class-variables"><a class="header" href="#how-to-create-and-use-class-variables">How to create and use class variables</a></h2>
@@ -2547,7 +2549,7 @@ print(transaction2)
 id: 20001, source: 1234567800987, destination: 9876543200987, amount: 2319.24
 </code></pre>
 <p>Notice above that each id assigned is unique to that particular <code>FinancialTransaction</code> object. This technique guarantees no collisions of transaction id numbers.</p>
-<h2 id="video-explanations-9"><a class="header" href="#video-explanations-9">Video explanations</a></h2>
+<h2 id="video-explanations-10"><a class="header" href="#video-explanations-10">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/class_variables.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="class-part-2"><a class="header" href="#class-part-2">Class, Part 2</a></h2>
 <p>In this chapter we look at more details of implementing classes. This includes:</p>
@@ -2689,7 +2691,7 @@ print(default_time &lt; time2) # outputs True, midnight is earlier than every ot
     def __ge__(self, other: Time24)-&gt;bool:
         return not self &lt; other
 </code></pre>
-<h2 id="video-explanations-10"><a class="header" href="#video-explanations-10">Video explanations</a></h2>
+<h2 id="video-explanations-11"><a class="header" href="#video-explanations-11">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/comparison_dunder.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="using-dunder-methods-to-overload-arithmetic-operators"><a class="header" href="#using-dunder-methods-to-overload-arithmetic-operators">Using dunder methods to overload arithmetic operators</a></h2>
 <p>Suppose we have a class that it makes sense to do arithmetic with. For example, say I implement the <code>Point</code> class, where each point is a location in the (x, y) plane. In some contexts it is mathematically useful to add two points by separately adding their x and y coordinates. For example, (1, 3) + (6, 5) = (7, 8). Consider the following implementation of the <code>Point</code> class:</p>
@@ -2747,7 +2749,7 @@ print(point3)
 </div>
 <h2 id="other-dunder-methods"><a class="header" href="#other-dunder-methods">Other dunder methods</a></h2>
 <p>For the scope of this course, the dunder methods above are sufficient. But if you are curious about what other dunder methods exist, here's an external website that is thorough: <a href="https://www.pythonmorsels.com/every-dunder-method/" target="_blank">https://www.pythonmorsels.com/every-dunder-method/</a></p>
-<h2 id="video-explanations-11"><a class="header" href="#video-explanations-11">Video explanations</a></h2>
+<h2 id="video-explanations-12"><a class="header" href="#video-explanations-12">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/arithmetic_dunder.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="variables-are-references-to-objects"><a class="header" href="#variables-are-references-to-objects">Variables are references to objects</a></h1>
 <p>A variable that refers to an object is technically a reference. This means that the variable stores the memory address of the object itself (in other words, the location in your computer's memory where the full data for the object is stored). To see this in action, consider this implementation of the class <code>Point</code>, which has no <code>__str__()</code> method:</p>
@@ -2830,7 +2832,7 @@ print(point3)
 (7, 5)
 (7, 5)
 </code></pre>
-<h2 id="video-explanations-12"><a class="header" href="#video-explanations-12">Video explanations</a></h2>
+<h2 id="video-explanations-13"><a class="header" href="#video-explanations-13">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/variables_are_references.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-difference-between-identity-is-and-equality--of-objects"><a class="header" href="#the-difference-between-identity-is-and-equality--of-objects">The difference between &quot;identity&quot; (<code>is</code>) and &quot;equality&quot; (<code>==</code>) of objects</a></h1>
 <h2 id="identity"><a class="header" href="#identity">Identity</a></h2>
@@ -2871,7 +2873,7 @@ print(point1 == point3) # outputs True, because the x and y values for point1 an
 </code></pre>
 <h2 id="what-to-remember-from-this"><a class="header" href="#what-to-remember-from-this">What to remember from this:</a></h2>
 <p>Remember that <code>obj1 is obj2</code> determines if <code>obj1</code> and <code>obj2</code> have the same identity, while <code>obj1 == obj2</code> determines if <code>obj1</code> and <code>obj2</code> have the same values.</p>
-<h2 id="video-explanations-13"><a class="header" href="#video-explanations-13">Video explanations</a></h2>
+<h2 id="video-explanations-14"><a class="header" href="#video-explanations-14">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/identity_v_equality.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="drawing-memory-diagram-of-complicated-objects"><a class="header" href="#drawing-memory-diagram-of-complicated-objects">Drawing memory diagram of complicated objects</a></h1>
 <p>In a previous section (<a href="chapters/classes2/variables_are_references.html">Variables are references</a>), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:</p>
@@ -3130,7 +3132,7 @@ Output:</li>
 center: (0.5, 0.25), color: (255, 0, 0), circle radius: 0.075
 </code></pre>
 <p>While it is a common pattern for the base class to call on its <code>super()</code> to do part of the work of a method, it is not the only pattern. Another option is <em>method overriding</em>, explained in the next section.</p>
-<h2 id="video-explanations-14"><a class="header" href="#video-explanations-14">Video explanations</a></h2>
+<h2 id="video-explanations-15"><a class="header" href="#video-explanations-15">Video explanations</a></h2>
 <p>Motivation for inheritance:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/inheritance_motivation.mp4" width="480" height="270" controls></video></p>
 <p>Example of implementation:</p>
@@ -3288,7 +3290,7 @@ Employee Winona Begay is unpaid.
 Printing paycheck for $1035.0 written to Suresh Batra
 Printing weekly paycheck for $1290.75 written to Karala Lyberth
 </code></pre>
-<h2 id="video-explanations-15"><a class="header" href="#video-explanations-15">Video explanations</a></h2>
+<h2 id="video-explanations-16"><a class="header" href="#video-explanations-16">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/method_overriding.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="polymorphism"><a class="header" href="#polymorphism">Polymorphism</a></h1>
 <p>Object-oriented-programming really shines with the idea of polymorphism. The idea is simple and powerful. Recall in previous sections we saw that multiple classes that are related by inheritance could use method overriding so that each has a different version of a method with the same name. This means that if we have several of these objects, all of which potentially have different types, we can still sensibly store them all in one list. Then we can traverse that list, and call the method for each of them. The correct method will get called for each of them, based on each object's individual type.</p>
@@ -3392,7 +3394,7 @@ This time, the <code>__str__()</code> method is called, depending on the type of
 If it is a <code>Shape</code>, then the <code>__str__()</code> method of the parent class is called.
 But when it is one of the child classes, the child class's overriding version of <code>__str__()</code> is called. 
 Each <code>__str__()</code> method in the child classes invokes the <code>__str__()</code> method of the parent to do the parent's part of the job.</p>
-<h2 id="video-explanations-16"><a class="header" href="#video-explanations-16">Video explanations</a></h2>
+<h2 id="video-explanations-17"><a class="header" href="#video-explanations-17">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/polymorphism.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="determining-types-of-objects-using-type-and-isinstance"><a class="header" href="#determining-types-of-objects-using-type-and-isinstance">Determining types of objects using <code>type</code> and <code>isinstance</code></a></h1>
 <p>You learned about the python <code>type()</code> function in the first weeks of programming. For example:</p>
@@ -3428,7 +3430,7 @@ print(isinstance(circle1, Shape))   # True, by inheritance. Every Circle is a Sh
 print(isinstance(shape1, Shape))    # True (shape1 was instantiated as a Shape)
 print(isinstance(shape1, Circle))   # False, shape1 is not an instance of the child class Circle
 </code></pre>
-<h2 id="video-explanations-17"><a class="header" href="#video-explanations-17">Video explanations</a></h2>
+<h2 id="video-explanations-18"><a class="header" href="#video-explanations-18">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/type_isinstance.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="inheritance-versus-composition-is-a-versus-has-a"><a class="header" href="#inheritance-versus-composition-is-a-versus-has-a">Inheritance versus composition (&quot;is a&quot; versus &quot;has a&quot;)</a></h1>
 <p>In object-oriented programming (OOP), there are multiple ways that classes can interact. We've seen two of them: inheritance (in which one class <em>is</em> an extension of another class) and composition (in which one class <em>has</em> instance variables of another class). Inheritance is informally referred to as an &quot;is a&quot; relationship (since an object of a derived class is <em>also automatically</em> an instance of its parent class). Composition is informally referred to as a &quot;has a&quot; relationship (since the class owns, or has, instances of another class). To illustrate the difference, here are two examples from previoius sections.</p>
@@ -3482,7 +3484,7 @@ print(isinstance(t1, Point))     # False, t1 is not a Point
 <p>In the above code, we have two classes, but they are not related by inheritance. Instead, they are related by composition, since the <code>Triangle</code> class uses the <code>Point</code> class by owning instance variables of type <code>Point</code>. </p>
 <p>In the main code block, note that the type of <code>t1</code> is <code>Triangle</code>
 (python outputs <code>&lt;class '__main__.Triangle'&gt;</code>, since the <code>Triangle</code> class is defined within the <code>__main__</code> module). The next line determines if <code>t1</code> is an instance of the <code>Triangle</code> class, which it is, since <code>t1</code> was instantiated as a <code>Triangle</code>. The final line, however, outputs <code>False</code>. The object <code>t1</code> <em>is not a</em> <code>Point</code>. Rather, it <em>has a</em> <code>Point</code> as one of its instance variables.</p>
-<h2 id="video-explanations-18"><a class="header" href="#video-explanations-18">Video explanations</a></h2>
+<h2 id="video-explanations-19"><a class="header" href="#video-explanations-19">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/is_a_versus_has_a.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="multilevel-inheritance"><a class="header" href="#multilevel-inheritance">Multilevel inheritance</a></h1>
 <p>If a child class itself has a child class, we call that <em>multilevel inheritance</em>. For example, suppose we have a class called <code>Publication</code>, which has two subclasses <code>Podcast</code> and <code>Book</code>. Then say <code>Book</code> itself has two subclasses, <code>AudioBook</code> and <code>PrintBook</code>. In multilevel inheritance, class diagrams are a particularly useful visualization tool.</p>
@@ -3551,9 +3553,9 @@ publications.append(Book(author = &quot;F. Scott Fitzgerald&quot;,
                          title = &quot;The Great Gatsby&quot;, 
                          ISBN = &quot;978-1328948854&quot;))
 publications.append(PrintBook(author = &quot;William Goldman&quot;, 
-                         title = &quot;The Princess Bride&quot;, 
-                         ISBN = &quot;978-0544173767&quot;, 
-                         pages = 496))
+                              title = &quot;The Princess Bride&quot;, 
+                              ISBN = &quot;978-0544173767&quot;, 
+                              pages = 496))
 publications.append(AudioBook(author = &quot;Ann Patchett&quot;, 
                               title = &quot;Tom Lake&quot;, 
                               ISBN = &quot;978-0063327528&quot;, 
@@ -3569,7 +3571,7 @@ for publication in publications:
 </code></pre>
 <p>output:</p>
 <pre><code>author: F. Scott Fitzgerald, title: The Great Gatsby, ISBN: 978-1328948854
-author: William Goldman, title: The Princess Bride, ISBN: 978-1328948854, pages: 496
+author: William Goldman, title: The Princess Bride, ISBN: 978-0544173767, pages: 496
 author: Ann Patchett, title: Tom Lake, ISBN: 978-0063327528,
         narrator: Meryl Streep, length: 682.0
 author: Ira Glass, title: This American Life - The Ghost of Bobby Dunbar,
@@ -3631,7 +3633,7 @@ True
 </code></pre>
 <p>To avoid this problem, every recursive function must contain conditions to stop the recursion in at least one base case.</p>
 <p>In the next section you will see some examples of implementing recursive functions that perform useful and interesting tasks.</p>
-<h2 id="video-explanations-19"><a class="header" href="#video-explanations-19">Video explanations</a></h2>
+<h2 id="video-explanations-20"><a class="header" href="#video-explanations-20">Video explanations</a></h2>
 <p>First recursion example, with flaws:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/recursion/bad_recursion.mp4" width="480" height="270" controls></video></p>
 <p>Second recursion example, this one works:</p>
@@ -3932,7 +3934,7 @@ e = np.zeros(3, dtype = int) # you can specify the dtype
 print(e.dtype)               # outputs int64
 </code></pre>
 <p>In numpy arrays, the type <code>int64</code> has a fixed size of 64 bits (8 bytes). This means that the integers that can be stored have a minimum value of -9,223,372,036,854,775,808 and a maximum value of 9,223,372,036,854,775,807 (inclusive). This is unlike the python <code>int</code> type, which can hold to an unlimited value, increasing behind the scenes the storage space used to store the number.</p>
-<h2 id="video-explanations-20"><a class="header" href="#video-explanations-20">Video explanations:</a></h2>
+<h2 id="video-explanations-21"><a class="header" href="#video-explanations-21">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_arrays.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="computation-using-numpy-arrays"><a class="header" href="#computation-using-numpy-arrays">Computation using numpy arrays</a></h1>
 <p>Once a numpy array is created, you can access and modify it using indexing and slicing, similar to a python list.
@@ -3993,7 +3995,7 @@ print(d)  # outputs &quot;[3 3 3]&quot;
 e = a * b
 print(e)  # outputs &quot;[4 10 18]&quot;
 </code></pre>
-<h2 id="video-explanations-21"><a class="header" href="#video-explanations-21">Video explanations:</a></h2>
+<h2 id="video-explanations-22"><a class="header" href="#video-explanations-22">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_computation.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="two-dimensional-and-multi-dimensional-numpy-arrays"><a class="header" href="#two-dimensional-and-multi-dimensional-numpy-arrays">Two-dimensional and multi-dimensional numpy arrays</a></h1>
 <p>A multidimensional array is an array of arrays, in much the same way a multidimensional list is a list of lists. One of Numpy's strengths is the tools it has for making it easier to work with higher-dimensional arrays.</p>
@@ -4084,7 +4086,7 @@ python_column = [row[1] for row in lst] # iterate over the rows grabbing the sec
 print(python_column)
 print(sum(python_column))
 </code></pre>
-<h2 id="video-explanations-22"><a class="header" href="#video-explanations-22">Video explanations:</a></h2>
+<h2 id="video-explanations-23"><a class="header" href="#video-explanations-23">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_multi.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="algorithms-and-sorting"><a class="header" href="#algorithms-and-sorting">Algorithms and sorting</a></h1>
 <p>Algorithms are, simply put, a sequence of instructions to perform a task given a set of input values. Later courses will go into more detail about algorithm design, analysis, and efficiency.
@@ -4117,7 +4119,7 @@ You will learn how to implement these first three:</p>
 <p>These three algorithms rely on nested loops, and are the easiest to learn and understand. So first-year Computer Science students always learn them. But they are also notoriously slow, and so are <em>never</em> used in practice!</p>
 <p>One exampe of a better sorting algorithm is merge sort. You will see a demo of this fourth algorithm, which relies on recursion. The point of the demonstration is for you to see how much faster it runs than any of the other three algorithms.</p>
 <p>There are many other strategies for sorting that you will see in future courses.</p>
-<h2 id="video-explanations-23"><a class="header" href="#video-explanations-23">Video explanations</a></h2>
+<h2 id="video-explanations-24"><a class="header" href="#video-explanations-24">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/sorting_intro.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="selection-sort"><a class="header" href="#selection-sort">Selection sort</a></h1>
 <p>Selection sort is a notoriously inefficient sorting algorithm, but easier to understand than efficient strategies that you will learn in later courses. That's why it's frequently taught to first-year Computer Science students as a great application of nested loops.</p>
@@ -4219,7 +4221,7 @@ stop = time.time()
 </code></pre>
 <p>When we doubled the size of the array, the time quadrupled. This significant effect on the runtime as the size of the array increases follows the pattern of \(O(n^2)\) algorithms. It is the \(O(n^2)\) runtime is what makes selection sort so devastatingly slow for large arrays.</p>
 <p>In the first Data Structures and Algorithms course, you will learn how to determine the runtime of algorithms more completely using both experimental analysis and theoretical analysis.</p>
-<h2 id="video-explanations-24"><a class="header" href="#video-explanations-24">Video explanations:</a></h2>
+<h2 id="video-explanations-25"><a class="header" href="#video-explanations-25">Video explanations:</a></h2>
 <p>Part 1:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/select_sort_part1.mp4" width="480" height="270" controls></video></p>
 <p>Part 2:</p>
@@ -4266,7 +4268,7 @@ stop = time.time()
 <p>Timing of running of bubble sort, as we did with selection sort, suggests that bubble sort is also a \(O(n^2)\)algorithm, and thus, like selection sort, is <em>never</em> used in practice. In the first Data Structures and Algorithms course, you will learn how to determine the runtime of algorithms more completely using both experimental analysis and theoretical analysis.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="insertion-sort"><a class="header" href="#insertion-sort">Insertion sort</a></h1>
 <p>The final easy-to-implement but notoriously-slow sort algorithm we will study is insertion sort.</p>
-<p>Like selection sort and bubble sort, insertion sort also is on average a \(O(n^2))\) algorithm. However, insertion sort has some redeeming features:</p>
+<p>Like selection sort and bubble sort, insertion sort also is on average a \(O(n^2))\ algorithm. However, insertion sort has some redeeming features:</p>
 <ul>
 <li>It is easy to understand, sorting similarly to how humans would sort a stack of papers or a poker hand.</li>
 <li>Like selection sort and bubble sort, the sorting happens in place. This means it does not use extra memory.</li>
@@ -4309,7 +4311,7 @@ stop = time.time()
 <p>Notice that if additional data are added after the insertion sort is complete, those elements can be inserted into the list once they are received. This ability to process the values piece-by-piece in a serial fashion is known as &quot;online sorting&quot;. Online sorting is useful when data is arriving in a continuous stream, such as a live data stream.</p>
 <h2 id="time-efficiency-considerations"><a class="header" href="#time-efficiency-considerations">Time efficiency considerations</a></h2>
 <p>While insertion sort is on average a \(O(n^2)\), algorithm, if an already-sorted list is processed with insertion sort, the insertion of each new element requires only one compare, and no swapping. Thus, the algorithm runs in \(O(n)\) time in this best case scenario. If the list is largely sorted, few extra compares and swaps are needed. So insertion sort is actually an efficient algorithm for lists that are mostly sorted, but have just a few elements out of place.</p>
-<h2 id="video-explanations-25"><a class="header" href="#video-explanations-25">Video explanations:</a></h2>
+<h2 id="video-explanations-26"><a class="header" href="#video-explanations-26">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/insertion_sort.mov" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="visual-depictions-of-sorting-algorithms"><a class="header" href="#visual-depictions-of-sorting-algorithms">Visual depictions of sorting algorithms</a></h1>
 <p>Many people have created cool visualizations of sorting algorithms. Here are a few good ones:</p>
