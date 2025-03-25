@@ -76,7 +76,7 @@ More details of how the memory diagrams above were built are shown in this video
 # Another example
 
 The video below demonstrates tracing through the following code, and maintaining the call stack memory diagram through each step.
-```
+```python
 def fourth(number: int)->int:
     partial_result = cube(number)
     return partial_result*number

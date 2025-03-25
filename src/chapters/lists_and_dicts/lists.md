@@ -64,7 +64,7 @@ You can access (view or change) each element in a list using its index value
 (the number of its location in the list) within square brackets. For example, `list_name[index]`.
 
 Elements in a list are indexed starting at 0, so `list_name[0]` gives the value of the first element of the list,
-and `list_name[n]` gives the value of the n+1st element in the list.
+and `list_name[i]` gives the value of the i+1st element in the list.
 
 You can find out the number of elements in a python list with `len(list_name)`. 
 So the value of the last element of a list is `list_name[len(list_name)-1]`. 

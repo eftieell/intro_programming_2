@@ -2,7 +2,7 @@
 
 The final easy-to-implement but notoriously-slow sort algorithm we will study is insertion sort.
 
-Like selection sort and bubble sort, insertion sort also is on average a \\(O(n^2))\\) algorithm. However, insertion sort has some redeeming features:
+Like selection sort and bubble sort, insertion sort also is on average a \\(O(n^2))\\ algorithm. However, insertion sort has some redeeming features:
 * It is easy to understand, sorting similarly to how humans would sort a stack of papers or a poker hand.
 * Like selection sort and bubble sort, the sorting happens in place. This means it does not use extra memory.
 * It is efficient for arrays that are already largely sorted.

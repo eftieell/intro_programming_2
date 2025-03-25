@@ -4,11 +4,11 @@ If a function takes a parameter that represents the size of the problem (number 
 then we are very interested in how the execution time grows as the size of the problem grows. 
 The pattern of this change is called the *order of growth* or *time complexity* of the algorithm.
 
-- If doubling the size of `n` results in a doubling of the execution time for the algorithm, then we call the algorithm *Big-O of n* or *linear*. We write this \\(O(n)\\).
+- If doubling the size of \\(n\\) results in a doubling of the execution time for the algorithm, then we call the algorithm *Big-O of n* or *linear*. We write this \\(O(n)\\).
   
-- If doubling the size of `n` results in a quadrupling of the execution time, then we call the algorithm *Big-O of n squared* or *quadratic*. We write this \\(O(n^2)\\).
+- If doubling the size of \\(n\\) results in a quadrupling of the execution time, then we call the algorithm *Big-O of n squared* or *quadratic*. We write this \\(O(n^2)\\).
 
-- If doubling the size of `n` results in a factor of 8 increase of the execution time, then we call the algorithm *Big-O of n-cubed* or *cubic*. We write this \\(O(n^3)\\).
+- If doubling the size of \\(n\\) results in a factor of 8 increase of the execution time, then we call the algorithm *Big-O of n-cubed* or *cubic*. We write this \\(O(n^3)\\).
 
 The code below is a modification of the original timing code, but with an extra loop that modifies the size of `n`.
 Carefully compare the two versions, enough so you could make the modification yourself.
@@ -48,7 +48,7 @@ runtime for do_something(600000000): 18.69 seconds
 ```
 We can see by a rough look at the data above that the algorithm shows linear, or \\(O(n)\\), behavior. Look at the time behavior when `n` is doubled or tripled:
 
-When the size of `n` is doubled from 100 million to 200 million, the time approximately doubles (\\(6.18 sec/3.13 sec \approx 2\\)).
+When the size of `n` is doubled from 100 million to 200 million, the time approximately doubles (\\(6.18/3.13 \approx 2\\)).
 
 When the size of `n` is tripled from 100 million to 300 million, the time approximately triples (\\(9.24/3.13 \approx 3\\)).
 
@@ -99,13 +99,13 @@ runtime for do_something_else(40000): 50.97 seconds
 runtime for do_something_else(50000): 80.41 seconds
 runtime for do_something_else(60000): 116.78 seconds
 ```
-This time, a rough look at the data above indicates that the algorithm shows quadratic, or \\(O(n^2)\\), behavior. Look at the time behavior when `n` is doubled or tripled:
+This time, a rough look at the data above indicates that the algorithm shows quadratic, or \\(O(n^2)\\), behavior. Look at the time behavior when \\(n\\) is doubled or tripled:
 
-When the size of `n` is doubled from 10000 to 20000, the time increases by approximately a factor of 4 \\(12.37/3.09 \approx 4.003\\)).
+When the size of \\(n\\) is doubled from 10000 to 20000, the time increases by approximately a factor of 4 (\\(12.37/3.09 \approx 4.003\\)).
 
-When the size of `n` is tripled from 10000 to 30000, the time increases by approximately a factor of 9 (\\(28.08/3.09 \approx 9.09\\)).
+When the size of \\(n\\) is tripled from 10000 to 30000, the time increases by approximately a factor of 9 (\\(28.08/3.09 \approx 9.09\\)).
 
-When the size of `n` is doubled from 30000 to 60000, the time increases by approximately a factor of 4 (\\(116.78/28.08 \approx 4.16\\)).
+When the size of \\(n\\) is doubled from 30000 to 60000, the time increases by approximately a factor of 4 (\\(116.78/28.08 \approx 4.16\\)).
 
 When the size of `n` is tripled from 20000 to 60000, the time increases by approximately a factor of 9 (\\(116.78/12.37 \approx 9.44\\))
 

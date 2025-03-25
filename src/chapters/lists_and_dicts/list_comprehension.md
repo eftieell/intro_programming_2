@@ -152,6 +152,9 @@ resulting in a list of lists. Each internal list is itself created with a list c
 So we have a nested list-comprehension (not a list comprehension with nested loops). This makes the result a nested list. 
 (`nested_list = [['1a', '1b', '1c'], ['2a', '2b', '2c'], ['3a', '3b', '3c']]`).
 
+## Video explanations
+<video src="https://cs.du.edu/~ftl/1352/videos/lists_and_dictionaries/list_comprehension.mp4" width="480" height="270" controls></video>
+
 
 
 

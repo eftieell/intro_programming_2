@@ -73,9 +73,9 @@ publications.append(Book(author = "F. Scott Fitzgerald",
                          title = "The Great Gatsby", 
                          ISBN = "978-1328948854"))
 publications.append(PrintBook(author = "William Goldman", 
-                         title = "The Princess Bride", 
-                         ISBN = "978-0544173767", 
-                         pages = 496))
+                              title = "The Princess Bride", 
+                              ISBN = "978-0544173767", 
+                              pages = 496))
 publications.append(AudioBook(author = "Ann Patchett", 
                               title = "Tom Lake", 
                               ISBN = "978-0063327528", 
@@ -93,7 +93,7 @@ for publication in publications:
 output:
 ```
 author: F. Scott Fitzgerald, title: The Great Gatsby, ISBN: 978-1328948854
-author: William Goldman, title: The Princess Bride, ISBN: 978-1328948854, pages: 496
+author: William Goldman, title: The Princess Bride, ISBN: 978-0544173767, pages: 496
 author: Ann Patchett, title: Tom Lake, ISBN: 978-0063327528,
         narrator: Meryl Streep, length: 682.0
 author: Ira Glass, title: This American Life - The Ghost of Bobby Dunbar,

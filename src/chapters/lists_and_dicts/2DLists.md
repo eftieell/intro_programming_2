@@ -28,7 +28,7 @@ Writing a computer program in python to implement any of the following games wou
 <img src="games_2D.png" alt="Images of 2-dimensional games" class="center", width="500">
 </figure>
 
-Another example is the storage of digital images, which can be stored as 2D lists. If you zoom in closely on a digital image, you will see that the image is composed of small squares of color called pixels (the word comes from “*pic*ture *el*ements”).
+Another example is the storage of digital images, which can be stored as 2D lists. If you zoom in closely on a digital image, you will see that the image is composed of small squares of color called pixels (the word pixel comes from combining the words “<u>*pic*</u>ture <u>*el*</u>ements”).
 So the image can be stored as a 2D grid of colors. In python this is a 2D list, or a list of lists.
 
 <figure>

@@ -91,7 +91,7 @@ print(average) # outputs 79.5
 ### Compute a quantity for a single column
 If we now want to calculate a quantity for only one specific column, there is similarly no need for a nested loop.
 Instead, the column index never changes, but the row index traverses over all possible rows.
-This means that the `row_index` will vary from 0 to `len(scores)-1` (the number of rows is `len(scores))`.
+This means that the `row_index` will vary from 0 to `len(scores)-1` (the number of rows is `len(scores)`.
 The code below calculates the average of all students on Quiz 4.
 ```python
 # Average score of all students on Quiz 4. The column_index of 3 doesn't change.

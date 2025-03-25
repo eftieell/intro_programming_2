@@ -36,7 +36,7 @@ for i in range(len(cities)):
     if i == len(cities) - 1:
         print'I love {cities[i]}!')
     else:
-        print(f'I love {cities[i]}", end = ', ')
+        print(f'I love {cities[i]}', end = ', ')
 ```
 Output:
 ```
