@@ -8,8 +8,8 @@ def attribute(author: str, title: str)->None:
 
 def main():
     attribute("Richard Wright", "Native Son")
-    # Oops, here's a bug, the arguments are in the wrong order!
-    attribute("Harry Potter", "J.K. Rowling")
+    # Oops, here's a bug below, the arguments are in the wrong order!
+    attribute("The Odyssey", "Homer")
 
 # Run the program:
 if __name__ == '__main__':
@@ -18,7 +18,7 @@ if __name__ == '__main__':
 Output:
 ```
 Richard Wright wrote the book Native Son.
-Harry Potter wrote the book J.K. Rowling.
+The Odyssey wrote the book Homer.
 ```
 
 In `main()`, the line 
@@ -27,9 +27,9 @@ attribute("Richard Wright", "Native Son")
 ```
 invokes the `attribute()` function, with `"Richard Wright"` as the `author` and `"Native Son"` as the title. Notice, however, that the arguments are mistakenly in the wrong order on the next line:
 ```
-attribute("Harry Potter", "J.K. Rowling")
+attribute("The Odyssey", "Homer")
 ``` 
-`"Harry Potter"` should have been the second argument (the title), and `"J.K. Rowling"` should have been the first argument (the author). Keyword arguments are intended to avoid bugs created by this type of mistake, and to simultaneously make code more readable.
+`"The Odyssey"` should have been the second argument (the title), and `"Homer"` should have been the first argument (the author). Keyword arguments are intended to avoid bugs created by this type of mistake, and to simultaneously make code more readable.
 
 To use a keyword argument, we give the name of the parameter along with the argument. For example:
 ```python
@@ -45,14 +45,14 @@ If you use keyword arguments and you put the arguments in the wrong order, the v
 ```python
 # Use keyword arguments to clarify and to reduce bugs:
 attribute(author = "Margaret Wise Brown", title = "Goodnight Moon")
-# Above we use keyword arguments with the arguments out of order
+# Above we use keyword arguments with the arguments in the correct order
 # Below is poor programming practice since the parameters are out of order. But notice that it still works:
-attribute(title = "Harry Potter", author = "J.K. Rowling")
+attribute(title = "The Odyssey", author = "Homer")
 ```
 Output:
 ```
 Margaret Wise Brown wrote the book Goodnight Moon.
-J.K. Rowling wrote the book Harry Potter.
+Homer wrote the book The Odyssey.
 ```
 
 ## Video explanations

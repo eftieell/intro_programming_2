@@ -34,7 +34,7 @@ Example of index-based iteration:
 # This gives us a way to put the output all on one line by treating the last city differently.
 for i in range(len(cities)):
     if i == len(cities) - 1:
-        print'I love {cities[i]}!')
+        print(f'I love {cities[i]}!')
     else:
         print(f'I love {cities[i]}', end = ', ')
 ```
