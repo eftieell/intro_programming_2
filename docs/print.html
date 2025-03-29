@@ -741,8 +741,8 @@ def ask_ok(prompt, retries=4, reminder='Please try again!'):
 
 def main():
     attribute(&quot;Richard Wright&quot;, &quot;Native Son&quot;)
-    # Oops, here's a bug, the arguments are in the wrong order!
-    attribute(&quot;Harry Potter&quot;, &quot;J.K. Rowling&quot;)
+    # Oops, here's a bug below, the arguments are in the wrong order!
+    attribute(&quot;The Odyssey&quot;, &quot;Homer&quot;)
 
 # Run the program:
 if __name__ == '__main__':
@@ -750,15 +750,15 @@ if __name__ == '__main__':
 </code></pre>
 <p>Output:</p>
 <pre><code>Richard Wright wrote the book Native Son.
-Harry Potter wrote the book J.K. Rowling.
+The Odyssey wrote the book Homer.
 </code></pre>
 <p>In <code>main()</code>, the line </p>
 <pre><code>attribute(&quot;Richard Wright&quot;, &quot;Native Son&quot;)
 </code></pre>
 <p>invokes the <code>attribute()</code> function, with <code>&quot;Richard Wright&quot;</code> as the <code>author</code> and <code>&quot;Native Son&quot;</code> as the title. Notice, however, that the arguments are mistakenly in the wrong order on the next line:</p>
-<pre><code>attribute(&quot;Harry Potter&quot;, &quot;J.K. Rowling&quot;)
+<pre><code>attribute(&quot;The Odyssey&quot;, &quot;Homer&quot;)
 </code></pre>
-<p><code>&quot;Harry Potter&quot;</code> should have been the second argument (the title), and <code>&quot;J.K. Rowling&quot;</code> should have been the first argument (the author). Keyword arguments are intended to avoid bugs created by this type of mistake, and to simultaneously make code more readable.</p>
+<p><code>&quot;The Odyssey&quot;</code> should have been the second argument (the title), and <code>&quot;Homer&quot;</code> should have been the first argument (the author). Keyword arguments are intended to avoid bugs created by this type of mistake, and to simultaneously make code more readable.</p>
 <p>To use a keyword argument, we give the name of the parameter along with the argument. For example:</p>
 <pre><code class="language-python">attribute(author = &quot;Richard Wright&quot;, title = &quot;Native Son&quot;)
 </code></pre>
@@ -768,13 +768,13 @@ Harry Potter wrote the book J.K. Rowling.
 If you use keyword arguments and you put the arguments in the wrong order, the values of the arguments are assigned by the variable names, not the order. However, we strongly advise that even when using keywords, you maintain the order of the variables in the function definition. Using the features of your IDE makes this easy.</p>
 <pre><code class="language-python"># Use keyword arguments to clarify and to reduce bugs:
 attribute(author = &quot;Margaret Wise Brown&quot;, title = &quot;Goodnight Moon&quot;)
-# Above we use keyword arguments with the arguments out of order
+# Above we use keyword arguments with the arguments in the correct order
 # Below is poor programming practice since the parameters are out of order. But notice that it still works:
-attribute(title = &quot;Harry Potter&quot;, author = &quot;J.K. Rowling&quot;)
+attribute(title = &quot;The Odyssey&quot;, author = &quot;Homer&quot;)
 </code></pre>
 <p>Output:</p>
 <pre><code>Margaret Wise Brown wrote the book Goodnight Moon.
-J.K. Rowling wrote the book Harry Potter.
+Homer wrote the book The Odyssey.
 </code></pre>
 <h2 id="video-explanations-2"><a class="header" href="#video-explanations-2">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/functions/keyword_arguments.mp4" width="480" height="270" controls></video></p>
@@ -1705,7 +1705,7 @@ I love Pueblo
 # This gives us a way to put the output all on one line by treating the last city differently.
 for i in range(len(cities)):
     if i == len(cities) - 1:
-        print'I love {cities[i]}!')
+        print(f'I love {cities[i]}!')
     else:
         print(f'I love {cities[i]}', end = ', ')
 </code></pre>
