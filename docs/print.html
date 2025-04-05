@@ -1675,6 +1675,8 @@ for state in populations:
 </code></pre>
 <p>Note that it would not have worked to create one dictionary with just the city names and corresponding populations. Keys must be unique - but there are two cities with the same name! So adding the second &quot;Springfield&quot; to the dictionary would have overwritten the first &quot;Springfield&quot;. Cities within states though, are required to have distinct names (you can't have two towns named Springfield within the same state), so we didn't run into this issue with our original structure. This is why the question asked you to produce a new key, that included the name of the city together with the state abbreviation.</p>
 <p>One subtle point in the above code is the creation of that new key. The expression <code>city + &quot;, &quot; + state</code> is a string concatenation, building the name in the form &quot;city, state&quot;.</p>
+<h2 id="video-explanations-6"><a class="header" href="#video-explanations-6">Video explanations</a></h2>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/lists_and_dictionaries/nested_data_structures.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="traversing-nested-lists-2d-lists"><a class="header" href="#traversing-nested-lists-2d-lists">Traversing nested lists (2D lists)</a></h1>
 <h2 id="background"><a class="header" href="#background">Background</a></h2>
 <p>We generally use nested for-loops to traverse nested lists. You might want to begin by reviewing nested for-loops:
@@ -1797,6 +1799,11 @@ I love Chicago, I love Springfield, I love Champaign!
 I love Boston, I love Worcester, I love Springfield!
 </code></pre>
 <p>Some programmers prefer this method most, since it allows us to know the index value ('row_index' and 'col_index'), but also to have easier access to the value stored there (just <code>city</code> instead of <code>more_cities[row_index][col_index]</code>).</p>
+<h2 id="video-explanations-7"><a class="header" href="#video-explanations-7">Video explanations</a></h2>
+<p>Review of traversing 1D lists:</p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/lists_and_dictionaries/traverse_list_three_ways.mp4" width="480" height="270" controls></video></p>
+<p>Traversing 2D lists:</p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/lists_and_dictionaries/traversing_nested_lists.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="computation-traversing-nested-lists"><a class="header" href="#computation-traversing-nested-lists">Computation traversing nested lists</a></h1>
 <p>If we have a 2D list of numbers, we might be interested in doing computations on the numbers in the list.</p>
 <ul>
@@ -1933,6 +1940,11 @@ for column_index in range(len(scores[0])):
 <p>Because we are doing a separate computation for each column, notice that the initialization of <code>minimum</code> happens just inside the outer
 for-loop. We initialize <code>minimum</code> to the first student's score on that quiz. Then at the end of the inner loop, the output of the result
 is indented one level, so it is output once for each column.</p>
+<h2 id="video-explanations-8"><a class="header" href="#video-explanations-8">Video explanations</a></h2>
+<p>Nested list computation - the concepts:</p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/lists_and_dictionaries/nested_list_computation_concepts.mp4" width="480" height="270" controls></video></p>
+<p>Nested list computation - implementation examples:</p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/lists_and_dictionaries/nested_list_computation.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="classes"><a class="header" href="#classes">Classes</a></h1>
 <p>One of the key concepts of object-oriented programming (OOP) is its use of classes. Implementing and using classes allows us to modularize our code, providing organization to large programs. Classes allow us to more easily write code that is reusable, debuggable, and extendible. Using classes, we can divide programs into separate parts that different people can work on simultaneously.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="classes-and-creating-objects"><a class="header" href="#classes-and-creating-objects">Classes and Creating Objects</a></h1>
@@ -2013,6 +2025,11 @@ You can find the official python documentation listing all available methods in 
 <li>enables you to break down large programs into subtasks that different people can implement,</li>
 <li>and creates encapsulation (compartmentalizes data so that one part of a program cannot corrupt data managed by another part of the program).</li>
 </ul>
+<h2 id="video-explanations-9"><a class="header" href="#video-explanations-9">Video explanations</a></h2>
+<p>Motivation and concepts for classes and objects:</p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/classes_intro_part1.mp4" width="480" height="270" controls></video></p>
+<p>Code example using classes and objects:</p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/classes_intro_part2.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-implement-a-class"><a class="header" href="#how-to-implement-a-class">How to implement a class</a></h1>
 <p>The template for the simplest class looks like this:</p>
 <pre><code class="language-python">class NameOfClass:
@@ -2097,7 +2114,7 @@ print(rectangle1.area())
 rectangle2.draw()
 dudraw.show(10000)
 </code></pre>
-<h2 id="video-explanations-6"><a class="header" href="#video-explanations-6">Video explanations</a></h2>
+<h2 id="video-explanations-10"><a class="header" href="#video-explanations-10">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/implementing_classes.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="how-to-output-the-contents-of-an-object-to-the-terminal"><a class="header" href="#how-to-output-the-contents-of-an-object-to-the-terminal">How to output the contents of an object to the terminal</a></h1>
 <p>For reference, in this section we will continue developing the <code>Rectangle</code> class created in the previous section:</p>
@@ -2152,7 +2169,7 @@ print(rectangle1)
 <p>is equivalent to</p>
 <pre><code class="language-python">rectangle1.__str__()
 </code></pre>
-<h2 id="video-explanations-7"><a class="header" href="#video-explanations-7">Video explanations</a></h2>
+<h2 id="video-explanations-11"><a class="header" href="#video-explanations-11">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/print_object.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="lists-of-objects"><a class="header" href="#lists-of-objects">Lists of objects</a></h1>
 <p>If we have many objects, we can store them in a list. This use of classes highlights their power.</p>
@@ -2249,7 +2266,7 @@ center: (0.6660610136763881, 0.9802962789008293), width: 0.02, height: 0.02, cen
 <p>It is good programming practice in python to implement a <code>__repr__()</code> method in every class.</p>
 <p>Note: in python, there is another official purpose for <code>__repr__()</code> methods, 
 so in future work you might be required to have <code>__repr__()</code> produce strings with a different format than <code>__str__()</code>.</p>
-<h2 id="video-explanations-8"><a class="header" href="#video-explanations-8">Video explanations</a></h2>
+<h2 id="video-explanations-12"><a class="header" href="#video-explanations-12">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/list_of_objects.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="classes-can-have-a-simple-or-more-complicated-structure"><a class="header" href="#classes-can-have-a-simple-or-more-complicated-structure">Classes can have a simple, or more complicated structure</a></h1>
 <p>We'll start with a simple class, and then show how it can be used to build more complicated and useful classes.</p>
@@ -2363,7 +2380,7 @@ print(poly)
 <pre><code>vertices: (4, 0) (0, 4) (4, 8) (8, 4) 
 vertices: (14, 20) (10, 24) (14, 28) (18, 24) 
 </code></pre>
-<h2 id="video-explanations-9"><a class="header" href="#video-explanations-9">Video explanations</a></h2>
+<h2 id="video-explanations-13"><a class="header" href="#video-explanations-13">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/class_composition.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="class-variables"><a class="header" href="#class-variables">Class variables</a></h1>
 <h2 id="how-to-create-and-use-class-variables"><a class="header" href="#how-to-create-and-use-class-variables">How to create and use class variables</a></h2>
@@ -2549,7 +2566,7 @@ print(transaction2)
 id: 20001, source: 1234567800987, destination: 9876543200987, amount: 2319.24
 </code></pre>
 <p>Notice above that each id assigned is unique to that particular <code>FinancialTransaction</code> object. This technique guarantees no collisions of transaction id numbers.</p>
-<h2 id="video-explanations-10"><a class="header" href="#video-explanations-10">Video explanations</a></h2>
+<h2 id="video-explanations-14"><a class="header" href="#video-explanations-14">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes1/class_variables.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="class-part-2"><a class="header" href="#class-part-2">Class, Part 2</a></h2>
 <p>In this chapter we look at more details of implementing classes. This includes:</p>
@@ -2691,7 +2708,7 @@ print(default_time &lt; time2) # outputs True, midnight is earlier than every ot
     def __ge__(self, other: Time24)-&gt;bool:
         return not self &lt; other
 </code></pre>
-<h2 id="video-explanations-11"><a class="header" href="#video-explanations-11">Video explanations</a></h2>
+<h2 id="video-explanations-15"><a class="header" href="#video-explanations-15">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/comparison_dunder.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="using-dunder-methods-to-overload-arithmetic-operators"><a class="header" href="#using-dunder-methods-to-overload-arithmetic-operators">Using dunder methods to overload arithmetic operators</a></h2>
 <p>Suppose we have a class that it makes sense to do arithmetic with. For example, say I implement the <code>Point</code> class, where each point is a location in the (x, y) plane. In some contexts it is mathematically useful to add two points by separately adding their x and y coordinates. For example, (1, 3) + (6, 5) = (7, 8). Consider the following implementation of the <code>Point</code> class:</p>
@@ -2749,7 +2766,7 @@ print(point3)
 </div>
 <h2 id="other-dunder-methods"><a class="header" href="#other-dunder-methods">Other dunder methods</a></h2>
 <p>For the scope of this course, the dunder methods above are sufficient. But if you are curious about what other dunder methods exist, here's an external website that is thorough: <a href="https://www.pythonmorsels.com/every-dunder-method/" target="_blank">https://www.pythonmorsels.com/every-dunder-method/</a></p>
-<h2 id="video-explanations-12"><a class="header" href="#video-explanations-12">Video explanations</a></h2>
+<h2 id="video-explanations-16"><a class="header" href="#video-explanations-16">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/arithmetic_dunder.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="variables-are-references-to-objects"><a class="header" href="#variables-are-references-to-objects">Variables are references to objects</a></h1>
 <p>A variable that refers to an object is technically a reference. This means that the variable stores the memory address of the object itself (in other words, the location in your computer's memory where the full data for the object is stored). To see this in action, consider this implementation of the class <code>Point</code>, which has no <code>__str__()</code> method:</p>
@@ -2832,7 +2849,7 @@ print(point3)
 (7, 5)
 (7, 5)
 </code></pre>
-<h2 id="video-explanations-13"><a class="header" href="#video-explanations-13">Video explanations</a></h2>
+<h2 id="video-explanations-17"><a class="header" href="#video-explanations-17">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/variables_are_references.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="the-difference-between-identity-is-and-equality--of-objects"><a class="header" href="#the-difference-between-identity-is-and-equality--of-objects">The difference between &quot;identity&quot; (<code>is</code>) and &quot;equality&quot; (<code>==</code>) of objects</a></h1>
 <h2 id="identity"><a class="header" href="#identity">Identity</a></h2>
@@ -2873,7 +2890,7 @@ print(point1 == point3) # outputs True, because the x and y values for point1 an
 </code></pre>
 <h2 id="what-to-remember-from-this"><a class="header" href="#what-to-remember-from-this">What to remember from this:</a></h2>
 <p>Remember that <code>obj1 is obj2</code> determines if <code>obj1</code> and <code>obj2</code> have the same identity, while <code>obj1 == obj2</code> determines if <code>obj1</code> and <code>obj2</code> have the same values.</p>
-<h2 id="video-explanations-14"><a class="header" href="#video-explanations-14">Video explanations</a></h2>
+<h2 id="video-explanations-18"><a class="header" href="#video-explanations-18">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/identity_v_equality.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="drawing-memory-diagram-of-complicated-objects"><a class="header" href="#drawing-memory-diagram-of-complicated-objects">Drawing memory diagram of complicated objects</a></h1>
 <p>In a previous section (<a href="chapters/classes2/variables_are_references.html">Variables are references</a>), we learned that variables hold references to objects (i.e., a variable contains the memory address where the object itself is stored), and we learned how to draw memory diagram to represent this. Trace the following code and predict the output as a review of these concepts:</p>
@@ -3132,7 +3149,7 @@ Output:</li>
 center: (0.5, 0.25), color: (255, 0, 0), circle radius: 0.075
 </code></pre>
 <p>While it is a common pattern for the base class to call on its <code>super()</code> to do part of the work of a method, it is not the only pattern. Another option is <em>method overriding</em>, explained in the next section.</p>
-<h2 id="video-explanations-15"><a class="header" href="#video-explanations-15">Video explanations</a></h2>
+<h2 id="video-explanations-19"><a class="header" href="#video-explanations-19">Video explanations</a></h2>
 <p>Motivation for inheritance:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/inheritance_motivation.mp4" width="480" height="270" controls></video></p>
 <p>Example of implementation:</p>
@@ -3290,7 +3307,7 @@ Employee Winona Begay is unpaid.
 Printing paycheck for $1035.0 written to Suresh Batra
 Printing weekly paycheck for $1290.75 written to Karala Lyberth
 </code></pre>
-<h2 id="video-explanations-16"><a class="header" href="#video-explanations-16">Video explanations</a></h2>
+<h2 id="video-explanations-20"><a class="header" href="#video-explanations-20">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/method_overriding.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="polymorphism"><a class="header" href="#polymorphism">Polymorphism</a></h1>
 <p>Object-oriented-programming really shines with the idea of polymorphism. The idea is simple and powerful. Recall in previous sections we saw that multiple classes that are related by inheritance could use method overriding so that each has a different version of a method with the same name. This means that if we have several of these objects, all of which potentially have different types, we can still sensibly store them all in one list. Then we can traverse that list, and call the method for each of them. The correct method will get called for each of them, based on each object's individual type.</p>
@@ -3394,7 +3411,7 @@ This time, the <code>__str__()</code> method is called, depending on the type of
 If it is a <code>Shape</code>, then the <code>__str__()</code> method of the parent class is called.
 But when it is one of the child classes, the child class's overriding version of <code>__str__()</code> is called. 
 Each <code>__str__()</code> method in the child classes invokes the <code>__str__()</code> method of the parent to do the parent's part of the job.</p>
-<h2 id="video-explanations-17"><a class="header" href="#video-explanations-17">Video explanations</a></h2>
+<h2 id="video-explanations-21"><a class="header" href="#video-explanations-21">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/polymorphism.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="determining-types-of-objects-using-type-and-isinstance"><a class="header" href="#determining-types-of-objects-using-type-and-isinstance">Determining types of objects using <code>type</code> and <code>isinstance</code></a></h1>
 <p>You learned about the python <code>type()</code> function in the first weeks of programming. For example:</p>
@@ -3430,7 +3447,7 @@ print(isinstance(circle1, Shape))   # True, by inheritance. Every Circle is a Sh
 print(isinstance(shape1, Shape))    # True (shape1 was instantiated as a Shape)
 print(isinstance(shape1, Circle))   # False, shape1 is not an instance of the child class Circle
 </code></pre>
-<h2 id="video-explanations-18"><a class="header" href="#video-explanations-18">Video explanations</a></h2>
+<h2 id="video-explanations-22"><a class="header" href="#video-explanations-22">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/type_isinstance.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="inheritance-versus-composition-is-a-versus-has-a"><a class="header" href="#inheritance-versus-composition-is-a-versus-has-a">Inheritance versus composition (&quot;is a&quot; versus &quot;has a&quot;)</a></h1>
 <p>In object-oriented programming (OOP), there are multiple ways that classes can interact. We've seen two of them: inheritance (in which one class <em>is</em> an extension of another class) and composition (in which one class <em>has</em> instance variables of another class). Inheritance is informally referred to as an &quot;is a&quot; relationship (since an object of a derived class is <em>also automatically</em> an instance of its parent class). Composition is informally referred to as a &quot;has a&quot; relationship (since the class owns, or has, instances of another class). To illustrate the difference, here are two examples from previoius sections.</p>
@@ -3484,7 +3501,7 @@ print(isinstance(t1, Point))     # False, t1 is not a Point
 <p>In the above code, we have two classes, but they are not related by inheritance. Instead, they are related by composition, since the <code>Triangle</code> class uses the <code>Point</code> class by owning instance variables of type <code>Point</code>. </p>
 <p>In the main code block, note that the type of <code>t1</code> is <code>Triangle</code>
 (python outputs <code>&lt;class '__main__.Triangle'&gt;</code>, since the <code>Triangle</code> class is defined within the <code>__main__</code> module). The next line determines if <code>t1</code> is an instance of the <code>Triangle</code> class, which it is, since <code>t1</code> was instantiated as a <code>Triangle</code>. The final line, however, outputs <code>False</code>. The object <code>t1</code> <em>is not a</em> <code>Point</code>. Rather, it <em>has a</em> <code>Point</code> as one of its instance variables.</p>
-<h2 id="video-explanations-19"><a class="header" href="#video-explanations-19">Video explanations</a></h2>
+<h2 id="video-explanations-23"><a class="header" href="#video-explanations-23">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/is_a_versus_has_a.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="multilevel-inheritance"><a class="header" href="#multilevel-inheritance">Multilevel inheritance</a></h1>
 <p>If a child class itself has a child class, we call that <em>multilevel inheritance</em>. For example, suppose we have a class called <code>Publication</code>, which has two subclasses <code>Podcast</code> and <code>Book</code>. Then say <code>Book</code> itself has two subclasses, <code>AudioBook</code> and <code>PrintBook</code>. In multilevel inheritance, class diagrams are a particularly useful visualization tool.</p>
@@ -3633,7 +3650,7 @@ True
 </code></pre>
 <p>To avoid this problem, every recursive function must contain conditions to stop the recursion in at least one base case.</p>
 <p>In the next section you will see some examples of implementing recursive functions that perform useful and interesting tasks.</p>
-<h2 id="video-explanations-20"><a class="header" href="#video-explanations-20">Video explanations</a></h2>
+<h2 id="video-explanations-24"><a class="header" href="#video-explanations-24">Video explanations</a></h2>
 <p>First recursion example, with flaws:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/recursion/bad_recursion.mp4" width="480" height="270" controls></video></p>
 <p>Second recursion example, this one works:</p>
@@ -3734,6 +3751,8 @@ print(gcd(60, 48)) # outputs 12
 <li>What if one or both of the numbers is negative?</li>
 </ul>
 <p>Completing the function to handle these errors is left to you.</p>
+<h2 id="video-explanations-25"><a class="header" href="#video-explanations-25">Video explanations</a></h2>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/recursion/implementing_recursion.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="graphical-example-of-recursion"><a class="header" href="#graphical-example-of-recursion">Graphical example of recursion</a></h1>
 <p>Drawing fractals is a neat graphical application of recursion. Below is a drawing of a fractal called a <em>Sierpinski Gasket</em>, or <em>Sierpinski Triangle</em>:</p>
 <img src="chapters/recursion/sierpinski.jpg" alt="Drawing of a Sierpinski Gasket" width="300"/> 
@@ -3934,7 +3953,7 @@ e = np.zeros(3, dtype = int) # you can specify the dtype
 print(e.dtype)               # outputs int64
 </code></pre>
 <p>In numpy arrays, the type <code>int64</code> has a fixed size of 64 bits (8 bytes). This means that the integers that can be stored have a minimum value of -9,223,372,036,854,775,808 and a maximum value of 9,223,372,036,854,775,807 (inclusive). This is unlike the python <code>int</code> type, which can hold to an unlimited value, increasing behind the scenes the storage space used to store the number.</p>
-<h2 id="video-explanations-21"><a class="header" href="#video-explanations-21">Video explanations:</a></h2>
+<h2 id="video-explanations-26"><a class="header" href="#video-explanations-26">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_arrays.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="computation-using-numpy-arrays"><a class="header" href="#computation-using-numpy-arrays">Computation using numpy arrays</a></h1>
 <p>Once a numpy array is created, you can access and modify it using indexing and slicing, similar to a python list.
@@ -3995,7 +4014,7 @@ print(d)  # outputs &quot;[3 3 3]&quot;
 e = a * b
 print(e)  # outputs &quot;[4 10 18]&quot;
 </code></pre>
-<h2 id="video-explanations-22"><a class="header" href="#video-explanations-22">Video explanations:</a></h2>
+<h2 id="video-explanations-27"><a class="header" href="#video-explanations-27">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_computation.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="two-dimensional-and-multi-dimensional-numpy-arrays"><a class="header" href="#two-dimensional-and-multi-dimensional-numpy-arrays">Two-dimensional and multi-dimensional numpy arrays</a></h1>
 <p>A multidimensional array is an array of arrays, in much the same way a multidimensional list is a list of lists. One of Numpy's strengths is the tools it has for making it easier to work with higher-dimensional arrays.</p>
@@ -4086,7 +4105,7 @@ python_column = [row[1] for row in lst] # iterate over the rows grabbing the sec
 print(python_column)
 print(sum(python_column))
 </code></pre>
-<h2 id="video-explanations-23"><a class="header" href="#video-explanations-23">Video explanations:</a></h2>
+<h2 id="video-explanations-28"><a class="header" href="#video-explanations-28">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_multi.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="algorithms-and-sorting"><a class="header" href="#algorithms-and-sorting">Algorithms and sorting</a></h1>
 <p>Algorithms are, simply put, a sequence of instructions to perform a task given a set of input values. Later courses will go into more detail about algorithm design, analysis, and efficiency.
@@ -4119,7 +4138,7 @@ You will learn how to implement these first three:</p>
 <p>These three algorithms rely on nested loops, and are the easiest to learn and understand. So first-year Computer Science students always learn them. But they are also notoriously slow, and so are <em>never</em> used in practice!</p>
 <p>One exampe of a better sorting algorithm is merge sort. You will see a demo of this fourth algorithm, which relies on recursion. The point of the demonstration is for you to see how much faster it runs than any of the other three algorithms.</p>
 <p>There are many other strategies for sorting that you will see in future courses.</p>
-<h2 id="video-explanations-24"><a class="header" href="#video-explanations-24">Video explanations</a></h2>
+<h2 id="video-explanations-29"><a class="header" href="#video-explanations-29">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/sorting_intro.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="selection-sort"><a class="header" href="#selection-sort">Selection sort</a></h1>
 <p>Selection sort is a notoriously inefficient sorting algorithm, but easier to understand than efficient strategies that you will learn in later courses. That's why it's frequently taught to first-year Computer Science students as a great application of nested loops.</p>
@@ -4221,7 +4240,7 @@ stop = time.time()
 </code></pre>
 <p>When we doubled the size of the array, the time quadrupled. This significant effect on the runtime as the size of the array increases follows the pattern of \(O(n^2)\) algorithms. It is the \(O(n^2)\) runtime is what makes selection sort so devastatingly slow for large arrays.</p>
 <p>In the first Data Structures and Algorithms course, you will learn how to determine the runtime of algorithms more completely using both experimental analysis and theoretical analysis.</p>
-<h2 id="video-explanations-25"><a class="header" href="#video-explanations-25">Video explanations:</a></h2>
+<h2 id="video-explanations-30"><a class="header" href="#video-explanations-30">Video explanations:</a></h2>
 <p>Part 1:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/select_sort_part1.mp4" width="480" height="270" controls></video></p>
 <p>Part 2:</p>
@@ -4311,7 +4330,7 @@ stop = time.time()
 <p>Notice that if additional data are added after the insertion sort is complete, those elements can be inserted into the list once they are received. This ability to process the values piece-by-piece in a serial fashion is known as &quot;online sorting&quot;. Online sorting is useful when data is arriving in a continuous stream, such as a live data stream.</p>
 <h2 id="time-efficiency-considerations"><a class="header" href="#time-efficiency-considerations">Time efficiency considerations</a></h2>
 <p>While insertion sort is on average a \(O(n^2)\), algorithm, if an already-sorted list is processed with insertion sort, the insertion of each new element requires only one compare, and no swapping. Thus, the algorithm runs in \(O(n)\) time in this best case scenario. If the list is largely sorted, few extra compares and swaps are needed. So insertion sort is actually an efficient algorithm for lists that are mostly sorted, but have just a few elements out of place.</p>
-<h2 id="video-explanations-26"><a class="header" href="#video-explanations-26">Video explanations:</a></h2>
+<h2 id="video-explanations-31"><a class="header" href="#video-explanations-31">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/insertion_sort.mov" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="visual-depictions-of-sorting-algorithms"><a class="header" href="#visual-depictions-of-sorting-algorithms">Visual depictions of sorting algorithms</a></h1>
 <p>Many people have created cool visualizations of sorting algorithms. Here are a few good ones:</p>
