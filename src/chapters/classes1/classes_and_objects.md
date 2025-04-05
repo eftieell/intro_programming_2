@@ -97,7 +97,7 @@ Programming with classes and objects:
 ## Video explanations
 Motivation and concepts for classes and objects:
 
-<video src="https://cs.du.edu/~ftl/1352/videos/classes1/classes_intro_part1.mp4" width="480" height="270" controls></video>
+<video src="https://cs.du.edu/~ftl/1352/videos/classes1/classes_intro_part1.mov" width="480" height="270" controls></video>
 
 Code example using classes and objects:
 
