@@ -142,3 +142,13 @@ I love Chicago, I love Springfield, I love Champaign!
 I love Boston, I love Worcester, I love Springfield!
 ```
 Some programmers prefer this method most, since it allows us to know the index value ('row_index' and 'col_index'), but also to have easier access to the value stored there (just `city` instead of `more_cities[row_index][col_index]`).
+
+## Video explanations
+
+Review of traversing 1D lists:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/lists_and_dictionaries/traverse_list_three_ways.mp4" width="480" height="270" controls></video>
+
+Traversing 2D lists:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/lists_and_dictionaries/traversing_nested_lists.mp4" width="480" height="270" controls></video>

@@ -178,3 +178,6 @@ for state in populations:
 Note that it would not have worked to create one dictionary with just the city names and corresponding populations. Keys must be unique - but there are two cities with the same name! So adding the second "Springfield" to the dictionary would have overwritten the first "Springfield". Cities within states though, are required to have distinct names (you can't have two towns named Springfield within the same state), so we didn't run into this issue with our original structure. This is why the question asked you to produce a new key, that included the name of the city together with the state abbreviation.
 
 One subtle point in the above code is the creation of that new key. The expression `city + ", " + state` is a string concatenation, building the name in the form "city, state".
+
+## Video explanations
+<video src="https://cs.du.edu/~ftl/1352/videos/lists_and_dictionaries/nested_data_structures.mp4" width="480" height="270" controls></video>

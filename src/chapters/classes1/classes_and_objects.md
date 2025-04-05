@@ -93,3 +93,14 @@ Programming with classes and objects:
 * results in code that is more maintainable,
 * enables you to break down large programs into subtasks that different people can implement,
 * and creates encapsulation (compartmentalizes data so that one part of a program cannot corrupt data managed by another part of the program).
+
+## Video explanations
+Motivation and concepts for classes and objects:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/classes1/classes_intro_part1.mp4" width="480" height="270" controls></video>
+
+Code example using classes and objects:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/classes1/classes_intro_part2.mp4" width="480" height="270" controls></video>
+
+

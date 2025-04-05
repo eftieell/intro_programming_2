@@ -112,3 +112,7 @@ The above implementation is remarkable straight-forward! Note that it has some f
 * What if one or both of the numbers is negative?
 
 Completing the function to handle these errors is left to you.
+
+## Video explanations
+
+<video src="https://cs.du.edu/~ftl/1352/videos/recursion/implementing_recursion.mp4" width="480" height="270" controls></video>

@@ -152,6 +152,16 @@ Because we are doing a separate computation for each column, notice that the ini
 for-loop. We initialize `minimum` to the first student's score on that quiz. Then at the end of the inner loop, the output of the result
 is indented one level, so it is output once for each column.
 
+## Video explanations
+
+Nested list computation - the concepts:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/lists_and_dictionaries/nested_list_computation_concepts.mp4" width="480" height="270" controls></video>
+
+Nested list computation - implementation examples:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/lists_and_dictionaries/nested_list_computation.mp4" width="480" height="270" controls></video>
+
 
 
 
