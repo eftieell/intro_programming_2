@@ -65,5 +65,14 @@ Output:
 
 <img src="sierpinski_color.jpg" alt="Drawing of a Sierpinski Gasket" width="300"/>
 
+## Video explanations
+
+The ideas:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/recursion/fractal_concepts.mp4" width="480" height="270" controls></video>
+
+The implementation:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/recursion/fractal_implementation.mp4" width="480" height="270" controls></video>
 
 
