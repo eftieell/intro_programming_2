@@ -3814,6 +3814,11 @@ if __name__ == &quot;__main__&quot;:
 </code></pre>
 <p>Output:</p>
 <img src="chapters/recursion/sierpinski_color.jpg" alt="Drawing of a Sierpinski Gasket" width="300"/>
+<h2 id="video-explanations-26"><a class="header" href="#video-explanations-26">Video explanations</a></h2>
+<p>The ideas:</p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/recursion/fractal_concepts.mp4" width="480" height="270" controls></video></p>
+<p>The implementation:</p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/recursion/fractal_implementation.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="complete-tracing-through-recursive-functions"><a class="header" href="#complete-tracing-through-recursive-functions">Complete tracing through recursive functions</a></h1>
 <h2 id="building-the-stack-sets-up-the-computation-which-is-done-while-unwinding-the-stack"><a class="header" href="#building-the-stack-sets-up-the-computation-which-is-done-while-unwinding-the-stack">Building the stack sets up the computation, which is done while unwinding the stack</a></h2>
 <p>During execution of a recursive function, the call stack is built. As we return from the recursive calls, the frames are popped off of the call stack, and the stack is unwound. The building of the call stack should be considered part of the computation, as the structure of the call stack often stores the information that will be processed as the stack is unwound. For example, consider the execution of the following code:</p>
@@ -3953,7 +3958,7 @@ e = np.zeros(3, dtype = int) # you can specify the dtype
 print(e.dtype)               # outputs int64
 </code></pre>
 <p>In numpy arrays, the type <code>int64</code> has a fixed size of 64 bits (8 bytes). This means that the integers that can be stored have a minimum value of -9,223,372,036,854,775,808 and a maximum value of 9,223,372,036,854,775,807 (inclusive). This is unlike the python <code>int</code> type, which can hold to an unlimited value, increasing behind the scenes the storage space used to store the number.</p>
-<h2 id="video-explanations-26"><a class="header" href="#video-explanations-26">Video explanations:</a></h2>
+<h2 id="video-explanations-27"><a class="header" href="#video-explanations-27">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_arrays.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="computation-using-numpy-arrays"><a class="header" href="#computation-using-numpy-arrays">Computation using numpy arrays</a></h1>
 <p>Once a numpy array is created, you can access and modify it using indexing and slicing, similar to a python list.
@@ -4014,7 +4019,7 @@ print(d)  # outputs &quot;[3 3 3]&quot;
 e = a * b
 print(e)  # outputs &quot;[4 10 18]&quot;
 </code></pre>
-<h2 id="video-explanations-27"><a class="header" href="#video-explanations-27">Video explanations:</a></h2>
+<h2 id="video-explanations-28"><a class="header" href="#video-explanations-28">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_computation.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="two-dimensional-and-multi-dimensional-numpy-arrays"><a class="header" href="#two-dimensional-and-multi-dimensional-numpy-arrays">Two-dimensional and multi-dimensional numpy arrays</a></h1>
 <p>A multidimensional array is an array of arrays, in much the same way a multidimensional list is a list of lists. One of Numpy's strengths is the tools it has for making it easier to work with higher-dimensional arrays.</p>
@@ -4105,7 +4110,7 @@ python_column = [row[1] for row in lst] # iterate over the rows grabbing the sec
 print(python_column)
 print(sum(python_column))
 </code></pre>
-<h2 id="video-explanations-28"><a class="header" href="#video-explanations-28">Video explanations:</a></h2>
+<h2 id="video-explanations-29"><a class="header" href="#video-explanations-29">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_multi.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="algorithms-and-sorting"><a class="header" href="#algorithms-and-sorting">Algorithms and sorting</a></h1>
 <p>Algorithms are, simply put, a sequence of instructions to perform a task given a set of input values. Later courses will go into more detail about algorithm design, analysis, and efficiency.
@@ -4138,7 +4143,7 @@ You will learn how to implement these first three:</p>
 <p>These three algorithms rely on nested loops, and are the easiest to learn and understand. So first-year Computer Science students always learn them. But they are also notoriously slow, and so are <em>never</em> used in practice!</p>
 <p>One exampe of a better sorting algorithm is merge sort. You will see a demo of this fourth algorithm, which relies on recursion. The point of the demonstration is for you to see how much faster it runs than any of the other three algorithms.</p>
 <p>There are many other strategies for sorting that you will see in future courses.</p>
-<h2 id="video-explanations-29"><a class="header" href="#video-explanations-29">Video explanations</a></h2>
+<h2 id="video-explanations-30"><a class="header" href="#video-explanations-30">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/sorting_intro.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="selection-sort"><a class="header" href="#selection-sort">Selection sort</a></h1>
 <p>Selection sort is a notoriously inefficient sorting algorithm, but easier to understand than efficient strategies that you will learn in later courses. That's why it's frequently taught to first-year Computer Science students as a great application of nested loops.</p>
@@ -4240,7 +4245,7 @@ stop = time.time()
 </code></pre>
 <p>When we doubled the size of the array, the time quadrupled. This significant effect on the runtime as the size of the array increases follows the pattern of \(O(n^2)\) algorithms. It is the \(O(n^2)\) runtime is what makes selection sort so devastatingly slow for large arrays.</p>
 <p>In the first Data Structures and Algorithms course, you will learn how to determine the runtime of algorithms more completely using both experimental analysis and theoretical analysis.</p>
-<h2 id="video-explanations-30"><a class="header" href="#video-explanations-30">Video explanations:</a></h2>
+<h2 id="video-explanations-31"><a class="header" href="#video-explanations-31">Video explanations:</a></h2>
 <p>Part 1:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/select_sort_part1.mp4" width="480" height="270" controls></video></p>
 <p>Part 2:</p>
@@ -4330,7 +4335,7 @@ stop = time.time()
 <p>Notice that if additional data are added after the insertion sort is complete, those elements can be inserted into the list once they are received. This ability to process the values piece-by-piece in a serial fashion is known as &quot;online sorting&quot;. Online sorting is useful when data is arriving in a continuous stream, such as a live data stream.</p>
 <h2 id="time-efficiency-considerations"><a class="header" href="#time-efficiency-considerations">Time efficiency considerations</a></h2>
 <p>While insertion sort is on average a \(O(n^2)\), algorithm, if an already-sorted list is processed with insertion sort, the insertion of each new element requires only one compare, and no swapping. Thus, the algorithm runs in \(O(n)\) time in this best case scenario. If the list is largely sorted, few extra compares and swaps are needed. So insertion sort is actually an efficient algorithm for lists that are mostly sorted, but have just a few elements out of place.</p>
-<h2 id="video-explanations-31"><a class="header" href="#video-explanations-31">Video explanations:</a></h2>
+<h2 id="video-explanations-32"><a class="header" href="#video-explanations-32">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/insertion_sort.mov" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="visual-depictions-of-sorting-algorithms"><a class="header" href="#visual-depictions-of-sorting-algorithms">Visual depictions of sorting algorithms</a></h1>
 <p>Many people have created cool visualizations of sorting algorithms. Here are a few good ones:</p>
