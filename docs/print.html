@@ -2950,6 +2950,8 @@ Vertices: (10, 1) (7, 1) (5, 19)
 </code></pre>
 <p>Since <code>p1</code> refers to the same object as <code>t1.vertex1</code>, when <code>p1</code> is changed, so is <code>t1.vertex1</code>. Similarly, since <code>t1.vertex3</code> refers to the same object as <code>p3</code>, when <code>t1.vertex3</code> is changed, so is <code>p3</code>. Here is the final memory diagram showing the changes:</p>
 <img src="chapters/classes2/memory_diagram_8.png" alt="Memory diagram of a triangle object, which has three vertices that are each Point objects, after modifications" width = 550>
+<h2 id="video-explanations-19"><a class="header" href="#video-explanations-19">Video explanations</a></h2>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/classes2/memory_diagrams.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="copy-reference-versus-shallow-copy-versus-deep-copy"><a class="header" href="#copy-reference-versus-shallow-copy-versus-deep-copy">Copy reference, versus shallow copy, versus deep copy</a></h1>
 <p>There are three levels of copying an object:</p>
 <ul>
@@ -3149,7 +3151,7 @@ Output:</li>
 center: (0.5, 0.25), color: (255, 0, 0), circle radius: 0.075
 </code></pre>
 <p>While it is a common pattern for the base class to call on its <code>super()</code> to do part of the work of a method, it is not the only pattern. Another option is <em>method overriding</em>, explained in the next section.</p>
-<h2 id="video-explanations-19"><a class="header" href="#video-explanations-19">Video explanations</a></h2>
+<h2 id="video-explanations-20"><a class="header" href="#video-explanations-20">Video explanations</a></h2>
 <p>Motivation for inheritance:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/inheritance_motivation.mp4" width="480" height="270" controls></video></p>
 <p>Example of implementation:</p>
@@ -3307,7 +3309,7 @@ Employee Winona Begay is unpaid.
 Printing paycheck for $1035.0 written to Suresh Batra
 Printing weekly paycheck for $1290.75 written to Karala Lyberth
 </code></pre>
-<h2 id="video-explanations-20"><a class="header" href="#video-explanations-20">Video explanations</a></h2>
+<h2 id="video-explanations-21"><a class="header" href="#video-explanations-21">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/method_overriding.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="polymorphism"><a class="header" href="#polymorphism">Polymorphism</a></h1>
 <p>Object-oriented-programming really shines with the idea of polymorphism. The idea is simple and powerful. Recall in previous sections we saw that multiple classes that are related by inheritance could use method overriding so that each has a different version of a method with the same name. This means that if we have several of these objects, all of which potentially have different types, we can still sensibly store them all in one list. Then we can traverse that list, and call the method for each of them. The correct method will get called for each of them, based on each object's individual type.</p>
@@ -3411,7 +3413,7 @@ This time, the <code>__str__()</code> method is called, depending on the type of
 If it is a <code>Shape</code>, then the <code>__str__()</code> method of the parent class is called.
 But when it is one of the child classes, the child class's overriding version of <code>__str__()</code> is called. 
 Each <code>__str__()</code> method in the child classes invokes the <code>__str__()</code> method of the parent to do the parent's part of the job.</p>
-<h2 id="video-explanations-21"><a class="header" href="#video-explanations-21">Video explanations</a></h2>
+<h2 id="video-explanations-22"><a class="header" href="#video-explanations-22">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/polymorphism.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="determining-types-of-objects-using-type-and-isinstance"><a class="header" href="#determining-types-of-objects-using-type-and-isinstance">Determining types of objects using <code>type</code> and <code>isinstance</code></a></h1>
 <p>You learned about the python <code>type()</code> function in the first weeks of programming. For example:</p>
@@ -3447,7 +3449,7 @@ print(isinstance(circle1, Shape))   # True, by inheritance. Every Circle is a Sh
 print(isinstance(shape1, Shape))    # True (shape1 was instantiated as a Shape)
 print(isinstance(shape1, Circle))   # False, shape1 is not an instance of the child class Circle
 </code></pre>
-<h2 id="video-explanations-22"><a class="header" href="#video-explanations-22">Video explanations</a></h2>
+<h2 id="video-explanations-23"><a class="header" href="#video-explanations-23">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/type_isinstance.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="inheritance-versus-composition-is-a-versus-has-a"><a class="header" href="#inheritance-versus-composition-is-a-versus-has-a">Inheritance versus composition (&quot;is a&quot; versus &quot;has a&quot;)</a></h1>
 <p>In object-oriented programming (OOP), there are multiple ways that classes can interact. We've seen two of them: inheritance (in which one class <em>is</em> an extension of another class) and composition (in which one class <em>has</em> instance variables of another class). Inheritance is informally referred to as an &quot;is a&quot; relationship (since an object of a derived class is <em>also automatically</em> an instance of its parent class). Composition is informally referred to as a &quot;has a&quot; relationship (since the class owns, or has, instances of another class). To illustrate the difference, here are two examples from previoius sections.</p>
@@ -3501,7 +3503,7 @@ print(isinstance(t1, Point))     # False, t1 is not a Point
 <p>In the above code, we have two classes, but they are not related by inheritance. Instead, they are related by composition, since the <code>Triangle</code> class uses the <code>Point</code> class by owning instance variables of type <code>Point</code>. </p>
 <p>In the main code block, note that the type of <code>t1</code> is <code>Triangle</code>
 (python outputs <code>&lt;class '__main__.Triangle'&gt;</code>, since the <code>Triangle</code> class is defined within the <code>__main__</code> module). The next line determines if <code>t1</code> is an instance of the <code>Triangle</code> class, which it is, since <code>t1</code> was instantiated as a <code>Triangle</code>. The final line, however, outputs <code>False</code>. The object <code>t1</code> <em>is not a</em> <code>Point</code>. Rather, it <em>has a</em> <code>Point</code> as one of its instance variables.</p>
-<h2 id="video-explanations-23"><a class="header" href="#video-explanations-23">Video explanations</a></h2>
+<h2 id="video-explanations-24"><a class="header" href="#video-explanations-24">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/is_a_versus_has_a.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="multilevel-inheritance"><a class="header" href="#multilevel-inheritance">Multilevel inheritance</a></h1>
 <p>If a child class itself has a child class, we call that <em>multilevel inheritance</em>. For example, suppose we have a class called <code>Publication</code>, which has two subclasses <code>Podcast</code> and <code>Book</code>. Then say <code>Book</code> itself has two subclasses, <code>AudioBook</code> and <code>PrintBook</code>. In multilevel inheritance, class diagrams are a particularly useful visualization tool.</p>
@@ -3612,6 +3614,11 @@ True
 False
 True
 </code></pre>
+<h2 id="video-explanations-25"><a class="header" href="#video-explanations-25">Video explanations</a></h2>
+<p>Concepts:</p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/multilevel_inheritance.mp4" width="480" height="270" controls></video></p>
+<p>Implementation:</p>
+<p><video src="https://cs.du.edu/~ftl/1352/videos/inheritance/multilevel_inheritance_implementation.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="recursion"><a class="header" href="#recursion">Recursion</a></h1>
 <p>Recursion is a fundamental concept in Computer Science. Its a problem-solving technique that is an alternative to iteration (loops). Recursion applies whenever you can break a problem down into the same problem, but with smaller inputs. Recursion is important because there are some computational problems whose solutions are fantastically easier using recursion. You will see recursion again many times in your Computer Science journey.</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="recursion-1"><a class="header" href="#recursion-1">Recursion</a></h1>
@@ -3650,7 +3657,7 @@ True
 </code></pre>
 <p>To avoid this problem, every recursive function must contain conditions to stop the recursion in at least one base case.</p>
 <p>In the next section you will see some examples of implementing recursive functions that perform useful and interesting tasks.</p>
-<h2 id="video-explanations-24"><a class="header" href="#video-explanations-24">Video explanations</a></h2>
+<h2 id="video-explanations-26"><a class="header" href="#video-explanations-26">Video explanations</a></h2>
 <p>First recursion example, with flaws:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/recursion/bad_recursion.mp4" width="480" height="270" controls></video></p>
 <p>Second recursion example, this one works:</p>
@@ -3751,7 +3758,7 @@ print(gcd(60, 48)) # outputs 12
 <li>What if one or both of the numbers is negative?</li>
 </ul>
 <p>Completing the function to handle these errors is left to you.</p>
-<h2 id="video-explanations-25"><a class="header" href="#video-explanations-25">Video explanations</a></h2>
+<h2 id="video-explanations-27"><a class="header" href="#video-explanations-27">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/recursion/implementing_recursion.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="graphical-example-of-recursion"><a class="header" href="#graphical-example-of-recursion">Graphical example of recursion</a></h1>
 <p>Drawing fractals is a neat graphical application of recursion. Below is a drawing of a fractal called a <em>Sierpinski Gasket</em>, or <em>Sierpinski Triangle</em>:</p>
@@ -3814,7 +3821,7 @@ if __name__ == &quot;__main__&quot;:
 </code></pre>
 <p>Output:</p>
 <img src="chapters/recursion/sierpinski_color.jpg" alt="Drawing of a Sierpinski Gasket" width="300"/>
-<h2 id="video-explanations-26"><a class="header" href="#video-explanations-26">Video explanations</a></h2>
+<h2 id="video-explanations-28"><a class="header" href="#video-explanations-28">Video explanations</a></h2>
 <p>The ideas:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/recursion/fractal_concepts.mp4" width="480" height="270" controls></video></p>
 <p>The implementation:</p>
@@ -3958,7 +3965,7 @@ e = np.zeros(3, dtype = int) # you can specify the dtype
 print(e.dtype)               # outputs int64
 </code></pre>
 <p>In numpy arrays, the type <code>int64</code> has a fixed size of 64 bits (8 bytes). This means that the integers that can be stored have a minimum value of -9,223,372,036,854,775,808 and a maximum value of 9,223,372,036,854,775,807 (inclusive). This is unlike the python <code>int</code> type, which can hold to an unlimited value, increasing behind the scenes the storage space used to store the number.</p>
-<h2 id="video-explanations-27"><a class="header" href="#video-explanations-27">Video explanations:</a></h2>
+<h2 id="video-explanations-29"><a class="header" href="#video-explanations-29">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_arrays.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="computation-using-numpy-arrays"><a class="header" href="#computation-using-numpy-arrays">Computation using numpy arrays</a></h1>
 <p>Once a numpy array is created, you can access and modify it using indexing and slicing, similar to a python list.
@@ -4019,7 +4026,7 @@ print(d)  # outputs &quot;[3 3 3]&quot;
 e = a * b
 print(e)  # outputs &quot;[4 10 18]&quot;
 </code></pre>
-<h2 id="video-explanations-28"><a class="header" href="#video-explanations-28">Video explanations:</a></h2>
+<h2 id="video-explanations-30"><a class="header" href="#video-explanations-30">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_computation.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="two-dimensional-and-multi-dimensional-numpy-arrays"><a class="header" href="#two-dimensional-and-multi-dimensional-numpy-arrays">Two-dimensional and multi-dimensional numpy arrays</a></h1>
 <p>A multidimensional array is an array of arrays, in much the same way a multidimensional list is a list of lists. One of Numpy's strengths is the tools it has for making it easier to work with higher-dimensional arrays.</p>
@@ -4110,7 +4117,7 @@ python_column = [row[1] for row in lst] # iterate over the rows grabbing the sec
 print(python_column)
 print(sum(python_column))
 </code></pre>
-<h2 id="video-explanations-29"><a class="header" href="#video-explanations-29">Video explanations:</a></h2>
+<h2 id="video-explanations-31"><a class="header" href="#video-explanations-31">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/numpy/numpy_multi.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="algorithms-and-sorting"><a class="header" href="#algorithms-and-sorting">Algorithms and sorting</a></h1>
 <p>Algorithms are, simply put, a sequence of instructions to perform a task given a set of input values. Later courses will go into more detail about algorithm design, analysis, and efficiency.
@@ -4143,7 +4150,7 @@ You will learn how to implement these first three:</p>
 <p>These three algorithms rely on nested loops, and are the easiest to learn and understand. So first-year Computer Science students always learn them. But they are also notoriously slow, and so are <em>never</em> used in practice!</p>
 <p>One exampe of a better sorting algorithm is merge sort. You will see a demo of this fourth algorithm, which relies on recursion. The point of the demonstration is for you to see how much faster it runs than any of the other three algorithms.</p>
 <p>There are many other strategies for sorting that you will see in future courses.</p>
-<h2 id="video-explanations-30"><a class="header" href="#video-explanations-30">Video explanations</a></h2>
+<h2 id="video-explanations-32"><a class="header" href="#video-explanations-32">Video explanations</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/sorting_intro.mp4" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="selection-sort"><a class="header" href="#selection-sort">Selection sort</a></h1>
 <p>Selection sort is a notoriously inefficient sorting algorithm, but easier to understand than efficient strategies that you will learn in later courses. That's why it's frequently taught to first-year Computer Science students as a great application of nested loops.</p>
@@ -4245,7 +4252,7 @@ stop = time.time()
 </code></pre>
 <p>When we doubled the size of the array, the time quadrupled. This significant effect on the runtime as the size of the array increases follows the pattern of \(O(n^2)\) algorithms. It is the \(O(n^2)\) runtime is what makes selection sort so devastatingly slow for large arrays.</p>
 <p>In the first Data Structures and Algorithms course, you will learn how to determine the runtime of algorithms more completely using both experimental analysis and theoretical analysis.</p>
-<h2 id="video-explanations-31"><a class="header" href="#video-explanations-31">Video explanations:</a></h2>
+<h2 id="video-explanations-33"><a class="header" href="#video-explanations-33">Video explanations:</a></h2>
 <p>Part 1:</p>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/select_sort_part1.mp4" width="480" height="270" controls></video></p>
 <p>Part 2:</p>
@@ -4335,7 +4342,7 @@ stop = time.time()
 <p>Notice that if additional data are added after the insertion sort is complete, those elements can be inserted into the list once they are received. This ability to process the values piece-by-piece in a serial fashion is known as &quot;online sorting&quot;. Online sorting is useful when data is arriving in a continuous stream, such as a live data stream.</p>
 <h2 id="time-efficiency-considerations"><a class="header" href="#time-efficiency-considerations">Time efficiency considerations</a></h2>
 <p>While insertion sort is on average a \(O(n^2)\), algorithm, if an already-sorted list is processed with insertion sort, the insertion of each new element requires only one compare, and no swapping. Thus, the algorithm runs in \(O(n)\) time in this best case scenario. If the list is largely sorted, few extra compares and swaps are needed. So insertion sort is actually an efficient algorithm for lists that are mostly sorted, but have just a few elements out of place.</p>
-<h2 id="video-explanations-32"><a class="header" href="#video-explanations-32">Video explanations:</a></h2>
+<h2 id="video-explanations-34"><a class="header" href="#video-explanations-34">Video explanations:</a></h2>
 <p><video src="https://cs.du.edu/~ftl/1352/videos/sorting/insertion_sort.mov" width="480" height="270" controls></video></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="visual-depictions-of-sorting-algorithms"><a class="header" href="#visual-depictions-of-sorting-algorithms">Visual depictions of sorting algorithms</a></h1>
 <p>Many people have created cool visualizations of sorting algorithms. Here are a few good ones:</p>
