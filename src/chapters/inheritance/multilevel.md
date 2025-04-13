@@ -118,3 +118,16 @@ True
 False
 True
 ```
+
+## Video explanations
+Concepts:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/inheritance/multilevel_inheritance.mp4" width="480" height="270" controls></video>
+
+Implementation:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/inheritance/multilevel_inheritance_implementation.mp4" width="480" height="270" controls></video>
+
+
+
+

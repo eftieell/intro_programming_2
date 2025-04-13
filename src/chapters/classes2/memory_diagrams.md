@@ -72,4 +72,6 @@ Since `p1` refers to the same object as `t1.vertex1`, when `p1` is changed, so i
 
 <img src="memory_diagram_8.png" alt="Memory diagram of a triangle object, which has three vertices that are each Point objects, after modifications" width = 550>
 
+## Video explanations
+<video src="https://cs.du.edu/~ftl/1352/videos/classes2/memory_diagrams.mp4" width="480" height="270" controls></video>
 
