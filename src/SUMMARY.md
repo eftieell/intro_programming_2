@@ -57,4 +57,4 @@
 - [Files and Data](chapters/files/file_chapter.md)
     - [Opening, closing and reading files](chapters/files_and_data/file_open_read_close.md)
     - [Writing to files](chapters/files_and_data/file_write.md)
-    - [Exceptions and files](chapters/files_and_data/files_and_exceptions.md)
+    - [Files and Exceptions](chapters/files_and_data/files_and_exceptions.md)

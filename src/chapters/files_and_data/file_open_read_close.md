@@ -1,13 +1,15 @@
+# Opening, closing, and reading from files
+
 ## Opening files
 
-Before reading from a file (input) or writing to a file(output), the program must *open* the file.
+Before reading from a file (input) or writing to a file (output), the program must *open* the file.
 
-The `open()` function returns a file object, which can then be used for reading, writing or appending to a file.
+The `open()` function returns a file object, which can then be used for reading, writing or appending to a file. The arguments are the name of the file, and the mode to use when opening it.
 
 ```python
 some_file = open('<path/file_name>', mode  = <'string'>')
 ```
-If the file we're trying to open is in the same directory (folder) as the program we're running, then `file_name.extension` is sufficient. If the file is stored somewhere else in the file system, then we specify a full path to the file. If the file we are trying to open does not exist, the program will crash with a `FileNotFound` exception.
+If the file we're trying to open is in the same directory (folder) as the program we're running, then `file_name.extension` is sufficient. If the file is stored somewhere else in the file system, then we specify a full path to the file. If the file we are trying to open does not exist, the program will crash with a `FileNotFound` exception (see [Files and Exceptions](files_and_exceptions.md) for details on how to handle these errors).
 
 Modes:
 
@@ -26,11 +28,16 @@ There are multiple ways to read text data from a file. These examples assume tha
 
 - Read the entire contents of the file into one string:
 
+    This one-line technique is the least-often used since the string might be large with complex contents that are difficult to parse all at once.
+
     ```python 
     giant_string = some_file.read()
     ```
 
-- Read the file into a `list` of lines. The contents are broken at each `\n` in the file, and `lines_list` is a list of strings:
+
+- Read the file into a `list` of lines:
+
+    The contents are broken at each `\n` in the file, and `lines_list` is a list of strings. This is one of the techniques that is useful for multi-line files. You can then process the information one line at a time from your `lines_list`. It is straight-forward, but again, not the most commonly used.
 
     ```python 
     lines_list = some_file.readlines()
@@ -38,20 +45,24 @@ There are multiple ways to read text data from a file. These examples assume tha
 
 - Read the lines with a loop:
 
+    With this technique, we don't save all of the contents into a list up-front, and instead read one line at a time, processing as we go.
+
     ```python
     for line in some_file:
-        # The variable line (type str) contains the next line in the file
-        # Code to process each line goes here
-        # You might need to strip the terminating '\n' from each line
-        # There might be final empty lines of just '\n'
+        # The variable 'line' (type str) contains the next line in the file.
+        # The code to process each line goes here.
+        # You might need to strip the terminating '\n' from each line.
+        # And there might be final empty lines of just '\n', so make sure to process those correctly.
     ```
 
-- Use a context manager, which combines opening/reading/closing within one organized block. This makes for more readable and organized code and is the preferred technique.
+- Use a context manager, which combines opening/reading/closing within one organized block:
+
+    This makes for more readable and organized code and is the preferred technique.
 
     ```python
     with open(...) as some_file:
-        # All code involving the file 'some_file' goes here
-    # No need to close file, it is closed automatically at end of indented block
+        # All code involving the file 'some_file' goes here, using a loop for multi-line files.
+        # No need to close the file, since it is closed automatically at end of the indented block.
     ```
 
  ## Closing files
@@ -64,10 +75,10 @@ If you don't make a practice of this, you are tying up memory resources. This pr
 
 Once you call `some_file.close()`, you can no longer read from that file.
 
-## Reading from files without context manager versus with context manager
+## Reading from multi-line files without a context manager compared to  using a context manager
 
 <table>
-<tr><td>No context manager:</td><td>Using context manager:</td></tr>
+<tr><td>No context manager:</td><td>Using a context manager:</td></tr>
 
 <tr>
 <td nowrap>
@@ -93,47 +104,35 @@ with open('foo.txt', 'r') as a_file:
 </tr>
 </table>
 
-## Putting it all together
+## Example 1 - a single-line list
 
-The code snippets below open a file called `names.txt` that is stored in a directory (folder) called `data_files`. It contains a comma-separated list of names.
-
-In this example, the entire contents of the file are stored in one string.
-```python
-# open the file names.txt, which is stored in a directory called
-# data_files within this working directory. This is a relative path.
-a_file = open("data_files/names.txt")
-# Read the entire contents of the file into one string
-giant_string = a_file.read()
-# output the entire contents of the file
-print(giant_string)
-a_file.close()
-```
-The output is the entire content of the file `names.txt`, which for the purpose of this example is:
+The code snippet below opens a file called `names.txt` that is stored in a subdirectory (subfolder) called `data_files`. This file contains a comma-separated list of names. For this example, the contents of `names.txt` is:
 ```
 Janis Joplin,Aretha Franklin,Pat Benatar,Deborah Harry,Tina Turner,Joan Jett,Stevie Nicks,Melissa Etheridge,Grace Slick,Courtney Love
 ```
 
-In the following code snippet, the contents of the file are split into a list of separate strings.
+The following code snippet shows how to use a context manager to open and read the file.
 ```python
-a_file = open("data_files/names.txt")
-# Read the entire contents of the file into one string, then process that
-# list by stripping whitespace from the beginning and end of the string.
-# The names are separated by commas, so split them at each comma
-# into separate strings
-name_list = a_file.read().strip().split(",")
-# output the list of names
-print(name_list)
+# Use a context manager to open and read the file
+with open("data_files/names.txt") as a_file:
+    # One line of code does all of the following: read the entire contents of the one-line file 
+    # into one string, then strip white space, then split the string into a list of strings,
+    # separated at the commas:
+    names_list = a_file.read().strip().split(",")
 
-# or output the names one at a time:
-for name in name_list:
+# output the list that got created:
+print(names_list)
+
+# Use a loop to output individual names:
+for name in names_list:
     print(name)
-a_file.close()
 ```
-The output for `print(name_list)` is:
+
+The output for `print(names_list)` is:
 ```
 ['Janis Joplin', 'Aretha Franklin', 'Pat Benatar', 'Deborah Harry', 'Tina Turner', 'Joan Jett', 'Stevie Nicks', 'Melissa Etheridge', 'Grace Slick', 'Courtney Love']
 ```
-The output for the for loop is:
+The output of the for loop is:
 ```
 Janis Joplin
 Aretha Franklin
@@ -147,21 +146,9 @@ Grace Slick
 Courtney Love
 ```
 
-The following code snippet shows how to use a context manager to open and read the same file.
-```python
-# Use a context manager to open and read the file
-with open("data_files/names.txt") as a_file:
-    # Read the entire contents of the file into one string,
-    # then strip white space and split at the commas:
-    names_list = a_file.read().strip().split(",")
+## Example 2: processing multi-line files
 
-# Use loop to output names:
-for name in names_list:
-    print(name)
-```
-
-## Processing multi-line files
-The following shows the contents of a file `OH_prefs.csv`. This file contains the data for each student of which office hours they are available for.
+The following shows the contents of a file `OH_prefs.csv` stored in a subdirectory called `data_files`. This file contains the data for each student telling which office hours they are available for.
 ```
 Student name,8AM,9AM,10AM,11AM,12PM,1PM,2PM,3PM,4PM,5PM
 Janis Joplin,Y,Y,Y,Y,Y,N,Y,N,Y,Y
@@ -175,8 +162,8 @@ Melissa Etheridge,N,N,Y,Y,N,N,Y,N,N,N
 Grace Slick,N,N,N,N,N,Y,Y,N,Y,Y
 Courtney Love,N,Y,N,N,N,N,Y,N,Y,N
 ```
-Our goal is to read this file and transform it into a list of counts for how many students are available at each office hour. Please use this exercise to practice reading from a file, using lists, as well as algorithmic thinking.
-
+Our goal is to read this file and transform it into a list of counts for how many students are available at each office hour.
+Please read the code below and examine its use of a context manager for file reading. Also examine the loop that reads lines one at a time from the file.
 ```python
 def get_oh_prefs(file_name: str)->list[int]:
     """
@@ -189,18 +176,20 @@ def get_oh_prefs(file_name: str)->list[int]:
         count of number of students available at each hour (type: list[int])
     """
 
-    # Create a list, initialized with 10 0's
+    # Create a list, initialized with 10 0's (one for each available hour)
     hours_prefs = []
     for i in range(10):
         hours_prefs.append(0)
 
     # read the file
     with open(file_name, 'r') as a_file:
-        # Each line in the file corresponds to one student
+        # Read the contents of the header line. We will ignore this line.
+        header_line = a_file.readline()
+        # Each subsequent line in the file corresponds to one student
         for line in a_file:
             # student_prefs will contain 'Y's and 'N's
             student_prefs = line.strip().split(",")
-            # ignore the first entry in the line, which is the name
+            # ignore the first entry in the line, which is the name of the student
             for i in range(1,len(student_prefs)):
                 # If they said 'Y', then count them for this time of day
                 if student_prefs[i] == 'Y':

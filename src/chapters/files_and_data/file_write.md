@@ -9,14 +9,14 @@ a_file.write('and more inspiring sentences.\n)
 ```
 Unlike python's `print()` function, a newline is not automatically included in a call to `write()`. So the newline must be part of the text you are writing to the file.
 
-Writing to a computer's disk is expensive in run-time, so most languages by default buffer their output (in a temporary list), saving it to write in larger chunks. This means that after a call to `write()`, the data is not yet actually stored in the file. You can request that the program send the buffered data immediately to the disk by calling the `flush()` method.
+Writing to a computer's disk is expensive in run-time, so by default most languages buffer their output (in a temporary list), saving it to write in larger chunks. This means that after a call to `write()`, the data is not yet actually stored in the file. You can request that the program send the buffered data immediately to the disk by calling the `flush()` method.
 ```python
 a_file.flush()
 ```
 When you call `a_file.close()`, the buffer is automatically flushed. So if the text you are writing to a file isn't showing up, check for either a missing call to `flush()` or to `close()`.
 
 ## Example
-The previous section ended with a program that reads from a file and processes the data, producing  a list of the number of students available for office hours at each hour of the day. We will now extend that program to write the computed results to a file.
+The previous section ended with a program that reads from a file and processes the data, producing  a list of the number of students available for office hours at each hour of the day. We will now extend that program to write the computed results to a file. Examine the contents of the function `write_results_to_file()`. Notice its use of a context manager to write to a file. Notice that each new line is written to the file within a loop. Finally, note that the data will not actually show up in the file until the file is automatically closed at the end of the `with` block (the block that uses a context manager). 
 
 ```python
 def get_oh_prefs(file_name: str)->list[int]:
@@ -37,15 +37,17 @@ def get_oh_prefs(file_name: str)->list[int]:
 
     # read the file
     with open(file_name, 'r') as a_file:
+        # Read the contents of the header line. We will ignore this line.
+        header_line = a_file.readline()
         # Each line in the file corresponds to one student
         for line in a_file:
             # student_prefs will contain 'Y's and 'N's
             student_prefs = line.strip().split(",")
-            # ignore the first entry in the line, which is the name
+            # ignore the first entry in the line, which is the name of the student
             for i in range(1,len(student_prefs)):
                 # If they said 'Y', then count them for this time of day
                 if student_prefs[i] == 'Y':
-                    # Remember to ignore i=0, so shift the index by 1
+                    # Remember that i=0 is the  name
                     hours_prefs[i-1] += 1
     return hours_prefs
 

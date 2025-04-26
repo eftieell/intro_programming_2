@@ -144,3 +144,5 @@ orig.vertex3.y = 0
 Side note: in the above memory diagram, `orig.vertex1` was changed to a newly-instantiated `Point`. This means that there are no longer any arrows pointing to the initial point `orig.vertex1`. Since there are no remaining references to this point, it can no longer be accessed from within this program. Python "cleans up" these orphaned objects through a process called *garbage collection*. Garbage collection recovers space in memory to potentially be used by python later in the running of the program.
 
 
+## Video explanations
+<video src="https://cs.du.edu/~ftl/1352/videos/classes2/shallow_v_deep_copy.mp4" width="480" height="270" controls></video>

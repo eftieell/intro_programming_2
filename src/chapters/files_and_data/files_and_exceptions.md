@@ -1,4 +1,4 @@
-## Exceptions and errors
+## Files and Exceptions
 
 Exceptions and errors are unexpected events in a program. Here are some errors you are already familiar with:
 
