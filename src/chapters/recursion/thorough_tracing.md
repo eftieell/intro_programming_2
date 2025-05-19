@@ -57,3 +57,8 @@ Continuing down_up: 2
 Continuing down_up: 3
 ```
 Notice that lines executed *before* the recursive call are executed as the stack is being built, so they occur in the order that n is passed to the function (in this case, since we call `down_up(n-1)`, the values of n are decreasing). But lines executed *after* the recursive call are executed as the stack unwinds. So they are output in the reverse order.
+
+## Video explanations
+First recursion example, with flaws:
+
+<video src="https://cs.du.edu/~ftl/1352/videos/recursion/recursive_trace.mp4" width="480" height="270" controls></video>
