@@ -44,3 +44,6 @@ The array has 4 elements, so 3 passes are needed. At the end of the third pass, 
 
 ## Timing running of bubble sort
 Timing of running of bubble sort, as we did with selection sort, suggests that bubble sort is also a \\(O(n^2)\\)algorithm, and thus, like selection sort, is *never* used in practice. In the first Data Structures and Algorithms course, you will learn how to determine the runtime of algorithms more completely using both experimental analysis and theoretical analysis.
+
+## Video explanations:
+<video src="https://cs.du.edu/~ftl/1352/videos/sorting/bubble_sort.mp4" width="480" height="270" controls></video>
