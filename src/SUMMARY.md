@@ -58,3 +58,4 @@
     - [Opening, closing and reading files](chapters/files_and_data/file_open_read_close.md)
     - [Writing to files](chapters/files_and_data/file_write.md)
     - [Files and Exceptions](chapters/files_and_data/files_and_exceptions.md)
+    - [Data Science and .csv files](chapters/files_and_data/csv_files_data_science.md)

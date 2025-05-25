@@ -152,7 +152,7 @@ The following shows the contents of a file `OH_prefs.csv` stored in a subdirecto
 ```
 Student name,8AM,9AM,10AM,11AM,12PM,1PM,2PM,3PM,4PM,5PM
 Janis Joplin,Y,Y,Y,Y,Y,N,Y,N,Y,Y
-Aretha Franklin,Y,Y,Y,Y,Y,N,N,Y,N,Y,Y
+Aretha Franklin,Y,Y,Y,Y,Y,N,N,Y,N,Y
 Pat Benatar,Y,Y,Y,Y,N,N,Y,N,Y,Y
 Deborah Harry,Y,N,Y,Y,N,Y,Y,Y,Y,N
 Tina Turner,Y,Y,Y,Y,N,Y,Y,Y,Y,Y
