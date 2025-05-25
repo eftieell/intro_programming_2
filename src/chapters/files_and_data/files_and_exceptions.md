@@ -125,7 +125,7 @@ except ValueError:
     print('Error: Age must be a whole number')
 ```
 
-Here's a sample output showing with the user sees:
+Here's a sample output showing what the user sees:
 ```
 Input your age: Sue
 Error: Age must be a whole number
